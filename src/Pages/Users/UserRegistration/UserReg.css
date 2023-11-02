@@ -1,0 +1,64 @@
+form{
+    border:4px solid rgb(223, 34, 113);;
+    width: 100%;
+    height: 500;
+    padding: 20px;
+    
+    background-color: white;
+  
+
+   
+}
+
+.innercontainer{
+    border: 2px solid red;
+    width:65%; ;
+}
+.imgcircle{
+    position: relative;
+    left: 50px;
+    margin-top: 3rem;
+}
+.image-front{
+    background-image: url('../../../Assets//1pc 3d Little Cat Dog Pattern Wall Sticker, Cute Creative Waterproof Wall Sticker, Removable Mirror Window Wall Decals For Home Bedroom Bathroom, Home Decor.jpeg');
+    background-size: cover;
+  
+    height: 200px;
+    position: relative
+   }
+   .image-front h2{
+    position: absolute;
+    bottom: 0px;
+    
+}
+h2{
+    color: rgb(223, 34, 113);
+    
+}
+.container{
+ 
+    margin: auto;
+    width: 55%;
+    padding: 20px;
+}
+input[type=text]{
+    border: 1px solid black;
+}
+.container-captcha{
+    border: 1px solid  black;
+    width: 60%;
+    height: 90px;
+    border-radius: 1.5rem;
+    position: relative;
+}
+.Container-innerCaptcha{
+    border: 1px solid  red;
+    width: 25%;
+    height: 90px;
+    position: absolute;
+    border: none;
+    background-color: rgb(10, 10, 82);
+    border-radius: 0px 1.5rem 1.5rem 0px;
+    right: 0px;
+    top: 0px;
+}
