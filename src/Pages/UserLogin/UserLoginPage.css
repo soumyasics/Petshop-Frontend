@@ -2,11 +2,29 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
+.login-page-logo-container {
+  display: flex;
+  padding-left: 12%;
+  margin-top: 50px;
+  align-items: center;
+}
+
+.login-page-logo-container img {
+  width: 3rem;
+  height: auto;
+}
+
+.login-page-logo-container p {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-left: 10px;
+  margin-bottom: 0;
+}
+
 .login-page-container {
   display: flex;
   width: 90%;
   margin: auto;
-  margin-top: 50px;
   height: 500px;
 }
 
