@@ -12,6 +12,7 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const BASE_URL = "http://localhost:4000/petshop_api";
 
   const handleSubmit = () => {
     if (!email || !password) {
@@ -25,15 +26,13 @@ const LoginPage = () => {
   };
 
   const sendDataToServer = (credentials) => {
-    axios
-      .post("http://localhost:4000/petshop_api/userLogin", credentials)
-      .then((res) => {
-        if (res.status === 200) {
-          alert("Login successful");
-        } else {
-          alert("Login failed");
-        }
-      });
+    axios.post(`${BASE_URL}/userLogin`, credentials).then((res) => {
+      if (res.status === 200) {
+        alert("Login successful");
+      } else {
+        alert("Login failed");
+      }
+    });
   };
 
   const togglePasswordVisibility = () => {
