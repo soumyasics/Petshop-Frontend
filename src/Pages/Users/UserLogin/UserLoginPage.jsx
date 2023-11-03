@@ -2,7 +2,6 @@
 import { useState } from "react";
 import loginDog from "../../../Assets/login-dog-img.png";
 import zookeper from "../../../Assets/zookeper-logo.png";
-import { Form } from "react-bootstrap";
 import { AiFillEye } from "react-icons/ai";
 import { AiFillEyeInvisible } from "react-icons/ai";
 
@@ -13,13 +12,24 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const BASE_URL = "http://localhost:4000/petshop_api";
-  
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   const handleSubmit = () => {
     if (!email || !password) {
       alert("Please enter email and password");
       return;
     }
-    if (password.length < 6 ){
+
+    if (!validateEmail(email)) {
+      alert("Please enter a valid email");
+      return;
+    }
+
+    if (password.length < 6) {
       alert("Password must be at least 6 characters long");
       return;
     }
@@ -30,18 +40,20 @@ const LoginPage = () => {
   };
 
   const sendDataToServer = (credentials) => {
-    axios.post(`${BASE_URL}/userLogin`, credentials).then((res) => {
-      if (res.status === 200) {
-        alert("Login successful");
-      } else {
-        alert("Login failed");
-      }
-    });
+    try {
+      axios.post(`${BASE_URL}/userLogin`, credentials).then((res) => {
+        if (res.status === 200) {
+          alert("Login successful");
+        } else {
+          alert("Login failed");
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const handleForgotPassword = () => {
-    
-  }
+  const handleForgotPassword = () => {};
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
