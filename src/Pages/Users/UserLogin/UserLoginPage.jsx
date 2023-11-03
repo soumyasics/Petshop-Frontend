@@ -13,10 +13,14 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const BASE_URL = "http://localhost:4000/petshop_api";
-
+  
   const handleSubmit = () => {
     if (!email || !password) {
       alert("Please enter email and password");
+      return;
+    }
+    if (password.length < 6 ){
+      alert("Password must be at least 6 characters long");
       return;
     }
     const credentials = { email, password };
@@ -34,6 +38,10 @@ const LoginPage = () => {
       }
     });
   };
+
+  const handleForgotPassword = () => {
+    
+  }
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -81,7 +89,7 @@ const LoginPage = () => {
                 <input type="checkbox" name="remember-me" />
                 <label for="remember-me">Remember me</label>
               </div>
-              <p>Forgot Password?</p>
+              <p onClick={handleForgotPassword}>Forgot Password?</p>
             </div>
 
             <p className="dont-have-account">
