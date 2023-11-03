@@ -61,11 +61,12 @@
   justify-content: space-between;
 }
 
-.login-form-container form div {
+.login-form-container form>div {
   display: flex;
   flex-direction: column;
   padding: 0 20px;
   box-sizing: border-box;
+  position: relative;
 }
 
 .login-form-container form input {
@@ -136,6 +137,20 @@
   cursor: pointer;
 }
 
+.login-eye-div {
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  right: 10px;
+  top: 37px;
+}
+.eye-icon-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row !important;
+}
 /* right section  */
 .login-page-right-section {
   width: 55%;
@@ -148,5 +163,6 @@
 .login-page-right-section img {
   width: auto;
   height: 80%;
-  
 }
+  
+
