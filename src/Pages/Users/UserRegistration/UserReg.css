@@ -1,4 +1,4 @@
-form{
+/* form{
     border:4px solid rgb(223, 34, 113);;
     width: 100%;
     height: 500;
@@ -8,7 +8,7 @@ form{
   
 
    
-}
+} */
 
 .innercontainer{
     border: 2px solid red;
@@ -31,19 +31,19 @@ form{
     bottom: 0px;
     
 }
-h2{
+/* h2{
     color: rgb(223, 34, 113);
     
-}
+} */
 .container{
  
     margin: auto;
     width: 55%;
     padding: 20px;
 }
-input[type=text]{
+/* input[type=text]{
     border: 1px solid black;
-}
+} */
 .container-captcha{
     border: 1px solid  black;
     width: 60%;
