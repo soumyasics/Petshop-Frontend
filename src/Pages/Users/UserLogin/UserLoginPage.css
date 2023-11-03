@@ -1,0 +1,152 @@
+/* 01-11-2023 Build by Anand R P */
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
+.login-page-logo-container {
+  display: flex;
+  padding-left: 12%;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.login-page-logo-container img {
+  width: 3rem;
+  height: auto;
+}
+
+.login-page-logo-container p {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-left: 10px;
+  margin-bottom: 0;
+}
+
+.login-page-container {
+  display: flex;
+  width: 90%;
+  margin: auto;
+  height: 500px;
+}
+
+.login-page-left-section {
+  width: 45%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.login-form-container {
+  width: 67%;
+  margin: auto;
+  background-color: #018ae0;
+  height: 460px;
+  border-radius: 20px;
+  color: white;
+  padding: 1rem .4rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding-top: 31px;
+  box-sizing: border-box;
+}
+
+.login-form-container > h1 {
+  text-align: center;
+  font-size: 2rem;
+  font-family: "Open Sans", sans-serif;
+}
+
+.login-form-container form {
+  height: 136px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  justify-content: space-between;
+}
+
+.login-form-container form div {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.login-form-container form input {
+  background-color: #53a8dd;
+  color: white;
+  letter-spacing: 1.2px;
+  height: 30px;
+  border: none;
+  padding-left: 10px;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.login-form-container form input::placeholder {
+  color: white;
+  font-size: 14px;
+}
+
+.login-form-container form input:focus {
+  border: none;
+  outline: none;
+}
+
+.remember-me-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 35px;
+  padding: 0 20px;
+  font-size: 13.64px;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.66);
+}
+
+.remember-me-container p {
+  margin-bottom: 0;
+}
+
+.remember-me-container div label {
+  margin-left: 10px;
+}
+
+.dont-have-account {
+  margin-left: 20px;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.dont-have-account span {
+  font-weight: 700;
+  cursor: pointer;
+}
+.signin-btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  flex-direction: column;
+}
+
+.signin-btn {
+  background-color: #d61c62;
+  color: #fffdfa;
+  margin: auto;
+  border: none;
+  width: 8rem;
+  height: 30px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+/* right section  */
+.login-page-right-section {
+  width: 55%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-page-right-section img {
+  width: auto;
+  height: 80%;
+  
+}
