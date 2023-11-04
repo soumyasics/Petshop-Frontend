@@ -18,6 +18,8 @@ function App() {
           <Route path="/user-reg" element={<UserReg />} />
           <Route path="/user-profile-edit" element={<UserProfileEdit/>} />
           <Route path="/user-forgot-password" element={<UserForgotPwd />} />
+          <Route path="/user-forgot-password-req" element={<UserForgotPwdReq />} />
+          <Route path="/admin-login" element={<AdminLogin />} />
 
         </Routes>
       </BrowserRouter> 
