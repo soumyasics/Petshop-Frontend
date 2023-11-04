@@ -1,55 +1,64 @@
-.user-reg-form-1 {
+.user-reg-form-1  {
   border: 4px solid rgb(223, 34, 113);
   width: 100%;
   height: 500;
   padding: 20px;
   background-color: white;
 } 
-body{
+
+.user-reg-cover {
 background-image: url("../../../Assets/regCover.jpeg");
 background-size: cover;
+
 }
-/*  */
-.innercontainer {
-  border: 2px solid red;
-  width: 65%;
-  /* ttt */
-  /* dfd */
-}
-.imgcircle {
+
+
+.user-reg-imgcircle {
   position: relative;
   left: 50px;
   margin-top: 3rem;
 }
-.image-front {
+.user-reg-image-front {
  
   background-size: cover;
   height: 200px;
   position: relative;
 }
-.image-front h2 {
+.user-reg-image-front h2 {
   position: absolute;
   bottom: 0px;
 }
-h2 {
+.user-reg-form{
   color: rgb(223, 34, 113);
 }
-.container {
+.user-reg-container {
   margin: auto;
   width: 55%;
   padding: 20px;
 }
-input[type="text"] {
+#user-reg-validationDefault01{
   border: 1px solid black;
 }
-.container-captcha {
+#user-reg-validationDefault02{
+  border: 1px solid black;
+}
+#user-reg-validationDefault03{
+  border: 1px solid black;
+}
+#user-reg-validationDefault04{
+  border: 1px solid black;
+}
+/* input[type="text"] {
+ 
+} */
+.user-reg-container-captcha {
   border: 1px solid black;
   width: 60%;
   height: 90px;
   border-radius: 1.5rem;
   position: relative;
 }
-.Container-innerCaptcha {
+.user-reg-Container-innerCaptcha {
   border: 1px solid red;
   width: 25%;
   height: 90px;

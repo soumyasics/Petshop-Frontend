@@ -3,6 +3,7 @@ import "./UserReg.css";
 import img1 from "../../../Assets/RegHead.jpg";
 import img2 from "../../../Assets/captcha.png";
 import img3 from "../../../Assets/regPro.jpg";
+import img5 from '../../../Assets/regCover.jpeg'
 import axios from "axios";
 
 function UserReg() {
@@ -10,8 +11,11 @@ function UserReg() {
     fname: "",
     lname: "",
     email: "",
+    contact: "",
     password: "",
-    address: "",
+    city: "",
+    street: "",
+    district: "",
     gender: "",
   });
   const [captchaChecked, setCaptchaChecked] = useState(false);
@@ -24,7 +28,7 @@ function UserReg() {
   useEffect(() => {
     console.log(register);
   });
-  // ghg
+  // kj
   const submitt = (b) => {
     console.log("submitted");
     b.preventDefault();
@@ -49,12 +53,15 @@ function UserReg() {
   };
 // jmg
   return (
-    <div >
-      <div class="container" >
+    <div>
+    <div className="user-reg-cover" >
+  
+    
+      <div class="user-reg-container" >
         <form onSubmit={submitt} class="row g-3 user-reg-form-1">
-          <div className="image-front">
+          <div className="user-reg-image-front">
             <img src={img1} style={{ maxWidth: "35rem", marginLeft: "5rem" }} />
-            <h2 style={{ fontSize: "2rem", fontWeight: "3rem" }}>
+            <h2  className='user-reg-form'style={{ fontSize: "2rem", fontWeight: "3rem" }}>
               New Profile
             </h2>
           </div>
@@ -62,13 +69,13 @@ function UserReg() {
             <div className="col-7">
               <div className="row">
                 <div class="col-md-6">
-                  <label for="validationDefault01" class="form-label">
+                  <label for="user-reg-validationDefault01" class="form-label">
                     First name
                   </label>
                   <input
                     type="text"
                     class="form-control"
-                    id="validationDefault01"
+                    id="user-reg-validationDefault01"
                     // value="Mark"
                     name="fname"
                     onChange={changehandleSubmit}
@@ -76,13 +83,13 @@ function UserReg() {
                   />
                 </div>
                 <div class="col-md-6">
-                  <label for="validationDefault02" class="form-label">
+                  <label for="user-reg-validationDefault02" class="form-label">
                     Last name
                   </label>
                   <input
                     type="text"
                     class="form-control"
-                    id="validationDefault02"
+                    id="user-reg-validationDefault02"
                     // value="Otto"
                     name="lname"
                     onChange={changehandleSubmit}
@@ -91,40 +98,79 @@ function UserReg() {
                 </div>
               </div>
               <div class="col-md-12">
-                <label for="validationDefault03" class="form-label">
-                  Password
+                <label for="user-reg-validationDefault03" class="form-label">
+                  Mobile Number
                 </label>
                 <input
                   type="text"
                   class="form-control"
-                  id="validationDefault03"
+                  id="user-reg-validationDefault03"
+                  name="contact"
+                  onChange={changehandleSubmit}
+                  required
+                />
+              </div>
+              <div class="col-md-12">
+                <label for="user-reg-validationDefault03" class="form-label">
+                  Password 
+                </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="user-reg-validationDefault03"
                   name="password"
                   onChange={changehandleSubmit}
                   required
                 />
               </div>
               <div class="col-md-12">
-                <label for="validationDefault03" class="form-label">
+                <label for="user-reg-validationDefault04" class="form-label">
                   Email
                 </label>
                 <input
                   type="text"
                   name="email"
                   class="form-control"
-                  id="validationDefault03"
+                  id="user-reg-validationDefault04"
                   onChange={changehandleSubmit}
                   required
                 />
               </div>{" "}
               <div class="col-md-12">
-                <label for="validationDefault03" class="form-label">
-                  Address
+                <label for="user-reg-validationDefault03" class="form-label">
+                  City
                 </label>
                 <input
                   type="text"
-                  name="address"
+                  name="city"
                   class="form-control"
-                  id="validationDefault03"
+                  id="user-reg-validationDefault03"
+                  onChange={changehandleSubmit}
+                  required
+                />
+              </div>
+              <div class="col-md-12">
+                <label for="user-reg-validationDefault03" class="form-label">
+                  Street
+                </label>
+                <input
+                  type="text"
+                  name="street"
+                  class="form-control"
+                  id="user-reg-validationDefault03"
+                  onChange={changehandleSubmit}
+                  required
+                />
+              </div>
+              <div class="col-md-12">
+                <label for="user-reg-validationDefault03" class="form-label">
+                  District
+                </label>
+                <input
+                  type="text"
+                  name="district"
+                  class="form-control"
+                  id="user-reg-validationDefault03"
                   onChange={changehandleSubmit}
                   required
                 />
@@ -136,7 +182,7 @@ function UserReg() {
                 height={190}
                 width={190}
                 style={{ borderRadius: "15rem" }}
-                className="imgcircle"
+                className="user-reg-imgcircle"
               />
             </div>
           </div>
@@ -175,8 +221,8 @@ function UserReg() {
             </label>
           </div>
 
-          <div className="container-captcha col-md-4">
-            <div className="Container-innerCheckbox">
+          <div className="user-reg-container-captcha col-md-4">
+            <div className="user-reg-Container-innerCheckbox">
               <input
                 style={{
                   padding: "15px",
@@ -203,7 +249,7 @@ function UserReg() {
                 Click To Verify
               </label>
             </div>
-            <div className="Container-innerCaptcha">
+            <div className="user-reg-Container-innerCaptcha">
               <img
                 src={img2}
                 style={{
@@ -228,7 +274,8 @@ function UserReg() {
           </div>
         </form>
       </div>
-    </div>
+      </div>
+      </div>
   );
 }
 
