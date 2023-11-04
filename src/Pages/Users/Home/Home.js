@@ -1,9 +1,12 @@
-import React from 'react'
 
-function Home() {
-  return (
-    <div>Home</div>
-  )
+import UserNavbar from "../UserNavbar/UserNavbar";
+
+const Home = () => {
+    return(
+        <><UserNavbar></UserNavbar>
+        <h1>Home</h1></>
+    )
 }
+export default Home;
 
-export default Home
+
