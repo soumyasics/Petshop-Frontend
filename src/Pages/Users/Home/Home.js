@@ -1,3 +1,4 @@
+
 import UserNavbar from "../UserNavbar/UserNavbar";
 
 const Home = () => {
@@ -7,4 +8,5 @@ const Home = () => {
     )
 }
 export default Home;
+
 
