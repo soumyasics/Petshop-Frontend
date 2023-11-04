@@ -1,38 +1,40 @@
+/* 03-11-2023 Build by Soumya */
+
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
-.login-page-logo-container {
+.userForgotPwd-page-logo-container {
   display: flex;
   padding-left: 12%;
   margin-top: 20px;
   align-items: center;
 }
 
-.login-page-logo-container img {
+.userForgotPwd-page-logo-container img {
   width: 3rem;
   height: auto;
 }
 
-.login-page-logo-container p {
+.userForgotPwd-page-logo-container p {
   font-size: 1.5rem;
   font-weight: 700;
   margin-left: 10px;
   margin-bottom: 0;
 }
 
-.login-page-container {
+.userForgotPwd-page-container {
   display: flex;
   width: 90%;
   margin: auto;
   height: 500px;
 }
 
-.login-page-left-section {
+.userForgotPwd-page-left-section {
   width: 45%;
   padding: 20px;
   box-sizing: border-box;
 }
 
-.login-form-container {
+.userForgotPwd-form-container {
   width: 67%;
   margin: auto;
   background-color: #018ae0;
@@ -45,21 +47,21 @@
   box-sizing: border-box;
 }
 
-.login-form-container > h1 {
+.userForgotPwd-form-container > h1 {
   text-align: center;
   font-size: 2rem;
   font-family: "Open Sans", sans-serif;
 }
 
-.login-form-container form {
-  height: 136px;
+.userForgotPwd-form-container form {
+  height: 200px; 
   display: flex;
   flex-direction: column;
   margin-top: 20px;
   justify-content: space-between;
 }
 
-.login-form-container form>div {
+.userForgotPwd-form-container form>div {
   display: flex;
   flex-direction: column;
   padding: 0 20px;
@@ -67,7 +69,7 @@
   position: relative;
 }
 
-.login-form-container form input {
+.userForgotPwd-form-container form input {
   background-color: #53a8dd;
   color: white;
   letter-spacing: 1.2px;
@@ -78,17 +80,17 @@
   margin-top: 5px;
 }
 
-.login-form-container form input::placeholder {
+.userForgotPwd-form-container form input::placeholder {
   color: white;
   font-size: 14px;
 }
 
-.login-form-container form input:focus {
+.userForgotPwd-form-container form input:focus {
   border: none;
   outline: none;
 }
 
-.remember-me-container {
+.userForgotPwd-remember-me-container {
   display: flex;
   justify-content: space-between;
   margin-top: 35px;
@@ -98,33 +100,34 @@
   color: rgba(255, 255, 255, 0.66);
 }
 
-.remember-me-container p {
+.userForgotPwd-remember-me-container p {
   margin-bottom: 0;
 }
 
-.remember-me-container div label {
+.userForgotPwd-remember-me-container div label {
   margin-left: 10px;
 }
 
-.dont-have-account {
+.userForgotPwd-dont-have-account {
   margin-left: 20px;
   font-size: 14px;
   margin-top: 10px;
 }
 
-.dont-have-account span {
+.userForgotPwd-dont-have-account span {
   font-weight: 700;
   cursor: pointer;
 }
-.signin-btn-container {
+.userForgotPwd-signin-btn-container {
   display: flex;
+  margin-top: 30px;
   justify-content: center;
   align-items: center;
   padding: 0 20px;
   flex-direction: column;
 }
 
-.signin-btn {
+.userForgotPwd-signin-btn {
   background-color: #d61c62;
   color: #fffdfa;
   margin: auto;
@@ -135,7 +138,7 @@
   cursor: pointer;
 }
 
-.login-eye-div {
+.userForgotPwd-eye-div {
   height: 50px;
   width: 50px;
   display: flex;
@@ -144,13 +147,13 @@
   right: 10px;
   top: 37px;
 }
-.eye-icon-container {
+.userForgotPwd-eye-icon-container {
   display: flex;
   justify-content: center;
   flex-direction: row !important;
 }
 /* right section  */
-.login-page-right-section {
+.userForgotPwd-page-right-section {
   width: 55%;
   height: 100%;
   display: flex;
@@ -158,8 +161,9 @@
   align-items: center;
 }
 
-.login-page-right-section img {
+.userForgotPwd-page-right-section img {
   width: auto;
   height: 80%;
 }
   
+

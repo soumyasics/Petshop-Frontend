@@ -1,10 +1,19 @@
+import { useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useRef } from "react";
 import dogAndMan from "../../../Assets/black-man-and-dog.jpg";
 import "./UserProfileEdit.css";
 const UserProfile = () => {
-  const captchaRef = useRef(null);
+  const [userInfo, setUserInfo] = useState({
+    fname: "",
+    lname: "",
+    email: "",
+    password: "",
+    address: "",
+    gender: "",
+  });
 
+  const captchaRef = useRef(null);
   const handleSubmitEditProfile = (e) => {
     e.preventDefault();
     const captchaValue = captchaRef.current.getValue();
@@ -13,6 +22,14 @@ const UserProfile = () => {
       return;
     }
     console.log(captchaValue);
+  };
+
+  const handleInputChanges = (e) => {
+    const { name, value } = e.target;
+    setUserInfo({
+      ...userInfo,
+      [name]: value,
+    });
   };
 
   return (
@@ -26,34 +43,55 @@ const UserProfile = () => {
               <div>
                 <label htmlFor="">First Name</label>
                 <br />
-                <input type="text" placeholder="First Name" />
+                <input
+                  type="text"
+                  name="fname"
+                  value={userInfo.fname}
+                  onChange={handleInputChanges}
+                  placeholder="First Name"
+                />
               </div>
               <div>
                 <label htmlFor="">Last Name</label>
                 <br />
-                <input type="text" placeholder="Last Name" />
+                <input
+                  type="text"
+                  name="lname"
+                  onChange={handleInputChanges}
+                  placeholder="Last Name"
+                />
               </div>
             </div>
 
             <div className="profile-edit-section">
-              <label htmlFor="">Email</label>
+              <label>Email</label>
 
-              <input type="email" placeholder="Email" />
+              <input
+                type="email"
+                placeholder="Email"
+                name="email"
+                onChange={handleInputChanges}
+              />
 
-              <label htmlFor=""> Password</label>
-              <input type="Password" placeholder="Enter your Password." />
+              <label> Password</label>
+              <input
+                type="Password"
+                placeholder="Enter your Password."
+                name="password"
+                onChange={handleInputChanges}
+              />
 
-              <label htmlFor="">Address</label>
+              <label>Address</label>
               <input type="text" placeholder="Enter your Address." />
-              <label htmlFor=""> Gender </label>
+              <label> Gender </label>
 
               <div className="profile-edit-gender-container">
                 <input type="radio" name="gender" value="male" />
-                <label htmlFor=""> Male </label>
+                <label> Male </label>
                 <input type="radio" name="gender" value="female" />
-                <label htmlFor=""> Female </label>
+                <label> Female </label>
                 <input type="radio" name="gender" value="other" />
-                <label htmlFor=""> Other </label>
+                <label> Other </label>
               </div>
 
               <ReCAPTCHA
