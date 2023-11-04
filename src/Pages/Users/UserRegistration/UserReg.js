@@ -18,6 +18,7 @@ function UserReg() {
     district: "",
     gender: "",
   });
+  // 
   const [captchaChecked, setCaptchaChecked] = useState(false);
   const changeCaptchaChecked = (e) => {
     setCaptchaChecked(e.target.checked);
