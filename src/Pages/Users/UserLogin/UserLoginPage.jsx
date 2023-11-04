@@ -8,11 +8,11 @@ import { AiFillEyeInvisible } from "react-icons/ai";
 
 import axios from "axios";
 import "./UserLoginPage.css";
+import axiosInstance from "../../../BaseURL";
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const BASE_URL = "http://localhost:4000/petshop_api";
 
   const handleSubmit = () => {
     if (!email || !password) {
@@ -26,7 +26,7 @@ const LoginPage = () => {
   };
 
   const sendDataToServer = (credentials) => {
-    axios.post(`${BASE_URL}/userLogin`, credentials).then((res) => {
+    axiosInstance.post(`/userLogin`, credentials).then((res) => {
       if (res.status === 200) {
         alert("Login successful");
       } else {

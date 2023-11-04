@@ -4,6 +4,8 @@ import UserLoginPage from './Pages/Users/UserLogin/UserLoginPage.jsx';
 import './App.css';
 import UserReg from './Pages/Users/UserRegistration/UserReg.js';
 import UserForgotPwd from './Pages/Users/UserForgotPassword/UserForgotPwd.js'
+import AdminLogin from './Pages/Admin/AdminLogin.js';
+import UserForgotPwdReq from './Pages/Users/UserForgotPassword/UserForgotPasswordReq';
 function App() {
   return (
     <>
@@ -13,6 +15,10 @@ function App() {
           <Route path="/user-login" element={<UserLoginPage />} />
           <Route path="/user-reg" element={<UserReg />} />
           <Route path="/user-forgot-password" element={<UserForgotPwd />} />
+          <Route path="/user-forgot-password-req" element={<UserForgotPwdReq />} />
+
+          {/* Admin Routes */}
+          <Route path="/admin-login" element={<AdminLogin />} />
 
         </Routes>
       </BrowserRouter> 
