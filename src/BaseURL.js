@@ -8,7 +8,7 @@ const axiosInstance = axios.create({
 
 //local api
 
-  baseURL: 'http://localhost:4000/petshop_api', 
+  baseURL: 'http://localhost:4000/petshop_api/', 
 
   headers: {
     'Content-Type': 'application/json',
