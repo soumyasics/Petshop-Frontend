@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from "react";
 import loginDog from "../../../Assets/Group 115.png";
 import zookeper from "../../../Assets/zookeper-logo.png";
@@ -7,6 +7,9 @@ import axiosInstance from '../../../BaseURL';
 import { AiFillEye } from "react-icons/ai";
 import { AiFillEyeInvisible } from "react-icons/ai";
 import './UserForgotPwd.css'
+import { useLocation } from 'react-router-dom';
+import UserNavbar from '../UserNavbar/UserNavbar';
+
 // Done by Soumya on Nov 3
 function UserForgotPwd() {
   const [email, setEmail] = useState("");
@@ -14,33 +17,59 @@ function UserForgotPwd() {
   const [showPassword1, setShowPassword1] = useState(false);
   const [showPassword2, setShowPassword2] = useState(false);
   const [newPassword, setNewPassword] = useState("");
-  const [passwordMatches, setPasswordMatches] = useState(false);
+  let passwordMatches=false
+  const location = useLocation();
 
-  const handleSubmit = () => {
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    setEmail(searchParams.get('id'));
+    console.log("email", email);
+  }, [])
+  const checkPwd = () => {
+
+    console.log("password == newPassword",password,newPassword)
+     if (password == newPassword) {
+ 
+      passwordMatches=true
+     }
+     else
+     passwordMatches=false
+ 
+   }
+  const handleSubmit = async (e) => {
+    e.preventDefault()
     checkPwd()
-    if (!email || !password || !newPassword) {
-      alert("Please enter all the fields");
-      return;
-    }
-    
-    const credentials = { email, password, newPassword };
-    sendDataToServer(credentials);
 
+    console.log("fun ");
+
+ 
+    if (!password || !newPassword) {
+      alert("Please enter all the fields");
+      return false;
+    }
+    const credentials = { email, password, newPassword };
+  console.log("passwordMatches",passwordMatches);
+    if (!passwordMatches){
+      alert("no match")
+    }
+    else {
+      sendDataToServer(credentials, e);
+    }
     console.log(credentials);
   };
 
-  const sendDataToServer = (credentials) => {
-    if(!passwordMatches)
-    return;
-  else{
+  const sendDataToServer = (credentials, e) => {
+
     axiosInstance.post(`/userForgotPassword`, credentials).then((res) => {
+      console.log(res);
       if (res.data.status === 200) {
         alert("Password Reset successful");
       } else {
         alert("Password Reset failed");
       }
     });
-  }
+  
   };
 
   const togglePasswordVisibility1 = () => {
@@ -49,35 +78,18 @@ function UserForgotPwd() {
   const togglePasswordVisibility2 = () => {
     setShowPassword2(!showPassword2);
   };
-  const checkPwd = () => {
-    if (password != newPassword) {
-      alert("password doesn't matches")
-     
-    } else {
-     setPasswordMatches(true)
-    }
-  }
+  
   return (
     <>
-      <div className="userForgotPwd-page-logo-container">
-        <img src={zookeper} alt="zookeper-logo" />
-        <p>ZOOKEPER</p>
-      </div>
+         <UserNavbar/>
       <div className="userForgotPwd-page-container">
         <div className="userForgotPwd-page-left-section">
           <div className="userForgotPwd-form-container">
             <h1>
               Reset Your<br />Password
             </h1>
-            <form>
-              <div>
-                <label>Email:</label>
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
+            <form onSubmit={handleSubmit}>
+
 
               <div>
                 <label>New Password: </label>
@@ -101,7 +113,7 @@ function UserForgotPwd() {
                   placeholder="Enter your password"
                   onChange={(e) => {
                     setNewPassword(e.target.value)
-                    
+
                   }}
                 />
                 <div
@@ -111,15 +123,17 @@ function UserForgotPwd() {
                   {showPassword2 ? <AiFillEye /> : <AiFillEyeInvisible />}
                 </div>
               </div>
+
+
+
+
+              <div className="userForgotPwd-signin-btn-container">
+                <button type="submit" className="userForgotPwd-signin-btn">
+                  Reset
+                </button>
+
+              </div>
             </form>
-
-
-
-            <div className="userForgotPwd-signin-btn-container">
-              <button onClick={handleSubmit} className="userForgotPwd-signin-btn">
-                Reset
-              </button>
-            </div>
           </div>
         </div>
         <div className="userForgotPwd-page-right-section">

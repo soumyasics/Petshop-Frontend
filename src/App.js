@@ -8,6 +8,7 @@ import UserReg from './Pages/Users/UserRegistration/UserReg.js';
 
 import AdminLogin from './Pages/Admin/AdminLogin.js';
 import UserForgotPwdReq from './Pages/Users/UserForgotPassword/UserForgotPasswordReq';
+import UserForgotPwdAftrReq from './Pages/Users/UserForgotPassword/UserForgotPwdAftrReq.js';
 function App() {
   return (
     <>
@@ -19,6 +20,8 @@ function App() {
           <Route path="/user-profile-edit" element={<UserProfileEdit/>} />
           <Route path="/user-forgot-password" element={<UserForgotPwd />} />
           <Route path="/user-forgot-password-req" element={<UserForgotPwdReq />} />
+          <Route path="/user-forgot-password-aftr-req" element={<UserForgotPwdAftrReq />} />
+
           <Route path="/admin-login" element={<AdminLogin />} />
 
         </Routes>
