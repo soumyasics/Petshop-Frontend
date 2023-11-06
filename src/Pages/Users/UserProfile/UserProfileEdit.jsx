@@ -5,23 +5,39 @@ import dogAndMan from "../../../Assets/black-man-and-dog.jpg";
 import "./UserProfileEdit.css";
 const UserProfile = () => {
   const [userInfo, setUserInfo] = useState({
-    fname: "",
-    lname: "",
+    firstname: "",
+    lastname: "",
     email: "",
-    password: "",
+    mobile: "",
     address: "",
-    gender: "",
+    gender: "male",
   });
 
   const captchaRef = useRef(null);
   const handleSubmitEditProfile = (e) => {
     e.preventDefault();
+
+    captchaVerify();
+    if (userInfo.email) {
+      if (!validateEmail(userInfo.email)) {
+        alert("Please provide valid email id.");
+        return;
+      }
+    }
+    console.log("user info", userInfo);
+  };
+
+  const captchaVerify = () => {
     const captchaValue = captchaRef.current.getValue();
     if (!captchaValue) {
       alert("Please check the CAPTCHA to verify");
       return;
     }
-    console.log(captchaValue);
+  };
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
   };
 
   const handleInputChanges = (e) => {
@@ -41,12 +57,12 @@ const UserProfile = () => {
           <form className="profile-edit-form-section">
             <div className="profile-name-edit">
               <div>
-                <label htmlFor="">First Name</label>
+                <label>First Name</label>
                 <br />
                 <input
                   type="text"
-                  name="fname"
-                  value={userInfo.fname}
+                  name="firstname"
+                  value={userInfo.firstname}
                   onChange={handleInputChanges}
                   placeholder="First Name"
                 />
@@ -56,7 +72,8 @@ const UserProfile = () => {
                 <br />
                 <input
                   type="text"
-                  name="lname"
+                  name="lastname"
+                  value={userInfo.lastname}
                   onChange={handleInputChanges}
                   placeholder="Last Name"
                 />
@@ -70,27 +87,51 @@ const UserProfile = () => {
                 type="email"
                 placeholder="Email"
                 name="email"
+                value={userInfo.email}
                 onChange={handleInputChanges}
               />
 
-              <label> Password</label>
+              <label> Mobile Number</label>
               <input
-                type="Password"
-                placeholder="Enter your Password."
-                name="password"
+                type="number"
+                placeholder="Mobile Number"
+                name="mobile"
+                value={userInfo.mobile}
                 onChange={handleInputChanges}
               />
 
               <label>Address</label>
-              <input type="text" placeholder="Enter your Address." />
+              <input
+                type="text"
+                name="address"
+                value={userInfo.address}
+                onChange={handleInputChanges}
+                placeholder="Enter your Address."
+              />
               <label> Gender </label>
 
               <div className="profile-edit-gender-container">
-                <input type="radio" name="gender" value="male" />
+                <input
+                  type="radio"
+                  name="gender"
+                  onChange={handleInputChanges}
+                  defaultChecked
+                  value="male"
+                />
                 <label> Male </label>
-                <input type="radio" name="gender" value="female" />
+                <input
+                  type="radio"
+                  name="gender"
+                  onChange={handleInputChanges}
+                  value="female"
+                />
                 <label> Female </label>
-                <input type="radio" name="gender" value="other" />
+                <input
+                  type="radio"
+                  name="gender"
+                  onChange={handleInputChanges}
+                  value="other"
+                />
                 <label> Other </label>
               </div>
 
