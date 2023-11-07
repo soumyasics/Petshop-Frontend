@@ -13,11 +13,8 @@ function About() {
   return (
     <div>
       <UserNavbar />
-      <div className="card about-global">
-        <img src={catDog} className=" card-img cat-dog" />
-        <div className="card-img-overlay">
-          <h1 className="card-title  heading">About Us</h1>
-        </div>
+      <div className="card border-0 about-global">
+        <img src={catDog} className=" card-img cat-dog"/>
       </div>
       <div className="clearfix">
         <img
