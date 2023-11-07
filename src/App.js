@@ -5,6 +5,7 @@ import UserForgotPwd from './Pages/Users/UserForgotPassword/UserForgotPwd.js'
 import UserProfileEdit from './Pages/Users/UserProfile/UserProfileEdit.jsx';
 import './App.css';
 import UserReg from './Pages/Users/UserRegistration/UserReg.js';
+import About from './Pages/About/About.jsx';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/user-reg" element={<UserReg />} />
           <Route path="/user-profile-edit" element={<UserProfileEdit/>} />
           <Route path="/user-forgot-password" element={<UserForgotPwd />} />
+          <Route path='/about' element={<About/>} />
         </Routes>
       </BrowserRouter> 
     </>
