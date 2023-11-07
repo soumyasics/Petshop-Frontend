@@ -1,4 +1,7 @@
 
+
+
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./Pages/Users/Home/Home.js";
 import UserLoginPage from "./Pages/Users/UserLogin/UserLoginPage.jsx";
@@ -18,9 +21,10 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/user-login" element={<UserLoginPage />} />
+          {/* <Route path="/" element={<HomePage />} />
+          <Route path="/user-login" element={<UserLoginPage />} /> */}
           <Route path="/user-reg" element={<UserReg />} />
+
           <Route path="/user-profile-edit" element={<UserProfileEdit />} />
           <Route path="/user-forgot-password" element={<UserForgotPwd />} />
 
@@ -39,6 +43,7 @@ function App() {
           />
 
           <Route path="/admin-login" element={<AdminLogin />} />
+
 
         </Routes>
       </BrowserRouter>
