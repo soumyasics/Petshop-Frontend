@@ -1,0 +1,110 @@
+/* import catDogLookingImg  from "../../../Assets/cat-dog-looking.jpeg"; */
+/* @import url(../../../Assets/cat-dog-looking.jpeg) */
+
+.profile-edit-page-container {
+  width: 100%;
+  height: 1000px;
+  background-image: url("http://localhost:3000/static/media/1pc%203d%20Little%20Cat%20Dog%20Pattern%20Wall%20Sticker,%20Cute%20Creative%20Waterproof%20Wall%20Sticker,%20Removable%20Mirror%20Window%20Wall%20Decals%20For%20Home%20Bedroom%20Bathroom,%20Home%20Decor.96352b1fcb2a32612d8c.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: rgb(203, 203, 203);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-edit-box {
+  width: 61%;
+  height: 800px;
+  border: 3px solid #d61c62;
+  background-color: white;
+}
+
+.profile-header-img {
+  background-image: url("../../../Assets/dog-cat-look.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 200px;
+}
+
+.profile-edit-form-section {
+  width: 120rem;
+  margin-top: 30px;
+  padding: 19px;
+  box-sizing: border-box;
+}
+
+.profile-edit-form-section input {
+  border-radius: 5px;
+  margin-top: 5px;
+  padding-left: 10px;
+  letter-spacing: 1.2px;
+  margin-bottom: 15px;
+}
+
+.profile-name-edit {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-edit-container {
+  display: flex;
+}
+.profile-edit-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-edit-gender-container {
+    display: flex;
+    width: 50%;
+    padding-top: 10px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.profile-edit-gender-container label{
+    margin-right: 15px;
+    margin-left: 5px;
+}
+
+.profile-edit-btn-container {
+  width: 100%;
+  margin-top: 15px;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-edit-btn-container * {
+  width: 36%;
+  height: 50px;
+  border: none;
+  background-color: 
+  rgba(1, 138, 224, 1);
+  color: white;
+  font-size: 20px;
+  border-radius: 5px;
+}
+
+
+.profile-edit-right-section {
+  height: 34rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  padding-top: 70px;
+  box-sizing: border-box;
+}
+
+.profile-edit-right-section img {
+  width: 150px;
+  height: 150px;
+  border-radius: 100px;
+}

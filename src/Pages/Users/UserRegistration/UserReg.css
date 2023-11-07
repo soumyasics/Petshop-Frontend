@@ -5,6 +5,23 @@
   padding: 20px;
   background-color: white;
 } 
+.user-reg-page-logo-container {
+  display: flex;
+  padding-left: 3%;
+  margin-top: 14px;
+  align-items: center;
+}
+.user-reg-page-logo-container img {
+  width: 3rem;
+  height: auto;
+}
+
+.user-reg-page-logo-container p {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-left: 10px;
+  margin-bottom: 0;
+}
 
 .user-reg-cover {
 background-image: url("../../../Assets/regCover.jpeg");
