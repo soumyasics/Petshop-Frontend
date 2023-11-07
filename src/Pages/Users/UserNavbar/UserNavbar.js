@@ -5,13 +5,6 @@ import "./UserNavbar.css";
 import {BsSearch} from "react-icons/bs";
 import { useState } from 'react';
 function UserNavbar() {
-//     const search= document.querySelector('.search');
-//     const btn1= document.querySelector('.btn1');
-//     const input= document.querySelector('.inputsearch');
-//     btn1.addEventListener('click',()=> {
-//     search.classList.toggle('active');
-//     input.focus();
-// });
     const [isOpen, setIsOpen] = useState(false);
 
     function toggle(e) {
@@ -22,7 +15,7 @@ function UserNavbar() {
    
   return (
     <div>
-        <nav className="navbar navbar-expand-sm bg-body-tertiary">
+        <nav className="navbar navbar-expand-sm bg-body-tertiary navbarr">
             <div className="container-fluid">
                 <img src={zookeper}/>
                 <a className="navbar-brand" href="#">ZOOKEPER</a>

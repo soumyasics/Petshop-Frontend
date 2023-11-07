@@ -1,0 +1,190 @@
+/* 03-11-2023 Build by Soumya */
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
+.userForgotPwdreq-page-logo-container {
+  display: flex;
+  padding-left: 12%;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.userForgotPwdreq-page-logo-container img {
+  width: 3rem;
+  height: auto;
+}
+
+.userForgotPwdreq-page-logo-container p {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-left: 10px;
+  margin-bottom: 0;
+}
+
+.userForgotPwdreq-page-container {
+  display: flex;
+  width: 90%;
+  margin: auto;
+  height: 500px;
+}
+
+.userForgotPwdreq-page-left-section {
+  width: 45%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.userForgotPwdreq-form-container {
+  width: 75%;
+  margin: auto;
+  background-color: #018ae0;
+  height: 460px;
+  border-radius: 50px;
+  color: white;
+  padding: 1rem .4rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding-top: 31px;
+  box-sizing: border-box;
+}
+
+.userForgotPwdreq-form-container > h1 {
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 41.79px;
+font-style: normal;
+font-weight: 400;
+margin-top: 50px;
+margin-left: 20px;
+width: 257.593px;
+}
+
+.userForgotPwdreq-text1{
+    width: 299px;
+    height: 41px;
+    margin-left: 20px;
+    color: #FFFDFA;
+margin-top: 50px;
+
+font-family: Poppins;
+font-size: 15px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+text-transform: capitalize;
+}
+
+.userForgotPwdreq-form-container form {
+  height: 130px; 
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  justify-content: space-between;
+}
+
+.userForgotPwdreq-form-container form>div {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.userForgotPwdreq-form-container form input {
+  background-color: #53a8dd;
+  color: white;
+  letter-spacing: 1.2px;
+  height: 30px;
+  border: none;
+  padding-left: 10px;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.userForgotPwdreq-form-container form input::placeholder {
+  color: white;
+  font-size: 14px;
+}
+
+.userForgotPwdreq-form-container form input:focus {
+  border: none;
+  outline: none;
+}
+
+.userForgotPwdreq-remember-me-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 35px;
+  padding: 0 20px;
+  font-size: 13.64px;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.66);
+}
+
+.userForgotPwdreq-remember-me-container p {
+  margin-bottom: 0;
+}
+
+.userForgotPwdreq-remember-me-container div label {
+  margin-left: 10px;
+}
+
+.userForgotPwdreq-dont-have-account {
+  margin-left: 20px;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.userForgotPwdreq-dont-have-account span {
+  font-weight: 700;
+  cursor: pointer;
+}
+.userForgotPwdreq-signin-btn-container {
+  display: flex;
+  margin-top: 30px;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  flex-direction: column;
+}
+
+.userForgotPwdreq-signin-btn {
+  background-color: #d61c62;
+  color: #fffdfa;
+  margin: auto;
+  border: none;
+  width: 10rem;
+  height: 30px;
+  padding: 5px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.userForgotPwdreq-eye-div {
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  right: 10px;
+  top: 37px;
+}
+.userForgotPwdreq-eye-icon-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row !important;
+}
+/* right section  */
+.userForgotPwdreq-page-right-section {
+  width: 55%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.userForgotPwd-page-right-section img {
+  width: auto;
+  height: 80%;
+}
+  
+

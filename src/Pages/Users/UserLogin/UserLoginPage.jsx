@@ -7,17 +7,16 @@ import { AiFillEyeInvisible } from "react-icons/ai";
 
 import axios from "axios";
 import "./UserLoginPage.css";
+import axiosInstance from "../../../BaseURL";
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const BASE_URL = "http://localhost:4000/petshop_api";
-
-  const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
-
+  const validateEmail = (email)=> {
+     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+     return emailRegex.test(email)
+ ;
+   };
   const handleSubmit = () => {
     if (!email || !password) {
       alert("Please enter email and password");
@@ -40,17 +39,13 @@ const LoginPage = () => {
   };
 
   const sendDataToServer = (credentials) => {
-    try {
-      axios.post(`${BASE_URL}/userLogin`, credentials).then((res) => {
-        if (res.status === 200) {
-          alert("Login successful");
-        } else {
-          alert("Login failed");
-        }
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    axiosInstance.post(`/userLogin`, credentials).then((res) => {
+      if (res.status === 200) {
+        alert("Login successful");
+      } else {
+        alert("Login failed");
+      }
+    });
   };
 
   const handleForgotPassword = () => {};
