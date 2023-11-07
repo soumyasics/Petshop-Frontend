@@ -12,11 +12,10 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const validateEmail = (email)=> {
-     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-     return emailRegex.test(email)
- ;
-   };
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
   const handleSubmit = () => {
     if (!email || !password) {
       alert("Please enter email and password");

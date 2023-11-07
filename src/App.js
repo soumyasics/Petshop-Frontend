@@ -10,6 +10,7 @@ import ExplorePage from "./Pages/Users/Explore/Explore.jsx";
 import AdminLogin from "./Pages/Admin/AdminLogin.js";
 import UserForgotPwdReq from "./Pages/Users/UserForgotPassword/UserForgotPasswordReq";
 import UserForgotPwdAftrReq from "./Pages/Users/UserForgotPassword/UserForgotPwdAftrReq.js";
+import PetShopLogin from "./Pages/PetShop/PetShopLogin.jsx";
 function App() {
   return (
     <>
@@ -20,8 +21,7 @@ function App() {
           <Route path="/user-reg" element={<UserReg />} />
           <Route path="/user-profile-edit" element={<UserProfileEdit />} />
           <Route path="/user-forgot-password" element={<UserForgotPwd />} />
-
-          <Route path="/explore" element={<ExplorePage />} />
+          <Route path="/user-explore" element={<ExplorePage />} />
 
           <Route
             path="/user-forgot-password-req"
@@ -32,6 +32,7 @@ function App() {
             element={<UserForgotPwdAftrReq />}
           />
 
+          <Route path="/petshop-login" element={<PetShopLogin />} />
           <Route path="/admin-login" element={<AdminLogin />} />
         </Routes>
       </BrowserRouter>
