@@ -7,20 +7,10 @@
   border: 0;
 
 }
-.card-img-overlay .heading{
-  width: 289px;
-  height: 17px;
-  font-family: Montserrat;
-  font-size: 61px;
-  font-weight: 700;
-  line-height: 16px;
-  letter-spacing: 0em;
-  text-align: center;
-  color: #D61C62;
-}
 .subheading{
   width: 216px;
   height: 26px;
+  margin: 1%;
   font-family: Roboto;
   font-size: 40px;
   font-weight: 700;
