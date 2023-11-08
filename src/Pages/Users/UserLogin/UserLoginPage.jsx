@@ -5,13 +5,13 @@ import zookeper from "../../../Assets/zookeper-logo.png";
 import { AiFillEye } from "react-icons/ai";
 import { AiFillEyeInvisible } from "react-icons/ai";
 
-import axios from "axios";
 import "./UserLoginPage.css";
 import axiosInstance from "../../../BaseURL";
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
@@ -31,7 +31,7 @@ const LoginPage = () => {
       alert("Password must be at least 6 characters long");
       return;
     }
-    const credentials = { email, password };
+    const credentials = { email, password, role: "user" };
     sendDataToServer(credentials);
 
     console.log(email, password);
