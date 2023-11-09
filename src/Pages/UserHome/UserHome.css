@@ -1,0 +1,360 @@
+
+.homepagediv2
+{
+border :1px solid rgb(254, 252, 252);
+width: 1536px;
+height: 550px;
+background-image:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),
+url("../../Assets/Premium\ Photo\ _\ Pet\ care\ concept\ various\ pet\ accessories\ and\ tools\ on\ yellow\ background\ flat\ lay.jpeg");
+background-size: cover; 
+background-repeat: no-repeat;
+background-position: center;
+}
+.homepageimg6
+{
+    padding-bottom: 45px;
+}
+.homepagep1{
+    font-size: 50px;
+    word-spacing: 20px;
+}
+.homepagediv1
+{
+  
+    text-align: center;
+    margin-top: 100px;
+    color: aliceblue;
+}
+.homepagep2
+{
+    font-size: 35px;
+}
+.homepagediv3
+{
+text-align: center;
+}
+.homepagep4{
+    font-size: 50px;
+}
+.homepagediv6
+{
+    display:flex;
+    justify-content: space-between;
+    padding-left: 90px;
+    padding-right: 90px;
+}
+.homepagediv4
+{
+    margin-left: 100px;
+    margin-top:100px;
+}
+.homepagediv5{
+    margin-right: 100px;
+}
+.homepageimg3
+{
+    margin-left: 100px;
+    margin-top: 100px;
+    transform: rotate(340deg);
+    border: 10px solid black;
+}
+.homepagediv10{
+    display: flex;
+    justify-content: space-between;
+}
+.homepagediv8
+{
+    margin-top: 100px;
+    margin-right: 100px;
+    text-align: center;
+}
+.homepagediv9
+{
+    margin-left: 100px;
+}
+.homepagep5{
+    font-size: 35px;
+}
+.homepagebadge
+{
+    height: 40px;
+    width: 180px;
+    padding-top: 10px;
+    font-size: 16px;
+}
+.homepageabc
+{
+    height: 45px;
+    width: 180px;
+    padding-top: 40px;
+    font-size: 80px;
+    margin-left: 70px;
+}
+.homepagediv11{
+    text-align: center;
+}
+.homepagep6
+{
+    font-size: 35px;
+}
+.homepageb1
+{
+    color: rgb(255, 0, 123);
+}
+.homepagediv12
+{
+    border :5px solid rgb(254, 251, 251);
+width: 450px;
+height: 400px;
+background-color: rgb(237, 234, 234);
+}
+.homepageimg4
+{
+    border-radius: 25px;
+}
+.homepagediv12
+{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 30px;
+    padding-top: 20px;
+    padding-right: 200px;
+}
+.homepagep8
+{
+    font-size: 12px;
+    margin-left: 10px;
+    margin-top: 100px;
+}
+.homepagediv14
+{
+    margin-right: 200px;
+}
+.homepageb2
+{
+    font-size: 20px;
+}
+.homepagediv15
+{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 200px;
+    padding-right: 200px;
+   
+}
+.homepagedef
+{
+    width: 220px;
+    margin-left: 650px;
+    font-size: 17px;
+}
+.homepageb3
+{
+    font-size: 40px;
+}
+.homepagediv18
+{
+    text-align: center;
+}
+.homepagep20
+{
+    font-size: 50px;
+    text-align: center;
+}
+
+.homepagediv60{
+    border:5px solid rgb(253, 252, 252);
+    width: 250px;
+    height: 450px;
+}
+.homepagep60
+{
+    font-size: 20px;
+}
+.homepageb10
+{
+    color:rgb(0, 132, 255);
+}
+.homepagediv70
+{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 140px;
+    padding-right: 200px;
+}
+
+.homepageb4
+{
+    color: rgb(7, 156, 248);
+}
+
+.homepageimg5
+{
+    margin-left: 300px;
+}
+.homepagediv24
+{
+    border :1px solid rgb(250, 2, 2);
+width: 350px;
+height: 500px;
+background-color: rgb(0, 153, 255);
+}
+.homepaget1{
+    width: 190px;
+    height: 20px;
+    background-color:  rgb(0, 153, 255);
+    border: none;
+}
+.homepageb5
+{
+    color: rgb(0, 153, 255);
+}
+.homepagediv26
+{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 200px;
+    padding-right: 200px;
+}
+.homepagediv24{
+    padding-left: 80px;
+    padding-top: 30px;
+    color: aliceblue;
+    padding-bottom: 550px;
+}
+.homepagep30
+{
+    font-size: 25px;
+}
+.homepageklm
+{
+width: 170px;
+}
+.homepageb6
+{
+    font-size: 35px;
+}
+.homepagei1{
+    border-color: red;
+    height: 30px;
+   margin-top: 10px;
+}
+.homepagep22
+{
+    color: red;
+    font-size: 25px;
+}
+.homepagediv27
+{
+    border: 2px solid rgb(254, 253, 253);
+    width: 1520px;
+    height: 200px;
+    padding-left: 500px;
+ background-image: url("../../Assets/Free\ Photo\ _\ Dog\ treats\ on\ white\ background.jpeg"); 
+}
+.homepagediv50
+{
+    border: 1px solid red;
+    width: 400px;
+    height: 400px;
+    background-color: rgb(0, 145, 255);
+    border: none;
+}
+.homepagediv51
+{
+    border: 1px solid rgb(85, 0, 255);
+    width: 375px;
+    height: 350px;
+    margin-left: 10px;
+    margin-bottom: 80px;
+    background-color: rgb(218, 217, 218);
+    border: none;
+    border-radius: 40px;
+}
+.homepageimg50{
+    border-radius: 50%;
+    margin-left: 100px;
+    border: 5px solid white;
+    }
+    .homepagediv52
+    {
+        text-align: center;
+    }
+    .homepagep11
+    {
+        font-size: 20px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .homepagediv53
+    {
+        display: flex;
+        justify-content: space-between;
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+    .homepagecar
+    {
+       border: 2px solid black;
+       width: 510px;
+       height: 100px; 
+       border: none;
+       opacity: 0.7;
+       background-color: rgb(5, 5, 5);
+      margin-top: 250px;
+    }
+    .homepagep80
+    {
+        color:white;
+        text-align: center;
+    }
+    .homepageb80
+    {
+        font-size: 25px;
+    }
+    .homepagep90
+    {
+font-size: 40px;
+    }
+    .homepagep91
+    {
+        color:grey;
+    }
+    .homepageb90
+    {
+       font-size: 40px; 
+    }  
+    .homepagediv23
+    {
+        margin-top: 150px;
+    } 
+    .homepagei3{
+border: none;
+background-color:rgb(0, 153, 255);
+   }
+
+.homepagenew{
+    width: 70%;
+    margin-left: 180px;
+}
+.homepagediv25{
+margin-top: 100px;
+}
+.homepagexyz
+{
+    margin-bottom: 5px;
+}
+.homepageb100
+{
+    color: rgb(0, 153, 255);
+}
+.homepagediv104
+{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 180px;
+    padding-right: 180px;
+}
+.homepagemore
+{
+    font-size: 17px;
+}

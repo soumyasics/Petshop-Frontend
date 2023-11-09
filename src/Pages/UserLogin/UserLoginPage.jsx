@@ -1,7 +1,7 @@
 // 01-11-2023 Build by Anand R P
 import { useState } from "react";
-import loginDog from "../../Assets/Images/login-dog-img.png";
-import zookeper from "../../Assets/Images/zookeper-logo.png";
+// import loginDog from "../../Assets/login-dog-img.png";
+// import zookeper from "../../Assets/zookeper-logo.png";
 import "./UserLoginPage.css";
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -18,7 +18,7 @@ const LoginPage = () => {
   return (
     <>
     <div className="login-page-logo-container">
-      <img src={zookeper} alt="zookeper-logo" />  
+      {/* <img src={zookeper} alt="zookeper-logo" />   */}
       <p>ZOOKEPER</p>
 
     </div>
@@ -68,7 +68,7 @@ const LoginPage = () => {
           </div>
         </div>
         <div className="login-page-right-section">
-          <img src={loginDog} alt="dog-img" />
+            {/* <img src={loginDog} alt="dog-img" /> */}
         </div>
       </div>
     </>
