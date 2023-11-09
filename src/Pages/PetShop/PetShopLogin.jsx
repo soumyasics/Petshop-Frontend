@@ -42,7 +42,7 @@ const PetShopLogin = () => {
     }
 
     const credentials = { email, password,isChecked,  role: "petshop" };
-    // sendDataToServer(credentials);
+    sendDataToServer(credentials);
   };
 
   const sendDataToServer = (credentials) => {
@@ -73,7 +73,7 @@ const PetShopLogin = () => {
             name="password"
             onChange={handleChange}
           />
-          <div className="login-eye-div" onClick={togglePasswordVisibility}>
+          <div className="pet-eye-login-div" onClick={togglePasswordVisibility}>
             {showPassword ? <AiFillEye /> : <AiFillEyeInvisible />}
           </div>
         </div>

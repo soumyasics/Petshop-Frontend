@@ -4,10 +4,12 @@ import loginDog from "../../../Assets/login-dog-img.png";
 import zookeper from "../../../Assets/zookeper-logo.png";
 import { AiFillEye } from "react-icons/ai";
 import { AiFillEyeInvisible } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 import "./UserLoginPage.css";
 import axiosInstance from "../../../BaseURL";
 const LoginPage = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -41,6 +43,10 @@ const LoginPage = () => {
     axiosInstance.post(`/userLogin`, credentials).then((res) => {
       if (res.status === 200) {
         alert("Login successful");
+        localStorage.setItem("petshop-token", res.data.token);
+        setTimeout(() => {
+          navigate("/");
+        }, 1000)
       } else {
         alert("Login failed");
       }
