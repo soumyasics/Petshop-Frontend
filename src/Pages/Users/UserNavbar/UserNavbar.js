@@ -4,6 +4,7 @@ import profilePic from '../../../Assets/profile.jfif';
 import "./UserNavbar.css";
 import {BsSearch} from "react-icons/bs";
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 function UserNavbar() {
 //     const search= document.querySelector('.search');
 //     const btn1= document.querySelector('.btn1');
@@ -41,7 +42,8 @@ function UserNavbar() {
                             <a className="nav-link" href="#">About</a>
                      </li>
                      <li className="nav-item">
-                        <a className="nav-link" href="#">Adopt</a>
+                        <Link
+                     className="nav-link" to="/user-reg">Register</Link>
                      </li>
                      <li className="nav-item">
                         <a className="nav-link" href="#">Gallery</a>
