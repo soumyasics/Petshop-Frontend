@@ -12,6 +12,7 @@ import "./About.css";
 function About() {
   return (
     <div>
+     
       <UserNavbar />
       <div className="card border-0 about-global">
         <img src={catDog} className=" card-img cat-dog"/>
