@@ -1,118 +1,118 @@
 
-
-.div2
+.homepagediv2
 {
 border :1px solid rgb(254, 252, 252);
 width: 1536px;
 height: 550px;
 background-image:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),
- url("pic1.jpeg");
-background-size: cover;
+url("../../../Assets/Premium\ Photo\ _\ Pet\ care\ concept\ various\ pet\ accessories\ and\ tools\ on\ yellow\ background\ flat\ lay.jpeg");
+background-size: cover; 
 background-repeat: no-repeat;
 background-position: center;
 }
-.img6
+.homepageimg6
 {
     padding-bottom: 45px;
 }
-.p1{
+.homepagep1{
     font-size: 50px;
     word-spacing: 20px;
 }
-.div1
+.homepagediv1
 {
   
     text-align: center;
     margin-top: 100px;
     color: aliceblue;
 }
-.p2
+.homepagep2
 {
     font-size: 35px;
 }
-.div3
+.homepagediv3
 {
 text-align: center;
 }
-.p4{
+.homepagep4{
     font-size: 50px;
 }
-.div6
+.homepagediv6
 {
     display:flex;
     justify-content: space-between;
     padding-left: 90px;
     padding-right: 90px;
 }
-.div4
+.homepagediv4
 {
     margin-left: 100px;
     margin-top:100px;
 }
-.div5{
+.homepagediv5{
     margin-right: 100px;
 }
-.img3
+.homepageimg3
 {
     margin-left: 100px;
     margin-top: 100px;
     transform: rotate(340deg);
     border: 10px solid black;
 }
-.div10{
+.homepagediv10{
     display: flex;
     justify-content: space-between;
 }
-.div8
+.homepagediv8
 {
     margin-top: 100px;
     margin-right: 100px;
     text-align: center;
 }
-.div9
+.homepagediv9
 {
     margin-left: 100px;
 }
-.p5{
+.homepagep5{
     font-size: 35px;
 }
-.badge
-{
-    height: 40px;
-    width: 150px;
-    padding-top: 15px;
-    font-size: 16px;
-}
-.abc
+.homepagebadge
 {
     height: 40px;
     width: 180px;
     padding-top: 10px;
     font-size: 16px;
 }
-.div11{
+.homepageabc
+{
+    height: 45px;
+    width: 180px;
+    padding-top: 40px;
+    font-size: 80px;
+    margin-left: 70px;
+}
+.homepagediv11{
     text-align: center;
 }
-.p6
+.homepagep6
 {
     font-size: 35px;
 }
-.b1
+.homepageb1
 {
     color: rgb(255, 0, 123);
 }
-.div12
+.homepagediv12
 {
     border :5px solid rgb(254, 251, 251);
 width: 450px;
 height: 400px;
 background-color: rgb(237, 234, 234);
 }
-.img4
+.homepageimg4
 {
     border-radius: 25px;
 }
-.div12
+.homepagediv12
 {
     display: flex;
     justify-content: space-between;
@@ -120,25 +120,21 @@ background-color: rgb(237, 234, 234);
     padding-top: 20px;
     padding-right: 200px;
 }
-.p8
+.homepagep8
 {
     font-size: 12px;
     margin-left: 10px;
     margin-top: 100px;
 }
-.abc
-{  
-    margin-left: 70px;
-}
-.div14
+.homepagediv14
 {
     margin-right: 200px;
 }
-.b2
+.homepageb2
 {
     font-size: 20px;
 }
-.div15
+.homepagediv15
 {
     display: flex;
     justify-content: space-between;
@@ -146,116 +142,117 @@ background-color: rgb(237, 234, 234);
     padding-right: 200px;
    
 }
-.def
+.homepagedef
 {
     width: 220px;
     margin-left: 650px;
+    font-size: 17px;
 }
-.b3
+.homepageb3
 {
     font-size: 40px;
 }
-.div18
+.homepagediv18
 {
     text-align: center;
 }
-.p20
+.homepagep20
 {
     font-size: 50px;
     text-align: center;
 }
 
-.div60{
+.homepagediv60{
     border:5px solid rgb(253, 252, 252);
     width: 250px;
     height: 450px;
 }
-.p60
+.homepagep60
 {
     font-size: 20px;
 }
-.b10
+.homepageb10
 {
     color:rgb(0, 132, 255);
 }
-.div70
+.homepagediv70
 {
     display: flex;
     justify-content: space-between;
-    padding-left: 180px;
+    padding-left: 140px;
     padding-right: 200px;
 }
 
-.b4
+.homepageb4
 {
     color: rgb(7, 156, 248);
 }
 
-.img5
+.homepageimg5
 {
     margin-left: 300px;
 }
-.div24
+.homepagediv24
 {
     border :1px solid rgb(250, 2, 2);
 width: 350px;
 height: 500px;
 background-color: rgb(0, 153, 255);
 }
-.t1{
+.homepaget1{
     width: 190px;
     height: 20px;
     background-color:  rgb(0, 153, 255);
     border: none;
 }
-.b5
+.homepageb5
 {
     color: rgb(0, 153, 255);
 }
-.div26
+.homepagediv26
 {
     display: flex;
     justify-content: space-between;
     padding-left: 200px;
     padding-right: 200px;
 }
-.div24{
+.homepagediv24{
     padding-left: 80px;
     padding-top: 30px;
     color: aliceblue;
     padding-bottom: 550px;
 }
-.p30
+.homepagep30
 {
     font-size: 25px;
 }
-.klm
+.homepageklm
 {
 width: 170px;
 }
-.b6
+.homepageb6
 {
     font-size: 35px;
 }
-.i1{
+.homepagei1{
     border-color: red;
     height: 30px;
    margin-top: 10px;
 }
-.p22
+.homepagep22
 {
     color: red;
     font-size: 25px;
 }
-.div27
+.homepagediv27
 {
     border: 2px solid rgb(254, 253, 253);
     width: 1520px;
     height: 200px;
     padding-left: 500px;
-    background-image: url('pic21.jpeg');
+ background-image: url("../../../Assets/Free\ Photo\ _\ Dog\ treats\ on\ white\ background.jpeg"); 
 }
-.div50
+.homepagediv50
 {
     border: 1px solid red;
     width: 400px;
@@ -263,7 +260,7 @@ width: 170px;
     background-color: rgb(0, 145, 255);
     border: none;
 }
-.div51
+.homepagediv51
 {
     border: 1px solid rgb(85, 0, 255);
     width: 375px;
@@ -274,28 +271,28 @@ width: 170px;
     border: none;
     border-radius: 40px;
 }
-.img50{
+.homepageimg50{
     border-radius: 50%;
     margin-left: 100px;
     border: 5px solid white;
     }
-    .div52
+    .homepagediv52
     {
         text-align: center;
     }
-    .p11
+    .homepagep11
     {
         font-size: 20px;
         font-family: Arial, Helvetica, sans-serif;
     }
-    .div53
+    .homepagediv53
     {
         display: flex;
         justify-content: space-between;
         padding-left: 100px;
         padding-right: 100px;
     }
-    .card-img-overlay
+    .homepagecar
     {
        border: 2px solid black;
        width: 510px;
@@ -305,44 +302,59 @@ width: 170px;
        background-color: rgb(5, 5, 5);
       margin-top: 250px;
     }
-    .p80
+    .homepagep80
     {
         color:white;
         text-align: center;
     }
-    .b80
+    .homepageb80
     {
         font-size: 25px;
     }
-    .p90
+    .homepagep90
     {
 font-size: 40px;
     }
-    .p91
+    .homepagep91
     {
         color:grey;
     }
-    .b90
+    .homepageb90
     {
        font-size: 40px; 
     }  
-    .div23
+    .homepagediv23
     {
         margin-top: 150px;
     } 
-   .i3{
+    .homepagei3{
 border: none;
 background-color:rgb(0, 153, 255);
    }
 
-   .new{
+.homepagenew{
     width: 70%;
     margin-left: 180px;
 }
-.div25{
+.homepagediv25{
 margin-top: 100px;
 }
-.xyz
+.homepagexyz
 {
     margin-bottom: 5px;
+}
+.homepageb100
+{
+    color: rgb(0, 153, 255);
+}
+.homepagediv104
+{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 180px;
+    padding-right: 180px;
+}
+.homepagemore
+{
+    font-size: 17px;
 }
