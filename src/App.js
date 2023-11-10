@@ -16,6 +16,7 @@ import PetShopLogin from "./Pages/PetShop/PetShopLogin.jsx";
 
 import UserHome from "./Pages/Users/UserHome/UserHome.js";
 import CommonNavbar from "./Pages/Common/CommonNavbar.js";
+import AddPet from "./Pages/PetShop/AddPet/AddPet.jsx";
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
           />
 
           <Route path="/petshop-login" element={<PetShopLogin />} />
+          <Route path="/petshop-add" element={<AddPet/>}/>
           <Route path="/admin-login" element={<AdminLogin />} />
         </Routes>
       </BrowserRouter>

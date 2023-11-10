@@ -36,7 +36,6 @@ const LoginPage = () => {
     const credentials = { email, password, role: "user" };
     sendDataToServer(credentials);
 
-    console.log(email, password);
   };
 
   const sendDataToServer = (credentials) => {
@@ -52,6 +51,9 @@ const LoginPage = () => {
       }
     }).catch((err) => {
       console.log(err);
+      if (err.response.status === 404 || err.response.status === 401) {
+        alert("Please verify your email and password");
+      }
     })
   };
 
