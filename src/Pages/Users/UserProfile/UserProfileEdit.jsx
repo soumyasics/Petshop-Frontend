@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useRef } from "react";
 import dogAndMan from "../../../Assets/black-man-and-dog.jpg";
+import axios from "axios";
 import "./UserProfileEdit.css";
 const UserProfile = () => {
   const [userInfo, setUserInfo] = useState({
@@ -9,30 +10,95 @@ const UserProfile = () => {
     lastname: "",
     email: "",
     mobile: "",
-    address: "",
-    gender: "male",
+    district: "",
+    street: "",
   });
+
+  useEffect(() => {
+    isUserLogin();
+  }, []);
+
+  console.log('ui', userInfo);
+  function isUserLogin() {
+    const userToken = localStorage.getItem("petshop-token") || null;
+    if (userToken) {
+      axios
+        .get("http://localhost:4000/petshop_api/user-data", {
+          headers: {
+            Authorization: `Bearer ${userToken}`,
+          },
+        })
+        .then((res) => {
+          
+          let newObj = {
+            firstname: res?.data?.userData?.firstname,
+            lastname: res?.data?.userData?.lastname,
+            email: res?.data?.userData?.email,
+            mobile: res?.data?.userData?.mobile,
+            district: res?.data?.userData?.district,
+            street: res?.data?.userData?.street,
+            gender: res?.data?.userData?.user?.gender,
+          }
+          
+
+          if (res?.data?.status === 200) {
+            setUserInfo(newObj);
+            console.log("worked");
+            console.log('no',newObj);
+          }
+        });
+    } else {
+      alert("login first");
+    }
+  }
 
   const captchaRef = useRef(null);
   const handleSubmitEditProfile = (e) => {
     e.preventDefault();
 
-    captchaVerify();
-    if (userInfo.email) {
+    const captchaValue = captchaVerify();
+    if (!captchaValue) {
+      alert("Please verify captcha");
+      return;
+    }
+
+    if (userInfo?.email) {
       if (!validateEmail(userInfo.email)) {
         alert("Please provide valid email id.");
         return;
       }
     }
-    console.log("user info", userInfo);
+
+    const userToken = localStorage.getItem("petshop-token") || null;
+
+    if (userToken) {
+      editProfileData(userToken);
+    } else {
+      alert("login first");
+    }
+  };
+
+  const editProfileData = (userToken) => {
+    axios
+      .patch("http://localhost:4000/petshop_api/userProfileEdit", userInfo, {
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      })
+      .then((res) => {
+        console.log(res)
+        if (res?.data?.status === 200) {
+          alert(res?.data?.message)
+          isUserLogin();
+        }
+      }).catch((err) => {
+        console.log(err);
+      })
   };
 
   const captchaVerify = () => {
     const captchaValue = captchaRef.current.getValue();
-    if (!captchaValue) {
-      alert("Please check the CAPTCHA to verify");
-      return;
-    }
+    return captchaValue;
   };
 
   const validateEmail = (email) => {
@@ -100,40 +166,22 @@ const UserProfile = () => {
                 onChange={handleInputChanges}
               />
 
-              <label>Address</label>
+              <label>District</label>
               <input
                 type="text"
-                name="address"
-                value={userInfo.address}
+                name="district"
+                value={userInfo.district}
                 onChange={handleInputChanges}
-                placeholder="Enter your Address."
+                placeholder="Enter your district."
               />
-              <label> Gender </label>
-
-              <div className="profile-edit-gender-container">
-                <input
-                  type="radio"
-                  name="gender"
-                  onChange={handleInputChanges}
-                  defaultChecked
-                  value="male"
-                />
-                <label> Male </label>
-                <input
-                  type="radio"
-                  name="gender"
-                  onChange={handleInputChanges}
-                  value="female"
-                />
-                <label> Female </label>
-                <input
-                  type="radio"
-                  name="gender"
-                  onChange={handleInputChanges}
-                  value="other"
-                />
-                <label> Other </label>
-              </div>
+              <label>Street</label>
+              <input
+                type="text"
+                name="street"
+                value={userInfo.street}
+                onChange={handleInputChanges}
+                placeholder="Enter your street."
+              />
 
               <ReCAPTCHA
                 sitekey="6LcffvEoAAAAAFeyKMNHX0TIGyDHhHjp0Al1Z2u2"
