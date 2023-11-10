@@ -3,8 +3,10 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { useRef } from "react";
 import dogAndMan from "../../../Assets/black-man-and-dog.jpg";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "./UserProfileEdit.css";
 const UserProfile = () => {
+  const navigate = useNavigate();
   const [userInfo, setUserInfo] = useState({
     firstname: "",
     lastname: "",
@@ -18,7 +20,6 @@ const UserProfile = () => {
     isUserLogin();
   }, []);
 
-  console.log('ui', userInfo);
   function isUserLogin() {
     const userToken = localStorage.getItem("petshop-token") || null;
     if (userToken) {
@@ -29,7 +30,6 @@ const UserProfile = () => {
           },
         })
         .then((res) => {
-          
           let newObj = {
             firstname: res?.data?.userData?.firstname,
             lastname: res?.data?.userData?.lastname,
@@ -38,14 +38,16 @@ const UserProfile = () => {
             district: res?.data?.userData?.district,
             street: res?.data?.userData?.street,
             gender: res?.data?.userData?.user?.gender,
-          }
-          
+          };
 
           if (res?.data?.status === 200) {
             setUserInfo(newObj);
             console.log("worked");
-            console.log('no',newObj);
+            console.log("no", newObj);
           }
+        })
+        .catch((err) => {
+          console.log("error", err);
         });
     } else {
       alert("login first");
@@ -86,14 +88,15 @@ const UserProfile = () => {
         },
       })
       .then((res) => {
-        console.log(res)
+        console.log(res);
         if (res?.data?.status === 200) {
-          alert(res?.data?.message)
+          alert(res?.data?.message);
           isUserLogin();
         }
-      }).catch((err) => {
-        console.log(err);
       })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const captchaVerify = () => {
@@ -105,6 +108,10 @@ const UserProfile = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
+
+  const redirectHome = () => {
+    navigate('/');
+  }
 
   const handleInputChanges = (e) => {
     const { name, value } = e.target;
@@ -189,7 +196,7 @@ const UserProfile = () => {
               />
 
               <div className="profile-edit-btn-container">
-                <button>Back</button>
+                <button onClick={redirectHome}>Back</button>
                 <input
                   type="submit"
                   value="Save Changes"
