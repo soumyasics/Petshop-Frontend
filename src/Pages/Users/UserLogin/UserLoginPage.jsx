@@ -50,7 +50,9 @@ const LoginPage = () => {
       } else {
         alert("Login failed");
       }
-    });
+    }).catch((err) => {
+      console.log(err);
+    })
   };
 
   const handleForgotPassword = () => {};
