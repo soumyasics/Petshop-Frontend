@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-
+import './AdminLogin.css'
 function AdminLogin() {
     const [login, setLogin] = useState({
         name: '',
@@ -33,26 +33,19 @@ function AdminLogin() {
     return (
         
 
+<div className='col'>
+                <div className=' admin-login-bg'>
 
-                <div>
-
-                    <body id="signup">
-                        <main class="container1">
-                            <div class="back"></div>
-                            <div class="brand">
-                                <div class="logo">
-                                    <img
-                                        height="64"
-                                    />
-                                    <h1>
-                                        
-                                        ADMIN PANEL
+                    
+                                    <h1 className='admin-login-text1'>
+                                        welcome To<span className='admin-login-text2'>
+                                        ADMIN PANEL</span>
                                     </h1>
-                                </div>
-                            </div>
+                             
+                                    </div>
 
-                            <div class="formWrapper">
-                                <div class="form">
+                        
+                                <div className='col'>
                                     <h2>ADMIN LOGIN</h2>
                                     <form onSubmit={onsubmit}>
 
@@ -90,9 +83,7 @@ function AdminLogin() {
 
 
                                 </div>
-                            </div>
-                        </main>
-                    </body>
+                    
                 </div>
            
             )

@@ -8,6 +8,7 @@ import { AiFillEyeInvisible } from "react-icons/ai";
 import axios from "axios";
 import "./UserLoginPage.css";
 import axiosInstance from "../../../BaseURL";
+import { Link } from "react-router-dom";
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -96,11 +97,11 @@ const LoginPage = () => {
                 <input type="checkbox" name="remember-me" />
                 <label for="remember-me">Remember me</label>
               </div>
-              <p onClick={handleForgotPassword}>Forgot Password?</p>
+              <Link to="/user-forgot-password-req"> <p onClick={handleForgotPassword} style={{color:'white'}}>Forgot Password?</p></Link>
             </div>
 
             <p className="dont-have-account">
-              Don't have an account? <span>Sign Up</span>
+              Don't have an account?  <Link to="/user-reg"><span  style={{color:'white'}}>Sign Up</span></Link>
             </p>
 
             <div className="signin-btn-container">
