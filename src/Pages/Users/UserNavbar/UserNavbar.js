@@ -15,8 +15,8 @@ function UserNavbar() {
 
    
   return (
-    <div>
-        <nav className="navbar navbar-expand-sm bg-body-tertiary navbarr">
+    <div >
+        <nav id="user-navbar-1" className="navbar navbar-expand-sm bg-body-tertiary navbarr">
             <div className="container-fluid">
                 <img src={zookeper}/>
                 <a className="navbar-brand" href="#">ZOOKEPER</a>

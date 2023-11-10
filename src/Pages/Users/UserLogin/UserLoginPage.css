@@ -1,3 +1,4 @@
+/* Developed By Anand 3-11-23 */
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
 .login-page-logo-container {
@@ -39,7 +40,7 @@
   height: 460px;
   border-radius: 20px;
   color: white;
-  padding: 1rem .4rem;
+  padding: 1rem 0.4rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   padding-top: 31px;
   box-sizing: border-box;
@@ -59,7 +60,7 @@
   justify-content: space-between;
 }
 
-.login-form-container form>div {
+.login-form-container form > div {
   display: flex;
   flex-direction: column;
   padding: 0 20px;
@@ -108,7 +109,7 @@
 
 .dont-have-account {
   margin-left: 20px;
-  font-size: 14px;
+  font-size: 12px;
   margin-top: 10px;
 }
 
@@ -136,13 +137,13 @@
 }
 
 .login-eye-div {
-  height: 50px;
-  width: 50px;
+  height: 18px;
+  width: 27px;
   display: flex;
   justify-content: center;
   position: absolute;
-  right: 10px;
-  top: 37px;
+  right: 20px;
+  top: 35px;
 }
 .eye-icon-container {
   display: flex;
@@ -162,4 +163,3 @@
   width: auto;
   height: 80%;
 }
-  
