@@ -1,15 +1,16 @@
+
 .add-pet-navbar {
   display: flex;
   height: 50px;
   width: 100%;
-  padding-left: 50px;
+  padding-left: 72px;
   box-sizing: border-box;
   justify-content: space-between;
   align-items: center;
   padding-right: 50px;
   margin: auto;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
-    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
   padding-bottom: 20px;
   margin-top: 20px;
 }
@@ -82,3 +83,60 @@
   font-size: 2rem;
   font-weight: 800;
 }
+
+.add-pet-form-container >form {
+  margin-bottom: 20px;
+  width: 100%;
+  background-color: rgb(220, 198, 198);
+  padding: 20px 5%;
+  box-sizing: border-box;
+}
+
+.add-pet-user-input >input {
+  margin-left: 20px;
+}
+
+.add-pet-name-container {
+  display: flex;
+}
+.add-pet-name-container>input{
+  width: 50%!important; 
+}
+.add-pet-user-input {
+  display: flex;
+  flex-direction: column;
+}
+
+#add-pet-form {
+  margin-top: 20px;
+  border-radius: 20px;
+}
+
+#add-pet-form .add-pet-name-container input {
+  width: 90%;
+}
+
+#add-pet-form>input {
+  width: 100%;
+}
+
+#add-pet-form >.add-pet-user-input input{
+  width: 95%;
+}
+
+.add-pet-btn-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#add-pet-form >div> input[type='submit'] {
+  background-color: #018ae0;
+  color: white;
+  width: 100px;
+  height: 35px;
+  margin: auto;
+  border: none;
+  border-radius: 5px;
+}
+

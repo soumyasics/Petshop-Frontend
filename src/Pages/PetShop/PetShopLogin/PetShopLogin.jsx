@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axiosInstance from "../../BaseURL";
+import axiosInstance from "../../../BaseURL";
 import { AiFillEye } from "react-icons/ai";
 import { AiFillEyeInvisible } from "react-icons/ai";
 import "./PetShopLogin.css";
@@ -41,15 +41,15 @@ const PetShopLogin = () => {
       return;
     }
 
-    const credentials = { email, password,isChecked,  role: "petshop" };
+    const credentials = { email, password, isChecked, role: "petshop" };
     sendDataToServer(credentials);
   };
 
   const sendDataToServer = (credentials) => {
-    axiosInstance.post('/petshopLogin', credentials).then((res) => {
-        console.log("response", res);
-    })
-  }
+    axiosInstance.post("/petshopLogin", credentials).then((res) => {
+      console.log("response", res);
+    });
+  };
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
