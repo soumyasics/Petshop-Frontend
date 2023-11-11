@@ -32,7 +32,7 @@ function App() {
           <Route path="/explore" element={<ExplorePage />} />
           <Route path='/c-navbar' element={<CommonNavbar/>} />
           {/* User Routes */}
-          <Route path="/user-login" element={<UserLoginPage />} /> 
+          <Route path="/user/login" element={<UserLoginPage />} /> 
 
           <Route path="/user-reg" element={<UserReg />} />
 
@@ -51,8 +51,8 @@ function App() {
             element={<UserForgotPwdAftrReq />}
           />
 
-          <Route path="/petshop-login" element={<PetShopLogin />} />
-          <Route path="/petshop-add" element={<AddPet/>}/>
+          <Route path="/petshop/login" element={<PetShopLogin />} />
+          <Route path="/petshop/add-pet" element={<AddPet/>}/>
           <Route path="/admin-login" element={<AdminLogin />} />
         </Routes>
       </BrowserRouter>
