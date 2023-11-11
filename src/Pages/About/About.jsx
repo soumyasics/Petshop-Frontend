@@ -9,11 +9,12 @@ import couchDog from "../../Assets/pexels-ron-lach-10117273.jpg";
 import airCat from "../../Assets/pexels-sam-lion-6001183.jpg";
 import UserNavbar from "../Users/UserNavbar/UserNavbar";
 import "./About.css";
+import CommonNavbar from "../Common/CommonNavbar";
 function About() {
   return (
     <div>
      
-      <UserNavbar />
+      <CommonNavbar />
       <div className="card border-0 about-global">
         <img src={catDog} className=" card-img cat-dog"/>
       </div>

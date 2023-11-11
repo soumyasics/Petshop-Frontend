@@ -10,6 +10,7 @@ import './UserForgotPwdReq.css'
 import UserNavbar from '../UserNavbar/UserNavbar';
 import UserForgotPwdAftrReq from './UserForgotPwdAftrReq';
 import { useNavigate } from 'react-router-dom';
+import CommonNavbar from '../../Common/CommonNavbar';
 
 // Done by Soumya on Nov 4
 function UserForgotPwdReq() {
@@ -49,7 +50,7 @@ function UserForgotPwdReq() {
  
   return (
     <>
-    <UserNavbar/>
+    <CommonNavbar/>
     
       <div className="userForgotPwdreq-page-container">
         <div className="userForgotPwdreq-page-left-section">
