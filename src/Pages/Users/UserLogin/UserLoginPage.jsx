@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 import "./UserLoginPage.css";
 import axiosInstance from "../../../BaseURL";
+import { Link } from "react-router-dom";
 const LoginPage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -36,7 +37,6 @@ const LoginPage = () => {
     const credentials = { email, password, role: "user" };
     sendDataToServer(credentials);
 
-    console.log(email, password);
   };
 
   const sendDataToServer = (credentials) => {
@@ -50,7 +50,12 @@ const LoginPage = () => {
       } else {
         alert("Login failed");
       }
-    });
+    }).catch((err) => {
+      console.log(err);
+      if (err.response.status === 404 || err.response.status === 401) {
+        alert("Please verify your email and password");
+      }
+    })
   };
 
   const handleForgotPassword = () => {};
@@ -101,11 +106,11 @@ const LoginPage = () => {
                 <input type="checkbox" name="remember-me" />
                 <label for="remember-me">Remember me</label>
               </div>
-              <p onClick={handleForgotPassword}>Forgot Password?</p>
+              <Link to="/user-forgot-password-req"> <p onClick={handleForgotPassword} style={{color:'white'}}>Forgot Password?</p></Link>
             </div>
 
             <p className="dont-have-account">
-              Don't have an account? <span>Sign Up</span>
+              Don't have an account?  <Link to="/user-reg"><span  style={{color:'white'}}>Sign Up</span></Link>
             </p>
 
             <div className="signin-btn-container">
