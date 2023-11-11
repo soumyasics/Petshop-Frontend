@@ -1,0 +1,84 @@
+.add-pet-navbar {
+  display: flex;
+  height: 50px;
+  width: 100%;
+  padding-left: 50px;
+  box-sizing: border-box;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 50px;
+  margin: auto;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  padding-bottom: 20px;
+  margin-top: 20px;
+}
+
+.add-pet-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}
+
+.add-pet-logo > img {
+  width: 3rem;
+}
+
+.add-pet-logo p {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-left: 10px;
+  margin-bottom: 0;
+}
+
+.add-pet-btn-containers {
+  width: 70%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.add-pet-btn-containers button {
+  width: 102px;
+  height: 31px;
+  border-radius: 30px;
+  background-color: #018ae0;
+  color: white;
+  border: none;
+  font-size: 12px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.add-pet-header-img {
+  width: 90%;
+  margin: auto;
+  margin-top: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.add-pet-placeholder-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.add-pet-upload-img-icon {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  width: 40px;
+}
+
+/* add pet form container  */
+.add-pet-form-container {
+  width: 90%;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.add-pet-form-container > h2 {
+  font-size: 2rem;
+  font-weight: 800;
+}
