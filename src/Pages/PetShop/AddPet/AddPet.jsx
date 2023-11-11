@@ -5,6 +5,7 @@ import uploadImageIcon from "../../../Assets/upload-img-icon.png";
 import "./AddPet.css";
 import { InputGroup } from "react-bootstrap";
 import { Form } from "react-bootstrap";
+import Footer from "../../Common/Footer/Footer";
 const AddPet = () => {
   return (
     <>
@@ -153,7 +154,9 @@ const AddPet = () => {
             <input type="submit" value="Add Shop" />
           </div>
         </form>
+
       </div>
+        <Footer />
     </>
   );
 };
