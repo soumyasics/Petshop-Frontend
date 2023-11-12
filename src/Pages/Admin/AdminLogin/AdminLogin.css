@@ -1,5 +1,5 @@
 .admin-login-bg{
-    background-image: url('../../Assets/BG.png');
+    background-image: url('../../../Assets/BG.png');
     height: 100vh;
     margin-top: 100px;
 }
@@ -77,4 +77,7 @@ align-items: flex-start;
 gap: 13.801px;
 flex-shrink: 0;
 color: white;
+}
+.admin-login-btn11{
+    width: 50px;
 }

@@ -170,8 +170,9 @@
 .homepagediv70 {
   display: flex;
   justify-content: space-between;
-  padding-left: 140px;
+  padding-left: 0px;
   padding-right: 200px;
+  margin-left: 0px;
 }
 
 .homepageb4 {

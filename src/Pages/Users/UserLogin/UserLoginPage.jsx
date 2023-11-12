@@ -40,7 +40,7 @@ const LoginPage = () => {
   };
 
   const sendDataToServer = (credentials) => {
-    axiosInstance.post(`/userLogin`, credentials).then((res) => {
+    axiosInstance.post(`/user/userLogin`, credentials).then((res) => {
       if (res.status === 200) {
         alert("Login successful");
         localStorage.setItem("petshop-token", res.data.token);
