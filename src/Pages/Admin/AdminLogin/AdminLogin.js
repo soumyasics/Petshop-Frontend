@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './AdminLogin.css'
-import img1 from "../../Assets/image_2023_11_10T12_08_55_676Z.png"
+import img1 from "../../../Assets/image_2023_11_10T12_08_55_676Z.png"
 function AdminLogin() {
     const [login, setLogin] = useState({
         name: '',
@@ -81,6 +81,7 @@ function AdminLogin() {
 
                             type="submit"
                             id='login'
+                            className='className="btn btn-primary btn-sm rounded-start-pill rounded-end-pill btn1 align-items-center admin-login-btn11"'
 
                         >LOGIN</button>
                     </form>

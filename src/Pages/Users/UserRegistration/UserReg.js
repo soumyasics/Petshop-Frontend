@@ -52,7 +52,7 @@ function UserReg() {
       return; // Do not proceed if the CAPTCHA is not checked
     }
     axiosInstance
-      .post("/userRegistration", register, {
+      .post("/user/userRegistration", register, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
