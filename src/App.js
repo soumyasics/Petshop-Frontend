@@ -18,9 +18,10 @@ import UserHome from "./Pages/Users/UserHome/UserHome.js";
 import CommonNavbar from "./Pages/Common/CommonNavbar.js";
 import PetShopRegistration from "./Pages/PetShop/PetShopReg/PetShopReg.jsx";
 import AdminUsers from "./Pages/Admin/AdminViewAllUsers/AdminUsers.js";
+import PetShopAddPet from "./Pages/PetShop/AddPet/PetShopAddPet.jsx";
 
 function App() {
-  let imgUrl="http://localhost:4000"
+  let imgUrl = "http://localhost:4000";
   return (
     <>
       <BrowserRouter>
@@ -52,8 +53,15 @@ function App() {
 
           <Route path="/petshop/signup" element={<PetShopRegistration />} />
           <Route path="/petshop/login" element={<PetShopLogin />} />
+          <Route path="/petshop/add-pet" element={<PetShopAddPet />} />
           <Route path="/admin-login" element={<AdminLogin />} />
-          <Route path="/admin-all-users" element={<AdminUsers imgUrl={imgUrl}/>} />
+          <Route
+            path="/admin-all-users"
+            element={<AdminUsers imgUrl={imgUrl} />}
+          />
+
+          {/* This Route should be last */}
+          <Route path="/*" element={<h1> Please recheck your route - 404 </h1>} />
         </Routes>
       </BrowserRouter>
     </>
