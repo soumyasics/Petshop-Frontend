@@ -132,7 +132,7 @@ const PetShopRegistration = () => {
     formData.append("img", shopInfo.shopImage);
 
     axiosInstance
-      .post("/shopRegistration", formData)
+      .post("/shop/shopRegistration", formData)
       .then((res) => {
         console.log("response", res);
         if (res.status === 200) {

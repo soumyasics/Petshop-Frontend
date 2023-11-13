@@ -50,14 +50,16 @@ function App() {
             path="/user-forgot-password-aftr-req"
             element={<UserForgotPwdAftrReq />}
           />
-
+{/* Anand */}
           <Route path="/petshop/signup" element={<PetShopRegistration />} />
           <Route path="/petshop/login" element={<PetShopLogin />} />
           <Route path="/petshop/add-pet" element={<PetShopAddPet />} />
+        
+        {/* Soumya */}
+
+        
           <Route path="/admin-login" element={<AdminLogin />} />
-          <Route
-            path="/admin-all-users"
-            element={<AdminUsers imgUrl={imgUrl} />}
+          <Route path="/admin-all-users" element={<AdminUsers imgUrl={imgUrl} />}
           />
 
           {/* This Route should be last */}
