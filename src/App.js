@@ -51,10 +51,10 @@ function App() {
           <Route path="/user-reg" element={<UserReg />} />
           <Route path="/user-Prof" element={<UserProfileView />} />
 
-          <Route path="/user-profile-edit" element={<UserProfileEdit />} />
+          <Route path="/user/profile-edit" element={<UserProfileEdit />} />
           <Route path="/user-forgot-password" element={<UserForgotPwd />} />
 
-          <Route path="/user-explore" element={<ExplorePage />} />
+          <Route path="/user/explore" element={<ExplorePage />} />
 
           <Route
             path="/user-forgot-password-req"
