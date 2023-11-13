@@ -28,6 +28,10 @@ background-image: url("../../../Assets/regCover.jpeg");
 background-size: cover;
 
 }
+#user-reg-validationDefault01 .red-tooltip .tooltip-inner {
+  background-color: red;
+  color: white;
+}
 
 
 .user-reg-imgcircle {
@@ -52,6 +56,9 @@ background-size: cover;
   margin: auto;
   width: 55%;
   padding: 20px;
+}
+.invalid{
+  border: 1px solid red;
 }
 #user-reg-validationDefault01{
   border: 1px solid black;

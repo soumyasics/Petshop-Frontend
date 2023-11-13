@@ -35,7 +35,8 @@ function UserNavbar() {
                            <Link to="/about"> <a className="nav-link">About</a></Link>
                      </li>
                      <li className="nav-item">
-                        <a className="nav-link" href="#">Adopt</a>
+                        <Link
+                     className="nav-link" to="/user-reg">Register</Link>
                      </li>
                      <li className="nav-item">
                         <a className="nav-link" href="#">Gallery</a>
