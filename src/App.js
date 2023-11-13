@@ -1,7 +1,6 @@
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import HomePage from './Pages/Users/Home/Home';
-import UserLoginPage from './Pages/Users/UserLogin/UserLoginPage.jsx';
+import HomePage from './Pages/Users/UserHome/UserHome.js';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
@@ -14,7 +13,6 @@ import UserLoginPage from "./Pages/Users/UserLogin/UserLoginPage.jsx";
 import UserForgotPwd from "./Pages/Users/UserForgotPassword/UserForgotPwd.js";
 import UserProfileEdit from "./Pages/Users/UserProfile/UserProfileEdit.jsx";
 import "./App.css";
-import UserReg from "./Pages/Users/UserRegistration/UserReg.js";
 import ExplorePage from "./Pages/Users/Explore/Explore.jsx";
 import About from "./Pages/About/About.jsx";
 

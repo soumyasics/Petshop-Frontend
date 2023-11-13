@@ -52,8 +52,6 @@ function UserReg() {
     console.log(register);
 
   }, []);
-
-  });
   
 
   const submitt = (b) => {
