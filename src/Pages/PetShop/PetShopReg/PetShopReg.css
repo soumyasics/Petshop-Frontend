@@ -55,8 +55,13 @@
   width: 90%;
   margin: auto;
   margin-top: 20px;
+  max-height: 400px;
   overflow: hidden;
   position: relative;
+}
+
+.add-pet-header-img input[type="file"] {
+  display: none;
 }
 
 .add-pet-placeholder-img {
