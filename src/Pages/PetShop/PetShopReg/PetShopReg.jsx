@@ -6,9 +6,11 @@ import { Form } from "react-bootstrap";
 import Footer from "../../Common/Footer/Footer";
 import { useState, useRef } from "react";
 import axiosInstance from "../../../BaseURL";
+import Col from "react-bootstrap/Col";
 import { useNavigate } from "react-router-dom";
 import "./PetShopReg.css";
 import PetShopNavbar from "../Common/PetShopNavbar";
+import InputGroupText from "react-bootstrap/esm/InputGroupText";
 const PetShopRegistration = () => {
   const [activeShopImage, setIsActiveShopImage] =
     useState(imgUploadPlaceholder);
@@ -64,8 +66,15 @@ const PetShopRegistration = () => {
     return emailRegex.test(email);
   };
 
+  const [validated, setValidated] = useState(false);
+
   const registerShop = (e) => {
     e.preventDefault();
+    const form = e.currentTarget;
+    if (form.checkValidity() === false) {
+      e.stopPropagation();
+    }
+    setValidated(true);
     const {
       ownerFirstName,
       shopName,
@@ -94,7 +103,7 @@ const PetShopRegistration = () => {
       !ownershipId ||
       !description
     ) {
-      alert("Please fill all the details");
+      console.log("All fields are required.")
       return;
     }
 
@@ -104,7 +113,7 @@ const PetShopRegistration = () => {
     }
 
     if (password.length < 6) {
-      alert("Password must be at least 6 characters long");
+      console.log("Password must be at least 6 characters long");
       return;
     }
 
@@ -132,7 +141,7 @@ const PetShopRegistration = () => {
     formData.append("img", shopInfo.shopImage);
 
     axiosInstance
-      .post("/shop/shopRegistration", formData)
+      .post("/shopRegistration", formData)
       .then((res) => {
         console.log("response", res);
         if (res.status === 200) {
@@ -175,19 +184,27 @@ const PetShopRegistration = () => {
 
       <div className="add-pet-form-container">
         <h2>Add a shop</h2>
-        <form id="add-pet-form">
+        <Form
+          id="add-pet-form"
+          noValidate
+          validated={validated}
+          onSubmit={registerShop}
+        >
           <div className="add-pet-name-container">
             <InputGroup className="mb-3 add-pet-user-input">
               <Form.Label>Owner First Name</Form.Label>
 
               <Form.Control
                 placeholder="First Name"
-                aria-label="firstname"
                 type="text"
                 name="ownerFirstName"
                 value={shopInfo.ownerFirstName}
                 onChange={handleChange}
+                required
               />
+              <Form.Control.Feedback type="invalid">
+                Owner First Name is required
+              </Form.Control.Feedback>
             </InputGroup>
 
             <InputGroup className="mb-3 add-pet-user-input">
@@ -200,7 +217,11 @@ const PetShopRegistration = () => {
                 name="ownerLastName"
                 value={shopInfo.ownerLastName}
                 onChange={handleChange}
+                required
               />
+              <Form.Control.Feedback type="invalid">
+                Owner Last Name is required
+              </Form.Control.Feedback>
             </InputGroup>
           </div>
 
@@ -214,7 +235,11 @@ const PetShopRegistration = () => {
               name="shopName"
               value={shopInfo.shopName}
               onChange={handleChange}
+              required
             />
+            <Form.Control.Feedback type="invalid">
+              Shop Name is required
+            </Form.Control.Feedback>
           </InputGroup>
           <InputGroup className="mb-3 add-pet-user-input">
             <Form.Label> E Mail</Form.Label>
@@ -226,19 +251,28 @@ const PetShopRegistration = () => {
               name="email"
               value={shopInfo.email}
               onChange={handleChange}
+              required
             />
+            <Form.Control.Feedback type="invalid">
+              Email is required
+            </Form.Control.Feedback>
           </InputGroup>
           <InputGroup className="mb-3 add-pet-user-input">
             <Form.Label> Password</Form.Label>
 
             <Form.Control
               placeholder="password"
+              minLength="6"
               aria-label="password"
               type="password"
               name="password"
               value={shopInfo.password}
               onChange={handleChange}
+              required
             />
+            <Form.Control.Feedback type="invalid">
+              Minimum 6 characters password required
+            </Form.Control.Feedback>
           </InputGroup>
           <InputGroup className="mb-3 add-pet-user-input">
             <Form.Label> City</Form.Label>
@@ -249,8 +283,12 @@ const PetShopRegistration = () => {
               type="text"
               name="city"
               value={shopInfo.city}
+              required
               onChange={handleChange}
             />
+            <Form.Control.Feedback type="invalid">
+              City is required.
+            </Form.Control.Feedback>
           </InputGroup>
           <InputGroup className="mb-3 add-pet-user-input">
             <Form.Label> Street</Form.Label>
@@ -262,7 +300,11 @@ const PetShopRegistration = () => {
               name="street"
               value={shopInfo.street}
               onChange={handleChange}
+              required
             />
+            <Form.Control.Feedback type="invalid">
+              Street is required.
+            </Form.Control.Feedback>
           </InputGroup>
           <InputGroup className="mb-3 add-pet-user-input">
             <Form.Label> District</Form.Label>
@@ -274,19 +316,28 @@ const PetShopRegistration = () => {
               name="district"
               value={shopInfo.district}
               onChange={handleChange}
+              required
             />
+            <Form.Control.Feedback type="invalid">
+              District is required.
+            </Form.Control.Feedback>
           </InputGroup>
           <InputGroup className="mb-3 add-pet-user-input">
             <Form.Label> Contact</Form.Label>
 
             <Form.Control
               type="number"
+              minLength="10"
               placeholder="Contact"
               aria-label="contact"
               name="mobile"
               value={shopInfo.mobile}
               onChange={handleChange}
+              required
             />
+            <Form.Control.Feedback type="invalid">
+              10 Digit Phone Number is required.
+            </Form.Control.Feedback>
           </InputGroup>
           <InputGroup className="mb-3 add-pet-user-input">
             <Form.Label> License Number</Form.Label>
@@ -297,7 +348,11 @@ const PetShopRegistration = () => {
               name="licenseNumber"
               value={shopInfo.licenseNumber}
               onChange={handleChange}
+              required
             />
+            <Form.Control.Feedback type="invalid">
+              License Number is required.
+            </Form.Control.Feedback>
           </InputGroup>
           <InputGroup className="mb-3 add-pet-user-input">
             <Form.Label> Description</Form.Label>
@@ -308,7 +363,11 @@ const PetShopRegistration = () => {
               name="description"
               value={shopInfo.description}
               onChange={handleChange}
+              required
             />
+            <Form.Control.Feedback type="invalid">
+              Description is required.
+            </Form.Control.Feedback>
           </InputGroup>
           <InputGroup className="mb-3 add-pet-user-input">
             <Form.Label> Registration Number</Form.Label>
@@ -319,7 +378,11 @@ const PetShopRegistration = () => {
               name="registrationNumber"
               value={shopInfo.registrationNumber}
               onChange={handleChange}
+              required
             />
+            <Form.Control.Feedback type="invalid">
+              Registration is required.
+            </Form.Control.Feedback>
           </InputGroup>
           <InputGroup className="mb-3 add-pet-user-input">
             <Form.Label> Ownership ID</Form.Label>
@@ -332,13 +395,18 @@ const PetShopRegistration = () => {
               name="ownershipId"
               value={shopInfo.ownershipId}
               onChange={handleChange}
+              required
             />
+
+            <Form.Control.Feedback type="invalid">
+              Ownership ID is required.
+            </Form.Control.Feedback>
           </InputGroup>
 
           <div className="add-pet-btn-box">
-            <input type="submit" onClick={registerShop} value="Add Shop" />
+            <input type="submit" value="Add Shop" />
           </div>
-        </form>
+        </Form>
       </div>
       <Footer />
     </>
