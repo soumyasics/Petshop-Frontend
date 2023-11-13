@@ -6,27 +6,28 @@ import { Form } from "react-bootstrap";
 import Footer from "../../Common/Footer/Footer";
 import { useState, useRef } from "react";
 import axiosInstance from "../../../BaseURL";
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import "./PetShopReg.css";
+import PetShopNavbar from "../Common/PetShopNavbar";
 const PetShopRegistration = () => {
   const [activeShopImage, setIsActiveShopImage] =
     useState(imgUploadPlaceholder);
   const fileInputRef = useRef(null);
 
   const [shopInfo, setShopInfo] = useState({
-    ownerFirstName: "a",
-    ownerLastName: "a",
-    shopName: "a",
-    street: "a",
-    city: "a",
-    district: "a",
-    mobile: "1",
-    email: "a@gmail.com",
-    password: "12343234",
-    licenseNumber: "a",
-    registrationNumber: "a",
-    ownershipId: "a",
-    description: "des",
+    ownerFirstName: "",
+    ownerLastName: "",
+    shopName: "",
+    street: "",
+    city: "",
+    district: "",
+    mobile: "",
+    email: "",
+    password: "",
+    licenseNumber: "",
+    registrationNumber: "",
+    ownershipId: "",
+    description: "",
     shopImage: null,
   });
   const navigate = useNavigate();
@@ -53,7 +54,6 @@ const PetShopRegistration = () => {
     }
   };
   const handleImageBtnClick = () => {
-    console.log(fileInputRef);
     if (fileInputRef && fileInputRef.current) {
       fileInputRef.current.click();
     }
@@ -114,19 +114,22 @@ const PetShopRegistration = () => {
   const sendDataToServer = (shopInfo) => {
     const formData = new FormData();
 
-    formData.append('ownername', `${shopInfo.ownerFirstName} ${shopInfo.ownerLastName}`);
-    formData.append('shopname', shopInfo.shopName);
-    formData.append('city', shopInfo.city);
-    formData.append('street', shopInfo.street);
-    formData.append('email', shopInfo.email);
-    formData.append('password', shopInfo.password);
-    formData.append('licenceno', shopInfo.licenseNumber);
-    formData.append('regno', shopInfo.registrationNumber);
-    formData.append('mobile', shopInfo.mobile);
-    formData.append('ownershipid', shopInfo.ownershipId);
-    formData.append('district', shopInfo.district);
-    formData.append('description', shopInfo.description);
-    formData.append('img', shopInfo.shopImage);
+    formData.append(
+      "ownername",
+      `${shopInfo.ownerFirstName} ${shopInfo.ownerLastName}`
+    );
+    formData.append("shopname", shopInfo.shopName);
+    formData.append("city", shopInfo.city);
+    formData.append("street", shopInfo.street);
+    formData.append("email", shopInfo.email);
+    formData.append("password", shopInfo.password);
+    formData.append("licenceno", shopInfo.licenseNumber);
+    formData.append("regno", shopInfo.registrationNumber);
+    formData.append("mobile", shopInfo.mobile);
+    formData.append("ownershipid", shopInfo.ownershipId);
+    formData.append("district", shopInfo.district);
+    formData.append("description", shopInfo.description);
+    formData.append("img", shopInfo.shopImage);
 
     axiosInstance
       .post("/shopRegistration", formData)
@@ -135,34 +138,19 @@ const PetShopRegistration = () => {
         if (res.status === 200) {
           alert("Registration successful");
           setTimeout(() => {
-            navigate('/petshop/login');
-          },1500)
+            navigate("/petshop/login");
+          }, 1500);
         }
       })
       .catch((err) => {
         console.log("error", err);
         alert("Registration Failed");
       });
-
-
   };
 
   return (
     <>
-      <div className="add-pet-navbar">
-        <div className="add-pet-logo">
-          <img src={zookeeperLogo} alt="zookeeper logo" />
-          <p>ZOOKEPER</p>
-        </div>
-        <div className="add-pet-btn-containers">
-          <button>Shops</button>
-          <button>All Pets</button>
-          <button>All Users</button>
-          <select>
-            <option value="icon">Profile</option>
-          </select>
-        </div>
-      </div>
+      <PetShopNavbar />
 
       <div className="add-pet-header-img">
         <img
@@ -173,7 +161,7 @@ const PetShopRegistration = () => {
         <img
           className="add-pet-upload-img-icon"
           src={uploadImageIcon}
-          alt="upload-img-iconn"
+          alt="upload-img-icon"
           onClick={handleImageBtnClick}
         />
 
