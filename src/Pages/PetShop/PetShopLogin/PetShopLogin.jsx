@@ -1,10 +1,12 @@
 import { useState } from "react";
-import axiosInstance from "../../BaseURL";
+import axiosInstance from "../../../BaseURL";
 import { AiFillEye } from "react-icons/ai";
 import { AiFillEyeInvisible } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 import "./PetShopLogin.css";
 
 const PetShopLogin = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isChecked, setIsChecked] = useState(false);
@@ -41,19 +43,45 @@ const PetShopLogin = () => {
       return;
     }
 
-    const credentials = { email, password,isChecked,  role: "petshop" };
+    const credentials = { email, password, isChecked, role: "petshop" };
     sendDataToServer(credentials);
   };
 
   const sendDataToServer = (credentials) => {
-    axiosInstance.post('/petshopLogin', credentials).then((res) => {
-        console.log("response", res);
-    })
-  }
+    axiosInstance
+      .post("/shop/login", credentials)
+      .then((res) => {
+        if (res.status === 200) {
+          alert("Login Successful");
+          const token = res?.data?.token || "";
+          if (token) {
+            localStorage.setItem("petshop-token", token);
+          }
+
+          setTimeout(() => {
+            navigate("/");
+          }, 1500);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        if (err.response.status === 404) {
+          alert("Invalid Email Id");
+        } else if (err.response.status === 401) {
+          alert("Please Check your Email and password");
+        } else {
+          console.log("Some errors occured");
+        }
+      });
+  };
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+  const redirectPetShopRegister = () => {
+    navigate('../petshop/signup');
+  }
+
   return (
     <div className="petshop-login-page">
       <h1>Pet shop Login </h1>
@@ -84,6 +112,11 @@ const PetShopLogin = () => {
           </div>
 
           <p>Forgot Password</p>
+        </div>
+        <div className="petshop-dont-have-account">
+          <p>
+            Don't have an account ?<span onClick={redirectPetShopRegister}>Signup</span>
+          </p>
         </div>
         <input type="submit" onClick={handleSubmit} value="Login" />
       </form>
