@@ -1,4 +1,14 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import HomePage from './Pages/Users/Home/Home';
+import UserLoginPage from './Pages/Users/UserLogin/UserLoginPage.jsx';
+import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+import UserProfileView from './Pages/Users/UserProfile/UserProfileView';
+import UserReg from './Pages/Users/UserRegistration/UserReg.js'; 
+// import UserNavbar from './Pages/Users/UserNavbar/UserNavbar.js';
+
 
 import UserLoginPage from "./Pages/Users/UserLogin/UserLoginPage.jsx";
 import UserForgotPwd from "./Pages/Users/UserForgotPassword/UserForgotPwd.js";
@@ -25,7 +35,11 @@ function App() {
   return (
     <>
       <BrowserRouter>
+      
         <Routes>
+
+          <Route path="/" element={<HomePage />} />
+
           {/* Common Routes */}
 
           <Route path="/" element={<UserHome />} />
@@ -36,6 +50,7 @@ function App() {
           <Route path="/user/login" element={<UserLoginPage />} />
 
           <Route path="/user-reg" element={<UserReg />} />
+          <Route path="/user-Prof" element={<UserProfileView />} />
 
           <Route path="/user-profile-edit" element={<UserProfileEdit />} />
           <Route path="/user-forgot-password" element={<UserForgotPwd />} />
