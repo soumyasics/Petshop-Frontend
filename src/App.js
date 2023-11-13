@@ -27,6 +27,7 @@ import CommonNavbar from "./Pages/Common/CommonNavbar.js";
 import PetShopRegistration from "./Pages/PetShop/PetShopReg/PetShopReg.jsx";
 import AdminUsers from "./Pages/Admin/AdminViewAllUsers/AdminUsers.js";
 import PetShopAddPet from "./Pages/PetShop/AddPet/PetShopAddPet.jsx";
+import TestComponent from './Pages/PetShop/PetShopReg/test.jsx';
 
 function App() {
   let imgUrl = "http://localhost:4000";
@@ -75,6 +76,8 @@ function App() {
           <Route path="/admin-all-users" element={<AdminUsers imgUrl={imgUrl} />}
           />
 
+          {/* just for testing purpose will remove  */}
+          <Route path="/test" element={<TestComponent/>} />
           {/* This Route should be last */}
           <Route path="/*" element={<h1> Please recheck your route - 404 </h1>} />
         </Routes>
