@@ -53,7 +53,6 @@ function UserReg() {
 
   }, []);
 
-  });
   
 
   const submitt = (b) => {

@@ -1,10 +1,10 @@
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import HomePage from './Pages/Users/Home/Home';
-import UserLoginPage from './Pages/Users/UserLogin/UserLoginPage.jsx';
+import HomePage from './Pages/Users/UserHome/UserHome.js';
+// import UserLoginPage from './Pages/Users/UserLogin/UserLoginPage.jsx';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
+// import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import UserProfileView from './Pages/Users/UserProfile/UserProfileView';
 import UserReg from './Pages/Users/UserRegistration/UserReg.js'; 
 // import UserNavbar from './Pages/Users/UserNavbar/UserNavbar.js';
@@ -14,7 +14,6 @@ import UserLoginPage from "./Pages/Users/UserLogin/UserLoginPage.jsx";
 import UserForgotPwd from "./Pages/Users/UserForgotPassword/UserForgotPwd.js";
 import UserProfileEdit from "./Pages/Users/UserProfile/UserProfileEdit.jsx";
 import "./App.css";
-import UserReg from "./Pages/Users/UserRegistration/UserReg.js";
 import ExplorePage from "./Pages/Users/Explore/Explore.jsx";
 import About from "./Pages/About/About.jsx";
 
@@ -72,7 +71,7 @@ function App() {
         
         {/* Soumya */}
 
-        
+
           <Route path="/admin-login" element={<AdminLogin />} />
           <Route path="/admin-all-users" element={<AdminUsers imgUrl={imgUrl} />}
           />
