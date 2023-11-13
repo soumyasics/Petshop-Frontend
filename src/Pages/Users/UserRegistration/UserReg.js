@@ -6,6 +6,8 @@ import img3 from "../../../Assets/regPro.jpg";
 import zookeper from "../../../Assets/zookeper-logo.png";
 
 import axios from "axios";
+import UserNavbar from "../UserNavbar/UserNavbar";
+import Validation from "./Validation";
 
 function UserReg() {
   const [register, setRegister] = useState({
@@ -21,25 +23,31 @@ function UserReg() {
   });
   //
   const [captchaChecked, setCaptchaChecked] = useState(false);
+  const [errors, setErrors] = useState({});
+
   const changeCaptchaChecked = (e) => {
     setCaptchaChecked(e.target.checked);
   };
+
   const changehandleSubmit = (a) => {
     setRegister({ ...register, [a.target.name]: a.target.value });
   };
   useEffect(() => {
     console.log(register);
-  });
-  // kj
+  }, []);
+  
+
   const submitt = (b) => {
     console.log("submitted");
+
     b.preventDefault();
+    setErrors(Validation(register))
     if (!captchaChecked) {
       alert("Please check the CAPTCHA to verify");
       return; // Do not proceed if the CAPTCHA is not checked
     }
     axios
-      .post("http:localhost3000/petshop_api/register", register)
+      .post("/userRegistration", register)
       .then((result) => {
         console.log("data entered", result);
         if (result.status == 200) {
@@ -53,9 +61,10 @@ function UserReg() {
         console.log("err", error);
       });
   };
-  // jmg
+
   return (
     <div>
+      <UserNavbar />
       <div className="user-reg-cover">
         <div class="user-reg-container">
           <form onSubmit={submitt} class="row g-3 user-reg-form-1">
@@ -92,8 +101,10 @@ function UserReg() {
                       // value="Mark"
                       name="fname"
                       onChange={changehandleSubmit}
-                      required
+                
                     />
+
+                    {errors.fname && <p style={{color:'red'}}>{errors.fname}</p>}
                   </div>
                   <div class="col-md-6">
                     <label
@@ -109,8 +120,10 @@ function UserReg() {
                       // value="Otto"
                       name="lname"
                       onChange={changehandleSubmit}
-                      required
+                     
                     />
+                    
+                    {errors.lname && <p style={{color:'red'}}>{errors.lname}</p>}
                   </div>
                 </div>
                 <div class="col-md-12">
@@ -123,8 +136,10 @@ function UserReg() {
                     id="user-reg-validationDefault03"
                     name="contact"
                     onChange={changehandleSubmit}
-                    required
+                  
                   />
+                  
+                  {errors.contact && <p style={{color:'red'}}>{errors.contact}</p>}
                 </div>
                 <div class="col-md-12">
                   <label for="user-reg-validationDefault03" class="form-label">
@@ -136,8 +151,10 @@ function UserReg() {
                     id="user-reg-validationDefault03"
                     name="password"
                     onChange={changehandleSubmit}
-                    required
+                   
                   />
+                  
+                  {errors.password && <p style={{color:'red'}}>{errors.password}</p>}
                 </div>
                 <div class="col-md-12">
                   <label for="user-reg-validationDefault04" class="form-label">
@@ -149,8 +166,10 @@ function UserReg() {
                     class="form-control"
                     id="user-reg-validationDefault04"
                     onChange={changehandleSubmit}
-                    required
+                   
                   />
+                  
+                  {errors.email && <p style={{color:'red'}}>{errors.email}</p>}
                 </div>{" "}
                 <div class="col-md-12">
                   <label for="user-reg-validationDefault03" class="form-label">
@@ -162,8 +181,10 @@ function UserReg() {
                     class="form-control"
                     id="user-reg-validationDefault03"
                     onChange={changehandleSubmit}
-                    required
+                   
                   />
+                  
+                  {errors.city && <p style={{color:'red'}}>{errors.city}</p>}
                 </div>
                 <div class="col-md-12">
                   <label for="user-reg-validationDefault03" class="form-label">
@@ -175,8 +196,10 @@ function UserReg() {
                     class="form-control"
                     id="user-reg-validationDefault03"
                     onChange={changehandleSubmit}
-                    required
+                
                   />
+                  
+                  {errors.street && <p style={{color:'red'}}>{errors.street}</p>}
                 </div>
                 <div class="col-md-12">
                   <label for="user-reg-validationDefault03" class="form-label">
@@ -188,8 +211,9 @@ function UserReg() {
                     class="form-control"
                     id="user-reg-validationDefault03"
                     onChange={changehandleSubmit}
-                    required
+                   
                   />
+                    {errors.district && <p style={{color:'red'}}>{errors.district}</p>}
                 </div>
               </div>
               <div className="col-5">
@@ -217,6 +241,7 @@ function UserReg() {
                 checked={register.gender === "male"}
                 onChange={changehandleSubmit}
               />
+                {errors.gender && <p style={{color:'red'}}>{errors.gender}</p>}
               <label class="form-check-label" for="flexRadioDefault1">
                 Male
               </label>
@@ -232,6 +257,7 @@ function UserReg() {
                 checked={register.gender === "female"}
                 onChange={changehandleSubmit}
               />
+                   {errors.gender && <p style={{color:'red'}}>{errors.gender}</p>}
               <label class="form-check-label" for="flexRadioDefault2">
                 Female
               </label>
