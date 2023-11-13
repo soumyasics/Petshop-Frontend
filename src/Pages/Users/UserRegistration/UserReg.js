@@ -4,22 +4,29 @@ import img1 from "../../../Assets/RegHead.jpg";
 import img2 from "../../../Assets/captcha.png";
 import img3 from "../../../Assets/regPro.jpg";
 import zookeper from "../../../Assets/zookeper-logo.png";
-
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
+
 import UserNavbar from "../UserNavbar/UserNavbar";
 import Validation from "./Validation";
 
+import axiosInstance from "../../../BaseURL";
+
+
 function UserReg() {
+  const navigate=useNavigate()
+
   const [register, setRegister] = useState({
-    fname: "",
-    lname: "",
+    firstname: "",
+    lastname: "",
     email: "",
-    contact: "",
+    mobile: "",
     password: "",
     city: "",
     street: "",
     district: "",
     gender: "",
+    img:null
   });
   //
   const [captchaChecked, setCaptchaChecked] = useState(false);
@@ -30,11 +37,23 @@ function UserReg() {
   };
 
   const changehandleSubmit = (a) => {
+    if (a.target.name=="img") {
+      console.log("file",a.target.files[0]);
+      setRegister({
+        ...register,img: a.target.files[0]
+      })
+    }
+    else{
+
     setRegister({ ...register, [a.target.name]: a.target.value });
+    }
   };
   useEffect(() => {
     console.log(register);
+
   }, []);
+
+  });
   
 
   const submitt = (b) => {
@@ -46,15 +65,20 @@ function UserReg() {
       alert("Please check the CAPTCHA to verify");
       return; // Do not proceed if the CAPTCHA is not checked
     }
-    axios
-      .post("/userRegistration", register)
+
+    axiosInstance
+      .post("/user/userRegistration", register, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
       .then((result) => {
         console.log("data entered", result);
-        if (result.status == 200) {
+        if (result.data.status == 200) {
           alert("Register Sucessfully");
-          // navigate("/Reclogin");
+           navigate("/user-login");
         } else {
-          alert("Register Failed...");
+          alert("Registration Failed...");
         }
       })
       .catch((error) => {
@@ -99,7 +123,7 @@ function UserReg() {
                       class="form-control"
                       id="user-reg-validationDefault01"
                       // value="Mark"
-                      name="fname"
+                      name="firstname"
                       onChange={changehandleSubmit}
                 
                     />
@@ -118,7 +142,7 @@ function UserReg() {
                       class="form-control"
                       id="user-reg-validationDefault02"
                       // value="Otto"
-                      name="lname"
+                      name="lastname"
                       onChange={changehandleSubmit}
                      
                     />
@@ -134,7 +158,7 @@ function UserReg() {
                     type="text"
                     class="form-control"
                     id="user-reg-validationDefault03"
-                    name="contact"
+                    name="mobile"
                     onChange={changehandleSubmit}
                   
                   />
@@ -262,6 +286,22 @@ function UserReg() {
                 Female
               </label>
             </div>
+
+
+            <div class="col-md-12">
+                  <label for="user-reg-validationDefault03" class="form-label">
+                    Image 
+                  </label>
+                  <input
+                    type="file"
+                    name="img"
+                    class="form-control"
+                    id="user-reg-validationDefault03"
+                    onChange={changehandleSubmit}
+                    required
+                  />
+                </div>
+
 
             <div className="user-reg-container-captcha col-md-4">
               <div className="user-reg-Container-innerCheckbox">

@@ -59,16 +59,16 @@
 }
 
 .profile-edit-gender-container {
-    display: flex;
-    width: 50%;
-    padding-top: 10px;
-    box-sizing: border-box;
-    margin-bottom: 20px;
+  display: flex;
+  width: 50%;
+  padding-top: 10px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
 }
 
-.profile-edit-gender-container label{
-    margin-right: 15px;
-    margin-left: 5px;
+.profile-edit-gender-container label {
+  margin-right: 15px;
+  margin-left: 5px;
 }
 
 .profile-edit-btn-container {
@@ -83,13 +83,11 @@
   width: 36%;
   height: 50px;
   border: none;
-  background-color: 
-  rgba(1, 138, 224, 1);
+  background-color: rgba(1, 138, 224, 1);
   color: white;
   font-size: 20px;
   border-radius: 5px;
 }
-
 
 .profile-edit-right-section {
   height: 34rem;
