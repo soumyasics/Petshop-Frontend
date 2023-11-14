@@ -89,8 +89,7 @@
 .homepageabc {
   height: 45px;
   width: 180px;
-  padding-top: 40px;
-  font-size: 80px;
+  font-size: 16px;
   margin-left: 70px;
 }
 .homepagediv11 {
@@ -225,20 +224,25 @@
   color: rgb(7, 156, 248);
 }
 
+.home-page-cat-div {
+  width: 80%;
+  height: 293px;
+  top: -140px;
+  position: relative;
+  margin: auto;
+  right: 40px;
+}
 .homepageimg5 {
-  margin-left:135px;
+  z-index: 2;
 }
 .homepagediv24 {
-  border: 1px solid rgb(250, 2, 2);
-  width: 350px;
-  height: 500px;
+  width: 380px;
+  height: 510px;
   background-color: rgb(0, 153, 255);
   padding-left: 31px;
   padding-top: 21px;
   color: aliceblue;
-  padding-bottom: 541px;
 }
-
 .home-page-snd-msg {
   font-size: 12px;
   text-align: center;
@@ -276,6 +280,7 @@
 
 .homepagep30 {
   font-size: 25px;
+  text-align: center;
 }
 .homepageklm {
   width: 170px;
@@ -387,8 +392,14 @@ h .homepagediv52 {
 .homepageb90 {
   font-size: 40px;
 }
+
 .homepagediv23 {
   margin-top: 150px;
+  width: 246px;
+  text-align: center;
+}
+.homepagediv23>p>b{
+  font-size: 27px;
 }
 .homepagei3 {
   border: none;
@@ -401,6 +412,15 @@ h .homepagediv52 {
 }
 .homepagediv25 {
   margin-top: 100px;
+  text-align: center;
+  width: 350px;
+}
+.homepagediv25 svg {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+.homepagediv25 p {
+  font-size: 14px;
 }
 .homepagexyz {
   margin-bottom: 5px;

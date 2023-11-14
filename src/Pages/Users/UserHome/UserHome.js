@@ -17,7 +17,7 @@ import img15 from "../../../Assets/pexels-ron-lach-10117273.jpg";
 import img16 from "../../../Assets/close-up-woman-hugging-her-pet-dog.jpg";
 import img17 from "../../../Assets/pexels-shvets-production-7533347.jpg";
 import img18 from "../../../Assets/Trust Me I'm A Dogtor - Gift Mug.jpeg";
-import img19 from "../../../Assets/gold-bengal-cat-white-space.jpg";
+import img19 from "../../../Assets/cat-hand-transparent.png";
 import img20 from "../../../Assets/img1-removebg-preview.png";
 import CommonNavbar from "../../Common/CommonNavbar";
 import UserNavbar from "../UserNavbar/UserNavbar";
@@ -435,8 +435,9 @@ const UserHome = () => {
         </div>
       </div>
 
-      <img class="homepageimg5" src={img19} width="1000px" height="550px" />
-
+      <div className="home-page-cat-div">
+        <img class="homepageimg5" src={img19} width="1000px" height="550px" />
+      </div>
       <div class="homepagediv26">
         <div class="homepagediv23">
           <p>
@@ -455,27 +456,25 @@ const UserHome = () => {
             <input class="homepagei3" type="text" />
             <hr />
             Email address:
-            <br />
+            
             <br />
             <input class="homepagei3" type="email" />
-            <br />
+          
             <hr />
             Subject:
-            <br />
+          
             <br />
             <input class="homepagei3" type="text" />
-            <br />
+         
             <hr />
             Message:
-            <br />
+        
             <br />
             <textarea class="t1"></textarea>
-            <br />
+          
             <br />
             <hr />
-            <span class="homepagedef home-page-snd-msg">
-              SEND MESSAGE
-            </span>
+            <span class="homepagedef home-page-snd-msg">SEND MESSAGE</span>
           </form>
         </div>
 
@@ -484,10 +483,9 @@ const UserHome = () => {
             <b>Get in Touch</b>
           </h2>
           <p>
-            Want to adopt a pet or rescue an abandoned pet?Explore <br />
-            one of these best dog rescue shelters near you and get in
-            <br />
-            touch with animal rescue.
+            Want to adopt a pet or rescue an abandoned pet?Explore one of these
+            best dog rescue shelters near you and get in touch with animal
+            rescue.
           </p>
           <p>
             <svg
@@ -497,6 +495,7 @@ const UserHome = () => {
               fill="currentColor"
               class="bi bi-envelope-fill"
               viewBox="0 0 16 16"
+              color="#D61C62"
             >
               <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z" />
             </svg>
@@ -508,6 +507,7 @@ const UserHome = () => {
               fill="currentColor"
               class="bi bi-telephone-fill"
               viewBox="0 0 16 16"
+              color="#D61C62"
             >
               <path
                 fill-rule="evenodd"
@@ -524,6 +524,7 @@ const UserHome = () => {
               fill="currentColor"
               class="bi bi-geo-alt-fill"
               viewBox="0 0 16 16"
+              color="#D61C62"
             >
               <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
             </svg>
