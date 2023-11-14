@@ -30,7 +30,7 @@ export default function Validation(register) {
     errors.email ='email is Required!'
    }
    else if(!email.test(register.email)){
-    errors.email ='email didnt match'
+    errors.email ='email did not match'
    }
    return errors;
 
