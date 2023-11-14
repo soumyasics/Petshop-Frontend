@@ -19,14 +19,15 @@ import UserForgotPwdReq from "./Pages/Users/UserForgotPassword/UserForgotPasswor
 import UserForgotPwdAftrReq from "./Pages/Users/UserForgotPassword/UserForgotPwdAftrReq.js";
 
 import PetShopLogin from "./Pages/PetShop/PetShopLogin/PetShopLogin.jsx";
-
+import AdminNabar from "./Pages/Admin/AdminNavbar/AdminNavbar.js"
 import UserHome from "./Pages/Users/UserHome/UserHome.js";
 import CommonNavbar from "./Pages/Common/CommonNavbar.js";
 import PetShopRegistration from "./Pages/PetShop/PetShopReg/PetShopReg.jsx";
 import AdminUsers from "./Pages/Admin/AdminViewAllUsers/AdminUsers.js";
 import PetShopAddPet from "./Pages/PetShop/AddPet/PetShopAddPet.jsx";
 import TestComponent from "./Pages/PetShop/PetShopReg/test.jsx";
-
+import AdminViewAllShops from "./Pages/Admin/AdminViewAllShops/AdminViewAllShops.js";
+import AdminViewAllPet from './Pages/Admin/AdminViewAllPets/AdminViewAllPet.js'
 function App() {
   let imgUrl = "http://localhost:4000";
   return (
@@ -67,11 +68,13 @@ function App() {
 
           {/* Soumya */}
 
-          <Route path="/admin-login" element={<AdminLogin />} />
-          <Route
-            path="/admin-all-users"
-            element={<AdminUsers imgUrl={imgUrl} />}
-          />
+          <Route path="/admin/admin-login" element={<AdminLogin />} />
+          <Route path="/admin/admin-navbar" element={<AdminNabar />} />
+          <Route path="/admin/admin-all-shops" element={<AdminViewAllShops imgUrl={imgUrl}/>} />
+
+          <Route path="/admin/admin-all-users" element={<AdminUsers imgUrl={imgUrl} />}/>
+          
+          <Route path="/admin/admin-all-pets" element={<AdminViewAllPet imgUrl={imgUrl} />}/>
 
           {/* just for testing purpose will remove  */}
           <Route path="/test" element={<TestComponent />} />

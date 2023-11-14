@@ -1,0 +1,36 @@
+.admin-view-pets-user-img{
+    height: 150px;
+    width: 150px;
+    border-radius: 5%;
+    margin: 5%;
+}
+.admin-view-pets-card1{
+    width: 75%;
+}
+.admin-view-pets-name{
+   margin: 5%;
+}
+.admin-view-pets-box{
+    margin-bottom: 0.2%;
+    margin-top: 3% !important;
+}
+.admin-view-pets-container-box{
+    margin-left: 10%;
+    margin-right: 2%;
+}
+.admin-view-pets-btn1{
+    width: 50%;
+    margin:25%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 50%;
+    height: 25%;
+}
+button.admin-view-pets-btn1:hover{
+    background-color:  #D61C62;
+    border-color: #D61C62;
+    width: 53%;
+    height: 27%;
+    margin-left: 22%;
+    margin-right: 22%; 
+}
