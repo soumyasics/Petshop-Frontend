@@ -17,11 +17,13 @@ import img15 from "../../../Assets/pexels-ron-lach-10117273.jpg";
 import img16 from "../../../Assets/close-up-woman-hugging-her-pet-dog.jpg";
 import img17 from "../../../Assets/pexels-shvets-production-7533347.jpg";
 import img18 from "../../../Assets/Trust Me I'm A Dogtor - Gift Mug.jpeg";
-import img19 from "../../../Assets/gold-bengal-cat-white-space.jpg";
+import img19 from "../../../Assets/cat-hand-transparent.png";
 import img20 from "../../../Assets/img1-removebg-preview.png";
 import CommonNavbar from "../../Common/CommonNavbar";
-import "./UserHome.css";
 import UserNavbar from "../UserNavbar/UserNavbar";
+import Footer from "../../Common/Footer/Footer.jsx";
+import "./UserHome.css";
+import NewsLetter from "../../Common/NewsLetter/NewsLetter.jsx";
 
 const UserHome = () => {
   return (
@@ -246,35 +248,30 @@ const UserHome = () => {
               <p class="homepagep8">
                 <b>SPECIAL NEEDS FRIENDLY TO OTHER PETS</b>
               </p>
-              <p>
+              <p className="user-home-more-info-btn">
                 <span class="badge rounded-pill text-bg-primary homepageabc">
                   MORE INFO
                 </span>
               </p>
             </div>
             <div class="homepagediv14">
-              <b class="homepageb2">Charlie</b>
-              <br />
-              <br />
-              <br />
-              <br />
-              <b>Gender:</b>Female
-              <br />
-              <br />
-              <hr></hr>
-              <b>Age:</b>2years
-              <br />
-              <br />
-              <br />
-              <br />
-              <hr></hr>
-              <b>Breed:</b>Husky
+              <p>
+                <b class="homepageb2">Charlie</b>
+              </p>
+              <p>
+                <b>Gender:</b> &nbsp; Female
+              </p>
+              <p>
+                <b>Age:</b> &nbsp; 2years
+              </p>
+              <p>
+                <b>Breed:</b> &nbsp; Husky
+              </p>
             </div>
           </div>
           {/* </div> */}
         </div>
-
-        <div class="homepagediv17">
+        <div class="homepagediv16">
           <div class="homepagediv12">
             <div class="homepagediv13">
               <img
@@ -286,51 +283,35 @@ const UserHome = () => {
               <p class="homepagep8">
                 <b>SPECIAL NEEDS FRIENDLY TO OTHER PETS</b>
               </p>
-              <p>
+              <p className="user-home-more-info-btn">
                 <span class="badge rounded-pill text-bg-primary homepageabc">
                   MORE INFO
                 </span>
               </p>
             </div>
             <div class="homepagediv14">
-              <b class="homepageb2">Max</b>
-              <br />
-              <br />
-              <br />
-              <br />
-              <b>Gender:</b>Male
-              <br />
-              <br />
-              <hr></hr>
-              <b>Age:</b>7years
-              <br />
-              <br />
-              <hr></hr>
-              <b>Breed:</b>Mixed
+              <p>
+                <b class="homepageb2">Max</b>
+              </p>
+              <p>
+                <b>Gender:</b> &nbsp; Male
+              </p>
+              <p>
+                <b>Age:</b> &nbsp; 7 Years
+              </p>
+              <p>
+                <b>Breed:</b> &nbsp; Mixed
+              </p>
             </div>
           </div>
+          {/* </div> */}
         </div>
       </div>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
 
-      <span class="badge rounded-pill text-bg-danger homepagedef">
-        SEE ADOPTION GALLERY
-      </span>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
+      <div className="user-home-adoption-div">
+        <span class="homepagedef">SEE ADOPTION GALLERY</span>
+      </div>
+
       <div class="homepagediv18">
         <p class="homepageP9">
           -IMAGE TOUR-
@@ -412,9 +393,7 @@ const UserHome = () => {
               <br />
               care of your best friend
             </p>
-            <span class="badge rounded-pill text-bg-danger homepagehij">
-              VIEW ALL TEAM
-            </span>
+            <span class="homepagedef">VIEW ALL TEAM</span>
           </div>
 
           <div class="homepagediv60">
@@ -422,12 +401,12 @@ const UserHome = () => {
             <p class="homepagep60">Laura Smith</p>
             <b class="homepageb10">Veterinarian</b>
             <br />
-            <br />
-            <br />
-            <br />
-            'She is an awesome vet...one <br />
-            thing i like in her that she <br />
-            explains everything point to point"
+            <p className="user-home-team-desc">
+              'She is an awesome vet...one <br />
+              thing i like in her that she <br />
+              explains everything point to point"
+            </p>
+
             <br />
           </div>
 
@@ -436,10 +415,11 @@ const UserHome = () => {
             <p class="homepagep60">John Doe</p>
             <b class="homepageb10">Pet Trainer</b>
             <br />
-            <br />
-            <br />
-            <br />
-            'Best Veterinarian! She is gentle and treats pets with love and care
+
+            <p className="user-home-team-desc">
+              'Best Veterinarian! She is gentle and treats pets with love and
+              care
+            </p>
           </div>
 
           <div class="homepagediv60">
@@ -447,19 +427,17 @@ const UserHome = () => {
             <p class="homepagep60">Meghan Smith</p>
             <b class="homepageb10">Cat Specialist</b>
             <br />
-            <br />
-            <br />
-            <br />
-            "She's been a very strong support to the animal rescuers community,
-            who often seeks help
-            <br />
-            <br /> at any time"
+            <p className="user-home-team-desc">
+              "She's been a very strong support to the animal rescuers
+              community, who often seeks help at any time"
+            </p>
           </div>
         </div>
       </div>
 
-      <img class="homepageimg5" src={img19} width="1000px" height="550px" />
-
+      <div className="home-page-cat-div">
+        <img class="homepageimg5" src={img19} width="1000px" height="550px" />
+      </div>
       <div class="homepagediv26">
         <div class="homepagediv23">
           <p>
@@ -478,27 +456,25 @@ const UserHome = () => {
             <input class="homepagei3" type="text" />
             <hr />
             Email address:
-            <br />
+            
             <br />
             <input class="homepagei3" type="email" />
-            <br />
+          
             <hr />
             Subject:
-            <br />
+          
             <br />
             <input class="homepagei3" type="text" />
-            <br />
+         
             <hr />
             Message:
-            <br />
+        
             <br />
             <textarea class="t1"></textarea>
-            <br />
+          
             <br />
             <hr />
-            <span class="badge rounded-pill text-bg-danger homepageklm">
-              SEND MESSAGE
-            </span>
+            <span class="homepagedef home-page-snd-msg">SEND MESSAGE</span>
           </form>
         </div>
 
@@ -507,10 +483,9 @@ const UserHome = () => {
             <b>Get in Touch</b>
           </h2>
           <p>
-            Want to adopt a pet or rescue an abandoned pet?Explore <br />
-            one of these best dog rescue shelters near you and get in
-            <br />
-            touch with animal rescue.
+            Want to adopt a pet or rescue an abandoned pet?Explore one of these
+            best dog rescue shelters near you and get in touch with animal
+            rescue.
           </p>
           <p>
             <svg
@@ -520,6 +495,7 @@ const UserHome = () => {
               fill="currentColor"
               class="bi bi-envelope-fill"
               viewBox="0 0 16 16"
+              color="#D61C62"
             >
               <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z" />
             </svg>
@@ -531,6 +507,7 @@ const UserHome = () => {
               fill="currentColor"
               class="bi bi-telephone-fill"
               viewBox="0 0 16 16"
+              color="#D61C62"
             >
               <path
                 fill-rule="evenodd"
@@ -547,6 +524,7 @@ const UserHome = () => {
               fill="currentColor"
               class="bi bi-geo-alt-fill"
               viewBox="0 0 16 16"
+              color="#D61C62"
             >
               <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
             </svg>
@@ -559,97 +537,8 @@ const UserHome = () => {
       <br />
       <br />
 
-      <div class="homepagediv27">
-        <p class="homepagep22">
-          <b>Subscribe to our newsletter</b>
-        </p>
-        <p>We send e-mails once a month,we never send Spam!</p>
-        <br />
-        <br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input class="homepagei1" type="email" placeholder="Your email here" />
-        <button type="button" class="btn btn-primary btn-sm homepagexyz">
-          Subscribe
-        </button>
-      </div>
-
-      <div class="homepagediv104">
-        <div class="homepagediv100">
-          <img src={img20} width="200px" height="200px" />
-        </div>
-
-        <div class="homepagediv101">
-          <h3>About Us</h3>
-          <p>
-            In addition to our public Low-Cost
-            <br />
-            <br />
-            Vet Clinic, our veterinary medical
-            <br />
-            <br />
-            team provides specialized and
-            <br />
-            compassionate.
-          </p>
-        </div>
-
-        <div class="homepagediv102">
-          <h3>Contact Us</h3>
-          <p>
-            <p>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                class="bi bi-envelope-fill"
-                viewBox="0 0 16 16"
-              >
-                <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z" />
-              </svg>
-              <b class="b100">zookeeper@yoursite.com</b>
-              <br />
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                class="bi bi-telephone-fill"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"
-                />
-              </svg>
-              (91)2345678
-              <br />
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                class="bi bi-geo-alt-fill"
-                viewBox="0 0 16 16"
-              >
-                <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
-              </svg>
-              Zoo Street 123-Trivandrum
-            </p>
-          </p>
-        </div>
-
-        <div class="homepagediv103">
-          <h3>Working Hours</h3>
-          <p>
-            Open from 9am - 6pm
-            <br />
-            Holidays- Closed
-            <br />
-            Weekends-Closed
-          </p>
-        </div>
-      </div>
+      <NewsLetter />
+      <Footer />
     </div>
   );
 };

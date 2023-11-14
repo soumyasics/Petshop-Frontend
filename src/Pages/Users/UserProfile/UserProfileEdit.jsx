@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useRef } from "react";
 import dogAndMan from "../../../Assets/black-man-and-dog.jpg";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import axiosInstance from "../../../BaseURL";
 import "./UserProfileEdit.css";
 const UserProfile = () => {
   const navigate = useNavigate();
@@ -23,8 +23,8 @@ const UserProfile = () => {
   function isUserLogin() {
     const userToken = localStorage.getItem("petshop-token") || null;
     if (userToken) {
-      axios
-        .get("http://localhost:4000/petshop_api/user-data", {
+      axiosInstance
+        .get("/user/user-data", {
           headers: {
             Authorization: `Bearer ${userToken}`,
           },
@@ -81,8 +81,8 @@ const UserProfile = () => {
   };
 
   const editProfileData = (userToken) => {
-    axios
-      .patch("http://localhost:4000/petshop_api/userProfileEdit", userInfo, {
+    axiosInstance
+      .patch("/user/userProfileEdit", userInfo, {
         headers: {
           Authorization: `Bearer ${userToken}`,
         },
