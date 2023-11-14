@@ -1,0 +1,36 @@
+.user-img{
+    height: 150px;
+    width: 150px;
+    border-radius: 5%;
+    margin: 5%;
+}
+.card1{
+    width: 75%;
+}
+.name{
+   margin: 5%;
+}
+.box{
+    margin-bottom: 0.2%;
+    margin-top: 3% !important;
+}
+.container-box{
+    margin-left: 10%;
+    margin-right: 2%;
+}
+.btn1{
+    width: 50%;
+    margin:25%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 50%;
+    height: 25%;
+}
+button.btn1:hover{
+    background-color:  #D61C62;
+    border-color: #D61C62;
+    width: 53%;
+    height: 27%;
+    margin-left: 22%;
+    margin-right: 22%; 
+}

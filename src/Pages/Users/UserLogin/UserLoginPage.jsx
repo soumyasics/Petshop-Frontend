@@ -4,20 +4,21 @@ import loginDog from "../../../Assets/login-dog-img.png";
 import zookeper from "../../../Assets/zookeper-logo.png";
 import { AiFillEye } from "react-icons/ai";
 import { AiFillEyeInvisible } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
-import axios from "axios";
 import "./UserLoginPage.css";
+import axiosInstance from "../../../BaseURL";
+import { Link } from "react-router-dom";
 const LoginPage = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const BASE_URL = "http://localhost:4000/petshop_api";
 
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
-
   const handleSubmit = () => {
     if (!email || !password) {
       alert("Please enter email and password");
@@ -33,24 +34,28 @@ const LoginPage = () => {
       alert("Password must be at least 6 characters long");
       return;
     }
-    const credentials = { email, password };
+    const credentials = { email, password, role: "user" };
     sendDataToServer(credentials);
 
-    console.log(email, password);
   };
 
   const sendDataToServer = (credentials) => {
-    try {
-      axios.post(`${BASE_URL}/userLogin`, credentials).then((res) => {
-        if (res.status === 200) {
-          alert("Login successful");
-        } else {
-          alert("Login failed");
-        }
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    axiosInstance.post(`/user/userLogin`, credentials).then((res) => {
+      if (res.status === 200) {
+        alert("Login successful");
+        localStorage.setItem("petshop-token", res.data.token);
+        setTimeout(() => {
+          navigate("/");
+        }, 1000)
+      } else {
+        alert("Login failed");
+      }
+    }).catch((err) => {
+      console.log(err);
+      if (err.response.status === 404 || err.response.status === 401) {
+        alert("Please verify your email and password");
+      }
+    })
   };
 
   const handleForgotPassword = () => {};
@@ -101,11 +106,11 @@ const LoginPage = () => {
                 <input type="checkbox" name="remember-me" />
                 <label for="remember-me">Remember me</label>
               </div>
-              <p onClick={handleForgotPassword}>Forgot Password?</p>
+              <Link to="/user-forgot-password-req"> <p onClick={handleForgotPassword} style={{color:'white'}}>Forgot Password?</p></Link>
             </div>
 
             <p className="dont-have-account">
-              Don't have an account? <span>Sign Up</span>
+              Don't have an account?  <Link to="/user-reg"><span  style={{color:'white'}}>Sign Up</span></Link>
             </p>
 
             <div className="signin-btn-container">
