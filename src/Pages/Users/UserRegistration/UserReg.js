@@ -11,8 +11,8 @@ import Validation from "./Validation";
 
 function UserReg() {
   const [register, setRegister] = useState({
-    fname: "",
-    lname: "",
+    firstname: "",
+    lastname: "",
     email: "",
     contact: "",
     password: "",
@@ -24,6 +24,8 @@ function UserReg() {
   //
   const [captchaChecked, setCaptchaChecked] = useState(false);
   const [errors, setErrors] = useState({});
+  const [isSubmit, setisSubmit] = useState(false);
+  
 
   const changeCaptchaChecked = (e) => {
     setCaptchaChecked(e.target.checked);
@@ -33,15 +35,20 @@ function UserReg() {
     setRegister({ ...register, [a.target.name]: a.target.value });
   };
   useEffect(() => {
-    console.log(register);
-  }, []);
+    if(Object.keys(errors).length === 0 && isSubmit){
+      console.log(register);
+    }
+ 
+  }, [errors]);
   
 
   const submitt = (b) => {
     console.log("submitted");
 
     b.preventDefault();
+    
     setErrors(Validation(register))
+    setisSubmit(true)
     if (!captchaChecked) {
       alert("Please check the CAPTCHA to verify");
       return; // Do not proceed if the CAPTCHA is not checked
@@ -104,7 +111,7 @@ function UserReg() {
                 
                     />
 
-                    {errors.fname && <p style={{color:'red'}}>{errors.fname}</p>}
+                    {errors.firstname && <p style={{color:'red'}}>{errors.firstname}</p>}
                   </div>
                   <div class="col-md-6">
                     <label
@@ -123,7 +130,7 @@ function UserReg() {
                      
                     />
                     
-                    {errors.lname && <p style={{color:'red'}}>{errors.lname}</p>}
+                    {errors.lastname && <p style={{color:'red'}}>{errors.lastname}</p>}
                   </div>
                 </div>
                 <div class="col-md-12">

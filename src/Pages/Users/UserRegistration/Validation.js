@@ -1,11 +1,11 @@
 export default function Validation(register) {
     const errors = {}
     const email= /^[^\s@]+@[^\s@]+\.[^\s@]{2,6}$/
-   if (register.fname === '') {
-    errors.fname ='FirstName is Required!'
+   if (register.firstname === '') {
+    errors.firstname ='FirstName is Required!'
    }
-   if (register.lname === '') {
-    errors.lname ='LasttName is Required!'
+   if (register.lastname === '') {
+    errors.lastname ='LasttName is Required!'
    }
    if (register.contact === '') {
     errors.contact ='Contact is Required!'
