@@ -49,7 +49,7 @@ const PetShopLogin = () => {
 
   const sendDataToServer = (credentials) => {
     axiosInstance
-      .post("/shop/login", credentials)
+      .post("shop/shopLogin", credentials)
       .then((res) => {
         if (res.status === 200) {
           alert("Login Successful");
@@ -66,7 +66,7 @@ const PetShopLogin = () => {
       .catch((err) => {
         console.log(err);
         if (err.response.status === 404) {
-          alert("Invalid Email Id");
+          alert("Invalid Email or Password ");
         } else if (err.response.status === 401) {
           alert("Please Check your Email and password");
         } else {

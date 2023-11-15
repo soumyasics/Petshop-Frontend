@@ -1,19 +1,16 @@
-import zookeeperLogo from "../../../Assets/zookeper-logo.png";
 import imgUploadPlaceholder from "../../../Assets/PlaceholderImage.png";
 import uploadImageIcon from "../../../Assets/upload-img-icon.png";
 import { InputGroup } from "react-bootstrap";
 import { Form } from "react-bootstrap";
+import axios from "axios";
 import Footer from "../../Common/Footer/Footer";
 import { useState, useRef } from "react";
-import axiosInstance from "../../../BaseURL";
-import Col from "react-bootstrap/Col";
 import { useNavigate } from "react-router-dom";
 import "./PetShopReg.css";
 import PetShopNavbar from "../Common/PetShopNavbar";
-import InputGroupText from "react-bootstrap/esm/InputGroupText";
+import axiosInstance from "../../../BaseURL";
 const PetShopRegistration = () => {
-  const [activeShopImage, setIsActiveShopImage] =
-    useState(imgUploadPlaceholder);
+  const [activeShopImage, setIsActiveShopImage] = useState(null);
   const fileInputRef = useRef(null);
 
   const [shopInfo, setShopInfo] = useState({
@@ -30,6 +27,8 @@ const PetShopRegistration = () => {
     registrationNumber: "",
     ownershipId: "",
     description: "",
+    openingTime: "",
+    closingTime: "",
     shopImage: null,
   });
   const navigate = useNavigate();
@@ -52,7 +51,7 @@ const PetShopRegistration = () => {
     if (newShopImage) {
       reader.readAsDataURL(newShopImage);
     } else {
-      setIsActiveShopImage(imgUploadPlaceholder);
+      setIsActiveShopImage(null);
     }
   };
   const handleImageBtnClick = () => {
@@ -77,6 +76,7 @@ const PetShopRegistration = () => {
     setValidated(true);
     const {
       ownerFirstName,
+      ownerLastName,
       shopName,
       street,
       city,
@@ -88,9 +88,12 @@ const PetShopRegistration = () => {
       registrationNumber,
       ownershipId,
       description,
+      openingTime,
+      closingTime,
     } = shopInfo;
     if (
       !ownerFirstName ||
+      !ownerLastName ||
       !shopName ||
       !street ||
       !city ||
@@ -101,9 +104,11 @@ const PetShopRegistration = () => {
       !licenseNumber ||
       !registrationNumber ||
       !ownershipId ||
-      !description
+      !description ||
+      !openingTime ||
+      !closingTime
     ) {
-      console.log("All fields are required.")
+      console.log("All fields are required.");
       return;
     }
 
@@ -138,10 +143,12 @@ const PetShopRegistration = () => {
     formData.append("ownershipid", shopInfo.ownershipId);
     formData.append("district", shopInfo.district);
     formData.append("description", shopInfo.description);
+    formData.append("openingtime", shopInfo.openingTime);
+    formData.append("closingtime", shopInfo.closingTime);
     formData.append("img", shopInfo.shopImage);
 
     axiosInstance
-      .post("/shopRegistration", formData)
+      .post("shop/shopRegistration", formData)
       .then((res) => {
         console.log("response", res);
         if (res.status === 200) {
@@ -153,7 +160,15 @@ const PetShopRegistration = () => {
       })
       .catch((err) => {
         console.log("error", err);
-        alert("Registration Failed");
+        if (err.response.status === 409) {
+          alert("Email already exists");
+        } else if (err.response.status === 400) {
+          alert("Please fill all fields");
+        } else if (err.response.status === 500) {
+          alert("Server Error Please Try Again");
+        } else {
+          alert("Registration Failed");
+        }
       });
   };
 
@@ -164,8 +179,8 @@ const PetShopRegistration = () => {
       <div className="add-pet-header-img">
         <img
           className="add-pet-placeholder-img"
-          src={activeShopImage}
-          alt="women"
+          src={activeShopImage ? activeShopImage : imgUploadPlaceholder}
+          alt="upload-img"
         />
         <img
           className="add-pet-upload-img-icon"
@@ -400,6 +415,42 @@ const PetShopRegistration = () => {
 
             <Form.Control.Feedback type="invalid">
               Ownership ID is required.
+            </Form.Control.Feedback>
+          </InputGroup>
+          <InputGroup className="mb-3 add-pet-user-input">
+            <Form.Label> Shop Opening Time</Form.Label>
+
+            <Form.Control
+              placeholder="Opening Time"
+              aria-label="Opening Time"
+              aria-describedby="basic-addon1"
+              type="text"
+              name="openingTime"
+              value={shopInfo.openingTime}
+              onChange={handleChange}
+              required
+            />
+
+            <Form.Control.Feedback type="invalid">
+              Opening Time is required.
+            </Form.Control.Feedback>
+          </InputGroup>
+          <InputGroup className="mb-3 add-pet-user-input">
+            <Form.Label> Shop Closing Time </Form.Label>
+
+            <Form.Control
+              placeholder="Clsoing Time"
+              aria-label="Closing Time"
+              aria-describedby="basic-addon1"
+              type="text"
+              name="closingTime"
+              value={shopInfo.closingTime}
+              onChange={handleChange}
+              required
+            />
+
+            <Form.Control.Feedback type="invalid">
+              Closing Time is required.
             </Form.Control.Feedback>
           </InputGroup>
 

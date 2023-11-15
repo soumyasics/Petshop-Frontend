@@ -10,14 +10,14 @@ const PetShopAddPet = () => {
   const [activeImage, setActiveImage] = useState(null);
   const fileInputRef = useRef(null);
   const [petInfo, setPetInfo] = useState({
-    name: "",
+    name: "a",
     type: "dog",
-    age: "",
+    age: "a",
     gender: "male",
-    breed: "",
-    description: "",
+    breed: "a",
+    description: "a",
     image: null,
-    price: "",
+    price: "1000",
   });
   const handleSubmit = (e) => {
     e.preventDefault();
