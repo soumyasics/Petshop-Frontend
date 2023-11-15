@@ -28,6 +28,7 @@ import PetShopAddPet from "./Pages/PetShop/AddPet/PetShopAddPet.jsx";
 import TestComponent from "./Pages/PetShop/PetShopReg/test.jsx";
 import AdminViewAllShops from "./Pages/Admin/AdminViewAllShops/AdminViewAllShops.js";
 import AdminViewAllPet from './Pages/Admin/AdminViewAllPets/AdminViewAllPet.js'
+import AdminViewEnquiries from "./Pages/Admin/AdminEnquiries/AdminViewEnquiries.js";
 function App() {
   let imgUrl = "http://localhost:4000";
   return (
@@ -75,6 +76,7 @@ function App() {
           <Route path="/admin/admin-all-users" element={<AdminUsers imgUrl={imgUrl} />}/>
           
           <Route path="/admin/admin-all-pets" element={<AdminViewAllPet imgUrl={imgUrl} />}/>
+          <Route path="/admin/admin-view-enquiries" element={<AdminViewEnquiries />} />
 
           {/* just for testing purpose will remove  */}
           <Route path="/test" element={<TestComponent />} />
