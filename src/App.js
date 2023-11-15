@@ -26,6 +26,7 @@ import PetShopRegistration from "./Pages/PetShop/PetShopReg/PetShopReg.jsx";
 import AdminUsers from "./Pages/Admin/AdminViewAllUsers/AdminUsers.js";
 import PetShopAddPet from "./Pages/PetShop/AddPet/PetShopAddPet.jsx";
 import TestComponent from "./Pages/PetShop/PetShopReg/test.jsx";
+import AdminPetProfile from "./Pages/Admin/AdminPetProfile/AdminPetProfile.js";
 
 function App() {
   let imgUrl = "http://localhost:4000";
@@ -72,7 +73,7 @@ function App() {
             path="/admin-all-users"
             element={<AdminUsers imgUrl={imgUrl} />}
           />
-
+          <Route path="/admin/pet-profile" element={<AdminPetProfile/>} />
           {/* just for testing purpose will remove  */}
           <Route path="/test" element={<TestComponent />} />
           {/* This Route should be last */}
