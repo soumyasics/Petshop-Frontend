@@ -26,6 +26,8 @@ import PetShopRegistration from "./Pages/PetShop/PetShopReg/PetShopReg.jsx";
 import AdminUsers from "./Pages/Admin/AdminViewAllUsers/AdminUsers.js";
 import PetShopAddPet from "./Pages/PetShop/AddPet/PetShopAddPet.jsx";
 import TestComponent from "./Pages/PetShop/PetShopReg/test.jsx";
+import AdminPetProfile from "./Pages/Admin/AdminPetProfile/AdminPetProfile.js";
+
 import AdminViewAllShops from "./Pages/Admin/AdminViewAllShops/AdminViewAllShops.js";
 import AdminViewAllPet from './Pages/Admin/AdminViewAllPets/AdminViewAllPet.js'
 import AdminViewEnquiries from "./Pages/Admin/AdminEnquiries/AdminViewEnquiries.js";
@@ -68,6 +70,13 @@ function App() {
           <Route path="/petshop/add-pet" element={<PetShopAddPet />} />
 
           {/* Soumya */}
+
+          <Route path="/admin-login" element={<AdminLogin />} />
+          <Route
+            path="/admin-all-users"
+            element={<AdminUsers imgUrl={imgUrl} />}
+          />
+          <Route path="/admin/pet-profile" element={<AdminPetProfile/>} />
 
           <Route path="/admin/admin-login" element={<AdminLogin />} />
           <Route path="/admin/admin-navbar" element={<AdminNabar />} />

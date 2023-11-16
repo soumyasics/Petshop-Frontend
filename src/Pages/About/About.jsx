@@ -7,9 +7,9 @@ import dogsWalk from "../../Assets/pexels-blue-bird-7210754.jpg";
 import huskyKiss from "../../Assets/pexels-maksim-goncharenok-9956250.jpg";
 import couchDog from "../../Assets/pexels-ron-lach-10117273.jpg";
 import airCat from "../../Assets/pexels-sam-lion-6001183.jpg";
-import UserNavbar from "../Users/UserNavbar/UserNavbar";
 import "./About.css";
 import CommonNavbar from "../Common/CommonNavbar";
+import Footer from "../Common/Footer/Footer";
 function About() {
   return (
     <div>
@@ -92,6 +92,7 @@ function About() {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }
