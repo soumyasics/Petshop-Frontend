@@ -16,7 +16,7 @@ const PetShopRegistration = () => {
   const [shopInfo, setShopInfo] = useState({
     ownerFirstName: "",
     ownerLastName: "",
-    ownername:'',
+    ownername: "",
     shopname: "",
     street: "",
     city: "",
@@ -127,40 +127,25 @@ const PetShopRegistration = () => {
   };
 
   const sendDataToServer = (shopInfo) => {
-    const formData = new FormData();
+    setShopInfo({
+      ...shopInfo,
+      ownername: shopInfo.ownerFirstName + " " + shopInfo.ownerLastName,
+    });
 
-    formData.append(
-      "ownername",
-      `${shopInfo.ownerFirstName} ${shopInfo.ownerLastName}`
-    );
-    formData.append("shopname", shopInfo.shopname);
-    formData.append("city", shopInfo.city);
-    formData.append("street", shopInfo.street);
-    formData.append("email", shopInfo.email);
-    formData.append("password", shopInfo.password);
-    formData.append("licenceno", shopInfo.licenceno);
-    formData.append("regno", shopInfo.regno);
-    formData.append("mobile", shopInfo.mobile);
-    formData.append("ownershipid", shopInfo.ownershipId);
-    formData.append("district", shopInfo.district);
-    formData.append("description", shopInfo.description);
-    formData.append("openingtime", shopInfo.openingtime);
-    formData.append("closingtime", shopInfo.closingtime);
-    formData.append("img", shopInfo.img);
-    console.log(formData);
-    shopInfo.ownername=shopInfo.ownerFirstName+" "+shopInfo.ownerLastName
-console.log(shopInfo);
+
     axiosInstance
-      .post("shop/shopRegistration", shopInfo,{headers:{
-        "Content-Type":"multipart/form-data"
-      }})
+      .post("shop/shopRegistration", shopInfo, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
       .then((res) => {
         console.log("response", res);
         if (res.status === 200) {
           alert("Registration successful");
-          // setTimeout(() => {
-          //   navigate("/petshop/login");
-          // }, 1500);
+          setTimeout(() => {
+            navigate("/petshop/login");
+          }, 500);
         }
       })
       .catch((err) => {
