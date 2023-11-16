@@ -16,20 +16,21 @@ const PetShopRegistration = () => {
   const [shopInfo, setShopInfo] = useState({
     ownerFirstName: "",
     ownerLastName: "",
-    shopName: "",
+    ownername:'',
+    shopname: "",
     street: "",
     city: "",
     district: "",
     mobile: "",
     email: "",
     password: "",
-    licenseNumber: "",
-    registrationNumber: "",
+    licenceno: "",
+    regno: "",
     ownershipId: "",
     description: "",
-    openingTime: "",
-    closingTime: "",
-    shopImage: null,
+    openingtime: "",
+    closingtime: "",
+    img: null,
   });
   const navigate = useNavigate();
 
@@ -41,7 +42,7 @@ const PetShopRegistration = () => {
     const newShopImage = e.target.files[0];
     setShopInfo({
       ...shopInfo,
-      shopImage: e.target.files[0],
+      img: e.target.files[0],
     });
     // Image Reading
     const reader = new FileReader();
@@ -77,36 +78,36 @@ const PetShopRegistration = () => {
     const {
       ownerFirstName,
       ownerLastName,
-      shopName,
+      shopname,
       street,
       city,
       district,
       mobile,
       email,
       password,
-      licenseNumber,
-      registrationNumber,
+      licenceno,
+      regno,
       ownershipId,
       description,
-      openingTime,
-      closingTime,
+      openingtime,
+      closingtime,
     } = shopInfo;
     if (
       !ownerFirstName ||
       !ownerLastName ||
-      !shopName ||
+      !shopname ||
       !street ||
       !city ||
       !district ||
       !mobile ||
       !email ||
       !password ||
-      !licenseNumber ||
-      !registrationNumber ||
+      !licenceno ||
+      !regno ||
       !ownershipId ||
       !description ||
-      !openingTime ||
-      !closingTime
+      !openingtime ||
+      !closingtime
     ) {
       console.log("All fields are required.");
       return;
@@ -132,30 +133,34 @@ const PetShopRegistration = () => {
       "ownername",
       `${shopInfo.ownerFirstName} ${shopInfo.ownerLastName}`
     );
-    formData.append("shopname", shopInfo.shopName);
+    formData.append("shopname", shopInfo.shopname);
     formData.append("city", shopInfo.city);
     formData.append("street", shopInfo.street);
     formData.append("email", shopInfo.email);
     formData.append("password", shopInfo.password);
-    formData.append("licenceno", shopInfo.licenseNumber);
-    formData.append("regno", shopInfo.registrationNumber);
+    formData.append("licenceno", shopInfo.licenceno);
+    formData.append("regno", shopInfo.regno);
     formData.append("mobile", shopInfo.mobile);
     formData.append("ownershipid", shopInfo.ownershipId);
     formData.append("district", shopInfo.district);
     formData.append("description", shopInfo.description);
-    formData.append("openingtime", shopInfo.openingTime);
-    formData.append("closingtime", shopInfo.closingTime);
-    formData.append("img", shopInfo.shopImage);
-
+    formData.append("openingtime", shopInfo.openingtime);
+    formData.append("closingtime", shopInfo.closingtime);
+    formData.append("img", shopInfo.img);
+    console.log(formData);
+    shopInfo.ownername=shopInfo.ownerFirstName+" "+shopInfo.ownerLastName
+console.log(shopInfo);
     axiosInstance
-      .post("shop/shopRegistration", formData)
+      .post("shop/shopRegistration", shopInfo,{headers:{
+        "Content-Type":"multipart/form-data"
+      }})
       .then((res) => {
         console.log("response", res);
         if (res.status === 200) {
           alert("Registration successful");
-          setTimeout(() => {
-            navigate("/petshop/login");
-          }, 1500);
+          // setTimeout(() => {
+          //   navigate("/petshop/login");
+          // }, 1500);
         }
       })
       .catch((err) => {
@@ -247,8 +252,8 @@ const PetShopRegistration = () => {
               placeholder="Shop Name"
               aria-label="shop-name"
               type="text"
-              name="shopName"
-              value={shopInfo.shopName}
+              name="shopname"
+              value={shopInfo.shopname}
               onChange={handleChange}
               required
             />
@@ -360,8 +365,8 @@ const PetShopRegistration = () => {
             <Form.Control
               placeholder="License Number"
               aria-label="License Number"
-              name="licenseNumber"
-              value={shopInfo.licenseNumber}
+              name="licenceno"
+              value={shopInfo.licenceno}
               onChange={handleChange}
               required
             />
@@ -390,8 +395,8 @@ const PetShopRegistration = () => {
             <Form.Control
               placeholder="Registration Number"
               aria-label="Registration Number"
-              name="registrationNumber"
-              value={shopInfo.registrationNumber}
+              name="regno"
+              value={shopInfo.regno}
               onChange={handleChange}
               required
             />
@@ -425,8 +430,8 @@ const PetShopRegistration = () => {
               aria-label="Opening Time"
               aria-describedby="basic-addon1"
               type="text"
-              name="openingTime"
-              value={shopInfo.openingTime}
+              name="openingtime"
+              value={shopInfo.openingtime}
               onChange={handleChange}
               required
             />
@@ -443,8 +448,8 @@ const PetShopRegistration = () => {
               aria-label="Closing Time"
               aria-describedby="basic-addon1"
               type="text"
-              name="closingTime"
-              value={shopInfo.closingTime}
+              name="closingtime"
+              value={shopInfo.closingtime}
               onChange={handleChange}
               required
             />
