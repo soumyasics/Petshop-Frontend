@@ -54,8 +54,10 @@ const PetShopLogin = () => {
         if (res.status === 200) {
           alert("Login Successful");
           const token = res?.data?.token || "";
+          console.log("res", res.data.shop)
           if (token) {
             localStorage.setItem("petshop-token", token);
+            localStorage.setItem("petshop-info", JSON.stringify(res?.data?.shop));
           }
 
           setTimeout(() => {
