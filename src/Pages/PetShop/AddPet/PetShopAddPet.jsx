@@ -190,7 +190,6 @@ const PetShopAddPet = () => {
                 <option value="">Pet Type</option>
                 <option value="dog">Dog</option>
                 <option value="cat">Cat</option>
-                <option value="other">Other</option>
               </Form.Select>
               <Form.Control.Feedback type="invalid">
                 Pet Type is required

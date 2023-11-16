@@ -31,6 +31,8 @@ import AdminPetProfile from "./Pages/Admin/AdminPetProfile/AdminPetProfile.js";
 import AdminViewAllShops from "./Pages/Admin/AdminViewAllShops/AdminViewAllShops.js";
 import AdminViewAllPet from './Pages/Admin/AdminViewAllPets/AdminViewAllPet.js'
 import AdminViewEnquiries from "./Pages/Admin/AdminEnquiries/AdminViewEnquiries.js";
+import ShopMoreInfo from "./Pages/ShopMoreInfo/ShopMoreInfo.jsx";
+import PetMoreInfo from "./Pages/PetMoreInfo/PetMoreInfo.jsx";
 function App() {
   let imgUrl = "http://localhost:4000";
   return (
@@ -68,7 +70,8 @@ function App() {
           <Route path="/petshop/signup" element={<PetShopRegistration />} />
           <Route path="/petshop/login" element={<PetShopLogin />} />
           <Route path="/petshop/add-pet" element={<PetShopAddPet />} />
-
+          <Route path="/petshop/more-info/:id" element={<ShopMoreInfo />} />
+          <Route path="/pet/more-info/:id" element={<PetMoreInfo />} />
           {/* Soumya */}
 
           <Route path="/admin-login" element={<AdminLogin />} />

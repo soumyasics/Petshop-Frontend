@@ -93,7 +93,7 @@
 .add-pet-form-container >form {
   margin-bottom: 20px;
   width: 100%;
-  background-color: rgb(220, 198, 198);
+  background-color: #ddd;
   padding: 20px 5%;
   box-sizing: border-box;
 }

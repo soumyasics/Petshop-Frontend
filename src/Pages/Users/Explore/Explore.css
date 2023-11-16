@@ -1,5 +1,4 @@
 .explore-page-container {
-  height: 800px;
   width: 100%;
 }
 
@@ -26,7 +25,9 @@
   align-items: center;
   margin: auto;
 }
-
+.explore-btn-container button.active {
+  background-color: #d61c62;
+}
 .explore-btn-container button {
   width: 150px;
   height: 50px;
