@@ -126,7 +126,7 @@ function UserReg() {
                 
                     />
 
-                    {errors.fname && <p style={{color:'red'}}>{errors.fname}</p>}
+                    {errors.firstname && <p style={{color:'red'}}>{errors.firstname}</p>}
                   </div>
                   <div class="col-md-6">
                     <label
@@ -145,7 +145,7 @@ function UserReg() {
                      
                     />
                     
-                    {errors.lname && <p style={{color:'red'}}>{errors.lname}</p>}
+                    {errors.lastname && <p style={{color:'red'}}>{errors.lastname}</p>}
                   </div>
                 </div>
                 <div class="col-md-12">

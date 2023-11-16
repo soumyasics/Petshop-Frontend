@@ -57,9 +57,7 @@ background-size: cover;
   width: 55%;
   padding: 20px;
 }
-.invalid{
-  border: 1px solid red;
-}
+
 #user-reg-validationDefault01{
   border: 1px solid black;
 }
