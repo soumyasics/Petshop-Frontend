@@ -78,20 +78,13 @@ const PetShopAddPet = () => {
     sendToServer(petInfo);
   };
   const sendToServer = (petInfo) => {
-    console.log("sending to server", petInfo);
-    const formData = new FormData();
-    formData.append("img", petInfo.img);
-    formData.append("petname", petInfo.petname);
-    formData.append("type", petInfo.type);
-    formData.append("age", petInfo.age);
-    formData.append("breed", petInfo.breed);
-    formData.append("gender", petInfo.gender);
-    formData.append("insurancenumber", petInfo.insurancenumber);
-    formData.append("description", petInfo.description);
-    formData.append("price", petInfo.price);
-    formData.append("shopid", petInfo.shopid);
+   
     axiosInstance
-      .post("pet/addPet", formData)
+      .post("pet/addPet", petInfo, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
       .then((res) => {
         console.log(res);
         if (res.status === 200) {
