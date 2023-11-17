@@ -33,6 +33,7 @@ import AdminViewAllPet from './Pages/Admin/AdminViewAllPets/AdminViewAllPet.js'
 import AdminViewEnquiries from "./Pages/Admin/AdminEnquiries/AdminViewEnquiries.js";
 import ShopMoreInfo from "./Pages/ShopMoreInfo/ShopMoreInfo.jsx";
 import PetMoreInfo from "./Pages/PetMoreInfo/PetMoreInfo.jsx";
+import NavbarUpdated from "./Pages/Common/NavbarUpdated/NavbarUpdated.jsx";
 function App() {
   let imgUrl = "http://localhost:4000";
   return (
@@ -72,6 +73,7 @@ function App() {
           <Route path="/petshop/add-pet" element={<PetShopAddPet />} />
           <Route path="/petshop/more-info/:id" element={<ShopMoreInfo />} />
           <Route path="/pet/more-info/:id" element={<PetMoreInfo />} />
+          <Route path="/navbar-updated" element={<NavbarUpdated />} />
           {/* Soumya */}
 
           <Route path="/admin-login" element={<AdminLogin />} />

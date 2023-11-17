@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import "./PetShopReg.css";
 import PetShopNavbar from "../Common/PetShopNavbar";
 import axiosInstance from "../../../BaseURL";
+import NavbarUpdated from "../../Common/NavbarUpdated/NavbarUpdated";
 const PetShopRegistration = () => {
   const [activeShopImage, setIsActiveShopImage] = useState(null);
   const fileInputRef = useRef(null);
@@ -168,8 +169,8 @@ const PetShopRegistration = () => {
 
   return (
     <>
-      <PetShopNavbar />
-
+      {/* <PetShopNavbar /> */}
+        <NavbarUpdated/>
       <div className="add-pet-header-img">
         <img
           className="add-pet-placeholder-img"

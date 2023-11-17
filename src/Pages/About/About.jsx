@@ -10,13 +10,14 @@ import airCat from "../../Assets/pexels-sam-lion-6001183.jpg";
 import "./About.css";
 import CommonNavbar from "../Common/CommonNavbar";
 import Footer from "../Common/Footer/Footer";
+import NavbarUpdated from "../Common/NavbarUpdated/NavbarUpdated";
 function About() {
   return (
     <div>
-     
-      <CommonNavbar />
+      {/* <CommonNavbar /> */}
+      <NavbarUpdated />
       <div className="card border-0 about-global">
-        <img src={catDog} className=" card-img cat-dog"/>
+        <img src={catDog} className=" card-img cat-dog" />
       </div>
       <div className="clearfix">
         <img
@@ -92,7 +93,7 @@ function About() {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
