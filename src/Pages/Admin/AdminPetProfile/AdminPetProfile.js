@@ -9,28 +9,35 @@ import { useNavigate } from 'react-router-dom';
 
 export default function AdminPetProfile() {
     const navigate=useNavigate()
-
-
-    const[PetProfile,setPetProfile]=useState({})
+       const[PetProfile,setPetProfile]=useState({
+        ownerid: "",
+        shopid: "",
+        petname: "",
+        type: "",
+        age: "",
+        breed: "",
+        gender: "",
+        insurancenumber: "",
+        description: "",
+        price: "",
+        img: null,
+       })
 const {id}=useParams()
 console.log(id);
 
 
     useEffect(() => {
+
         console.log("in use");
        
         axiosInstance.post(`/pet/viewPetById/${id}`).then((res) => {
             if (res.status === 200) {
            console.log("data",res.data.data);
-             if (res.data.data != undefined) {
                 setPetProfile(res.data.data);
                 console.log(res.data.data.shopid.shopname);
               }
-            }
-            else{
-                console.log(res.err);
-
-            }
+            
+            
           }).catch((err) => {
             console.log(err);
            alert(" Server Issues")
@@ -88,7 +95,7 @@ console.log(id);
                             <label for='shopowner-name' className='form-label'>
                                 ShopOwner Name
                             </label>
-                            {/* <input type='text' className='form-control' id='shopowner-name' placeholder={(PetProfile.shopid.shopname)}/> */}
+                            <input type='text' className='form-control' id='shopowner-name' placeholder={(PetProfile.shopid.shopname)}/>
                         </div>
                     </div>    
             </div>
@@ -133,18 +140,12 @@ console.log(id);
                 </div>
             </div>
             <div className='row'>
-                <div className='col-12 d-inline'>
-                    <div className="form-check w-25 ">
-                        <label className="form-check-label" for="genderM">
-                            Male
+                <div className='col-12'>
+                    <div className='mb-3'>
+                        <label for='address' className='form-label'>
+                                Gender
                         </label>
-                        <input className="form-check-input" type="radio" name="gender" id="genderM" checked/>
-                    </div>
-                    <div className='form-check w-25'>
-                        <label className="form-check-label" for="genderF">
-                            Female
-                        </label>
-                        <input className="form-check-input" type="radio" name="gender" id="genderF"/>
+                        <input type='text' className='form-control' id='gender' placeholder={PetProfile.gender}/>
                     </div>
                 </div>
             </div>
