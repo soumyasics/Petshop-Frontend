@@ -35,7 +35,17 @@ const PetShopRegistration = () => {
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    setShopInfo({ ...shopInfo, [e.target.name]: e.target.value });
+    if (e.target.name === "ownerFirstName") {
+      console.log("workedd", e.target.value);
+      console.log("won", shopInfo.ownername);
+      setShopInfo({
+        ...shopInfo,
+        ownername: e.target.value,
+        ownerFirstName: e.target.value,
+      });
+    } else {
+      setShopInfo({ ...shopInfo, [e.target.name]: e.target.value });
+    }
   };
 
   const handleImageChange = (e) => {
@@ -67,6 +77,36 @@ const PetShopRegistration = () => {
   };
 
   const [validated, setValidated] = useState(false);
+
+  const sendDataToServer = (shopInfo) => {
+    axiosInstance
+      .post("shop/shopRegistration", shopInfo, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((res) => {
+        console.log("response", res);
+        if (res.status === 200) {
+          alert("Registration successful");
+          setTimeout(() => {
+            navigate("/petshop/login");
+          }, 500);
+        }
+      })
+      .catch((err) => {
+        console.log("error", err);
+        if (err.response.status === 409) {
+          alert("Email already exists");
+        } else if (err.response.status === 400) {
+          alert("Please fill all fields");
+        } else if (err.response.status === 500) {
+          alert("Server Error Please Try Again");
+        } else {
+          alert("Registration Failed");
+        }
+      });
+  };
 
   const registerShop = (e) => {
     e.preventDefault();
@@ -124,42 +164,6 @@ const PetShopRegistration = () => {
     }
 
     sendDataToServer(shopInfo);
-  };
-
-  const sendDataToServer = (shopInfo) => {
-    setShopInfo({
-      ...shopInfo,
-      ownername: shopInfo.ownerFirstName + " " + shopInfo.ownerLastName,
-    });
-
-
-    axiosInstance
-      .post("shop/shopRegistration", shopInfo, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
-      .then((res) => {
-        console.log("response", res);
-        if (res.status === 200) {
-          alert("Registration successful");
-          setTimeout(() => {
-            navigate("/petshop/login");
-          }, 500);
-        }
-      })
-      .catch((err) => {
-        console.log("error", err);
-        if (err.response.status === 409) {
-          alert("Email already exists");
-        } else if (err.response.status === 400) {
-          alert("Please fill all fields");
-        } else if (err.response.status === 500) {
-          alert("Server Error Please Try Again");
-        } else {
-          alert("Registration Failed");
-        }
-      });
   };
 
   return (
