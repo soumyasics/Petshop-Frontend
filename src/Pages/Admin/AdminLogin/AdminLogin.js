@@ -86,7 +86,7 @@ function AdminLogin() {
 
                             type="submit"
                             id='login'
-                            className='className="btn btn-primary btn-sm rounded-start-pill rounded-end-pill btn1 align-items-center admin-login-btn11"'
+                            className='className="btn btn-primary btn-sm rounded-start-pill rounded-end-pill align-items-center admin-login-btn11 admin_login_button"'
 
                         >LOGIN</button>
                     </form>

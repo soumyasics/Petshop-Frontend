@@ -3,6 +3,7 @@ import "./AdminViewAllPet.css"
 import React, { useEffect, useState } from 'react'
 import axiosInstance from "../../../BaseURL";
 import AdminNavbar from '../AdminNavbar/AdminNavbar'
+import { Link } from "react-router-dom";
 function AdminViewAllPet({imgUrl}) {
 
     const[data,setData]=useState([])
@@ -52,7 +53,7 @@ function AdminViewAllPet({imgUrl}) {
 
                             </div>
                         </div>
-                        <button className="btn btn-primary btn-sm rounded-start-pill rounded-end-pill admin-view-pets-btn1 align-items-center ">MORE INFO</button>
+                      <Link to={`/admin/pet-profile/${user._id}`}> <button className="btn btn-primary btn-sm rounded-start-pill rounded-end-pill admin-view-pets-btn1 align-items-center ">MORE INFO</button></Link> 
                     </div>
                 </div>
       )
