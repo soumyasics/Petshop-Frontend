@@ -2,11 +2,17 @@ import { Container } from "react-bootstrap";
 import ShopCard from "./ShopCard";
 import "./ShopContainer.css";
 
-const ShopContainer = () => {
+const ShopContainer = ({ shopsData }) => {
   return (
     <>
       <Container className="explore-shop-container">
-        <ShopCard />
+        {shopsData?.map((shopData) => {
+          return (
+            <>
+              <ShopCard shopData={shopData}/>
+            </>
+          );
+        })}
       </Container>
     </>
   );
