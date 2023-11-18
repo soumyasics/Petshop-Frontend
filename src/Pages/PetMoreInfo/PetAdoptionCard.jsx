@@ -1,11 +1,13 @@
-import { Button, Modal } from "react-bootstrap";
+import { Button, Modal, Toast, ToastContainer } from "react-bootstrap";
 import { useState } from "react";
 import "./PetAdoptionCard.css";
 const PetAdoptionCard = ({ petData }) => {
   const [show, setShow] = useState(false);
   const [buttonContent, setButtonContent] = useState("Adopt Me");
   const [isAdopted, setIsAdopted] = useState(false);
-
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMsg, setAlertMsg] = useState("");
+  const [toastColor, setToastColor] = useState("dark");
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -25,12 +27,27 @@ const PetAdoptionCard = ({ petData }) => {
 
   const confirmAdoption = () => {
     handleClose();
-    alert(`${petname} Adoption Confirmed`);
+    setToastColor("success");
+    setShowAlert(true);
+    setAlertMsg(`${petname} Adoption Confirmed`)
     setButtonContent("Adopted");
     setIsAdopted(true);
   };
   return (
     <div className="pet-adoption-card-container">
+      <ToastContainer className="pet-adoption-card-toast" position="middle-top">
+        <Toast
+          className="toast-msg"
+          bg={toastColor}
+          onClose={() => setShowAlert(false)}
+          show={showAlert}
+          animation={true}
+          delay={2000}
+          autohide
+        >
+          <Toast.Body>{alertMsg}</Toast.Body>
+        </Toast>
+      </ToastContainer>
       <div className="pet-adoption-card-top">
         <div className="pet-adoption-card-container-left">
           <img
@@ -86,12 +103,8 @@ const PetAdoptionCard = ({ petData }) => {
         >
           {buttonContent}
         </button>
- 
- 
       </div>
 
-    
-      
       <>
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>

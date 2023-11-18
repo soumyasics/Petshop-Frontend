@@ -31,4 +31,5 @@
 .pet-adopt-gallary-container img {
     width: 252px;
     height: auto;
+    border-radius: 10px;
 }
