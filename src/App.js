@@ -33,7 +33,14 @@ import AdminViewAllPet from './Pages/Admin/AdminViewAllPets/AdminViewAllPet.js'
 import AdminViewEnquiries from "./Pages/Admin/AdminEnquiries/AdminViewEnquiries.js";
 import ShopMoreInfo from "./Pages/ShopMoreInfo/ShopMoreInfo.jsx";
 import PetMoreInfo from "./Pages/PetMoreInfo/PetMoreInfo.jsx";
+
 import NavbarUpdated from "./Pages/Common/NavbarUpdated/NavbarUpdated.jsx";
+
+import ShopForgotPwd from "./Pages/PetShop/ShopForgotPwd/ShopForgotPwd.js"
+import ShopForgotPwdSendMail from "./Pages/PetShop/ShopForgotPwd/ShopForgotPwdSendMail.js"
+import ShopResetPwd from "./Pages/PetShop/ShopForgotPwd/ShopResetPwd.js"
+
+
 function App() {
   let imgUrl = "http://localhost:4000";
   return (
@@ -59,21 +66,23 @@ function App() {
 
           <Route path="/user/explore" element={<ExplorePage />} />
 
-          <Route
-            path="/user-forgot-password-req"
-            element={<UserForgotPwdReq />}
-          />
-          <Route
-            path="/user-forgot-password-aftr-req"
-            element={<UserForgotPwdAftrReq />}
-          />
+          <Route path="/user-forgot-password-req" element={<UserForgotPwdReq />} />
+          <Route path="/user-forgot-password-aftr-req" element={<UserForgotPwdAftrReq />} />
           {/* Anand */}
           <Route path="/petshop/signup" element={<PetShopRegistration />} />
           <Route path="/petshop/login" element={<PetShopLogin />} />
           <Route path="/petshop/add-pet" element={<PetShopAddPet />} />
           <Route path="/petshop/more-info/:id" element={<ShopMoreInfo />} />
+          {/* Soumya */}
+          <Route path="/petshop/forgot-pwd" element={<ShopForgotPwd />} />
+          <Route path="/petshop/forgot-pwd-mail-send" element={<ShopForgotPwdSendMail />} />
+          <Route path="/petshop/reset-pwd" element={<ShopResetPwd />} />
+
+
+  {/* Anand */}
           <Route path="/pet/more-info/:id" element={<PetMoreInfo />} />
           <Route path="/navbar-updated" element={<NavbarUpdated />} />
+
           {/* Soumya */}
 
           <Route path="/admin-login" element={<AdminLogin />} />
@@ -81,15 +90,15 @@ function App() {
             path="/admin-all-users"
             element={<AdminUsers imgUrl={imgUrl} />}
           />
-          <Route path="/admin/pet-profile" element={<AdminPetProfile/>} />
+          <Route path="/admin/pet-profile/:id" element={<AdminPetProfile />} />
 
           <Route path="/admin/admin-login" element={<AdminLogin />} />
           <Route path="/admin/admin-navbar" element={<AdminNabar />} />
-          <Route path="/admin/admin-all-shops" element={<AdminViewAllShops imgUrl={imgUrl}/>} />
+          <Route path="/admin/admin-all-shops" element={<AdminViewAllShops imgUrl={imgUrl} />} />
 
-          <Route path="/admin/admin-all-users" element={<AdminUsers imgUrl={imgUrl} />}/>
-          
-          <Route path="/admin/admin-all-pets" element={<AdminViewAllPet imgUrl={imgUrl} />}/>
+          <Route path="/admin/admin-all-users" element={<AdminUsers imgUrl={imgUrl} />} />
+
+          <Route path="/admin/admin-all-pets" element={<AdminViewAllPet imgUrl={imgUrl} />} />
           <Route path="/admin/admin-view-enquiries" element={<AdminViewEnquiries />} />
 
           {/* just for testing purpose will remove  */}
