@@ -7,6 +7,7 @@ import Footer from "../../Common/Footer/Footer.jsx";
 import NewsLetter from "../../Common/NewsLetter/NewsLetter.jsx";
 import axiosInstance from "../../../BaseURL.js";
 import "./Explore.css";
+import NavbarUpdated from "../../Common/NavbarUpdated/NavbarUpdated.jsx";
 
 const ExplorePage = () => {
   const [activeSection, setActiveSection] = useState("shops");
@@ -84,7 +85,8 @@ const ExplorePage = () => {
 
   return (
     <>
-      <UserNavbar />
+      {/* <UserNavbar /> */}
+      <NavbarUpdated/>
       <div className="explore-page-container">
         <div className="explore-header-section">
           <img src={catDogImg} alt="cat-dog" />

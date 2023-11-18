@@ -74,7 +74,7 @@ function UserReg() {
         console.log("data entered", result);
         if (result.data.status == 200) {
           alert("Register Sucessfully");
-           navigate("/user-login");
+           navigate("/user/login");
         } else {
           alert("Registration Failed...");
         }

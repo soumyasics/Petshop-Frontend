@@ -34,9 +34,12 @@ import AdminViewEnquiries from "./Pages/Admin/AdminEnquiries/AdminViewEnquiries.
 import ShopMoreInfo from "./Pages/ShopMoreInfo/ShopMoreInfo.jsx";
 import PetMoreInfo from "./Pages/PetMoreInfo/PetMoreInfo.jsx";
 
+import NavbarUpdated from "./Pages/Common/NavbarUpdated/NavbarUpdated.jsx";
+
 import ShopForgotPwd from "./Pages/PetShop/ShopForgotPwd/ShopForgotPwd.js"
 import ShopForgotPwdSendMail from "./Pages/PetShop/ShopForgotPwd/ShopForgotPwdSendMail.js"
 import ShopResetPwd from "./Pages/PetShop/ShopForgotPwd/ShopResetPwd.js"
+
 
 function App() {
   let imgUrl = "http://localhost:4000";
@@ -78,6 +81,7 @@ function App() {
 
   {/* Anand */}
           <Route path="/pet/more-info/:id" element={<PetMoreInfo />} />
+          <Route path="/navbar-updated" element={<NavbarUpdated />} />
 
           {/* Soumya */}
 

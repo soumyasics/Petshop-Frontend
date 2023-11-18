@@ -2,13 +2,22 @@ import "./ShopContainer.css";
 import { RiStarSLine } from "react-icons/ri";
 import { RiStarSFill } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const ShopCard = ({ shopData }) => {
   const { shopname, rating, img, openingtime, closingtime, _id } = shopData;
-  console.log("shop", shopData);
+
+  const shopPlaceholderImg =
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVpYb71ibWzzSXTuWVI7QHirljFek9RRkImlzmrBXC4Q&s";
+  const [shopImage, setShopImage] = useState(shopPlaceholderImg);
+
+  useEffect(() => {
+    if (img?.filename) {
+      const BASE_URL = "http://localhost:4000";
+      setShopImage(`${BASE_URL}/${img?.filename}`);
+    }
+  }, []);
   const navigate = useNavigate();
-  const BASE_URL = "http://localhost:4000";
   const redirectToShopMoreInfo = (id) => {
     navigate(`/petshop/more-info/${id}`);
   };
@@ -18,7 +27,7 @@ const ShopCard = ({ shopData }) => {
       <div className="explore-shop-card">
         <div className="shop-top-container">
           <div className="explore-shop-card-left">
-            <img src={`${BASE_URL}/${img?.filename}`} alt="shop-card" />
+            <img src={shopImage} alt="shop-card" />
           </div>
           <div className="explore-shop-card-right">
             <h3>{shopname}</h3>

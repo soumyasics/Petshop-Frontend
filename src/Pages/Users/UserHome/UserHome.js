@@ -26,6 +26,7 @@ import "./UserHome.css";
 import NewsLetter from "../../Common/NewsLetter/NewsLetter.jsx";
 import { useState } from "react";
 import axiosInstance from "../../../BaseURL.js";
+import NavbarUpdated from "../../Common/NavbarUpdated/NavbarUpdated.jsx";
 
 const UserHome = () => {
   const [data, setData] = useState({
@@ -55,8 +56,8 @@ console.log(data);
 }
   return (
     <div>
-      <CommonNavbar />
-
+      {/* <CommonNavbar /> */}
+      <NavbarUpdated/>
       {/* <div class="homepagecontain"> */}
       <div class="homepagediv2">
         <div class="homepagediv1">
