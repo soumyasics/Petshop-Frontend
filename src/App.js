@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./Pages/Users/UserHome/UserHome.js";
+import { useEffect } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
@@ -19,7 +20,7 @@ import UserForgotPwdReq from "./Pages/Users/UserForgotPassword/UserForgotPasswor
 import UserForgotPwdAftrReq from "./Pages/Users/UserForgotPassword/UserForgotPwdAftrReq.js";
 
 import PetShopLogin from "./Pages/PetShop/PetShopLogin/PetShopLogin.jsx";
-import AdminNabar from "./Pages/Admin/AdminNavbar/AdminNavbar.js"
+import AdminNabar from "./Pages/Admin/AdminNavbar/AdminNavbar.js";
 import UserHome from "./Pages/Users/UserHome/UserHome.js";
 import CommonNavbar from "./Pages/Common/CommonNavbar.js";
 import PetShopRegistration from "./Pages/PetShop/PetShopReg/PetShopReg.jsx";
@@ -29,20 +30,53 @@ import TestComponent from "./Pages/PetShop/PetShopReg/test.jsx";
 import AdminPetProfile from "./Pages/Admin/AdminPetProfile/AdminPetProfile.js";
 
 import AdminViewAllShops from "./Pages/Admin/AdminViewAllShops/AdminViewAllShops.js";
-import AdminViewAllPet from './Pages/Admin/AdminViewAllPets/AdminViewAllPet.js'
+import AdminViewAllPet from "./Pages/Admin/AdminViewAllPets/AdminViewAllPet.js";
 import AdminViewEnquiries from "./Pages/Admin/AdminEnquiries/AdminViewEnquiries.js";
 import ShopMoreInfo from "./Pages/ShopMoreInfo/ShopMoreInfo.jsx";
 import PetMoreInfo from "./Pages/PetMoreInfo/PetMoreInfo.jsx";
 
 import NavbarUpdated from "./Pages/Common/NavbarUpdated/NavbarUpdated.jsx";
 
-import ShopForgotPwd from "./Pages/PetShop/ShopForgotPwd/ShopForgotPwd.js"
-import ShopForgotPwdSendMail from "./Pages/PetShop/ShopForgotPwd/ShopForgotPwdSendMail.js"
-import ShopResetPwd from "./Pages/PetShop/ShopForgotPwd/ShopResetPwd.js"
-
+import ShopForgotPwd from "./Pages/PetShop/ShopForgotPwd/ShopForgotPwd.js";
+import ShopForgotPwdSendMail from "./Pages/PetShop/ShopForgotPwd/ShopForgotPwdSendMail.js";
+import ShopResetPwd from "./Pages/PetShop/ShopForgotPwd/ShopResetPwd.js";
+import axiosInstance from "./BaseURL.js";
+import { useUserData } from "./Context/UserContext.js";
 
 function App() {
   let imgUrl = "http://localhost:4000";
+
+  useEffect(() => {
+    isUserLogin();
+  }, []);
+
+  const { updateUser } = useUserData();
+
+  function isUserLogin() {
+    const userToken = localStorage.getItem("petshop-token") || null;
+    if (userToken) {
+      axiosInstance
+        .get("/user/user-data", {
+          headers: {
+            Authorization: `Bearer ${userToken}`,
+          },
+        })
+        .then((res) => {
+          console.log("res2", res);
+          if (res?.data?.userData) {
+            updateUser(res.data.userData);
+          } else {
+            console.log("user data is not avaialble");
+          }
+        })
+        .catch((err) => {
+          console.log("error", err);
+        });
+    } else {
+      console.log("login first app.js");
+    }
+  }
+
   return (
     <>
       <BrowserRouter>
@@ -66,8 +100,14 @@ function App() {
 
           <Route path="/user/explore" element={<ExplorePage />} />
 
-          <Route path="/user-forgot-password-req" element={<UserForgotPwdReq />} />
-          <Route path="/user-forgot-password-aftr-req" element={<UserForgotPwdAftrReq />} />
+          <Route
+            path="/user-forgot-password-req"
+            element={<UserForgotPwdReq />}
+          />
+          <Route
+            path="/user-forgot-password-aftr-req"
+            element={<UserForgotPwdAftrReq />}
+          />
           {/* Anand */}
           <Route path="/petshop/signup" element={<PetShopRegistration />} />
           <Route path="/petshop/login" element={<PetShopLogin />} />
@@ -75,11 +115,13 @@ function App() {
           <Route path="/petshop/more-info/:id" element={<ShopMoreInfo />} />
           {/* Soumya */}
           <Route path="/petshop/forgot-pwd" element={<ShopForgotPwd />} />
-          <Route path="/petshop/forgot-pwd-mail-send" element={<ShopForgotPwdSendMail />} />
+          <Route
+            path="/petshop/forgot-pwd-mail-send"
+            element={<ShopForgotPwdSendMail />}
+          />
           <Route path="/petshop/reset-pwd" element={<ShopResetPwd />} />
 
-
-  {/* Anand */}
+          {/* Anand */}
           <Route path="/pet/more-info/:id" element={<PetMoreInfo />} />
           <Route path="/navbar-updated" element={<NavbarUpdated />} />
 
@@ -94,12 +136,24 @@ function App() {
 
           <Route path="/admin/admin-login" element={<AdminLogin />} />
           <Route path="/admin/admin-navbar" element={<AdminNabar />} />
-          <Route path="/admin/admin-all-shops" element={<AdminViewAllShops imgUrl={imgUrl} />} />
+          <Route
+            path="/admin/admin-all-shops"
+            element={<AdminViewAllShops imgUrl={imgUrl} />}
+          />
 
-          <Route path="/admin/admin-all-users" element={<AdminUsers imgUrl={imgUrl} />} />
+          <Route
+            path="/admin/admin-all-users"
+            element={<AdminUsers imgUrl={imgUrl} />}
+          />
 
-          <Route path="/admin/admin-all-pets" element={<AdminViewAllPet imgUrl={imgUrl} />} />
-          <Route path="/admin/admin-view-enquiries" element={<AdminViewEnquiries />} />
+          <Route
+            path="/admin/admin-all-pets"
+            element={<AdminViewAllPet imgUrl={imgUrl} />}
+          />
+          <Route
+            path="/admin/admin-view-enquiries"
+            element={<AdminViewEnquiries />}
+          />
 
           {/* just for testing purpose will remove  */}
           <Route path="/test" element={<TestComponent />} />
