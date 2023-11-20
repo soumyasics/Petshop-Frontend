@@ -36,9 +36,10 @@ import PetMoreInfo from "./Pages/PetMoreInfo/PetMoreInfo.jsx";
 
 import NavbarUpdated from "./Pages/Common/NavbarUpdated/NavbarUpdated.jsx";
 
-import ShopForgotPwd from "./Pages/PetShop/ShopForgotPwd/ShopForgotPwd.js"
+import ShopForgotPwd from "./Pages/PetShop/ShopForgotPwd/ShopForgotPwd.js";
 import ShopForgotPwdSendMail from "./Pages/PetShop/ShopForgotPwd/ShopForgotPwdSendMail.js"
 import ShopResetPwd from "./Pages/PetShop/ShopForgotPwd/ShopResetPwd.js"
+import AddPetHome from "./Pages/PetShop/AddPetHome/AddPetHome.js";
 
 
 function App() {
@@ -77,7 +78,7 @@ function App() {
           <Route path="/petshop/forgot-pwd" element={<ShopForgotPwd />} />
           <Route path="/petshop/forgot-pwd-mail-send" element={<ShopForgotPwdSendMail />} />
           <Route path="/petshop/reset-pwd" element={<ShopResetPwd />} />
-
+          <Route path="/petshop/add-pethome" element={<AddPetHome />} />
 
   {/* Anand */}
           <Route path="/pet/more-info/:id" element={<PetMoreInfo />} />
