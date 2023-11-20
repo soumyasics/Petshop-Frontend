@@ -40,6 +40,9 @@ function CommonNavbar() {
                         <a className="nav-link" href="#">Contact</a>
                      </li>
                      <li className="nav-item">
+                        <Link className="nav-link" to="/user-reg">Register</Link>
+                     </li>
+                     <li className="nav-item">
                      <Link to="/user-login"> <a className="nav-link" href="#">Login</a></Link>
                      </li>
                     </ul>

@@ -61,7 +61,7 @@ function UserReg() {
     b.preventDefault();
     
     setErrors(Validation(register))
-    setisSubmit(true)
+   
     if (!captchaChecked) {
       alert("Please check the CAPTCHA to verify");
       return; // Do not proceed if the CAPTCHA is not checked
@@ -75,16 +75,19 @@ function UserReg() {
       })
       .then((result) => {
         console.log("data entered", result);
+        
         if (result.data.status == 200) {
           alert("Register Sucessfully");
            navigate("/user-login");
         } else {
           alert("Registration Failed...");
+         
         }
       })
       .catch((error) => {
         console.log("err", error);
       });
+      
   };
 
   return (
@@ -128,8 +131,9 @@ function UserReg() {
                       onChange={changehandleSubmit}
                 
                     />
-
-                    {errors.firstname && <p style={{color:'red'}}>{errors.firstname}</p>}
+                      {errors.firstname && <p style={{color:'red'}}>{errors.firstname}</p>}
+{/* 
+{(errors.firstname && isSubmit) && <p style={{color:'red'}}>{errors.firstname}</p>} */}
                   </div>
                   <div class="col-md-6">
                     <label
@@ -164,7 +168,7 @@ function UserReg() {
                   
                   />
                   
-                  {errors.contact && <p style={{color:'red'}}>{errors.contact}</p>}
+                  {errors.mobile && <p style={{color:'red'}}>{errors.mobile}</p>}
                 </div>
                 <div class="col-md-12">
                   <label for="user-reg-validationDefault03" class="form-label">

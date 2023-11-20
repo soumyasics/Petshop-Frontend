@@ -16,6 +16,7 @@ function UserProfileView() {
             setprofile(res.data.data);
         });
       }, []);
+      
       useEffect(() => {
         console.log(profile);
       });
