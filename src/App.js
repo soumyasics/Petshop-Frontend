@@ -36,47 +36,53 @@ import ShopMoreInfo from "./Pages/ShopMoreInfo/ShopMoreInfo.jsx";
 import PetMoreInfo from "./Pages/PetMoreInfo/PetMoreInfo.jsx";
 
 import NavbarUpdated from "./Pages/Common/NavbarUpdated/NavbarUpdated.jsx";
-
-import ShopForgotPwd from "./Pages/PetShop/ShopForgotPwd/ShopForgotPwd.js";;
-import ShopForgotPwdSendMail from "./Pages/PetShop/ShopForgotPwd/ShopForgotPwdSendMail.js";
+import ShopForgotPwd from "./Pages/PetShop/ShopForgotPwd/ShopForgotPwd.js";
 import ShopResetPwd from "./Pages/PetShop/ShopForgotPwd/ShopResetPwd.js";
-import axiosInstance from "./BaseURL.js";
-import { useUserData } from "./Context/UserContext.js";import AddPetHome from "./Pages/PetShop/AddPetHome/AddPetHome.js";
+import ShopForgotPwdSendMail from "./Pages/PetShop/ShopForgotPwd/ShopForgotPwdSendMail.js"
+// import ShopForgotPwd from "./Pages/PetShop/ShopForgotPwd/ShopForgotPwd.js";import { useUserData } from "./Context/UserContext.js";
+import AddPetHome from "./Pages/PetShop/AddPetHome/AddPetHome.js";
+import AddAccessories from "./Pages/PetShop/AddAccessories/AddAccessories.js";
+import AddFood from "./Pages/PetShop/AddFood/AddFood.js";
+// import ShopForgotPwdSendMail from "./Pages/PetShop/ShopForgotPwd/ShopForgotPwdSendMail.js";
+// import ShopResetPwd from "./Pages/PetShop/ShopForgotPwd/ShopResetPwd.js";
+// import axiosInstance from "./BaseURL.js";
+// import { useUserData } from "./Context/UserContext.js";import AddPetHome from "./Pages/PetShop/AddPetHome/AddPetHome.js";
+// import AddAccessories from "./Pages/PetShop/AddAccessories/AddAccessories.js";
 
 
 function App() {
   let imgUrl = "http://localhost:4000";
 
-  useEffect(() => {
-    isUserLogin();
-  }, []);
+  // useEffect(() => {
+  //   isUserLogin();
+  // }, []);
 
-  const { updateUser } = useUserData();
+  // const { updateUser } = useUserData();
 
-  function isUserLogin() {
-    const userToken = localStorage.getItem("petshop-token") || null;
-    if (userToken) {
-      axiosInstance
-        .get("/user/user-data", {
-          headers: {
-            Authorization: `Bearer ${userToken}`,
-          },
-        })
-        .then((res) => {
-          console.log("res2", res);
-          if (res?.data?.userData) {
-            updateUser(res.data.userData);
-          } else {
-            console.log("user data is not avaialble");
-          }
-        })
-        .catch((err) => {
-          console.log("error", err);
-        });
-    } else {
-      console.log("login first app.js");
-    }
-  }
+  // function isUserLogin() {
+  //   const userToken = localStorage.getItem("petshop-token") || null;
+  //   if (userToken) {
+  //     axiosInstance
+  //       .get("/user/user-data", {
+  //         headers: {
+  //           Authorization: `Bearer ${userToken}`,
+  //         },
+  //       })
+  //       .then((res) => {
+  //         console.log("res2", res);
+  //         if (res?.data?.userData) {
+  //           updateUser(res.data.userData);
+  //         } else {
+  //           console.log("user data is not avaialble");
+  //         }
+  //       })
+  //       .catch((err) => {
+  //         console.log("error", err);
+  //       });
+  //   } else {
+  //     console.log("login first app.js");
+  //   }
+  // }
 
   return (
     <>
@@ -113,6 +119,11 @@ function App() {
           <Route path="/petshop/signup" element={<PetShopRegistration />} />
           <Route path="/petshop/login" element={<PetShopLogin />} />
           <Route path="/petshop/add-pet" element={<PetShopAddPet />} />
+          
+          <Route path="/petshop/add-food" element={<AddFood />} />
+
+          <Route path="/petshop/add-accessories" element={<AddAccessories />} />
+         
           <Route path="/petshop/more-info/:id" element={<ShopMoreInfo />} />
           {/* Soumya */}
           <Route path="/petshop/forgot-pwd" element={<ShopForgotPwd />} />
