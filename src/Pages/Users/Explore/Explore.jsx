@@ -85,7 +85,6 @@ const ExplorePage = () => {
 
   return (
     <>
-      {/* <UserNavbar /> */}
       <NavbarUpdated/>
       <div className="explore-page-container">
         <div className="explore-header-section">
