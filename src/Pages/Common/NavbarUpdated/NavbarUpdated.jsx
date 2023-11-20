@@ -3,11 +3,13 @@ import { FaSearch } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { RiLoginBoxLine } from "react-icons/ri";
+import { useUserData } from "../../../Context/UserContext";
 import "./NavbarUpdated.css";
 const NavbarUpdated = () => {
   const [activePage, setActivePage] = useState("home");
   const [isLoggin, setIsLoggin] = useState(false);
   const navigate = useNavigate();
+  const { activeUserData} = useUserData();
   const redirectHome = () => {
     setActivePage("home");
     navigate("/");
@@ -44,7 +46,12 @@ const NavbarUpdated = () => {
     } else {
       setIsLoggin(false);
     }
-  }, []);
+    const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:4000/";
+    console.log('basee url', BASE_URL)
+ if (activeUserData?.img?.filename) {
+      setNavbarProfileImg(`${BASE_URL}${activeUserData?.img?.filename}`);
+    }
+  }, [activeUserData]);
 
   const logoutUser = () => {
     localStorage.removeItem("petshop-token");

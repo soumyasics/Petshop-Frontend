@@ -63,6 +63,7 @@
 .navbar-updated-container img {
   height: 40px;
   width: 40px;
+  border-radius: 45%;
 }
 
 .navbar-updated-login-btn {
