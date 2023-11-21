@@ -4,7 +4,7 @@ import loginDog from "../../../Assets/login-dog-img.png";
 import zookeper from "../../../Assets/zookeper-logo.png";
 import { AiFillEye } from "react-icons/ai";
 import { AiFillEyeInvisible } from "react-icons/ai";
-import { useNavigate } from "react-router-dom";
+import { json, useNavigate } from "react-router-dom";
 import { useUserData } from "../../../Context/UserContext";
 
 import axiosInstance from "../../../BaseURL";
@@ -47,6 +47,8 @@ const LoginPage = () => {
       if (res.status === 200) {
         alert("Login successful");
         localStorage.setItem("petshop-token", res.data.token);
+        localStorage.setItem("petshop-user",JSON.stringify(res.data.user));
+
         console.log('res', res.data.user);
         updateUser(res?.data?.user);
         
