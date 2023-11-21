@@ -47,7 +47,7 @@ const LoginPage = () => {
       if (res.status === 200) {
         alert("Login successful");
         localStorage.setItem("petshop-token", res.data.token);
-        console.log('res', res.data.user);
+        localStorage.setItem("petshop-user", JSON.stringify(res.data.user));
         updateUser(res?.data?.user);
         
         setTimeout(() => {
