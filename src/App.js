@@ -39,15 +39,10 @@ import NavbarUpdated from "./Pages/Common/NavbarUpdated/NavbarUpdated.jsx";
 import ShopForgotPwd from "./Pages/PetShop/ShopForgotPwd/ShopForgotPwd.js";
 import ShopResetPwd from "./Pages/PetShop/ShopForgotPwd/ShopResetPwd.js";
 import ShopForgotPwdSendMail from "./Pages/PetShop/ShopForgotPwd/ShopForgotPwdSendMail.js"
-// import ShopForgotPwd from "./Pages/PetShop/ShopForgotPwd/ShopForgotPwd.js";import { useUserData } from "./Context/UserContext.js";
+
 import AddPetHome from "./Pages/PetShop/AddPetHome/AddPetHome.js";
 import AddAccessories from "./Pages/PetShop/AddAccessories/AddAccessories.js";
 import AddFood from "./Pages/PetShop/AddFood/AddFood.js";
-// import ShopForgotPwdSendMail from "./Pages/PetShop/ShopForgotPwd/ShopForgotPwdSendMail.js";
-// import ShopResetPwd from "./Pages/PetShop/ShopForgotPwd/ShopResetPwd.js";
-// import axiosInstance from "./BaseURL.js";
-// import { useUserData } from "./Context/UserContext.js";import AddPetHome from "./Pages/PetShop/AddPetHome/AddPetHome.js";
-// import AddAccessories from "./Pages/PetShop/AddAccessories/AddAccessories.js";
 
 
 function App() {
@@ -95,6 +90,7 @@ function App() {
           <Route path="/petshop/add-accessories" element={<AddAccessories />} />
          
           <Route path="/petshop/more-info/:id" element={<ShopMoreInfo />} />
+          <Route path="/petshop/home" element={<PetShopHome/>}/>
           {/* Soumya */}
           <Route path="/petshop/forgot-pwd" element={<ShopForgotPwd />} />
           <Route
