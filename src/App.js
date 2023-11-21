@@ -53,36 +53,6 @@ import AddFood from "./Pages/PetShop/AddFood/AddFood.js";
 function App() {
   let imgUrl = "http://localhost:4000";
 
-  // useEffect(() => {
-  //   isUserLogin();
-  // }, []);
-
-  // const { updateUser } = useUserData();
-
-  // function isUserLogin() {
-  //   const userToken = localStorage.getItem("petshop-token") || null;
-  //   if (userToken) {
-  //     axiosInstance
-  //       .get("/user/user-data", {
-  //         headers: {
-  //           Authorization: `Bearer ${userToken}`,
-  //         },
-  //       })
-  //       .then((res) => {
-  //         console.log("res2", res);
-  //         if (res?.data?.userData) {
-  //           updateUser(res.data.userData);
-  //         } else {
-  //           console.log("user data is not avaialble");
-  //         }
-  //       })
-  //       .catch((err) => {
-  //         console.log("error", err);
-  //       });
-  //   } else {
-  //     console.log("login first app.js");
-  //   }
-  // }
 
   return (
     <>

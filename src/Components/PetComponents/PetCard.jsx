@@ -37,9 +37,6 @@ const PetCard = ({ petData }) => {
           </div>
         </div>
         <div className="explore-card-footer">
-          {/* <p>{`Price: ₹ ${price}`}</p>
-          <p>{`${description}`}</p> */}
-          <br />
           <button onClick={() => {
             redirectToPetMoreInfo(_id);
           }}>MORE INFO</button>

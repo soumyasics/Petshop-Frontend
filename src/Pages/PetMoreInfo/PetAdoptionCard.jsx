@@ -1,5 +1,7 @@
 import { Button, Modal, Toast, ToastContainer } from "react-bootstrap";
 import { useState } from "react";
+import { useUserData } from "../../Context/UserContext";
+import axiosInstance from "../../BaseURL.js";
 import "./PetAdoptionCard.css";
 const PetAdoptionCard = ({ petData }) => {
   const [show, setShow] = useState(false);
@@ -10,6 +12,8 @@ const PetAdoptionCard = ({ petData }) => {
   const [toastColor, setToastColor] = useState("dark");
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const { activeUserData } = useUserData();
+  const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:4000/";
 
   const { age, breed, description, gender, img, petname, price, shopid, type } =
     petData;
@@ -17,21 +21,49 @@ const PetAdoptionCard = ({ petData }) => {
   if (!petData) {
     return (
       <>
-        <h1> Loading... </h1>
+        <h1> Some Issues on fetching pet data.. </h1>
       </>
     );
   }
-  const BASE_URL = "http://localhost:4000/";
   const dogPlaceholderImg = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9L2cU1Xxu_XDcW-C0DueoXMgQ4W6qQO7xJ7K6gVw-IA&s`;
   const catPlaceholderImg = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQednHyOH85OzO39f2ofViDcrVrF0U1JAWL0lN4KGPbyiO89GJgEy2oERXSIJ9M6cEDVuY&usqp=CAU`;
 
+  const sendDataToServer = () => {
+    const data = {
+      petid: petData?._id,
+      itemtype: petData?.type,
+      ownertype: "user",
+      shopid: petData?.shopid,
+      userid: activeUserData?._id,
+    };
+
+    axiosInstance
+      .post("user/addOrder", data)
+      .then((res) => {
+        console.log("pet buy res", res);
+        if (res.status === 200) {
+          setToastColor("success");
+          setShowAlert(true);
+          setAlertMsg(`${petname} Adoption Confirmed`);
+          setButtonContent("Adopted");
+          setIsAdopted(true);
+        } else {
+          console.log("response is not 200", res);
+        }
+      })
+      .catch((err) => {
+        console.log("error son add order", err);
+        if (err.response.status === 500) {
+          setToastColor("danger");
+          setShowAlert(true);
+          setAlertMsg(`${petname} Adoption Failed`);
+          setIsAdopted(true);
+        }
+      });
+  };
   const confirmAdoption = () => {
     handleClose();
-    setToastColor("success");
-    setShowAlert(true);
-    setAlertMsg(`${petname} Adoption Confirmed`)
-    setButtonContent("Adopted");
-    setIsAdopted(true);
+    sendDataToServer();
   };
   return (
     <div className="pet-adoption-card-container">
