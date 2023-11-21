@@ -43,7 +43,7 @@ import ShopForgotPwdSendMail from "./Pages/PetShop/ShopForgotPwd/ShopForgotPwdSe
 import AddPetHome from "./Pages/PetShop/AddPetHome/AddPetHome.js";
 import AddAccessories from "./Pages/PetShop/AddAccessories/AddAccessories.js";
 import AddFood from "./Pages/PetShop/AddFood/AddFood.js";
-
+import PetShopHome from "./Pages/PetShop/PetShopHome/PetShopHome.js"
 
 function App() {
   let imgUrl = "http://localhost:4000";
@@ -81,6 +81,8 @@ function App() {
             element={<UserForgotPwdAftrReq />}
           />
           {/* Anand */}
+          <Route path="/petshop" element={<PetShopHome />} />
+
           <Route path="/petshop/signup" element={<PetShopRegistration />} />
           <Route path="/petshop/login" element={<PetShopLogin />} />
           <Route path="/petshop/add-pet" element={<PetShopAddPet />} />
