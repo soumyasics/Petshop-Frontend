@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
+import axios from "axios";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Row from "react-bootstrap/Row";
@@ -18,7 +19,55 @@ function TestComponent() {
     setValidated(true);
   };
 
+  function myFun() {
+    const formData = {
+      ownername: "John Doe",
+      shopname: "Doe's Electronics",
+      email: "johfddfn.doe@example.com",
+      password: "hashedPassword123",
+      street: "123 Main Street",
+      city: "Cityville",
+      mobile: 1234567890,
+      img: {
+        url: "https://example.com/shop-image.jpg",
+        alt: "Shop Image",
+      },
+      district: "Districtville",
+      licenceno: "ABC123456",
+      regno: "XYZ789012",
+      description: "We sell the latest electronics and gadgets.",
+      openingtime: "09:00 AM",
+      closingtime: "07:00 PM",
+      rating: 4.5,
+    };
+
+    axios
+      .post(
+        "http://localhost:4000/petshop_api/shop/shopRegistration",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      )
+      .then((res) => {
+        console.log("response", res);
+        if (res.status === 200) {
+          alert("Registration successful");
+          setTimeout(() => {
+          }, 1500);
+        }
+      })
+      .catch((err) => {
+        console.log("error", err);
+        alert("Registration Failed");
+      });
+  }
+
   return (
+    <>
+ 
     <Form noValidate validated={validated} onSubmit={handleSubmit}>
       <Row className="mb-3">
         <Form.Group as={Col} md="4">
@@ -81,8 +130,10 @@ function TestComponent() {
           feedbackType="invalid"
         />
       </Form.Group>
-      <input type="submit" value="submit" />
+      <input type="submit" value="submit"  />
     </Form>
+        <button onClick={myFun}> req </button>
+    </>
   );
 }
 

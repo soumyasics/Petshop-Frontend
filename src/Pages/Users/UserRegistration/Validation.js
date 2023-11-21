@@ -1,7 +1,9 @@
 export default function Validation(register) {
     const errors = {}
     const email= /^[^\s@]+@[^\s@]+\.[^\s@]{2,6}$/
+
     const password =/^(?=.*[a-z])(?=.*[A-Z])[a-zA-z0-9]{8,}$/
+
    if (register.firstname === '') {
     errors.firstname ='FirstName is Required!'
    }

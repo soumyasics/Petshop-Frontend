@@ -24,12 +24,40 @@ import UserNavbar from "../UserNavbar/UserNavbar";
 import Footer from "../../Common/Footer/Footer.jsx";
 import "./UserHome.css";
 import NewsLetter from "../../Common/NewsLetter/NewsLetter.jsx";
+import { useState } from "react";
+import axiosInstance from "../../../BaseURL.js";
+import NavbarUpdated from "../../Common/NavbarUpdated/NavbarUpdated.jsx";
 
 const UserHome = () => {
+  const [data, setData] = useState({
+    name:"",
+    email:"",
+    subject:"",
+    msg:""
+  });
+const submitFunction=(e)=>{
+e.preventDefault()
+axiosInstance
+      .post("/addEnquiries", data)
+      .then(result => {
+        console.log("data entered", result);
+        if (result.status == 200) {
+          alert("Added Sucessfully");
+        } else {
+          alert("Sorry! your Request cannot be proccessed right now !!");
+        }
+}).catch((error) => {
+  console.log("err", error);
+});
+};
+const changehandleSubmit = (a) => {
+  setData({ ...data, [a.target.name]: a.target.value });
+console.log(data);
+}
   return (
     <div>
-      <CommonNavbar />
-
+      {/* <CommonNavbar /> */}
+      <NavbarUpdated/>
       {/* <div class="homepagecontain"> */}
       <div class="homepagediv2">
         <div class="homepagediv1">
@@ -450,31 +478,31 @@ const UserHome = () => {
 
         <div class="homepagediv24">
           <p class="homepagep30">Send us a message</p>
-          <form>
+          <form onSubmit={submitFunction}>
             Name:
             <br />
-            <input class="homepagei3" type="text" />
+            <input class="homepagei3" required type="text" name="name" onChange={changehandleSubmit}/>
             <hr />
             Email address:
             
             <br />
-            <input class="homepagei3" type="email" />
+            <input class="homepagei3" required type="email" name="email" onChange={changehandleSubmit} />
           
             <hr />
             Subject:
           
             <br />
-            <input class="homepagei3" type="text" />
+            <input class="homepagei3" required name="subject" type="text" onChange={changehandleSubmit} />
          
             <hr />
             Message:
         
             <br />
-            <textarea class="t1"></textarea>
+            <textarea class="t1" name="msg" required onChange={changehandleSubmit}></textarea>
           
             <br />
             <hr />
-            <span class="homepagedef home-page-snd-msg">SEND MESSAGE</span>
+            <span class="homepagedef home-page-snd-msg"><button type="submit" className="homepage-send-msg">SEND MESSAGE</button></span>
           </form>
         </div>
 

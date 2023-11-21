@@ -4,6 +4,7 @@ import { AiFillEye } from "react-icons/ai";
 import { AiFillEyeInvisible } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import "./PetShopLogin.css";
+import { Link } from "react-router-dom";
 
 const PetShopLogin = () => {
   const navigate = useNavigate();
@@ -49,13 +50,15 @@ const PetShopLogin = () => {
 
   const sendDataToServer = (credentials) => {
     axiosInstance
-      .post("/shop/login", credentials)
+      .post("shop/shopLogin", credentials)
       .then((res) => {
         if (res.status === 200) {
           alert("Login Successful");
           const token = res?.data?.token || "";
+          console.log("res", res.data.shop)
           if (token) {
             localStorage.setItem("petshop-token", token);
+            localStorage.setItem("petshop-info", JSON.stringify(res?.data?.shop));
           }
 
           setTimeout(() => {
@@ -66,7 +69,7 @@ const PetShopLogin = () => {
       .catch((err) => {
         console.log(err);
         if (err.response.status === 404) {
-          alert("Invalid Email Id");
+          alert("Invalid Email or Password ");
         } else if (err.response.status === 401) {
           alert("Please Check your Email and password");
         } else {
@@ -111,7 +114,7 @@ const PetShopLogin = () => {
             <label htmlFor="remember-me">Remember me</label>
           </div>
 
-          <p>Forgot Password</p>
+          <Link to="/petshop/forgot-pwd"><p>Forgot Password</p></Link>
         </div>
         <div className="petshop-dont-have-account">
           <p>

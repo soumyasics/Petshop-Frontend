@@ -78,7 +78,7 @@ function UserReg() {
         
         if (result.data.status == 200) {
           alert("Register Sucessfully");
-           navigate("/user-login");
+           navigate("/user/login");
         } else {
           alert("Registration Failed...");
          
@@ -131,9 +131,14 @@ function UserReg() {
                       onChange={changehandleSubmit}
                 
                     />
+
                       {errors.firstname && <p style={{color:'red'}}>{errors.firstname}</p>}
 {/* 
 {(errors.firstname && isSubmit) && <p style={{color:'red'}}>{errors.firstname}</p>} */}
+=======
+
+                    {errors.firstname && <p style={{color:'red'}}>{errors.firstname}</p>}
+
                   </div>
                   <div class="col-md-6">
                     <label

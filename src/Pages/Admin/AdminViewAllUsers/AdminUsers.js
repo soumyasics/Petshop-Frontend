@@ -2,6 +2,7 @@ import "./AdminUsers.css"
 import React, { useEffect, useState } from 'react'
 import demo from "../../../Assets/full-shot-woman-working-floor.jpg"
 import axiosInstance from "../../../BaseURL";
+import AdminNavbar from '../AdminNavbar/AdminNavbar'
 function AdminUsers({imgUrl}) {
 
     const[data,setData]=useState([])
@@ -33,9 +34,11 @@ function AdminUsers({imgUrl}) {
     
   return (
     <>
+    <AdminNavbar/>
     <div className="container container-box">
         <div className="row">
-    {data.map(function(user){
+        {data.length ?(
+    data.map(function(user){
       return (
             <div className="col-6 box">
                     <div className="card card1 bg-secondary-subtle">
@@ -52,7 +55,19 @@ function AdminUsers({imgUrl}) {
                 </div>
           
       )
-    })}
+    })
+    ) : (
+      <div className="col">
+        <div class="card" style={{ width: "18rem;" }}>
+          <div class="card-body">
+            <h5 class="card-title">No Shops are Available</h5>
+          </div>
+        </div>
+      </div>
+   
+  )}
+    
+    
     </div>
     </div></>
   )

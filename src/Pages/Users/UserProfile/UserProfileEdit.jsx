@@ -17,7 +17,7 @@ const UserProfile = () => {
   });
 
   useEffect(() => {
-    isUserLogin();
+    // isUserLogin();
   }, []);
 
   function isUserLogin() {
@@ -91,7 +91,7 @@ const UserProfile = () => {
         console.log(res);
         if (res?.data?.status === 200) {
           alert(res?.data?.message);
-          isUserLogin();
+          // isUserLogin();
         }
       })
       .catch((err) => {

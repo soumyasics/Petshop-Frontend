@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import './AdminLogin.css'
 import img1 from "../../../Assets/image_2023_11_10T12_08_55_676Z.png"
+import { useNavigate } from 'react-router-dom';
+
 function AdminLogin() {
+    const navigate=useNavigate()
+
     const [login, setLogin] = useState({
         name: '',
         password: ''
@@ -22,6 +26,7 @@ function AdminLogin() {
             if (login.password == 'admin12345') {
                 localStorage.setItem('adminlog', 1)
                 alert('Login successfully')
+                navigate('/admin/admin-all-shops')
             }
             else {
                 alert('Incorrect Password')
@@ -81,7 +86,7 @@ function AdminLogin() {
 
                             type="submit"
                             id='login'
-                            className='className="btn btn-primary btn-sm rounded-start-pill rounded-end-pill btn1 align-items-center admin-login-btn11"'
+                            className='className="btn btn-primary btn-sm rounded-start-pill rounded-end-pill align-items-center admin-login-btn11 admin_login_button"'
 
                         >LOGIN</button>
                     </form>

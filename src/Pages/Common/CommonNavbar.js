@@ -45,6 +45,7 @@ function CommonNavbar() {
                      <li className="nav-item">
                      <Link to="/user-login"> <a className="nav-link" href="#">Login</a></Link>
                      </li>
+
                     </ul>
                      
                     

@@ -443,3 +443,7 @@ div .homepagemore {
   align-items: center;
   margin: auto;
 }
+.homepage-send-msg {
+  border: none;
+  background-color: rgba(214, 28, 98, 1);
+}

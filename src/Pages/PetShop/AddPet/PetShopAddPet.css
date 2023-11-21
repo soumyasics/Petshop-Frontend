@@ -1,6 +1,5 @@
 .add-pet-form-container-2 {
   width: 90%;
-
   padding: 40px;
   margin: auto;
   box-sizing: border-box;
@@ -10,6 +9,9 @@
 }
 .add-pet-form-2 {
   margin-top: 20px;
+}
+.add-pet-form-2 input, .add-pet-form-2 select {
+  max-height: 40px;
 }
 .add-pet-form-container-2 > h2 {
   font-size: 1.5;
