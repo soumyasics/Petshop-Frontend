@@ -168,8 +168,7 @@ const AddFood = () => {
                                 placeholder="Flavour Type"
                                 type="text"
                                 onChange={handleChanges}
-                                name="type"
-                                value={foodInfo.flavour}
+                                name="flavour"
                                 required
                             />
                             <Form.Control.Feedback type="invalid">
@@ -184,7 +183,6 @@ const AddFood = () => {
                                 className="add-pet-food-user-input-2"
                                 name="targetpet"
                                 onChange={handleTypeChange}
-                                value={foodInfo.targetpet}
                                 required
                             >
                                 <option value="">Target Pet Type</option>
@@ -230,7 +228,6 @@ const AddFood = () => {
                             type="text"
                             onChange={handleChanges}
                             name="brand"
-                            value={foodInfo.brand}
                             required
                         />
                         <Form.Control.Feedback type="invalid">
@@ -246,7 +243,6 @@ const AddFood = () => {
                             <Form.Label>Description</Form.Label>
                             <Form.Control
                                 as="textarea"
-                                value={foodInfo.description}
                                 name="description"
                                 onChange={handleChanges}
                                 rows={3}
@@ -264,9 +260,8 @@ const AddFood = () => {
 
                             <Form.Control
                                 className="add-pet-food-user-input-2"
-                                placeholder="Age Range made up of"
+                                placeholder="Age Range "
                                 onChange={handleChanges}
-                                value={foodInfo.agerange}
                                 type="text"
                                 name="agerange"
                                 required
@@ -281,9 +276,8 @@ const AddFood = () => {
 
                             <Form.Control
                                 className="add-pet-food-user-input-2"
-                                placeholder="Pet Home Price"
+                                placeholder="Food Price"
                                 onChange={handleChanges}
-                                value={foodInfo.price}
                                 type="number"
                                 name="price"
                                 required
@@ -300,9 +294,8 @@ const AddFood = () => {
 
                             <Form.Control
                                 className="add-pet-food-user-input-2"
-                                placeholder="Pet Home Lenth"
+                                placeholder="Quantity"
                                 onChange={handleChanges}
-                                value={foodInfo.quantity}
                                 type="text"
                                 name="quantity"
                                 required
@@ -311,22 +304,7 @@ const AddFood = () => {
                             quantity is required
                             </Form.Control.Feedback>
                         </InputGroup>
-                        <InputGroup className="mb-3">
-                            <Form.Label>Accessory Breadth</Form.Label>
-
-                            <Form.Control
-                                className="add-pet-food-user-input-2"
-                                placeholder="Pet Home Breadth"
-                                onChange={handleChanges}
-                                value={foodInfo.breadth}
-                                type="text"
-                                name="breadth"
-                                required
-                            />
-                            <Form.Control.Feedback type="invalid">
-                               breadth is required
-                            </Form.Control.Feedback>
-                        </InputGroup>
+                       
                         {/* <InputGroup className="mb-3">
                             <Form.Label>Breadth</Form.Label>
 
