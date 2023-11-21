@@ -1,7 +1,7 @@
 .shop-forgot-pwd-first{
-background-color: #9BADCA;
 width: 1280px;
 height: 550px;
+background-image: url('../../../Assets/pwdbg.png');
 }
 
 .shop-forgot-pwd-sec{
