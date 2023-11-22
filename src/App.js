@@ -44,6 +44,7 @@ import AddPetHome from "./Pages/PetShop/AddPetHome/AddPetHome.js";
 import AddAccessories from "./Pages/PetShop/AddAccessories/AddAccessories.js";
 import AddFood from "./Pages/PetShop/AddFood/AddFood.js";
 import PetShopHome from "./Pages/PetShop/PetShopHome/PetShopHome.js";
+import PetShopViewAllPet from './Pages/PetShop/PetShopViewPets/PetShopViewAllPet.js'
 
 function App() {
   let imgUrl = "http://localhost:4000";
@@ -90,11 +91,15 @@ function App() {
           <Route path="/petshop/home" element={<PetShopHome />} />
           {/* Soumya */}
           <Route path="/petshop/forgot-pwd" element={<ShopForgotPwd />} />
+
           <Route
             path="/petshop/forgot-pwd-mail-send"
             element={<ShopForgotPwdSendMail />}
           />
           <Route path="/petshop/reset-pwd" element={<ShopResetPwd />} />
+          
+          <Route path="/petshop/view-mypets" element={<PetShopViewAllPet imgUrl={imgUrl} />} />
+
 
           {/* Anand */}
           <Route path="/pet/more-info/:id" element={<PetMoreInfo />} />

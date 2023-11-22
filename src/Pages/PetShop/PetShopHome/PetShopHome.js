@@ -1,6 +1,6 @@
 import React from 'react';
 import "./PetShopHome.css";
-import NavbarUpdated from '../../Common/NavbarUpdated/NavbarUpdated';
+import PetShopNav from '../PetShopNav/PetShopNav';
 import hero_img from '../../../Assets/Slice 1 (1).png';
 import parrot from '../../../Assets/div.call-box.png';
 import accessories from '../../../Assets/Link → box3.jpg.png';
@@ -16,7 +16,7 @@ import NewsLetter from '../../Common/NewsLetter/NewsLetter';
 function PetShopHome() {
   return (
     <>
-    <NavbarUpdated />
+    <PetShopNav />
     <div>
       <div className='container-fluid m-0 p-0'>
         <img src={hero_img} alt='Petshop Hero Image' className=' img-fluid object-fit-cover vw-100'/>
