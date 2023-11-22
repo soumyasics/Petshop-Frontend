@@ -16,14 +16,23 @@ import NewsLetter from '../../Common/NewsLetter/NewsLetter';
 function PetShopHome() {
   return (
     <>
+
     <PetShopNav />
     <div>
+    
+    <div className='container-fluid m-0 p-0'>
       <div className='container-fluid m-0 p-0'>
         <img src={hero_img} alt='Petshop Hero Image' className=' img-fluid object-fit-cover vw-100'/>
       </div>
-      <div className='container-fluid m-4 mb-0 p-2 d-flex flex-column align-items-center'>
-        <p className='m-3 text-secondary'>WHAT <s>WE</s> OFFER</p>
-        <h1><b>SHOPS CAN DO</b></h1>
+      <div className='row justify-content-center petshop-home-sizing'>
+        <div className='col-8 mx-auto offset-md-2 justify-content-center d-flex align-items-center'>
+          <p className='m-3 mb-0 text-secondary'>WHAT <s>WE</s> OFFER</p>
+        </div>
+      </div>
+      <div className='row justify-content-center petshop-home-sizing'>
+        <div className='col-8 mx-auto offset-md-2 justify-content-center d-flex align-items-center'>
+          <h1><b>SHOPS CAN DO</b></h1>
+        </div>
       </div>
       <div className='container-fluid row z-2'>
       <div className='col-4'>
@@ -50,9 +59,15 @@ function PetShopHome() {
           <h1 className='mx-auto'>Accessories</h1>
         </div>
       </div>
-      <div className='container-fluid m-4 mb-0 p-2 d-flex flex-column align-items-center'>
-        <p className='m-3 text-secondary'>--WHAT WE OFFER--</p>
-        <h1><b>HOW IT WORKS</b></h1>
+      <div className='row justify-content-center petshop-home-sizing'>
+        <div className='col-8 mx-auto offset-md-2 justify-content-center d-flex align-items-center'>
+          <p className='m-3 mb-0 text-secondary'>--WHAT WE OFFER--</p>
+        </div>
+      </div>
+      <div className='row justify-content-center petshop-home-sizing'>
+        <div className='col-8 mx-auto offset-md-2 justify-content-center d-flex align-items-center'>
+          <h1><b>HOW IT WORKS</b></h1>
+        </div>
       </div>
       <div className='container-fluid row'>
         <div className='col-6'>
@@ -69,9 +84,15 @@ function PetShopHome() {
           <button className='btn btn-primary btn-lg rounded-4 m-2'>Contact Us</button>
         </div>
       </div>
-      <div className='container-fluid m-5 mb-0 p-2 d-flex flex-column align-items-center position-relative'>
-        <p className='m-3 text-secondary'>--WHAT WE OFFER--</p>
-        <h1 className='position-absolute top-100 end-0 translate-middle m-0'><b className='p-3'>WE JUST JOINED</b></h1>
+      <div className='row justify-content-center petshop-home-sizing '>
+        <div className='col-8 mx-auto offset-md-2 justify-content-center d-flex align-items-center'>
+          <p className='m-3 mb-0 text-secondary'>--WHAT WE OFFER--</p>
+        </div>
+      </div>
+      <div className='row justify-content-center petshop-home-sizing '>
+        <div className='col-6 mx-auto offset-md-2 justify-content-end d-flex align-items-center'>
+          <h1><b>WE JUST JOINED</b></h1>
+        </div>
       </div>
       <div className="homepagediv53 m-5 petshop-home-box">
         <div className="homepagediv50">
@@ -154,9 +175,15 @@ function PetShopHome() {
           <button className='btn btn-primary btn-lg rounded-4 m-5 mx-0'>MORE ABOUT US</button>
         </div>
       </div>
-      <div className='container-fluid m-4 mb-0 p-2 d-flex flex-column align-items-center'>
-        <p className='m-3 text-secondary'>--IMAGE TOUR--</p>
-        <h1><b>PET SHOP GALLERY</b></h1>
+      <div className='row justify-content-center petshop-home-sizing'>
+        <div className='col-8 mx-auto offset-md-2 justify-content-center d-flex align-items-center'>
+          <p className='m-3 mb-0 text-secondary'>--IMAGE TOUR--</p>
+        </div>
+      </div>
+      <div className='row justify-content-center petshop-home-sizing'>
+        <div className='col-8 mx-auto offset-md-2 justify-content-center d-flex align-items-center'>
+          <h1><b>PET SHOP GALLERY</b></h1>
+        </div>
       </div>
       <div className='container-fluid row'>
         <div className='col-12 position-relative'>
@@ -166,7 +193,9 @@ function PetShopHome() {
       </div>
       <NewsLetter/>
       <Footer/>
-    </div></>
+    </div>
+    </div>
+    </>
 
   )
 }
