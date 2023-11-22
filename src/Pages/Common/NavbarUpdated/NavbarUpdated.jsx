@@ -83,31 +83,31 @@ const NavbarUpdated = () => {
       </div>
       <ul className="navbar-updated-links-container">
         <li
-          class={`${activePage === "home" ? "active" : ""}`}
+          className={`${activePage === "home" ? "active" : ""}`}
           onClick={redirectHome}
         >
           Home
         </li>
         <li
-          class={`${activePage === "explore" ? "active" : ""}`}
+          className={`${activePage === "explore" ? "active" : ""}`}
           onClick={redirectExplore}
         >
           Explore
         </li>
         <li
-          class={`${activePage === "about" ? "active" : ""}`}
+          className={`${activePage === "about" ? "active" : ""}`}
           onClick={redirectAbout}
         >
           About
         </li>
         <li
-          class={`${activePage === "gallery" ? "active" : ""}`}
+          className={`${activePage === "gallery" ? "active" : ""}`}
           onClick={redirectGallery}
         >
           Gallery
         </li>
         <li
-          class={`${activePage === "petshop" ? "active" : ""}`}
+          className={`${activePage === "petshop" ? "active" : ""}`}
           onClick={redirectPetshop}
         >
           Pet Shop
@@ -155,7 +155,7 @@ const NavbarUpdated = () => {
               onClick={redirectLogin}
             >
               <RiLoginBoxLine />
-              <li class="navbar-updated-login-btn"> Login</li>
+              <li className="navbar-updated-login-btn"> Login</li>
             </div>
           )}
         </>
