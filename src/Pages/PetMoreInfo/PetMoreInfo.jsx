@@ -11,6 +11,7 @@ import { FaRegHeart } from "react-icons/fa6";
 import { FaHeart } from "react-icons/fa6";
 import NavbarUpdated from "../Common/NavbarUpdated/NavbarUpdated";
 import { act } from "react-dom/test-utils";
+import { Toast, ToastContainer } from "react-bootstrap";
 
 const PetMoreInfo = () => {
   const [petData, setPetData] = useState(null);
@@ -18,6 +19,11 @@ const PetMoreInfo = () => {
   const [isAddedWishlist, setIsAddedWishlist] = useState(false);
   const [activeUserData, setActiveUserData] = useState(null);
   const [wishlistId, setWishlistId] = useState(null);
+
+  // toast code here
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMsg, setAlertMsg] = useState("");
+  const [toastColor, setToastColor] = useState("dark");
 
   const dogImages = {
     dog1: "https://t4.ftcdn.net/jpg/01/99/00/79/360_F_199007925_NolyRdRrdYqUAGdVZV38P4WX8pYfBaRP.jpg",
@@ -53,7 +59,6 @@ const PetMoreInfo = () => {
   };
 
   const checkAlreadyWishlisted = (getUserData) => {
-    console.log("alr", getUserData?._id);
     axiosInstance
       .post("/user/checkPetWishlisted/" + getUserData?._id, {
         petid: id,
@@ -82,7 +87,6 @@ const PetMoreInfo = () => {
 
   async function initialFunctions() {
     const getUserData = getUserDataFromLs();
-    console.log("get user data", getUserData);
     if (getUserData) {
       checkAlreadyWishlisted(getUserData);
       getPetDataById();
@@ -113,8 +117,10 @@ const PetMoreInfo = () => {
           if (wishlistDocumentId) {
             setWishlistId(wishlistDocumentId);
           }
-          alert("Pet Added to wishlist");
           setIsAddedWishlist(true);
+          setToastColor("success");
+          setShowAlert(true);
+          setAlertMsg(`Added to Wishlist`);
         }
       })
       .catch((err) => {
@@ -131,8 +137,10 @@ const PetMoreInfo = () => {
       .then((res) => {
         console.log("my res", res);
         if (res.status === 200) {
-          alert("Pet Removed from wishlist");
           setIsAddedWishlist(false);
+          setToastColor("primary");
+          setShowAlert(true);
+          setAlertMsg(`Removed from Wishlist`);
         }
       })
       .catch((err) => {
@@ -150,6 +158,19 @@ const PetMoreInfo = () => {
 
   return (
     <div>
+      <ToastContainer className="pet-adoption-card-toast" position="middle-top">
+        <Toast
+          className="toast-msg"
+          bg={toastColor}
+          onClose={() => setShowAlert(false)}
+          show={showAlert}
+          animation={true}
+          delay={1000}
+          autohide
+        >
+          <Toast.Body>{alertMsg}</Toast.Body>
+        </Toast>
+      </ToastContainer>
       {/* <UserNavbar /> */}
       <NavbarUpdated />
       <div className="explore-header-section">
