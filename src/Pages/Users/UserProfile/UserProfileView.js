@@ -3,21 +3,32 @@ import DogPic from  '../../../Assets/black-man-and-dog.jpg'
 // import ReCAPTCHA from "react-google-recaptcha";
 import './UserProfileView.css'
 import axios from 'axios';
+import axiosInstance from '../../../BaseURL';
 // 
 
 function UserProfileView() {
-    const [profile, setprofile] = useState();
+  const id=JSON.parse(localStorage.getItem("petshop-user"))
+  console.log("loc",id._id);
+  const [isDisabled,setDisabled]=useState(true)
+    const [userInfo, setprofile] = useState({
+      firstname:"",
+      lastname:"",
+      email:"",
+      mobile:"",
+      city:'',
+      street:'',
+      district:''
+
+    });
     useEffect(() => {
-        // const storedUser = localStorage.getItem("users");
-        // const id = localStorage.getItem("florlogid");
-        // console.log(id);
-    
-        axios.post().then((res) => {                   //profile api is added
+        
+        axiosInstance.post(`/user/userViewProfile/${id._id}`).then((res) => {                   //profile api is added
             setprofile(res.data.data);
         });
       }, []);
+      
       useEffect(() => {
-        console.log(profile);
+        console.log(userInfo);
       });
   return (
     <div>
@@ -36,7 +47,8 @@ function UserProfileView() {
                   name="fname"
                 //   value={userInfo.fname}
                 //   onChange={handleInputChanges}
-                  placeholder="First Name"
+                disabled={(isDisabled)? "disabled" : ""}
+                  placeholder={userInfo.firstname}
                 />
               </div>
               <div>
@@ -46,7 +58,7 @@ function UserProfileView() {
                   type="text"
                   name="lname"
                 //   onChange={handleInputChanges}
-                  placeholder="Last Name"
+                  placeholder={userInfo.lastname}
                 />
               </div>
             </div>
@@ -54,46 +66,32 @@ function UserProfileView() {
             <div className="profile-view-section">
               <label>Email</label>
 
+           
+
+              <label> Street</label>
               <input
-                type="email"
-                placeholder="Email"
+                type="text"
+                placeholder={userInfo.email}
                 name="email"
                 // onChange={handleInputChanges}
               />
 
-              <label> Password</label>
-              <input
-                type="Password"
-                placeholder="Enter your Password."
-                name="password"
-                // onChange={handleInputChanges}
-              />
+              <label>city</label>
+              <input type="text"  placeholder={userInfo.city} />
+              <label> mobile </label>
+              <input type="text" 
+              name="mobile"  placeholder={userInfo.mobile} />
 
-              <label>Address</label>
-              <input type="text" placeholder="Enter your Address." />
-              <label> Gender </label>
-
-              <div className="profile-view-gender-container">
-                <input type="radio" name="gender" value="male" />
-                <label> Male </label>
-                <input type="radio" name="gender" value="female" />
-                <label> Female </label>
-                <input type="radio" name="gender" value="other" />
-                <label> Other </label>
-              </div>
-{/* 
-              <ReCAPTCHA
-                sitekey="6LcffvEoAAAAAFeyKMNHX0TIGyDHhHjp0Al1Z2u2"
-                ref={captchaRef}
-              /> */}
-
+<label> district </label>
+              <input type="text" 
+              name="district"  placeholder={userInfo.district} />
               <div className="profile-view-btn-container">
-                <button>Back</button>
-                <input
-                  type="submit"
-                  value="Save Changes"
-                //   onClick={handleSubmitEditProfile}
-                />
+                {
+                  isDisabled?<button>Back</button>:<button>update</button>
+                }
+                
+                <button type="button">Edit</button>          
+                <button/>
               </div>
             </div>
           </form>

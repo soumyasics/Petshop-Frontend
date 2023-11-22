@@ -4,6 +4,7 @@ import { AiFillEye } from "react-icons/ai";
 import { AiFillEyeInvisible } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import "./PetShopLogin.css";
+import { Link } from "react-router-dom";
 
 const PetShopLogin = () => {
   const navigate = useNavigate();
@@ -113,7 +114,7 @@ const PetShopLogin = () => {
             <label htmlFor="remember-me">Remember me</label>
           </div>
 
-          <p>Forgot Password</p>
+          <Link to="/petshop/forgot-pwd"><p>Forgot Password</p></Link>
         </div>
         <div className="petshop-dont-have-account">
           <p>
