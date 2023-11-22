@@ -1,5 +1,4 @@
 .pet-adoption-card-container {
-  height: auto;
   width: 67%;
   overflow-x: hidden;
   background-color: #eee;
@@ -19,12 +18,10 @@
   justify-content: flex-start;
   align-items: center;
   margin-bottom: 20px;
-  height: 70%;
 }
 
 .pet-adoption-card-container-right {
   width: 50%;
-  height: 14rem;
   padding-left: 5%;
   display: flex;
   flex-direction: column;
@@ -38,7 +35,6 @@
   height: 14rem;
   display: flex;
   justify-content: center;
-  overflow: hidden;
 }
 
 .pet-adoption-card-container-right > h2 {
@@ -64,26 +60,25 @@
   margin-top: 10px;
 }
 
-
 div > .pet-adoption-card-footer-contact {
-    font-weight: 800; 
+  font-weight: 800;
 }
-div > .pet-adoption-card-footer-contact>span {
-    color: #d61c62;
-    cursor: pointer;
+div > .pet-adoption-card-footer-contact > span {
+  color: #d61c62;
+  cursor: pointer;
 }
 
 .adobpt-me-btn {
-    width: 100px;
-    height: 30px;
-    background-color: #d61c62;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size:14px;
+  width: 100px;
+  height: 30px;
+  background-color: #d61c62;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
 }
 .btn-disabled {
-    background-color: #eb6b9c;
-    cursor: not-allowed;
+  background-color: #eb6b9c;
+  cursor: not-allowed;
 }

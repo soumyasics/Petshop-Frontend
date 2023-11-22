@@ -82,6 +82,7 @@ function App() {
           <Route path="/petshop/login" element={<PetShopLogin />} />
           <Route path="/petshop/add-pet" element={<PetShopAddPet />} />
           <Route path="/petshop/more-info/:id" element={<ShopMoreInfo />} />
+       
           {/* Soumya */}
           <Route path="/petshop/forgot-pwd" element={<ShopForgotPwd />} />
           <Route
