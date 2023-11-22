@@ -4,9 +4,10 @@ import { useUserData } from "../../Context/UserContext";
 import axiosInstance from "../../BaseURL.js";
 import "./PetAdoptionCard.css";
 const PetAdoptionCard = ({ petData }) => {
-  const [show, setShow] = useState(false);
   const [buttonContent, setButtonContent] = useState("Adopt Me");
   const [isAdopted, setIsAdopted] = useState(false);
+  // toast code here
+  const [show, setShow] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [alertMsg, setAlertMsg] = useState("");
   const [toastColor, setToastColor] = useState("dark");

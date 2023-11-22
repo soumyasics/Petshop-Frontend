@@ -38,16 +38,15 @@ import PetMoreInfo from "./Pages/PetMoreInfo/PetMoreInfo.jsx";
 import NavbarUpdated from "./Pages/Common/NavbarUpdated/NavbarUpdated.jsx";
 import ShopForgotPwd from "./Pages/PetShop/ShopForgotPwd/ShopForgotPwd.js";
 import ShopResetPwd from "./Pages/PetShop/ShopForgotPwd/ShopResetPwd.js";
-import ShopForgotPwdSendMail from "./Pages/PetShop/ShopForgotPwd/ShopForgotPwdSendMail.js"
+import ShopForgotPwdSendMail from "./Pages/PetShop/ShopForgotPwd/ShopForgotPwdSendMail.js";
 
 import AddPetHome from "./Pages/PetShop/AddPetHome/AddPetHome.js";
 import AddAccessories from "./Pages/PetShop/AddAccessories/AddAccessories.js";
 import AddFood from "./Pages/PetShop/AddFood/AddFood.js";
-import PetShopHome from "./Pages/PetShop/PetShopHome/PetShopHome.js"
+import PetShopHome from "./Pages/PetShop/PetShopHome/PetShopHome.js";
 
 function App() {
   let imgUrl = "http://localhost:4000";
-
 
   return (
     <>
@@ -82,17 +81,13 @@ function App() {
           />
           {/* Anand */}
           <Route path="/petshop" element={<PetShopHome />} />
-
           <Route path="/petshop/signup" element={<PetShopRegistration />} />
           <Route path="/petshop/login" element={<PetShopLogin />} />
           <Route path="/petshop/add-pet" element={<PetShopAddPet />} />
-          
           <Route path="/petshop/add-food" element={<AddFood />} />
-
           <Route path="/petshop/add-accessories" element={<AddAccessories />} />
-         
           <Route path="/petshop/more-info/:id" element={<ShopMoreInfo />} />
-          <Route path="/petshop/home" element={<PetShopHome/>}/>
+          <Route path="/petshop/home" element={<PetShopHome />} />
           {/* Soumya */}
           <Route path="/petshop/forgot-pwd" element={<ShopForgotPwd />} />
           <Route
@@ -101,8 +96,7 @@ function App() {
           />
           <Route path="/petshop/reset-pwd" element={<ShopResetPwd />} />
 
-
-  {/* Anand */}
+          {/* Anand */}
           <Route path="/pet/more-info/:id" element={<PetMoreInfo />} />
           <Route path="/navbar-updated" element={<NavbarUpdated />} />
 

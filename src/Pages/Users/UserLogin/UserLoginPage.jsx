@@ -11,12 +11,11 @@ import axiosInstance from "../../../BaseURL";
 import { Link } from "react-router-dom";
 import "./UserLoginPage.css";
 const LoginPage = () => {
-
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const {updateUser} = useUserData();
+  const { updateUser } = useUserData();
 
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -39,31 +38,32 @@ const LoginPage = () => {
     }
     const credentials = { email, password, role: "user" };
     sendDataToServer(credentials);
-
   };
 
   const sendDataToServer = (credentials) => {
-    axiosInstance.post(`/user/userLogin`, credentials).then((res) => {
-      if (res.status === 200) {
-        alert("Login successful");
-        localStorage.setItem("petshop-token", res.data.token);
-        localStorage.setItem("petshop-user",JSON.stringify(res.data.user));
+    axiosInstance
+      .post(`/user/userLogin`, credentials)
+      .then((res) => {
+        if (res.status === 200) {
+          alert("Login successful");
+          localStorage.setItem("petshop-token", res.data.token);
 
-        console.log('res', res.data.user);
-        updateUser(res?.data?.user);
-        
-        setTimeout(() => {
-          navigate("/");
-        }, 1000)
-      } else {
-        alert("Login failed");
-      }
-    }).catch((err) => {
-      console.log(err);
-      if (err?.response?.status === 404 || err?.response?.status === 401) {
-        alert("Please verify your email and password");
-      }
-    })
+          localStorage.setItem("petshop-user", JSON.stringify(res.data.user));
+          updateUser(res?.data?.user);
+
+          setTimeout(() => {
+            navigate("/");
+          }, 1000);
+        } else {
+          alert("Login failed");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        if (err?.response?.status === 404 || err?.response?.status === 401) {
+          alert("Please verify your email and password");
+        }
+      });
   };
 
   const handleForgotPassword = () => {};
@@ -114,11 +114,19 @@ const LoginPage = () => {
                 <input type="checkbox" name="remember-me" />
                 <label>Remember me</label>
               </div>
-              <Link to="/user-forgot-password-req"> <p onClick={handleForgotPassword} style={{color:'white'}}>Forgot Password?</p></Link>
+              <Link to="/user-forgot-password-req">
+                {" "}
+                <p onClick={handleForgotPassword} style={{ color: "white" }}>
+                  Forgot Password?
+                </p>
+              </Link>
             </div>
 
             <p className="dont-have-account">
-              Don't have an account?  <Link to="/user-reg"><span  style={{color:'white'}}>Sign Up</span></Link>
+              Don't have an account?{" "}
+              <Link to="/user-reg">
+                <span style={{ color: "white" }}>Sign Up</span>
+              </Link>
             </p>
 
             <div className="signin-btn-container">
