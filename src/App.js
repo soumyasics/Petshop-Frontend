@@ -45,6 +45,7 @@ import AddAccessories from "./Pages/PetShop/AddAccessories/AddAccessories.js";
 import AddFood from "./Pages/PetShop/AddFood/AddFood.js";
 import PetShopHome from "./Pages/PetShop/PetShopHome/PetShopHome.js";
 import PetShopViewAllPet from './Pages/PetShop/PetShopViewPets/PetShopViewAllPet.js'
+import UserWishlist from "./Pages/Wishlist/UserWishlist.jsx";
 
 function App() {
   let imgUrl = "http://localhost:4000";
@@ -69,6 +70,7 @@ function App() {
 
           <Route path="/user/profile-edit" element={<UserProfileEdit />} />
           <Route path="/user-forgot-password" element={<UserForgotPwd />} />
+          <Route path="/user/wishlist" element={<UserWishlist />} />
 
           <Route path="/user/explore" element={<ExplorePage />} />
 
@@ -80,7 +82,6 @@ function App() {
             path="/user-forgot-password-aftr-req"
             element={<UserForgotPwdAftrReq />}
           />
-          {/* Anand */}
           <Route path="/petshop" element={<PetShopHome />} />
           <Route path="/petshop/signup" element={<PetShopRegistration />} />
           <Route path="/petshop/login" element={<PetShopLogin />} />
@@ -89,6 +90,7 @@ function App() {
           <Route path="/petshop/add-accessories" element={<AddAccessories />} />
           <Route path="/petshop/more-info/:id" element={<ShopMoreInfo />} />
           <Route path="/petshop/home" element={<PetShopHome />} />
+
           {/* Soumya */}
           <Route path="/petshop/forgot-pwd" element={<ShopForgotPwd />} />
 

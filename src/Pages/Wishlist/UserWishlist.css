@@ -1,0 +1,19 @@
+.user-wishlist-container {
+  min-height: 300px;
+  width: 95%;
+  background-color: #f1f1f1a8;
+  margin: auto;
+  margin-top: 20px;
+  display: flex;
+  gap: 86px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.wishlist-heading {
+  margin-left: 63px;
+  font-size: 27px;
+  font-weight: 800;
+  margin-top: 50px;
+  color: #d61c62;
+}

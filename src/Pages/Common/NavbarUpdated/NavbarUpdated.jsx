@@ -61,7 +61,6 @@ const NavbarUpdated = () => {
   const handleDropdown = () => {
     setOpenDropdown((openDropdown) => !openDropdown);
     if (selectRef?.current) {
-
       setTimeout(() => {
         selectRef.current.focus();
       }, 0);
@@ -74,6 +73,10 @@ const NavbarUpdated = () => {
     }
     setIsLoggin(false);
     navigate("/user/login");
+  };
+
+  const redirectUserWishlist = () => {
+    navigate("/user/wishlist");
   };
   return (
     <div className="navbar-updated-container">
@@ -135,7 +138,7 @@ const NavbarUpdated = () => {
                   </span>
                   <p> Orders</p>
                 </div>
-                <div>
+                <div onClick={redirectUserWishlist}>
                   <span>
                     <FaHeart />
                   </span>
