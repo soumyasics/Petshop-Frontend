@@ -9,20 +9,27 @@ import { FaHeart } from "react-icons/fa";
 import { BiLogOut } from "react-icons/bi";
 import "./NavbarUpdated.css";
 const NavbarUpdated = () => {
-  const [activePage, setActivePage] = useState("home");
+  const [activePage, setActivePage] = useState("");
   const [isLoggin, setIsLoggin] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(false);
   const selectRef = useRef(null);
 
   const navigate = useNavigate();
   const { activeUserData } = useUserData();
+
+  useEffect(() => {
+    if (activePage === "home") {
+      navigate("/");
+    } else if (activePage === "explore") {
+      navigate("/explore");
+    }
+  }, [activePage, navigate]);
+
   const redirectHome = () => {
     setActivePage("home");
-    navigate("/");
   };
   const redirectExplore = () => {
     setActivePage("explore");
-    navigate("/explore");
   };
   const redirectAbout = () => {
     setActivePage("about");
@@ -37,10 +44,7 @@ const NavbarUpdated = () => {
     navigate("/user/login");
     setActivePage("login");
   };
-  const redirectGallery = () => {
-    setActivePage("gallery");
-    // navigate("/gallery");
-  };
+
   const [navbarProifleImg, setNavbarProfileImg] = useState(
     "https://w7.pngwing.com/pngs/81/570/png-transparent-profile-logo-computer-icons-user-user-blue-heroes-logo-thumbnail.png"
   );
@@ -77,7 +81,13 @@ const NavbarUpdated = () => {
 
   const redirectUserWishlist = () => {
     navigate("/user/wishlist");
+    setActivePage("wishlist");
   };
+  const redirectUserOrder = () => {
+    navigate("/user/order");
+    setActivePage("order");
+  };
+
   return (
     <div className="navbar-updated-container">
       <div onClick={redirectHome} className="navbar-updated-logo-container">
@@ -86,28 +96,34 @@ const NavbarUpdated = () => {
       </div>
       <ul className="navbar-updated-links-container">
         <li
-          className={`${activePage === "home" ? "active" : ""}`}
+          className={`${activePage === "home" && "active"}`}
           onClick={redirectHome}
         >
           Home
         </li>
         <li
-          className={`${activePage === "explore" ? "active" : ""}`}
+          className={`${activePage === "explore" && "active"}`}
           onClick={redirectExplore}
         >
           Explore
         </li>
         <li
-          className={`${activePage === "about" ? "active" : ""}`}
+          className={`${activePage === "about" && "active"}`}
           onClick={redirectAbout}
         >
           About
         </li>
         <li
-          className={`${activePage === "gallery" ? "active" : ""}`}
-          onClick={redirectGallery}
+          className={`${activePage === "order" && "active"}`}
+          onClick={redirectUserOrder}
         >
-          Gallery
+          Orders
+        </li>
+        <li
+          className={`${activePage === "wishlist" ? "active" : ""}`}
+          onClick={redirectUserWishlist}
+        >
+          Wishlist
         </li>
         <li
           className={`${activePage === "petshop" ? "active" : ""}`}
@@ -133,7 +149,7 @@ const NavbarUpdated = () => {
                 style={{ display: openDropdown ? "block" : "none" }}
               >
                 <div>
-                  <span>
+                  <span onClick={redirectUserOrder}>
                     <LuListOrdered />
                   </span>
                   <p> Orders</p>

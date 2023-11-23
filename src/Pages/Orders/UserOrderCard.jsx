@@ -2,15 +2,10 @@ import { Button, Modal, Toast, ToastContainer } from "react-bootstrap";
 import { useState } from "react";
 import { useUserData } from "../../Context/UserContext";
 import axiosInstance from "../../BaseURL.js";
-import "./WishlistCard.css";
+import "./UserOrderCard.css";
 
-const WishlistPetCard = ({
-  petData,
-  wishlistId,
-  userAction,
-  setUserAction,
-}) => {
-  const [buttonContent, setButtonContent] = useState("Adopt Pet");
+const UserOrderCard = ({ petData, userAction, setUserAction, orderId }) => {
+  const [buttonContent, setButtonContent] = useState("");
   const [isAdopted, setIsAdopted] = useState(false);
   // toast code here
   const [show, setShow] = useState(false);
@@ -19,6 +14,7 @@ const WishlistPetCard = ({
   const [toastColor, setToastColor] = useState("dark");
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [orderStatus, setOrderStatus] = useState("Accepted");
   const { activeUserData } = useUserData();
   const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:4000/";
 
@@ -73,9 +69,8 @@ const WishlistPetCard = ({
     sendDataToServer();
   };
   const removeWishlist = () => {
-    console.log("wh", wishlistId);
     axiosInstance
-      .delete("/user/removeWishlistById/" + wishlistId)
+      .delete("/user/removeWishlistById/" + orderId)
       .then((res) => {
         console.log("my res", res);
         if (res.status === 200) {
@@ -92,7 +87,10 @@ const WishlistPetCard = ({
       });
   };
   return (
-    <div className="pet-adoption-card-container pet-adoption-card-container-2">
+    <div
+      className="pet-adoption-card-container pet-adoption-card-container-2"
+      id="pet-adoption-card-container-2"
+    >
       <ToastContainer className="pet-adoption-card-toast" position="middle-top">
         <Toast
           className="toast-msg"
@@ -146,21 +144,21 @@ const WishlistPetCard = ({
           </p>
         </div>
       </div>
-      <div className="pet-adoption-card-footer">
-        <button
-          onClick={handleShow}
-          disabled={isAdopted}
-          className={`adobpt-me-btn ${isAdopted ? "btn-disabled" : ""}`}
-        >
-          {buttonContent}
-        </button>
-        <button
-          onClick={removeWishlist}
-          disabled={isAdopted}
-          className={`adobpt-me-btn ${isAdopted ? "btn-disabled" : ""}`}
-        >
-          Remove
-        </button>
+      <div className={`pet-adoption-card-footer`} id="pet-order-status-text">
+        <p>
+          Order Status:{" "}
+          <span
+            className={`${
+              orderStatus === "Accepted"
+                ? "green-color-text"
+                : "Pending"
+                ? "blue-color-text"
+                : "red-color-text"
+            }`}
+          >
+            {orderStatus}.
+          </span>
+        </p>
       </div>
 
       <>
@@ -191,4 +189,4 @@ const WishlistPetCard = ({
     </div>
   );
 };
-export default WishlistPetCard;
+export default UserOrderCard;

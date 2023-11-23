@@ -1,9 +1,11 @@
 import { Button, Modal, Toast, ToastContainer } from "react-bootstrap";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useUserData } from "../../Context/UserContext";
 import axiosInstance from "../../BaseURL.js";
+
 import "./PetAdoptionCard.css";
 const PetAdoptionCard = ({ petData }) => {
+  const [activeUserData2, setActiveUserData2] = useState("");
   const [buttonContent, setButtonContent] = useState("Adopt Me");
   const [isAdopted, setIsAdopted] = useState(false);
   // toast code here
@@ -19,23 +21,32 @@ const PetAdoptionCard = ({ petData }) => {
   const { age, breed, description, gender, img, petname, price, shopid, type } =
     petData;
 
-  if (!petData) {
-    return (
-      <>
-        <h1> Some Issues on fetching pet data.. </h1>
-      </>
-    );
-  }
   const dogPlaceholderImg = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9L2cU1Xxu_XDcW-C0DueoXMgQ4W6qQO7xJ7K6gVw-IA&s`;
   const catPlaceholderImg = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQednHyOH85OzO39f2ofViDcrVrF0U1JAWL0lN4KGPbyiO89GJgEy2oERXSIJ9M6cEDVuY&usqp=CAU`;
 
+  const getUserDataFromLs = () => {
+    const userData = JSON.parse(localStorage.getItem("petshop-user")) || null;
+    if (userData) {
+      return userData;
+    }
+    console.log("login for loading wishlists");
+    return null;
+  };
+
+  useEffect(() => {
+    const getUserData = getUserDataFromLs();
+    if (getUserData) {
+      setActiveUserData2(getUserData);
+    }
+  }, []);
   const sendDataToServer = () => {
+    console.log("new ac", activeUserData);
     const data = {
       petid: petData?._id,
       itemtype: petData?.type,
       ownertype: "user",
       shopid: petData?.shopid,
-      userid: activeUserData?._id,
+      userid: activeUserData2?._id,
     };
 
     axiosInstance
@@ -65,6 +76,14 @@ const PetAdoptionCard = ({ petData }) => {
     handleClose();
     sendDataToServer();
   };
+
+  if (!petData) {
+    return (
+      <>
+        <h1> Some Issues on fetching pet data.. </h1>
+      </>
+    );
+  }
   return (
     <div className="pet-adoption-card-container">
       <ToastContainer className="pet-adoption-card-toast" position="middle-top">
