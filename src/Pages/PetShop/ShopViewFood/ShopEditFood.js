@@ -21,7 +21,7 @@ const ShopEditFood= ({imgUrl}) => {
   
     useEffect(() => {
 console.log(id);
-        axiosInstance.post(`/shop/viewPAccessById/${id}`)
+        axiosInstance.post(`/shop/viewFoodById/${id}`)
         .then((res)=>{
           console.log(res);
   
@@ -32,7 +32,13 @@ console.log(id);
          
           console.log(res.data.data.img);
 
+      }
+      
+      )
+      .catch((err)=>{
+          console.log(err);
       })
+
       },  []);
 
   const handleSubmit = (e) => {
@@ -51,7 +57,7 @@ console.log(id);
     console.log("pet info",petInfo);
    
     axiosInstance
-      .post(`/shop/editAccessById/${id}`, petInfo, {
+      .post(`/shop/editFoodById/${id}`, petInfo, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -60,7 +66,7 @@ console.log(id);
         console.log(res);
         if (res.status === 200) {
           alert( "Pet added Successfully");
-          navigate("/petshop/view-mypets")
+          navigate("/petshop/view-mypetfood")
          
         }
       }).catch((err) => {

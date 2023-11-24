@@ -91,7 +91,7 @@ const PetShoNav = ({imgUrl}) => {
           Home
         </li>
         <li
-          className={`${activePage === "explore" ? "active" : ""}`}
+          className={`${activePage === "pets" ? "active" : ""}`}
           onClick={redirectExplore}
         >
           Pets
@@ -109,14 +109,14 @@ const PetShoNav = ({imgUrl}) => {
           Pet Home
         </li>
         <li
-          className={`${activePage === "petshop" ? "active" : ""}`}
-          onClick={redirectPetshop}
+          className={`${activePage === "petfood" ? "active" : ""}`}
+          onClick={redirectpetfood}
         >
           Pet Food
         </li>
         <li
-          className={`${activePage === "petshop" ? "active" : ""}`}
-          onClick={redirectPetshop}
+          className={`${activePage === "petfood" ? "active" : ""}`}
+          onClick={redirectpetfood}
         >
           Orders
         </li>

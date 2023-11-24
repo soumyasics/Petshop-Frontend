@@ -19,7 +19,7 @@ function ShopViewFood({ imgUrl }) {
 
   useEffect(() => {
     console.log("id", id._id);
-    axiosInstance.post(`/shop/viewAccessoryByShopId/${id._id}`).then((res) => {
+    axiosInstance.post(`/shop/viewFoodByShopId/${id._id}`).then((res) => {
       if (res.status === 200) {
         console.log("data", res.data.data);
         if (res.data.data != undefined) {
@@ -42,10 +42,10 @@ function ShopViewFood({ imgUrl }) {
    
 
 
-  const removePet = (id) => {
+  const remove = (id) => {
     // alert("removed")
     axiosInstance
-      .post(`/shop/removePAccessById/${id}`)
+      .post(`/shop/removeFoodById/${id}`)
       .then((res) => {
         console.log(res);
         if (res.data.status == 200) {
@@ -63,12 +63,11 @@ function ShopViewFood({ imgUrl }) {
 
   return (
     <>
-      <PetShoNav imgUrl={imgUrl} />
       <div className="container container-box">
        
         <div className="row">
         <div className='mt-4 mb-4 view_my_pet_addbutton' >
-        <Link to={`/petshop/add-accessories`} id='shop-add-button' ><h1>+</h1></Link>
+        <Link to={`/petshop/add-food`} id='shop-add-button' ><h1>+</h1></Link>
           
         </div>
           {data.length ? (
@@ -81,18 +80,18 @@ function ShopViewFood({ imgUrl }) {
                         <img src={user.img!=null?`${imgUrl}/${user.img.filename}`:addPetImgPlaceholder}  className="card-img-left user-img admin-view-pets-name"></img>
                       </div>
                       <div className="col-6">
-                        <h3 className="card-title name"><b>Type : {user.type}</b></h3>
+                        <h3 className="card-title name"><b>{user.targetpet}</b></h3>
                         <h6 className="card-title name"><b>Brand :  {user.brand} </b></h6>
                         <h6 className="card-title name"><b>Price : {user.price} </b></h6>
-                        <h6 className="card-title name"><b>Material : {user.material} </b></h6>
+                        <h6 className="card-title name"><b>Flavour : {user.flavour} </b></h6>
 
                       </div>
                     </div>
                     <div className='d-flex view_my_pet_button' >
-                    <Link to={`/petshop/edit-accessories/${user._id}`}> <button className="btn btn-primary btn-sm rounded-start-pill rounded-end-pill  align-items-center ">Edit</button></Link>
+                    <Link to={`/petshop/edit-food/${user._id}`}> <button className="btn btn-primary btn-sm rounded-start-pill rounded-end-pill  align-items-center ">Edit</button></Link>
 
                     {/* <Link to={`/pet/removePetById/${user._id}`}> */}
-                       <button type="button" className="btn btn-primary btn-sm rounded-start-pill rounded-end-pill  align-items-center " onClick={()=>removePet(user._id)}>Remove</button>
+                       <button type="button" className="btn btn-primary btn-sm rounded-start-pill rounded-end-pill  align-items-center " onClick={()=>remove(user._id)}>Remove</button>
                        {/* </Link> */}
                     </div>
                     
@@ -104,7 +103,7 @@ function ShopViewFood({ imgUrl }) {
             <div className="col">
               <div class="card" style={{ width: "18rem;" }}>
                 <div class="card-body">
-                  <h5 class="card-title">No Accessries are Available</h5>
+                  <h5 class="card-title">No Foods Available</h5>
                 </div>
               </div>
             </div>
