@@ -8,14 +8,17 @@ import NewsLetter from "../../Common/NewsLetter/NewsLetter.jsx";
 import axiosInstance from "../../../BaseURL.js";
 import "./Explore.css";
 import NavbarUpdated from "../../Common/NavbarUpdated/NavbarUpdated.jsx";
-
+import AccessoiresContainer from "../../../Components/AccessoriesContainer/AccessoriesContainer.jsx";
+import FoodContainer from "../../../Components/PetFood/Food.jsx";
 const ExplorePage = () => {
   const [activeSection, setActiveSection] = useState("shops");
   const [shopsData, setShopsData] = useState([]);
   const [petsData, setPetsData] = useState([]);
+  const [accessoriesData, setAccessoriesData] = useState([]);
   const [allDogs, setAllDogs] = useState([]);
-  const [allCats, setAllCats]  = useState([]);
+  const [allCats, setAllCats] = useState([]);
   const [petSectionActive, setPetSectionActive] = useState(false);
+  const [foodData, setFoodData] = useState([]);
 
   const getShopsData = () => {
     axiosInstance
@@ -33,13 +36,28 @@ const ExplorePage = () => {
         console.log(error);
       });
   };
+  const getAccessoiresData = () => {
+    axiosInstance
+      .get("getAllAccessories")
+      .then((res) => {
+        if (res.status === 200) {
+          if (res?.data?.data) {
+            setAccessoriesData(res.data.data);
+          } else {
+            console.log("no data, check getShopsData in explore page");
+          }
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const getPetsData = () => {
     axiosInstance
       .post("/pet/viewAllPets")
       .then((res) => {
         if (res.status === 200) {
-          console.log("peets ", res?.data?.data);
           if (res?.data?.data) {
             setPetsData(res.data.data);
           } else {
@@ -49,11 +67,26 @@ const ExplorePage = () => {
       })
       .catch((error) => {
         console.log(error);
-      })
-      .finally(() => {
-        console.log("get pets data completd");
       });
   };
+
+  const getAllFoodData = () => {
+    axiosInstance
+      .get("food/getAllFoods")
+      .then((res) => {
+        if (res.status === 200) {
+          if (res?.data?.data) {
+            setFoodData(res.data.data);
+          } else {
+            console.log("no data, check getShopsData in explore page");
+          }
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   useEffect(() => {
     getShopsData();
   }, []);
@@ -83,9 +116,19 @@ const ExplorePage = () => {
     setAllCats(allCats);
   };
 
+  const handleAccessoiresBtnClick = () => {
+    setActiveSection("accessories");
+    getAccessoiresData();
+  };
+
+  const handlePetFoodBtnClick = () => {
+    setActiveSection("food");
+    getAllFoodData();
+  };
+
   return (
     <>
-      <NavbarUpdated/>
+      <NavbarUpdated />
       <div className="explore-page-container">
         <div className="explore-header-section">
           <img src={catDogImg} alt="cat-dog" />
@@ -108,7 +151,7 @@ const ExplorePage = () => {
                 </button>
                 <button
                   className={`${activeSection === "food" ? "active" : ""}`}
-                  onClick={() => setActiveSection("food")}
+                  onClick={handlePetFoodBtnClick}
                 >
                   Food
                 </button>
@@ -122,7 +165,7 @@ const ExplorePage = () => {
                   className={`${
                     activeSection === "accessories" ? "active" : ""
                   }`}
-                  onClick={() => setActiveSection("accessories")}
+                  onClick={handleAccessoiresBtnClick}
                 >
                   Accessories
                 </button>
@@ -174,6 +217,18 @@ const ExplorePage = () => {
                 <PetContainer petsData={petsData} />
               ) : (
                 <h1> No Pets found</h1>
+              ))}
+            {activeSection === "food" &&
+              (foodData.length > 0 ? (
+                <FoodContainer foodData={foodData} />
+              ) : (
+                <h1> Pet food not found</h1>
+              ))}
+            {activeSection === "accessories" &&
+              (accessoriesData.length > 0 ? (
+                <AccessoiresContainer accData={accessoriesData} />
+              ) : (
+                <h1> No Accessoires found</h1>
               ))}
             {activeSection === "explore-dogs" &&
               (petsData.length > 0 ? (

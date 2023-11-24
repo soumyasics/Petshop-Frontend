@@ -44,7 +44,7 @@ import AddPetHome from "./Pages/PetShop/AddPetHome/AddPetHome.js";
 import AddAccessories from "./Pages/PetShop/AddAccessories/AddAccessories.js";
 import AddFood from "./Pages/PetShop/AddFood/AddFood.js";
 import PetShopHome from "./Pages/PetShop/PetShopHome/PetShopHome.js";
-import PetShopViewAllPet from './Pages/PetShop/PetShopViewPets/PetShopViewAllPet.js'
+import PetShopViewAllPet from "./Pages/PetShop/PetShopViewPets/PetShopViewAllPet.js";
 import UserWishlist from "./Pages/Wishlist/UserWishlist.jsx";
 import PetShopNav from './Pages/PetShop/PetShopNav/PetShopNav.js'
 import PetShoNav from "./Pages/PetShop/PetShopNav/PetShopNav.js";
@@ -53,6 +53,8 @@ import ShopViewAccessories from'./Pages/PetShop/ShopViewAccessories/ShopViewAcce
 import ShopEditAccessories from "./Pages/PetShop/ShopViewAccessories/ShopEditAccessories.js";
 import ShopEditFood from "./Pages/PetShop/ShopViewFood/ShopEditFood.js";
 import ShopViewFood from "./Pages/PetShop/ShopViewFood/ShopViewFood.js";
+import UserOrder from "./Pages/Orders/UserOrder.jsx";
+
 function App() {
   let imgUrl = "http://localhost:4000";
 
@@ -77,7 +79,7 @@ function App() {
           <Route path="/user/profile-edit" element={<UserProfileEdit />} />
           <Route path="/user-forgot-password" element={<UserForgotPwd />} />
           <Route path="/user/wishlist" element={<UserWishlist />} />
-
+          <Route path="/user/order" element={<UserOrder />} />
           <Route path="/user/explore" element={<ExplorePage />} />
 
           <Route
@@ -101,10 +103,8 @@ function App() {
 
           <Route path="/petshop/more-info/:id" element={<ShopMoreInfo />} />
           <Route path="/petshop/home" element={<PetShopHome />} />
-
           {/* Soumya */}
           <Route path="/petshop/forgot-pwd" element={<ShopForgotPwd />} />
-
           <Route
             path="/petshop/forgot-pwd-mail-send"
             element={<ShopForgotPwdSendMail />}
@@ -116,11 +116,14 @@ function App() {
           <Route path="/petshop/editpet/:id" element={<PetshopEditPet imgUrl={imgUrl} />} />
          
           <Route path="/petshop/view-myaccessories" element={<ShopViewAccessories imgUrl={imgUrl} />} />
+          <Route
+            path="/petshop/view-mypets"
+            element={<PetShopViewAllPet imgUrl={imgUrl} />}
+          />
 
           {/* Anand */}
           <Route path="/pet/more-info/:id" element={<PetMoreInfo />} />
           <Route path="/navbar-updated" element={<NavbarUpdated />} />
-
           {/* Soumya */}
 
           <Route path="/admin-login" element={<AdminLogin />} />

@@ -64,8 +64,6 @@ const PetMoreInfo = () => {
         petid: id,
       })
       .then((res) => {
-        console.log("already wishlitsed ", res.data.data[0]._id);
-        console.log("flag ", res.data.flag);
         setWishlistId(res.data.data[0]._id);
         if (res.status === 200) {
           setIsAddedWishlist(res.data.flag);
