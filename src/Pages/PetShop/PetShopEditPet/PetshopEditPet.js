@@ -4,45 +4,31 @@ import Footer from "../../Common/Footer/Footer";
 import addPetImgPlaceholder from "../../../Assets/add-pet-img-placeholder.png";
 import { Button, Form, InputGroup } from "react-bootstrap";
 import { useState, useRef, useEffect } from "react";
-import "./PetShopAddPet.css";
+import "../AddPet/PetShopAddPet.css";
 import axiosInstance from "../../../BaseURL";
 import PetShoNav from "../PetShopNav/PetShopNav";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const PetShopAddPet = () => {
+
+const PetshopEditPet = (imgUrl) => {
   const [activeImage, setActiveImage] = useState(null);
   const [validated, setValidated] = useState(false);
-
+  const {id} = useParams()
   const fileInputRef = useRef(null);
-  const [petInfo, setPetInfo] = useState({
-    ownerid: "",
-    shopid: "",
-    petname: "",
-    type: "",
-    age: "",
-    breed: "",
-    gender: "",
-    insurancenumber: "",
-    description: "",
-    price: "",
-    img: null,
-  });
+  const [petInfo, setPetInfo] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const petshopInfo =
-      JSON.parse(localStorage.getItem("petshop-info")) || null;
-    if (!petshopInfo) {
-      console.log("Login first");
-      return;
-    }
-    if (petshopInfo?.shopname && petshopInfo?._id) {
-      setPetInfo({
-        ...petInfo,
-        shopid: petshopInfo._id,
+
+        axiosInstance.post(`/pet/viewPetById/${id}`)
+        .then((res)=>{
+          console.log(res);
+  
+          setPetInfo(res.data.data)
+        
       })
-    }else {
-      console.log("login first");
-    }
-  }, []);
+      },  []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -51,37 +37,16 @@ const PetShopAddPet = () => {
     if (form.checkValidity() === false) {
       e.stopPropagation();
     }
-    setValidated(true);
-    const {
-      petname,
-      type,
-      age,
-      breed,
-      gender,
-      insurancenumber,
-      description,
-      price,
-    } = petInfo;
+  
 
-    if (
-      !petname ||
-      !type ||
-      !age ||
-      !breed ||
-      !gender ||
-      !insurancenumber ||
-      !description ||
-      !price
-    ) {
-      console.log("All fields are required.");
-      return;
-    }
+   
     sendToServer(petInfo);
   };
   const sendToServer = (petInfo) => {
+    console.log("pet info",petInfo);
    
     axiosInstance
-      .post("pet/addPet", petInfo, {
+      .post(`/pet/editPetById/${id}`, petInfo, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -90,9 +55,8 @@ const PetShopAddPet = () => {
         console.log(res);
         if (res.status === 200) {
           alert( "Pet added Successfully");
-          setTimeout(() => {
-            window.location.reload();
-          }, 1000)
+          navigate("/petshop/view-mypets")
+         
         }
       }).catch((err) => {
         console.log('err', err);
@@ -166,11 +130,10 @@ const PetShopAddPet = () => {
 
               <Form.Control
                 className="add-pet-user-input-2"
-                placeholder="Pet Name"
+                placeholder={petInfo.petname}
                 type="text"
                 onChange={handleChanges}
                 name="petname"
-                value={petInfo.petname}
                 required
               />
               <Form.Control.Feedback type="invalid">
@@ -200,8 +163,9 @@ const PetShopAddPet = () => {
           <div className="add-pet-photo-2">
             <label>Pet Image </label>
             <div className="pet-img-placeholder">
+                
               <img
-                src={activeImage ? activeImage : addPetImgPlaceholder}
+               src={petInfo.img?(`${imgUrl}/${petInfo.img}`):(`${activeImage ? activeImage : addPetImgPlaceholder}`)}
                 alt="placeholder"
               />
               <img
@@ -221,11 +185,11 @@ const PetShopAddPet = () => {
             </div>
           </div>
           <div className="mb-3 mt-3">
-            <Form.Label>Shop/Owner Name </Form.Label>
+            <Form.Label>Insurance Number </Form.Label>
 
             <Form.Control
               className="add-pet-user-input-2"
-              placeholder="Insurance Number"
+              placeholder={petInfo.insurancenumber}
               type="text"
               onChange={handleChanges}
               name="insurancenumber"
@@ -333,7 +297,7 @@ const PetShopAddPet = () => {
 
           <div className="add-pet-submit-btn">
             <Button variant="primary" type="submit">
-              Add Pet
+              Update Details
             </Button>
           </div>
         </Form>
@@ -342,4 +306,4 @@ const PetShopAddPet = () => {
     </>
   );
 };
-export default PetShopAddPet;
+export default PetshopEditPet;

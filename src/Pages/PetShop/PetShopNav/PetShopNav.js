@@ -8,36 +8,37 @@ import { useUserData } from "../../../Context/UserContext";
 import { FaHeart } from "react-icons/fa";
 import { BiLogOut } from "react-icons/bi";
 import "./PetShopNav.css";
-const PetShoNav = () => {
+
+const PetShoNav = ({imgUrl}) => {
   const [activePage, setActivePage] = useState("home");
   const [isLoggin, setIsLoggin] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(false);
   const selectRef = useRef(null);
 
   const navigate = useNavigate();
-  const { activeUserData } = useUserData();
+  // const { activeUserData } = useUserData();
   const redirectHome = () => {
     setActivePage("home");
-    navigate("/");
+    navigate("/petshop");
   };
   const redirectExplore = () => {
-    setActivePage("explore");
-    navigate("/explore");
+    setActivePage("pets");
+    navigate("/petshop/view-mypets");
   };
   const redirectAbout = () => {
-    setActivePage("about");
-    navigate("/about");
+    setActivePage("accessories");
+    navigate("/petshop/view-myaccessories");
   };
-  const redirectPetshop = () => {
-    navigate("/petshop/signup");
-    setActivePage("petshop");
+  const redirectPethomes = () => {
+    navigate("/petshop/view-mypethomes");
+    setActivePage("pethome");
   };
 
-  const redirectLogin = () => {
-    navigate("/user/login");
-    setActivePage("login");
+  const redirectpetfood = () => {
+    navigate("/petshop/view-mypetfood");
+    setActivePage("petfood");
   };
-  const redirectGallery = () => {
+  const redirectPetshop = () => {
     setActivePage("gallery");
     // navigate("/gallery");
   };
@@ -52,11 +53,12 @@ const PetShoNav = () => {
     } else {
       setIsLoggin(false);
     }
-    const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:4000/";
-    if (activeUserData?.img?.filename) {
-      setNavbarProfileImg(`${BASE_URL}${activeUserData?.img?.filename}`);
+    const shopInfo=JSON.parse(localStorage.getItem("petshop-info"))
+    
+    if (shopInfo?.img?.filename) {
+      setNavbarProfileImg(`${imgUrl}${shopInfo?.img?.filename}`);
     }
-  }, [activeUserData]);
+  }, []);
 
   const handleDropdown = () => {
     setOpenDropdown((openDropdown) => !openDropdown);
@@ -102,7 +104,7 @@ const PetShoNav = () => {
         </li>
         <li
           className={`${activePage === "gallery" ? "active" : ""}`}
-          onClick={redirectGallery}
+          onClick={redirectPetshop}
         >
           Pet Home
         </li>
@@ -158,7 +160,7 @@ const PetShoNav = () => {
           ) : (
             <div
               className="navbar-updated-login-container"
-              onClick={redirectLogin}
+              onClick={redirectpetfood}
             >
               <RiLoginBoxLine />
               <li className="navbar-updated-login-btn"> Login</li>
