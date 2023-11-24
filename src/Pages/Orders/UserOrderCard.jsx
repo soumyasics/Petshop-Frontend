@@ -1,11 +1,11 @@
 import { Button, Modal, Toast, ToastContainer } from "react-bootstrap";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useUserData } from "../../Context/UserContext";
 import axiosInstance from "../../BaseURL.js";
-import "./PetAdoptionCard.css";
-const PetAdoptionCard = ({ petData }) => {
-  const [activeUserData2, setActiveUserData2] = useState("");
-  const [buttonContent, setButtonContent] = useState("Adopt Me");
+import "./UserOrderCard.css";
+
+const UserOrderCard = ({ petData, userAction, setUserAction, orderId }) => {
+  const [buttonContent, setButtonContent] = useState("");
   const [isAdopted, setIsAdopted] = useState(false);
   // toast code here
   const [show, setShow] = useState(false);
@@ -14,37 +14,31 @@ const PetAdoptionCard = ({ petData }) => {
   const [toastColor, setToastColor] = useState("dark");
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [orderStatus, setOrderStatus] = useState("Accepted");
   const { activeUserData } = useUserData();
   const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:4000/";
 
   const { age, breed, description, gender, img, petname, price, shopid, type } =
     petData;
 
+  if (!petData) {
+    return (
+      <>
+        <h1> Some Issues on fetching pet data.. </h1>
+      </>
+    );
+  }
   const dogPlaceholderImg = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9L2cU1Xxu_XDcW-C0DueoXMgQ4W6qQO7xJ7K6gVw-IA&s`;
   const catPlaceholderImg = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQednHyOH85OzO39f2ofViDcrVrF0U1JAWL0lN4KGPbyiO89GJgEy2oERXSIJ9M6cEDVuY&usqp=CAU`;
 
-  const getUserDataFromLs = () => {
-    const userData = JSON.parse(localStorage.getItem("petshop-user")) || null;
-    if (userData) {
-      return userData;
-    }
-    console.log("login for loading wishlists");
-    return null;
-  };
-
-  useEffect(() => {
-    const getUserData = getUserDataFromLs();
-    if (getUserData) {
-      setActiveUserData2(getUserData);
-    }
-  }, []);
   const sendDataToServer = () => {
+    console.log("wish ud", activeUserData);
     const data = {
       petid: petData?._id,
       itemtype: petData?.type,
       ownertype: "user",
       shopid: petData?.shopid,
-      userid: activeUserData2?._id,
+      userid: activeUserData?._id,
     };
 
     axiosInstance
@@ -74,16 +68,29 @@ const PetAdoptionCard = ({ petData }) => {
     handleClose();
     sendDataToServer();
   };
-
-  if (!petData) {
-    return (
-      <>
-        <h1> Some Issues on fetching pet data.. </h1>
-      </>
-    );
-  }
+  const removeWishlist = () => {
+    axiosInstance
+      .delete("/user/removeWishlistById/" + orderId)
+      .then((res) => {
+        console.log("my res", res);
+        if (res.status === 200) {
+          setToastColor("primary");
+          setShowAlert(true);
+          setAlertMsg(`Pet Removed from Wishlist`);
+          setTimeout(() => {
+            setUserAction(!userAction);
+          }, 1000);
+        }
+      })
+      .catch((err) => {
+        console.log("error -1", err);
+      });
+  };
   return (
-    <div className="pet-adoption-card-container">
+    <div
+      className="pet-adoption-card-container pet-adoption-card-container-2"
+      id="pet-adoption-card-container-2"
+    >
       <ToastContainer className="pet-adoption-card-toast" position="middle-top">
         <Toast
           className="toast-msg"
@@ -137,21 +144,21 @@ const PetAdoptionCard = ({ petData }) => {
           </p>
         </div>
       </div>
-      <div className="pet-adoption-card-footer">
-        <h2>About Me</h2>
-        <p>{description}</p>
-        <p className="pet-adoption-card-footer-contact">
-          {" "}
-          If you have any douts or need more information, please{" "}
-          <span> Contact us </span>
+      <div className={`pet-adoption-card-footer`} id="pet-order-status-text">
+        <p>
+          Order Status:{" "}
+          <span
+            className={`${
+              orderStatus === "Accepted"
+                ? "green-color-text"
+                : "Pending"
+                ? "blue-color-text"
+                : "red-color-text"
+            }`}
+          >
+            {orderStatus}.
+          </span>
         </p>
-        <button
-          onClick={handleShow}
-          disabled={isAdopted}
-          className={`adobpt-me-btn ${isAdopted ? "btn-disabled" : ""}`}
-        >
-          {buttonContent}
-        </button>
       </div>
 
       <>
@@ -182,4 +189,4 @@ const PetAdoptionCard = ({ petData }) => {
     </div>
   );
 };
-export default PetAdoptionCard;
+export default UserOrderCard;
