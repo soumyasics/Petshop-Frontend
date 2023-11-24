@@ -47,7 +47,7 @@ import PetShopHome from "./Pages/PetShop/PetShopHome/PetShopHome.js";
 import PetShopViewAllPet from "./Pages/PetShop/PetShopViewPets/PetShopViewAllPet.js";
 import UserWishlist from "./Pages/Wishlist/UserWishlist.jsx";
 import UserOrder from "./Pages/Orders/UserOrder.jsx";
-
+import PetShopRequest from "./Pages/PetShop/PetShopRequest/PetShopRequest.jsx";
 function App() {
   let imgUrl = "http://localhost:4000";
 
@@ -91,6 +91,7 @@ function App() {
           <Route path="/petshop/add-accessories" element={<AddAccessories />} />
           <Route path="/petshop/more-info/:id" element={<ShopMoreInfo />} />
           <Route path="/petshop/home" element={<PetShopHome />} />
+          <Route path="/petshop/request" element={<PetShopRequest />} />
           {/* Soumya */}
           <Route path="/petshop/forgot-pwd" element={<ShopForgotPwd />} />
           <Route
