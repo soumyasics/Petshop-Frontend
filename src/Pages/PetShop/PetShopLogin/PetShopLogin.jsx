@@ -55,14 +55,16 @@ const PetShopLogin = () => {
         if (res.status === 200) {
           alert("Login Successful");
           const token = res?.data?.token || "";
-          console.log("res", res.data.shop)
           if (token) {
             localStorage.setItem("petshop-token", token);
-            localStorage.setItem("petshop-info", JSON.stringify(res?.data?.shop));
+            localStorage.setItem(
+              "petshop-info",
+              JSON.stringify(res?.data?.shop)
+            );
           }
 
           setTimeout(() => {
-            navigate("/");
+            navigate("/petshop");
           }, 1500);
         }
       })
@@ -82,8 +84,8 @@ const PetShopLogin = () => {
     setShowPassword(!showPassword);
   };
   const redirectPetShopRegister = () => {
-    navigate('../petshop/signup');
-  }
+    navigate("../petshop/signup");
+  };
 
   return (
     <div className="petshop-login-page">
@@ -114,11 +116,14 @@ const PetShopLogin = () => {
             <label htmlFor="remember-me">Remember me</label>
           </div>
 
-          <Link to="/petshop/forgot-pwd"><p>Forgot Password</p></Link>
+          <Link to="/petshop/forgot-pwd">
+            <p>Forgot Password</p>
+          </Link>
         </div>
         <div className="petshop-dont-have-account">
           <p>
-            Don't have an account ?<span onClick={redirectPetShopRegister}>Signup</span>
+            Don't have an account ?
+            <span onClick={redirectPetShopRegister}>Signup</span>
           </p>
         </div>
         <input type="submit" onClick={handleSubmit} value="Login" />

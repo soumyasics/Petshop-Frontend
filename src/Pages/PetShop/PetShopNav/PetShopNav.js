@@ -9,7 +9,7 @@ import { FaHeart } from "react-icons/fa";
 import { BiLogOut } from "react-icons/bi";
 import "./PetShopNav.css";
 
-const PetShoNav = ({imgUrl}) => {
+const PetShoNav = ({ imgUrl }) => {
   const [activePage, setActivePage] = useState("home");
   const [isLoggin, setIsLoggin] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(false);
@@ -53,8 +53,8 @@ const PetShoNav = ({imgUrl}) => {
     } else {
       setIsLoggin(false);
     }
-    const shopInfo=JSON.parse(localStorage.getItem("petshop-info"))
-    
+    const shopInfo = JSON.parse(localStorage.getItem("petshop-info"));
+
     if (shopInfo?.img?.filename) {
       setNavbarProfileImg(`${imgUrl}${shopInfo?.img?.filename}`);
     }
@@ -63,7 +63,6 @@ const PetShoNav = ({imgUrl}) => {
   const handleDropdown = () => {
     setOpenDropdown((openDropdown) => !openDropdown);
     if (selectRef?.current) {
-
       setTimeout(() => {
         selectRef.current.focus();
       }, 0);
@@ -75,7 +74,11 @@ const PetShoNav = ({imgUrl}) => {
       localStorage.removeItem("petshop-token");
     }
     setIsLoggin(false);
-    navigate("/user/login");
+    navigate("/petshop/login");
+  };
+  const redirectPetshopOrders = () => {
+    setActivePage("petorder");
+    navigate("/petshop/orders");
   };
   return (
     <div className="navbar-updated-container">
@@ -115,8 +118,8 @@ const PetShoNav = ({imgUrl}) => {
           Pet Food
         </li>
         <li
-          className={`${activePage === "petfood" ? "active" : ""}`}
-          onClick={redirectpetfood}
+          className={`${activePage === "petorder" ? "active" : ""}`}
+          onClick={redirectPetshopOrders}
         >
           Orders
         </li>
@@ -160,7 +163,7 @@ const PetShoNav = ({imgUrl}) => {
           ) : (
             <div
               className="navbar-updated-login-container"
-              onClick={redirectpetfood}
+              onClick={handleLogout}
             >
               <RiLoginBoxLine />
               <li className="navbar-updated-login-btn"> Login</li>
