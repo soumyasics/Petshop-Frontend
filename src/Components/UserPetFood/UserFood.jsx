@@ -1,6 +1,6 @@
 import { Container } from "react-bootstrap";
-import FoodCard from "./FoodCard";
-import "./Food.css";
+import FoodCard from "./UserFoodCard";
+import "./UserFood.css";
 
 const FoodContainer = ({ foodData }) => {
   console.log("food dt", foodData);
