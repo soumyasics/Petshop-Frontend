@@ -44,7 +44,6 @@ const NavbarUpdated = () => {
     navigate("/user/login");
     setActivePage("login");
   };
-
   const [navbarProifleImg, setNavbarProfileImg] = useState(
     "https://w7.pngwing.com/pngs/81/570/png-transparent-profile-logo-computer-icons-user-user-blue-heroes-logo-thumbnail.png"
   );
@@ -87,7 +86,6 @@ const NavbarUpdated = () => {
     navigate("/user/order");
     setActivePage("order");
   };
-
   return (
     <div className="navbar-updated-container">
       <div onClick={redirectHome} className="navbar-updated-logo-container">

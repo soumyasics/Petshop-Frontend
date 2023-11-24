@@ -36,7 +36,6 @@ const WishlistPetCard = ({
   const catPlaceholderImg = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQednHyOH85OzO39f2ofViDcrVrF0U1JAWL0lN4KGPbyiO89GJgEy2oERXSIJ9M6cEDVuY&usqp=CAU`;
 
   const sendDataToServer = () => {
-    console.log("wish ud", activeUserData);
     const data = {
       petid: petData?._id,
       itemtype: petData?.type,

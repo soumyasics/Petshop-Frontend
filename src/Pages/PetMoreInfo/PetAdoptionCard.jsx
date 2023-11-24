@@ -2,7 +2,6 @@ import { Button, Modal, Toast, ToastContainer } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { useUserData } from "../../Context/UserContext";
 import axiosInstance from "../../BaseURL.js";
-
 import "./PetAdoptionCard.css";
 const PetAdoptionCard = ({ petData }) => {
   const [activeUserData2, setActiveUserData2] = useState("");
@@ -40,7 +39,6 @@ const PetAdoptionCard = ({ petData }) => {
     }
   }, []);
   const sendDataToServer = () => {
-    console.log("new ac", activeUserData);
     const data = {
       petid: petData?._id,
       itemtype: petData?.type,
