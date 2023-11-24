@@ -46,6 +46,7 @@ import AddFood from "./Pages/PetShop/AddFood/AddFood.js";
 import PetShopHome from "./Pages/PetShop/PetShopHome/PetShopHome.js";
 import PetShopViewAllPet from './Pages/PetShop/PetShopViewPets/PetShopViewAllPet.js'
 import UserWishlist from "./Pages/Wishlist/UserWishlist.jsx";
+import AdminDashboard from "./Pages/Admin/AdminDashboard/AdminDashboard.js";
 
 function App() {
   let imgUrl = "http://localhost:4000";
@@ -122,7 +123,7 @@ function App() {
             path="/admin/admin-all-shops"
             element={<AdminViewAllShops imgUrl={imgUrl} />}
           />
-
+          <Route path="/admin/admin-dashboard" element={<AdminDashboard/>} />
           <Route
             path="/admin/admin-all-users"
             element={<AdminUsers imgUrl={imgUrl} />}
