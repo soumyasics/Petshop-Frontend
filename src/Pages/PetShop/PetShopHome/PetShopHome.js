@@ -17,7 +17,6 @@ function PetShopHome() {
   return (
     <>
 
-    <PetShopNav />
     <div>
     
     <div className='container-fluid m-0 p-0'>

@@ -46,6 +46,13 @@ import AddFood from "./Pages/PetShop/AddFood/AddFood.js";
 import PetShopHome from "./Pages/PetShop/PetShopHome/PetShopHome.js";
 import PetShopViewAllPet from "./Pages/PetShop/PetShopViewPets/PetShopViewAllPet.js";
 import UserWishlist from "./Pages/Wishlist/UserWishlist.jsx";
+import PetShopNav from './Pages/PetShop/PetShopNav/PetShopNav.js'
+import PetShoNav from "./Pages/PetShop/PetShopNav/PetShopNav.js";
+import PetshopEditPet from "./Pages/PetShop/PetShopEditPet/PetshopEditPet.js";
+import ShopViewAccessories from'./Pages/PetShop/ShopViewAccessories/ShopViewAccessories.js'
+import ShopEditAccessories from "./Pages/PetShop/ShopViewAccessories/ShopEditAccessories.js";
+import ShopEditFood from "./Pages/PetShop/ShopViewFood/ShopEditFood.js";
+import ShopViewFood from "./Pages/PetShop/ShopViewFood/ShopViewFood.js";
 import UserOrder from "./Pages/Orders/UserOrder.jsx";
 import PetShopRequest from "./Pages/PetShop/PetShopRequest/PetShopRequest.jsx";
 function App() {
@@ -82,14 +89,23 @@ function App() {
           <Route
             path="/user-forgot-password-aftr-req"
             element={<UserForgotPwdAftrReq />}
-          />
-          <Route path="/petshop" element={<PetShopHome />} />
+          /> 
+          <Route path="/petshop" element={[<PetShopNav imgUrl={imgUrl} />,<PetShopHome />]} />
           <Route path="/petshop/signup" element={<PetShopRegistration />} />
           <Route path="/petshop/login" element={<PetShopLogin />} />
-          <Route path="/petshop/add-pet" element={<PetShopAddPet />} />
-          <Route path="/petshop/add-food" element={<AddFood />} />
-          <Route path="/petshop/add-accessories" element={<AddAccessories />} />
+          <Route path="/petshop/add-pet" element={[<PetShoNav imgUrl={imgUrl} />,<PetShopAddPet />]} />
+          <Route path="/petshop/add-food" element={[<PetShopNav imgUrl={imgUrl} />,<AddFood />]} />
+          <Route path="/petshop/add-accessories" element={[<PetShopNav imgUrl={imgUrl} />,<AddAccessories />]} />
+          <Route path="/petshop/edit-accessories/:id" element={<ShopEditAccessories imgUrl={imgUrl} />} />
+          
+          <Route path="/petshop/edit-food/:id" element={[<PetShopNav imgUrl={imgUrl} />,<ShopEditFood imgUrl={imgUrl} />]} />
+          <Route path="/petshop/view-mypetfood" element={[<PetShopNav imgUrl={imgUrl} />,<ShopViewFood imgUrl={imgUrl} />]} />
+
           <Route path="/petshop/more-info/:id" element={<ShopMoreInfo />} />
+
+          <Route path="/petshop/add-pethome" element={<AddPetHome />} />
+
+
           <Route path="/petshop/home" element={<PetShopHome />} />
           <Route path="/petshop/request" element={<PetShopRequest />} />
           {/* Soumya */}
@@ -99,6 +115,12 @@ function App() {
             element={<ShopForgotPwdSendMail />}
           />
           <Route path="/petshop/reset-pwd" element={<ShopResetPwd />} />
+          
+          <Route path="/petshop/view-mypets" element={<PetShopViewAllPet imgUrl={imgUrl} />} />
+          
+          <Route path="/petshop/editpet/:id" element={<PetshopEditPet imgUrl={imgUrl} />} />
+         
+          <Route path="/petshop/view-myaccessories" element={<ShopViewAccessories imgUrl={imgUrl} />} />
           <Route
             path="/petshop/view-mypets"
             element={<PetShopViewAllPet imgUrl={imgUrl} />}
