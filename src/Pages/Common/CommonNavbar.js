@@ -19,7 +19,7 @@ function CommonNavbar() {
         <nav className="navbar navbar-expand-sm bg-body-tertiary cnavbar-navbarr">
             <div className="container-fluid">
                 <img src={zookeper}/>
-                <a className="navbar-brand" href="#">ZOOKEPER</a>
+                <Link className="navbar-brand" to="#">ZOOKEPER</Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
                 </button>
@@ -34,16 +34,16 @@ function CommonNavbar() {
                      </li>
                     
                      <li className="nav-item">
-                        <a className="nav-link" href="#">Gallery</a>
+                        <Link className="nav-link" to="#">Gallery</Link>
                      </li>
                      <li className="nav-item">
-                        <a className="nav-link" href="#">Contact</a>
+                        <Link className="nav-link" to="#">Contact</Link>
                      </li>
                      <li className="nav-item">
                         <Link className="nav-link" to="/user-reg">Register</Link>
                      </li>
                      <li className="nav-item">
-                     <Link to="/user-login"> <a className="nav-link" href="#">Login</a></Link>
+                     <Link to="/user-login"> <a className="nav-link" to="#">Login</a></Link>
                      </li>
 
                     </ul>
