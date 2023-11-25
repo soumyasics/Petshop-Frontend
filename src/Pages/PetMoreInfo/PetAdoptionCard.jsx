@@ -53,7 +53,7 @@ const PetAdoptionCard = ({ petData }) => {
         if (res.status === 200) {
           setToastColor("success");
           setShowAlert(true);
-          setAlertMsg(`${petname} Adoption Confirmed`);
+          setAlertMsg(`${petname} Adoption Request Send Successfully`);
           setButtonContent("Adopted");
           setIsAdopted(true);
         } else {
@@ -65,7 +65,7 @@ const PetAdoptionCard = ({ petData }) => {
         if (err.response.status === 500) {
           setToastColor("danger");
           setShowAlert(true);
-          setAlertMsg(`${petname} Adoption Failed`);
+          setAlertMsg(`${petname} Adoption Request Failed`);
           setIsAdopted(true);
         }
       });
