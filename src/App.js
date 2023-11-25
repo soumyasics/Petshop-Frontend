@@ -57,6 +57,9 @@ import ShopEditFood from "./Pages/PetShop/ShopViewFood/ShopEditFood.js";
 import ShopViewFood from "./Pages/PetShop/ShopViewFood/ShopViewFood.js";
 import UserOrder from "./Pages/Orders/UserOrder.jsx";
 import PetShopRequest from "./Pages/PetShop/PetShopRequest/PetShopRequest.jsx";
+import ShopEditPetHome from "./Pages/PetShop/ShopViewPetHomes/ShopEditPetHome.js"
+import ShopViewPetHome from "./Pages/PetShop/ShopViewPetHomes/ShopViewPetHome.js";
+
 function App() {
   let imgUrl = "http://localhost:4000";
 
@@ -132,7 +135,16 @@ function App() {
 
           <Route path="/petshop/more-info/:id" element={<ShopMoreInfo />} />
 
-          <Route path="/petshop/add-pethome" element={<AddPetHome />} />
+          <Route path="/petshop/add-pethome" element={[<PetShopNav imgUrl={imgUrl} />,<AddPetHome imgUrl={imgUrl}/>]} />
+          <Route path="/petshop/view-pethome" element={[<PetShopNav imgUrl={imgUrl} />,<ShopViewPetHome imgUrl={imgUrl}/>]} />
+
+          <Route
+            path="/petshop/edit-pethome/:id"
+            element={[
+              <PetShopNav imgUrl={imgUrl} />,
+              <ShopEditPetHome imgUrl={imgUrl} />,
+            ]}
+          />
 
           <Route path="/petshop/home" element={<PetShopHome />} />
           <Route path="/petshop/orders" element={<PetShopRequest />} />
@@ -181,7 +193,7 @@ function App() {
             path="/admin/admin-all-shops"
             element={<AdminViewAllShops imgUrl={imgUrl} />}
           />
-          <Route path="/admin/admin-dashboard" element={<AdminDashboard/>} />
+          <Route path="/admin" element={<AdminDashboard/>} />
           <Route
             path="/admin/admin-all-users"
             element={<AdminUsers imgUrl={imgUrl} />}
