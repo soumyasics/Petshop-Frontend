@@ -1,3 +1,52 @@
+.petshop-request-container {
+  width: 90%;
+  min-height: 300px;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.toggle-btn-container {
+  display: flex;
+}
+
+.order-toggle-btn {
+  display: flex;
+  border: none;
+  border-radius: 5px;
+  margin-top: 20px;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  padding: 7px;
+  background-color: blueviolet;
+  margin-right: 30px;
+  color: white;
+  box-shadow: 2px 2px black;
+}
+
+.order-toggle-btn :hover {
+  background-color: rgb(130, 68, 189);
+}
+
+.order-toggle-btn-active {
+  box-shadow: 0 0;
+}
+
+.pet-order-page-heading {
+  font-size: 19px;
+  font-weight: 800;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.pet-order-card-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+/* pet card styles  */
 .explore-shop-container {
   width: 100%;
   margin: auto;
@@ -35,8 +84,7 @@
   align-items: center;
 }
 .explore-shop-card-left img {
-  width: 200px;
-  height: auto;
+  max-height: 12rem;
   border-radius: 20px;
 }
 
@@ -86,33 +134,10 @@
   margin: 10px;
 }
 
-#shop-add-button{
-  float: right;
-  height: 50px;
-  width: 50px;
-  border-radius: 50px;
-  background-color: rgb(211, 3, 3);
-  font-size: 30px;
-  text-align: center;
-  padding-bottom: 10px;
-  color: white;
+/* overwright new styles  */
+.explore-card-footer .order-confirm-btn {
+  background-color: green;
 }
-
-.view_my_pet_button{
-  margin: 20px 30px;
-  justify-content: space-between;
+.explore-card-footer .order-cancel-btn {
+  background-color: red;
 }
-
-.view_my_pet_addbutton a{
-  text-decoration: none;
-}
-
-.view_my_pet_button button{
-  width: 100px;
-}
-
-.view_my_pet_button button:hover{
-  background-color: rgb(211, 3, 3);
-  border: none;
-}
-

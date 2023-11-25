@@ -35,8 +35,7 @@
   align-items: center;
 }
 .explore-shop-card-left img {
-  width: 200px;
-  height: auto;
+  max-height: 12rem;
   border-radius: 20px;
 }
 
@@ -85,34 +84,3 @@
   border-radius: 20px;
   margin: 10px;
 }
-
-#shop-add-button{
-  float: right;
-  height: 50px;
-  width: 50px;
-  border-radius: 50px;
-  background-color: rgb(211, 3, 3);
-  font-size: 30px;
-  text-align: center;
-  padding-bottom: 10px;
-  color: white;
-}
-
-.view_my_pet_button{
-  margin: 20px 30px;
-  justify-content: space-between;
-}
-
-.view_my_pet_addbutton a{
-  text-decoration: none;
-}
-
-.view_my_pet_button button{
-  width: 100px;
-}
-
-.view_my_pet_button button:hover{
-  background-color: rgb(211, 3, 3);
-  border: none;
-}
-

@@ -150,7 +150,6 @@ const AddFood = () => {
 
     return (
         <>
-            <PetShopNavbar />
             <div className="add-pet-food-form-container-2">
                 <h2>Add Food </h2>
                 <Form
