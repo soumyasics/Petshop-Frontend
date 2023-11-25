@@ -153,9 +153,8 @@ const AddPetHome = () => {
 
     return (
         <>
-            <PetShopNavbar />
             <div className="add-pet-home-form-container-2">
-                <h2>Add Pet </h2>
+                <h2>Add PetHome </h2>
                 <Form
                     className="add-pet-home-form-2"
                     noValidate
@@ -350,7 +349,7 @@ const AddPetHome = () => {
 
                     <div className="add-pet-home-submit-btn">
                         <Button variant="primary" type="submit">
-                            Add Pet
+                            Add Pet Home
                         </Button>
                     </div>
                 </Form>

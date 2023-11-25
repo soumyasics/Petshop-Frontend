@@ -38,9 +38,9 @@ const PetShoNav = ({ imgUrl }) => {
     navigate("/petshop/view-mypetfood");
     setActivePage("petfood");
   };
-  const redirectPetshop = () => {
+  const redirectPethome = () => {
     setActivePage("gallery");
-    // navigate("/gallery");
+    navigate("/petshop/view-pethome");
   };
   const [navbarProifleImg, setNavbarProfileImg] = useState(
     "https://w7.pngwing.com/pngs/81/570/png-transparent-profile-logo-computer-icons-user-user-blue-heroes-logo-thumbnail.png"
@@ -107,7 +107,7 @@ const PetShoNav = ({ imgUrl }) => {
         </li>
         <li
           className={`${activePage === "gallery" ? "active" : ""}`}
-          onClick={redirectPetshop}
+          onClick={redirectPethome}
         >
           Pet Home
         </li>

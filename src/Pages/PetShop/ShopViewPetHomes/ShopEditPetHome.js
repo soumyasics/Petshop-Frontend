@@ -10,7 +10,7 @@ import axiosInstance from "../../../BaseURL";
 import PetShoNav from "../PetShopNav/PetShopNav";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-const ShopEditFood= ({imgUrl}) => {
+const ShopEditPetHome= ({imgUrl}) => {
     const [
       activeImage, setActiveImage] = useState(null);
     const [validated, setValidated] = useState(false);
@@ -21,7 +21,7 @@ const ShopEditFood= ({imgUrl}) => {
   
     useEffect(() => {
 console.log(id);
-        axiosInstance.post(`/shop/viewFoodById/${id}`)
+        axiosInstance.post(`/shop/viewPetHomeById/${id}`)
         .then((res)=>{
           console.log(res);
   
@@ -57,7 +57,7 @@ console.log(id);
     console.log("pet info",petInfo);
    
     axiosInstance
-      .post(`/shop/editFoodById/${id}`, petInfo, {
+      .post(`/shop/editPetHomeById/${id}`, petInfo, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -65,8 +65,8 @@ console.log(id);
       .then((res) => {
         console.log(res);
         if (res.status === 200) {
-          alert( "Pet added Successfully");
-          navigate("/petshop/view-mypetfood")
+          alert( "Pet home updated Successfully");
+          navigate("/petshop/view-pethome")
          
         }
       }).catch((err) => {
@@ -133,7 +133,7 @@ console.log(id);
       <>
     
             <div className="add-pet-accessories-form-container-2">
-                <h2>Edit Accessory </h2>
+                <h2>Edit Pet Home </h2>
                 <Form
                     className="add-pet-accessories-form-2"
                     noValidate
@@ -141,7 +141,7 @@ console.log(id);
                     onSubmit={handleSubmit}
                 >
                     <div className="add-pet-accessories-name-container-2">
-                        {/* <InputGroup className="mb-3">
+                        <InputGroup className="mb-3">
                             <Form.Label>Home Type</Form.Label>
 
                             <Form.Control
@@ -155,9 +155,9 @@ console.log(id);
                                 required
                             />
                             <Form.Control.Feedback type="invalid">
-                            Accessory Type is required
+                            Home Type is required
                             </Form.Control.Feedback>
-                        </InputGroup> */}
+                        </InputGroup>
 
                         <InputGroup className="mb-3">
                             <Form.Label>Target Pet Type</Form.Label>
@@ -181,7 +181,7 @@ console.log(id);
                         </InputGroup>
                     </div>
                     <div className="add-pet-accessories-photo-2">
-                        <label>Pet Accessory Image </label>
+                        <label>Pet Home Image </label>
                         <div className="pet-img-placeholder">
                          
                             <img
@@ -243,24 +243,24 @@ console.log(id);
                     </div>
                     <div className="add-pet-accessories-name-container-2">
                         <InputGroup className="mb-3">
-                            <Form.Label>Flavour</Form.Label>
+                            <Form.Label>Material</Form.Label>
 
                             <Form.Control
                                 className="add-pet-accessories-user-input-2"
-                                placeholder="flavour made up of"
+                                placeholder="material made up of"
                                 onChange={handleChanges}
-                                value={petInfo.flavour}
+                                value={petInfo.material}
                                 type="text"
-                                name="flavour"
+                                name="material"
                                 required
                             />
                             <Form.Control.Feedback type="invalid">
-                            flavour is required
+                            material is required
                             </Form.Control.Feedback>
                         </InputGroup>
 
                         <InputGroup className="mb-3">
-                            <Form.Label>Food Price</Form.Label>
+                            <Form.Label>Total Price</Form.Label>
 
                             <Form.Control
                                 className="add-pet-accessories-user-input-2"
@@ -272,42 +272,42 @@ console.log(id);
                                 required
                             />
                             <Form.Control.Feedback type="invalid">
-                                Food Price is required
+                                 Price is required
                             </Form.Control.Feedback>
                         </InputGroup>
                     </div>
 
                     <div className="add-pet-accessories-name-container-2">
                         <InputGroup className="mb-3">
-                            <Form.Label>Age-Range</Form.Label>
+                            <Form.Label>Length</Form.Label>
 
                             <Form.Control
                                 className="add-pet-accessories-user-input-2"
                                 placeholder=""
                                 onChange={handleChanges}
-                                value={petInfo.agerange}
+                                value={petInfo.length}
                                 type="text"
-                                name="agerange"
+                                name="length"
                                 required
                             />
                             <Form.Control.Feedback type="invalid">
-                            agerange is required
+                            length is required
                             </Form.Control.Feedback>
                         </InputGroup>
                         <InputGroup className="mb-3">
-                            <Form.Label>Food Quantity</Form.Label>
+                            <Form.Label>Breadth</Form.Label>
 
                             <Form.Control
                                 className="add-pet-accessories-user-input-2"
                                 placeholder="Pet Home Breadth"
                                 onChange={handleChanges}
-                                value={petInfo.quantity}
+                                value={petInfo.breadth}
                                 type="text"
-                                name="quantity"
+                                name="breadth"
                                 required
                             />
                             <Form.Control.Feedback type="invalid">
-                               quantity is required
+                            breadth is required
                             </Form.Control.Feedback>
                         </InputGroup>
                         
@@ -315,7 +315,7 @@ console.log(id);
 
                     <div className="add-pet-accessories-submit-btn">
                         <Button variant="primary" type="submit">
-                            Update Food
+                            Update Home 
                         </Button>
                     </div>
                 </Form>
@@ -324,4 +324,4 @@ console.log(id);
         </>
     );
   };
-export default ShopEditFood
+export default ShopEditPetHome
