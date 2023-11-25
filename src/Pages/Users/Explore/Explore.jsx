@@ -9,7 +9,7 @@ import axiosInstance from "../../../BaseURL.js";
 import "./Explore.css";
 import NavbarUpdated from "../../Common/NavbarUpdated/NavbarUpdated.jsx";
 import AccessoiresContainer from "../../../Components/AccessoriesContainer/AccessoriesContainer.jsx";
-import FoodContainer from "../../../Components/PetFood/Food.jsx";
+import FoodContainer from "../../../Components/UserPetFood/UserFood.jsx";
 const ExplorePage = () => {
   const [activeSection, setActiveSection] = useState("shops");
   const [shopsData, setShopsData] = useState([]);
