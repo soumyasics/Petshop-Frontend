@@ -1,0 +1,143 @@
+.petshop-request-container {
+  width: 90%;
+  min-height: 300px;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.toggle-btn-container {
+  display: flex;
+}
+
+.order-toggle-btn {
+  display: flex;
+  border: none;
+  border-radius: 5px;
+  margin-top: 20px;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  padding: 7px;
+  background-color: blueviolet;
+  margin-right: 30px;
+  color: white;
+  box-shadow: 2px 2px black;
+}
+
+.order-toggle-btn :hover {
+  background-color: rgb(130, 68, 189);
+}
+
+.order-toggle-btn-active {
+  box-shadow: 0 0;
+}
+
+.pet-order-page-heading {
+  font-size: 19px;
+  font-weight: 800;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.pet-order-card-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+/* pet card styles  */
+.explore-shop-container {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 30px;
+  justify-content: center;
+  box-sizing: border-box;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.explore-shop-card {
+  width: 45%;
+
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: #f4f4f4;
+}
+
+.shop-top-container {
+  display: flex;
+}
+
+.explore-shop-card-left {
+  padding: 10px;
+  width: 50%;
+  min-height: 12rem;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.explore-shop-card-left img {
+  max-height: 12rem;
+  border-radius: 20px;
+}
+
+.explore-shop-card-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+.explore-shop-card-right h3 {
+  font-weight: 700;
+}
+
+.shop-rating-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 70%;
+}
+.shop-top-container button {
+  border: none;
+}
+.shop-rating-container svg {
+  font-size: 20px;
+  color: red;
+}
+.explore-shop-card-right p {
+  font-weight: 700;
+}
+
+.explore-card-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.explore-card-footer button {
+  background-color: #018ae0;
+  color: white;
+  width: 160px;
+  border: none;
+  height: 30px;
+  border-radius: 20px;
+  margin: 10px;
+}
+
+/* overwright new styles  */
+.explore-card-footer .order-confirm-btn {
+  background-color: green;
+}
+.explore-card-footer .order-cancel-btn {
+  background-color: red;
+}

@@ -43,7 +43,8 @@ const PetAdoptionCard = ({ petData }) => {
       petid: petData?._id,
       itemtype: petData?.type,
       ownertype: "user",
-      shopid: petData?.shopid,
+      shopid: petData?.shopid || null,
+      ownerid: petData?.ownerid || null,
       userid: activeUserData2?._id,
     };
 

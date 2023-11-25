@@ -56,9 +56,11 @@ import ShopEditAccessories from "./Pages/PetShop/ShopViewAccessories/ShopEditAcc
 import ShopEditFood from "./Pages/PetShop/ShopViewFood/ShopEditFood.js";
 import ShopViewFood from "./Pages/PetShop/ShopViewFood/ShopViewFood.js";
 import UserOrder from "./Pages/Orders/UserOrder.jsx";
+import UserPetRequest from "./Pages/Users/UserRequestHandle/UserPetRequest.jsx";
 import PetShopRequest from "./Pages/PetShop/PetShopRequest/PetShopRequest.jsx";
-import ShopEditPetHome from "./Pages/PetShop/ShopViewPetHomes/ShopEditPetHome.js"
+import ShopEditPetHome from "./Pages/PetShop/ShopViewPetHomes/ShopEditPetHome.js";
 import ShopViewPetHome from "./Pages/PetShop/ShopViewPetHomes/ShopViewPetHome.js";
+import UserAddPet from "./Pages/Users/UserAddPet/UserAddPet.jsx";
 
 function App() {
   let imgUrl = "http://localhost:4000";
@@ -86,6 +88,11 @@ function App() {
           <Route path="/user/wishlist" element={<UserWishlist />} />
           <Route path="/user/order" element={<UserOrder />} />
           <Route path="/user/explore" element={<ExplorePage />} />
+          <Route
+            path="/user/received-order-requests"
+            element={<UserPetRequest />}
+          />
+          <Route path="/user/add-pet" element={<UserAddPet />} />
 
           <Route
             path="/user-forgot-password-req"
@@ -135,8 +142,20 @@ function App() {
 
           <Route path="/petshop/more-info/:id" element={<ShopMoreInfo />} />
 
-          <Route path="/petshop/add-pethome" element={[<PetShopNav imgUrl={imgUrl} />,<AddPetHome imgUrl={imgUrl}/>]} />
-          <Route path="/petshop/view-pethome" element={[<PetShopNav imgUrl={imgUrl} />,<ShopViewPetHome imgUrl={imgUrl}/>]} />
+          <Route
+            path="/petshop/add-pethome"
+            element={[
+              <PetShopNav imgUrl={imgUrl} />,
+              <AddPetHome imgUrl={imgUrl} />,
+            ]}
+          />
+          <Route
+            path="/petshop/view-pethome"
+            element={[
+              <PetShopNav imgUrl={imgUrl} />,
+              <ShopViewPetHome imgUrl={imgUrl} />,
+            ]}
+          />
 
           <Route
             path="/petshop/edit-pethome/:id"
@@ -193,7 +212,7 @@ function App() {
             path="/admin/admin-all-shops"
             element={<AdminViewAllShops imgUrl={imgUrl} />}
           />
-          <Route path="/admin" element={<AdminDashboard/>} />
+          <Route path="/admin" element={<AdminDashboard />} />
           <Route
             path="/admin/admin-all-users"
             element={<AdminUsers imgUrl={imgUrl} />}

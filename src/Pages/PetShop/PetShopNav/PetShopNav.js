@@ -55,8 +55,9 @@ const PetShoNav = ({ imgUrl }) => {
     }
     const shopInfo = JSON.parse(localStorage.getItem("petshop-info"));
 
+    const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:4000/";
     if (shopInfo?.img?.filename) {
-      setNavbarProfileImg(`${imgUrl}${shopInfo?.img?.filename}`);
+      setNavbarProfileImg(`${BASE_URL}${shopInfo?.img?.filename}`);
     }
   }, []);
 
@@ -130,7 +131,11 @@ const PetShoNav = ({ imgUrl }) => {
             <>
               <img
                 onClick={handleDropdown}
-                src={navbarProifleImg}
+                src={
+                  navbarProifleImg
+                    ? navbarProifleImg
+                    : "https://w7.pngwing.com/pngs/81/570/png-transparent-profile-logo-computer-icons-user-user-blue-heroes-logo-thumbnail.png"
+                }
                 alt="placeholder"
                 id="navbar-profile-img"
               />
@@ -144,14 +149,9 @@ const PetShoNav = ({ imgUrl }) => {
                   <span>
                     <LuListOrdered />
                   </span>
-                  <p> Orders</p>
+                  <p> Profile </p>
                 </div>
-                <div>
-                  <span>
-                    <FaHeart />
-                  </span>
-                  <p>Wishlist</p>
-                </div>
+
                 <div onClick={handleLogout}>
                   <span>
                     <BiLogOut />
