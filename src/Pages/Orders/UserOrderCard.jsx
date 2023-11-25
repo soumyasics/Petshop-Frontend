@@ -4,7 +4,13 @@ import { useUserData } from "../../Context/UserContext";
 import axiosInstance from "../../BaseURL.js";
 import "./UserOrderCard.css";
 
-const UserOrderCard = ({ petData, userAction, setUserAction, orderId }) => {
+const UserOrderCard = ({
+  petData,
+  userAction,
+  setUserAction,
+  orderStatus,
+  orderId,
+}) => {
   const [buttonContent, setButtonContent] = useState("");
   const [isAdopted, setIsAdopted] = useState(false);
   // toast code here
@@ -14,7 +20,6 @@ const UserOrderCard = ({ petData, userAction, setUserAction, orderId }) => {
   const [toastColor, setToastColor] = useState("dark");
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const [orderStatus, setOrderStatus] = useState("Accepted");
   const { activeUserData } = useUserData();
   const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:4000/";
 
@@ -32,7 +37,6 @@ const UserOrderCard = ({ petData, userAction, setUserAction, orderId }) => {
   const catPlaceholderImg = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQednHyOH85OzO39f2ofViDcrVrF0U1JAWL0lN4KGPbyiO89GJgEy2oERXSIJ9M6cEDVuY&usqp=CAU`;
 
   const sendDataToServer = () => {
-    console.log("wish ud", activeUserData);
     const data = {
       petid: petData?._id,
       itemtype: petData?.type,
@@ -149,11 +153,11 @@ const UserOrderCard = ({ petData, userAction, setUserAction, orderId }) => {
           Order Status:{" "}
           <span
             className={`${
-              orderStatus === "Accepted"
+              orderStatus === "accepted"
                 ? "green-color-text"
-                : "Pending"
-                ? "blue-color-text"
-                : "red-color-text"
+                : orderStatus === "rejected"
+                ? "red-color-text"
+                : "blue-color-text"
             }`}
           >
             {orderStatus}.

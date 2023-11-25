@@ -51,12 +51,14 @@ function UserOrder() {
         {/* <WishlistCard /> */}
         {petData.length > 0 ? (
           petData.map((item) => {
+            console.log("myy ittem", item);
             return (
               <UserOrderCard
                 key={item._id}
                 orderId={item._id}
                 userAction={userAction}
                 setUserAction={setUserAction}
+                orderStatus={item?.status}
                 petData={item.petid}
               />
             );
