@@ -3,15 +3,17 @@ import React, { useEffect, useState } from "react";
 import axiosInstance from "../../../BaseURL";
 import AdminNavbar from "../AdminNavbar/AdminNavbar";
 import Footer from "../../Common/Footer/Footer";
+import { useNavigate } from "react-router-dom";
+
 function AdminViewAllShops({ imgUrl }) {
   const [data, setData] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axiosInstance
       .post(`/shop/shopViewAll`)
       .then((res) => {
         if (res.status === 200) {
-          console.log("data", res.data.data);
           if (res.data.data != undefined) {
             setData(res.data.data);
           } else {
@@ -28,6 +30,10 @@ function AdminViewAllShops({ imgUrl }) {
         }
       });
   }, []);
+
+  const redirectShopMoreInfo = (id) => {
+    navigate("/admin/admin-shop-more-info/" + id);
+  };
 
   return (
     <>
@@ -61,7 +67,12 @@ function AdminViewAllShops({ imgUrl }) {
                         </h6>
                       </div>
                     </div>
-                    <button className="btn btn-primary btn-sm rounded-start-pill rounded-end-pill admin-view-shops-btn1 align-items-center ">
+                    <button
+                      onClick={() => {
+                        redirectShopMoreInfo(user._id);
+                      }}
+                      className="btn btn-primary btn-sm rounded-start-pill rounded-end-pill admin-view-shops-btn1 align-items-center "
+                    >
                       MORE INFO
                     </button>
                   </div>

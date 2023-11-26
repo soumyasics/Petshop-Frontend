@@ -61,6 +61,8 @@ import PetShopRequest from "./Pages/PetShop/PetShopRequest/PetShopRequest.jsx";
 import ShopEditPetHome from "./Pages/PetShop/ShopViewPetHomes/ShopEditPetHome.js";
 import ShopViewPetHome from "./Pages/PetShop/ShopViewPetHomes/ShopViewPetHome.js";
 import UserAddPet from "./Pages/Users/UserAddPet/UserAddPet.jsx";
+import AdminShopMoreInfo from "./Pages/Admin/AdminShopMoreInfo/ShopMoreInfo.jsx";
+import AdminPetMoreInfo from "./Pages/Admin/AdminPetMoreInfo/PetMoreInfo.jsx";
 
 function App() {
   let imgUrl = "http://localhost:4000";
@@ -226,7 +228,14 @@ function App() {
             path="/admin/admin-view-enquiries"
             element={<AdminViewEnquiries />}
           />
-
+          <Route
+            path="/admin/admin-shop-more-info/:id"
+            element={<AdminShopMoreInfo />}
+          />
+          <Route
+            path="/admin/admin-pet-more-info/:id"
+            element={<AdminPetMoreInfo />}
+          />
           {/* just for testing purpose will remove  */}
           <Route path="/test" element={<TestComponent />} />
           {/* This Route should be last */}
