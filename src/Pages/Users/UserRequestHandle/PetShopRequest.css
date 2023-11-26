@@ -141,3 +141,8 @@
 .explore-card-footer .order-cancel-btn {
   background-color: red;
 }
+
+.explore-card-footer span {
+  font-weight: 800;
+  font-size: 20px;
+}

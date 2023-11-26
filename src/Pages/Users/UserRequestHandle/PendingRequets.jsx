@@ -18,7 +18,6 @@ const PendingOrders = ({ petData, orderId, toggleState, setToggleState }) => {
   const handleCancelClose = () => setShowCancelModel(false);
   const handleCancelShow = () => setShowCancelModel(true);
 
-  console.log("peddd, pe", petData);
   if (!petData || petData.length === 0) {
     return "You don't have any pending orders.";
   }
@@ -44,7 +43,6 @@ const PendingOrders = ({ petData, orderId, toggleState, setToggleState }) => {
   };
 
   const sendAcceptRequest = async () => {
-    console.log("oid", orderId);
     if (!orderId) {
       console.log("OrderId not found");
       return;

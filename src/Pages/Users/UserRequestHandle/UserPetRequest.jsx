@@ -49,29 +49,6 @@ const UserPetRequest = () => {
       });
   };
 
-  const getConfirmedOrders = (id) => {
-    axiosInstance
-      .post("user/viewAllAcceptedOrdersByOwnerId/" + id)
-      .then((res) => {
-        if (res.status === 200) {
-          if (res.data.data !== undefined) {
-            setConfirmedOrdersList(res.data.data);
-          } else {
-            setConfirmedOrdersList([]);
-          }
-        } else {
-          console.log("different response than 200");
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-        if (err.response.status === 404) {
-          console.log("404 error");
-          setConfirmedOrdersList([]);
-        }
-      });
-  };
-
   const getPendingOrders = (id) => {
     axiosInstance
       .post("user/viewAllPendingOrdersByOwnerId/" + id)
@@ -96,7 +73,7 @@ const UserPetRequest = () => {
   };
   const getConfirmedOrders = (id) => {
     axiosInstance
-      .post("shop/viewAllAcceptedOrdersByPetShopId/" + id)
+      .post("user/viewAllAcceptedOrdersByOwnderId/" + id)
       .then((res) => {
         if (res.status === 200) {
           if (res.data.data !== undefined) {
@@ -124,7 +101,7 @@ const UserPetRequest = () => {
       getPendingOrders(getPetshopId);
       getConfirmedOrders(getPetshopId);
     } else {
-      console.log("no petshop id found, login petshop first");
+      console.log("no owner id found, login user first");
     }
   }, [toggleState]);
   const handleAllOrders = () => {
@@ -183,7 +160,13 @@ const UserPetRequest = () => {
         <div className="pet-order-card-container">
           {!pendingRequestPage && !confirmedRequestPage
             ? allPetOrdersList.map((item) => {
-                return <AllPetOrders key={item?._id} petData={item?.petid} />;
+                return (
+                  <AllPetOrders
+                    key={item?._id}
+                    petData={item?.petid}
+                    orderStatus={item?.status}
+                  />
+                );
               })
             : confirmedRequestPage
             ? confimedOrdersList.map((item) => {

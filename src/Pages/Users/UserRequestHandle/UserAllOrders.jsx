@@ -3,7 +3,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./PetShopRequest.css";
 
-const AllPetOrders = ({ petData }) => {
+const AllPetOrders = ({ petData, orderStatus }) => {
   const navigate = useNavigate();
   if (!petData) {
     return "No data found";
@@ -53,7 +53,22 @@ const AllPetOrders = ({ petData }) => {
             <div className="shop-rating-container"></div>
           </div>
         </div>
-        <div className="explore-card-footer"></div>
+        <div className="explore-card-footer">
+          <p>
+            Order Status:{" "}
+            <span
+              className={`${
+                orderStatus === "accepted"
+                  ? "green-color-text"
+                  : orderStatus === "rejected"
+                  ? "red-color-text"
+                  : "blue-color-text"
+              }`}
+            >
+              {orderStatus}.
+            </span>
+          </p>
+        </div>
       </div>
     </>
   );

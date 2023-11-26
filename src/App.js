@@ -88,11 +88,11 @@ function App() {
           <Route path="/user/wishlist" element={<UserWishlist />} />
           <Route path="/user/order" element={<UserOrder />} />
           <Route path="/user/explore" element={<ExplorePage />} />
+          <Route path="/user/add-pet" element={<UserAddPet />} />
           <Route
             path="/user/received-order-requests"
             element={<UserPetRequest />}
           />
-          <Route path="/user/add-pet" element={<UserAddPet />} />
 
           <Route
             path="/user-forgot-password-req"
