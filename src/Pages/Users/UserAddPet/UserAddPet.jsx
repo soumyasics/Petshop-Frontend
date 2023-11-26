@@ -3,10 +3,11 @@ import Footer from "../../Common/Footer/Footer";
 import addPetImgPlaceholder from "../../../Assets/add-pet-img-placeholder.png";
 import { Button, Form, InputGroup } from "react-bootstrap";
 import { useState, useRef, useEffect } from "react";
-import "./PetShopAddPet.css";
+import NavbarUpdated from "../../Common/NavbarUpdated/NavbarUpdated";
+import "./UserAddPet.css";
 import axiosInstance from "../../../BaseURL";
 
-const PetShopAddPet = () => {
+const UserAddPet = () => {
   const [activeImage, setActiveImage] = useState(null);
   const [validated, setValidated] = useState(false);
 
@@ -27,15 +28,15 @@ const PetShopAddPet = () => {
 
   useEffect(() => {
     const petshopInfo =
-      JSON.parse(localStorage.getItem("petshop-info")) || null;
+      JSON.parse(localStorage.getItem("petshop-user")) || null;
     if (!petshopInfo) {
       console.log("Login first");
       return;
     }
-    if (petshopInfo?.shopname && petshopInfo?._id) {
+    if (petshopInfo?._id) {
       setPetInfo({
         ...petInfo,
-        shopid: petshopInfo._id,
+        ownerid: petshopInfo._id,
       });
     } else {
       console.log("login first");
@@ -150,6 +151,7 @@ const PetShopAddPet = () => {
 
   return (
     <>
+      <NavbarUpdated />
       <div className="add-pet-form-container-2">
         <h2>Add Pet </h2>
         <Form
@@ -340,4 +342,4 @@ const PetShopAddPet = () => {
     </>
   );
 };
-export default PetShopAddPet;
+export default UserAddPet;

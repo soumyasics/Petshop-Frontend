@@ -8,7 +8,6 @@ import UserOrderCard from "./UserOrderCard";
 import "./UserOrder.css";
 
 function UserOrder() {
-  const [allWishlists, setAllWishlists] = useState([]);
   const [userAction, setUserAction] = useState(false);
   const [petData, setPetData] = useState([]);
 
@@ -22,11 +21,9 @@ function UserOrder() {
   };
 
   const getWishList = (id) => {
-    console.log("iid", id);
     axiosInstance
       .post("/user/viewAllOrdersByUserId/" + id)
       .then((res) => {
-        console.log("order response", res.data.data);
         setPetData(res.data.data);
       })
       .catch((err) => {
@@ -54,13 +51,14 @@ function UserOrder() {
         {/* <WishlistCard /> */}
         {petData.length > 0 ? (
           petData.map((item) => {
-            console.log("itemm", item);
+            console.log("myy ittem", item);
             return (
               <UserOrderCard
                 key={item._id}
                 orderId={item._id}
                 userAction={userAction}
                 setUserAction={setUserAction}
+                orderStatus={item?.status}
                 petData={item.petid}
               />
             );
