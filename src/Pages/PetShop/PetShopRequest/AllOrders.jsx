@@ -6,7 +6,7 @@ import "./PetShopRequest.css";
 const AllPetOrders = ({ petData }) => {
   const navigate = useNavigate();
   if (!petData) {
-    return "No data found";
+    return;
   }
   const {
     petname,

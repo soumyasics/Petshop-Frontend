@@ -6,7 +6,7 @@ import "./PetShopRequest.css";
 const ConfirmedOrders = ({ petData }) => {
   const navigate = useNavigate();
   if (!petData) {
-    return "You don't have any confirmed orders.";
+    return;
   }
   const {
     petname,
