@@ -23,16 +23,11 @@ const UserOrderCard = ({
   const { activeUserData } = useUserData();
   const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:4000/";
 
+  if (!petData) {
+    return <></>;
+  }
   const { age, breed, description, gender, img, petname, price, shopid, type } =
     petData;
-
-  if (!petData) {
-    return (
-      <>
-        <h1> Some Issues on fetching pet data.. </h1>
-      </>
-    );
-  }
   const dogPlaceholderImg = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9L2cU1Xxu_XDcW-C0DueoXMgQ4W6qQO7xJ7K6gVw-IA&s`;
   const catPlaceholderImg = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQednHyOH85OzO39f2ofViDcrVrF0U1JAWL0lN4KGPbyiO89GJgEy2oERXSIJ9M6cEDVuY&usqp=CAU`;
 
