@@ -133,12 +133,7 @@ const NavbarUpdated = () => {
         >
           Wishlist
         </li>
-        {/* <li
-          className={`${activePage === "user-add-pet" ? "active" : ""}`}
-          onClick={redirectUserAddPet}
-        >
-          Pet Shop
-        </li>
+      
       </ul>
       <div className="navbar-updated-search-container">
         <>
