@@ -10,9 +10,12 @@ import "./Explore.css";
 import NavbarUpdated from "../../Common/NavbarUpdated/NavbarUpdated.jsx";
 import AccessoiresContainer from "../../../Components/AccessoriesContainer/AccessoriesContainer.jsx";
 import FoodContainer from "../../../Components/UserPetFood/UserFood.jsx";
+import HomeContainer from "../../../Components/HomesContainer/HomeContainer.jsx";
 const ExplorePage = () => {
   const [activeSection, setActiveSection] = useState("shops");
   const [shopsData, setShopsData] = useState([]);
+  const [homesData, setHomesData] = useState([]);
+
   const [petsData, setPetsData] = useState([]);
   const [accessoriesData, setAccessoriesData] = useState([]);
   const [allDogs, setAllDogs] = useState([]);
@@ -42,6 +45,7 @@ const ExplorePage = () => {
       .then((res) => {
         if (res.status === 200) {
           if (res?.data?.data) {
+            console.log("got accessa",accessoriesData);
             setAccessoriesData(res.data.data);
           } else {
             console.log("no data, check getShopsData in explore page");
@@ -55,7 +59,7 @@ const ExplorePage = () => {
 
   const getPetsData = () => {
     axiosInstance
-      .post("/pet/viewAllPets")
+      .post("/pet/viewAllPetsForUsers")
       .then((res) => {
         if (res.status === 200) {
           if (res?.data?.data) {
@@ -72,7 +76,7 @@ const ExplorePage = () => {
 
   const getAllFoodData = () => {
     axiosInstance
-      .get("food/getAllFoods")
+      .post("food/getAllFoods")
       .then((res) => {
         if (res.status === 200) {
           if (res?.data?.data) {
@@ -86,7 +90,25 @@ const ExplorePage = () => {
         console.log(error);
       });
   };
-
+  const getAllHomeData = () => {
+    console.log("fun called");
+    axiosInstance
+      .post("pethomes/viewPetHomes")
+      .then((res) => {
+        if (res.status === 200) {
+          console.log(res);
+          if (res?.data?.data) {
+            setHomesData(res.data.data);
+            console.log("home",homesData);
+          } else {
+            console.log("no data, check getShopsData in explore page");
+          }
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   useEffect(() => {
     getShopsData();
   }, []);
@@ -125,7 +147,10 @@ const ExplorePage = () => {
     setActiveSection("food");
     getAllFoodData();
   };
-
+  const handlePetHomeBtnClick = () => {
+    setActiveSection("home");
+    getAllHomeData();
+  };
   return (
     <>
       <NavbarUpdated />
@@ -156,8 +181,8 @@ const ExplorePage = () => {
                   Food
                 </button>
                 <button
-                  className={`${activeSection === "homes" ? "active" : ""}`}
-                  onClick={() => setActiveSection("homes")}
+                  className={`${activeSection === "home" ? "active" : ""}`}
+                  onClick={handlePetHomeBtnClick}
                 >
                   Pet Homes
                 </button>
@@ -229,6 +254,12 @@ const ExplorePage = () => {
                 <AccessoiresContainer accData={accessoriesData} />
               ) : (
                 <h1> No Accessoires found</h1>
+              ))}
+              {activeSection === "home" &&
+              (homesData.length > 0 ? (
+                <HomeContainer accData={homesData} />
+              ) : (
+                <h1> No homes found</h1>
               ))}
             {activeSection === "explore-dogs" &&
               (petsData.length > 0 ? (

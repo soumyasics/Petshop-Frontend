@@ -59,6 +59,9 @@ import UserOrder from "./Pages/Orders/UserOrder.jsx";
 import PetShopRequest from "./Pages/PetShop/PetShopRequest/PetShopRequest.jsx";
 import ShopEditPetHome from "./Pages/PetShop/ShopViewPetHomes/ShopEditPetHome.js"
 import ShopViewPetHome from "./Pages/PetShop/ShopViewPetHomes/ShopViewPetHome.js";
+import FoodMoreInfo from './Pages/FoodMoreInfo/FoodMoreInfo.jsx'
+import HomeMoreInfo from './Pages/HomeMoreInfo/HomeMoreInfo.jsx'
+import AccessoriesMoreInfo from "./Pages/AccessoriesMoreInfo/AccessoriesMoreInfo.jsx";
 
 function App() {
   let imgUrl = "http://localhost:4000";
@@ -177,8 +180,15 @@ function App() {
 
           {/* Anand */}
           <Route path="/pet/more-info/:id" element={<PetMoreInfo />} />
+
           <Route path="/navbar-updated" element={<NavbarUpdated />} />
           {/* Soumya */}
+         
+          <Route path="/pet/accessories-more-info/:id" element={<AccessoriesMoreInfo />} />
+
+          <Route path="/pet/home-more-info/:id" element={<HomeMoreInfo />} />
+
+          <Route path="/pet/petfood-more-info/:id" element={<FoodMoreInfo />} />
 
           <Route path="/admin-login" element={<AdminLogin />} />
           <Route

@@ -1,0 +1,57 @@
+.pet-more-info-container {
+  width: 90%;
+  background-color: #eee;
+  min-height: 300px;
+  margin: auto;
+  margin-top: 30px;
+  padding: 30px;
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+.pet-more-info-container-right {
+  width: 20rem;
+}
+
+.pet-more-info-wishlist-icon {
+  position: absolute;
+  top: 69px;
+  cursor: pointer;
+  right: 33px;
+  font-size: 1.7rem;
+  color: #d61c62;
+}
+/* photo gallary  */
+
+.pet-adopt-photo-gallery {
+  width: 94%;
+  margin: auto;
+  padding: 24px;
+  margin-top: 10px;
+}
+.pet-adopt-photo-gallery > h2 {
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+.pet-adopt-gallary-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.pet-adopt-gallary-container img {
+  width: 252px;
+  height: auto;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  border-radius: 10px;
+}
+
+.pet-adopt-gallary-container img :hover {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}

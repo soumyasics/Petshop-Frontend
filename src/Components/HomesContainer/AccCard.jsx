@@ -1,24 +1,26 @@
+import "./acc.css";
 import { useNavigate } from "react-router-dom";
-import "./UserFood.css";
-const FoodCard = ({ foodData }) => {
-  console.log("fd", foodData);
+const AccCard = ({ accData }) => {
+  console.log("acc", accData);
   const {
     brand,
+    breadth,
     description,
-    agerange,
     img,
-    _id,
-    flavour,
+    length,
+    material,
     price,
-    quantity,
+    type,
     targetpet,
-  } = foodData;
+    _id,
+  } = accData;
 
+  console.log("adc2", accData);
   const BASE_URL = "http://localhost:4000/";
   const placeholderImg = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzSc0E_-ezcw1juku7x_q9rIVtGDEFGDsZnA&usqp=CAU`;
   const navigate = useNavigate();
-  const redirectToPetMoreInfo = (id) => {
-    navigate(`/pet/petfood-more-info/${id}`);
+  const redirectToHomeMoreInfo = (id) => {
+    navigate(`/pet/home-more-info/${id}`);
   };
 
   return (
@@ -30,30 +32,30 @@ const FoodCard = ({ foodData }) => {
               src={
                 img?.filename ? `${BASE_URL}${img.filename}` : placeholderImg
               }
-              alt="food-card"
+              alt="pet-card"
             />
           </div>
           <div className="explore-shop-card-right">
             <h3>{brand}</h3>
-            <p>{`Brand:  ${brand}`}</p>
-            <p>{`Flavor:  ${flavour}`}</p>
-            <p>{`Quantity:  ${quantity}`}</p>
-            <p>{`Price:  ${price}`}</p>
+            <p>{`For:  ${targetpet}`}</p>
+
+            <p>{`Type:  ${type}`}</p>
+            <p>{`Material:  ${material}`}</p>
+            <p>{`description:  ${description} years`}</p>
             <div className="shop-rating-container"></div>
           </div>
         </div>
         <div className="explore-card-footer">
           <button
-              onClick={() => {
-                redirectToPetMoreInfo(_id);
-              }}
-            >
-              MORE INFO
-            </button>
+            onClick={() => {
+              redirectToHomeMoreInfo(_id);
+            }}
+          >
+            MORE INFO
+          </button>
         </div>
       </div>
     </>
   );
 };
-
-export default FoodCard;
+export default AccCard;
