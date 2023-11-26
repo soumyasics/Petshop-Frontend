@@ -6,7 +6,7 @@ import "./PetShopRequest.css";
 const AllPetOrders = ({ petData }) => {
   const navigate = useNavigate();
   if (!petData) {
-    return "No data found";
+    return;
   }
   const {
     petname,
@@ -53,15 +53,7 @@ const AllPetOrders = ({ petData }) => {
             <div className="shop-rating-container"></div>
           </div>
         </div>
-        <div className="explore-card-footer">
-          <button
-            onClick={() => {
-              redirectToPetMoreInfo(_id);
-            }}
-          >
-            MORE INFO
-          </button>
-        </div>
+        <div className="explore-card-footer"></div>
       </div>
     </>
   );

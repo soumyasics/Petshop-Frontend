@@ -1,0 +1,73 @@
+.add-pet-form-container-2 {
+  width: 90%;
+  padding: 40px;
+  margin: auto;
+  box-sizing: border-box;
+  margin-top: 30px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  background-color: #eee;
+}
+.add-pet-form-2 {
+  margin-top: 20px;
+}
+.add-pet-form-2 input, .add-pet-form-2 select {
+  max-height: 40px;
+}
+.add-pet-form-container-2 > h2 {
+  font-size: 1.5;
+  font-weight: 800;
+}
+
+.add-pet-name-container-2 {
+  gap: 30px;
+  display: flex;
+}
+
+.add-pet-name-container-2 > div > .add-pet-user-input-2 {
+  width: 90%;
+}
+
+.pet-img-placeholder {
+  width: 366px;
+  height: 230px;
+  max-height: 330px;
+  position: relative;
+}
+.pet-img-placeholder img:nth-child(1) {
+  width: 100%;
+  margin-top: 10px;
+  height: 100%;
+  border-radius: 20px;
+}
+
+.add-pet-upload-img-icon-2 {
+  width: 40px;
+  position: absolute;
+  height: 40px;
+  right: 15px;
+  top: 30px;
+  cursor: pointer;
+}
+
+.add-pet-desc {
+  margin-top: 30px;
+}
+
+.add-pet-price-div {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 100%;
+}
+
+.add-pet-submit-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.add-pet-img-upload {
+  display: none;
+}

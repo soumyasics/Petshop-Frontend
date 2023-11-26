@@ -6,6 +6,7 @@ import { LuListOrdered } from "react-icons/lu";
 import { RiLoginBoxLine } from "react-icons/ri";
 import { useUserData } from "../../../Context/UserContext";
 import { FaHeart } from "react-icons/fa";
+import { MdOutlineRequestPage } from "react-icons/md";
 import { BiLogOut } from "react-icons/bi";
 import "./NavbarUpdated.css";
 const NavbarUpdated = () => {
@@ -70,6 +71,10 @@ const NavbarUpdated = () => {
     }
   };
 
+  const redirectOrderRequest = () => {
+    navigate("/user/received-order-requests");
+  };
+
   const handleLogout = () => {
     if (localStorage.getItem("petshop-token")) {
       localStorage.removeItem("petshop-token");
@@ -85,6 +90,11 @@ const NavbarUpdated = () => {
   const redirectUserOrder = () => {
     navigate("/user/order");
     setActivePage("order");
+  };
+
+  const redirectUserAddPet = () => {
+    navigate("/user/add-pet");
+    setActivePage("user-add-pet");
   };
   return (
     <div className="navbar-updated-container">
@@ -124,11 +134,11 @@ const NavbarUpdated = () => {
           Wishlist
         </li>
         {/* <li
-          className={`${activePage === "petshop" ? "active" : ""}`}
-          onClick={redirectPetshop}
+          className={`${activePage === "user-add-pet" ? "active" : ""}`}
+          onClick={redirectUserAddPet}
         >
           Pet Shop
-        </li> */}
+        </li>
       </ul>
       <div className="navbar-updated-search-container">
         <>
@@ -157,6 +167,12 @@ const NavbarUpdated = () => {
                     <FaHeart />
                   </span>
                   <p>Wishlist</p>
+                </div>
+                <div onClick={redirectOrderRequest}>
+                  <span>
+                    <MdOutlineRequestPage />
+                  </span>
+                  <p>Request</p>
                 </div>
                 <div onClick={handleLogout}>
                   <span>
