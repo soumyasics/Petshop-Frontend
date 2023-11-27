@@ -27,7 +27,7 @@ const PetShopAddPet = () => {
 
   useEffect(() => {
     const petshopInfo =
-      JSON.parse(localStorage.getItem("petshop-info")) || null;
+      JSON.parse(localStorage.getItem("shop-info")) || null;
     if (!petshopInfo) {
       console.log("Login first");
       return;

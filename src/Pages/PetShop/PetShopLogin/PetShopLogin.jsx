@@ -58,7 +58,7 @@ const PetShopLogin = () => {
           if (token) {
             localStorage.setItem("petshop-token", token);
             localStorage.setItem(
-              "petshop-info",
+              "shop-info",
               JSON.stringify(res?.data?.shop)
             );
           }

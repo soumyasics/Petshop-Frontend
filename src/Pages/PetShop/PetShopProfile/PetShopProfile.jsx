@@ -4,182 +4,129 @@ import { InputGroup } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import axios from "axios";
 import Footer from "../../Common/Footer/Footer";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./PetShopReg.css";
+import "./PetShopProfile.css";
 import PetShopNavbar from "../Common/PetShopNavbar";
 import axiosInstance from "../../../BaseURL";
 import NavbarUpdated from "../../Common/NavbarUpdated/NavbarUpdated";
 import CommonNavbar from "../../Common/CommonNavbar";
-const PetShopRegistration = () => {
+const PetShopProfile = ({imgUrl}) =>{
+  
   const [activeShopImage, setIsActiveShopImage] = useState(null);
   const fileInputRef = useRef(null);
 
+  const id = JSON.parse(localStorage.getItem("shop-info"))
+  console.log("loc", id._id);
+  const [isDisabled, setDisabled] = useState(true)
+
   const [shopInfo, setShopInfo] = useState({
-    ownerFirstName: "",
-    ownerLastName: "",
-    ownername: "",
-    shopname: "",
-    street: "",
-    city: "",
-    district: "",
-    mobile: "",
-    email: "",
-    password: "",
-    licenceno: "",
-    regno: "",
-    ownershipId: "",
-    description: "",
-    openingtime: "",
-    closingtime: "",
-    img: null,
+    // ownerFirstName: "",
+    // ownerLastName: "",
+    // ownername: "",
+    // shopname: "",
+    // street: "",
+    // city: "",
+    // district: "",
+    // mobile: "",
+    // email: "",
+    // password: "",
+    // licenceno: "",
+    // regno: "",
+    // ownershipId: "",
+    // description: "",
+    // openingtime: "",
+    // closingtime: "",
+    // img: null,
   });
   const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    if (e.target.name === "ownerFirstName") {
-      console.log("workedd", e.target.value);
-      console.log("won", shopInfo.ownername);
+  const [userInfo2, setprofile2] = useState({
+    shopInfo
+
+  });
+
+  const editData = () => {
+    console.log("call");
+    setDisabled(false)
+  }
+
+  const changehandleSubmit = (a) => {
+    if (a.target.name=="img") {
+      console.log("file",a.target.files[0]);
       setShopInfo({
-        ...shopInfo,
-        ownername: e.target.value,
-        ownerFirstName: e.target.value,
-      });
-    } else {
-      setShopInfo({ ...shopInfo, [e.target.name]: e.target.value });
+        ...shopInfo,img: a.target.files[0]
+      })
     }
+    else{
+    console.log("onchange", a.target.value);
+    setShopInfo({ ...shopInfo, [a.target.name]: a.target.value });
+     }
   };
 
-  const handleImageChange = (e) => {
-    const newShopImage = e.target.files[0];
-    setShopInfo({
-      ...shopInfo,
-      img: e.target.files[0],
-    });
-    // Image Reading
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setIsActiveShopImage(reader.result);
-    };
-    if (newShopImage) {
-      reader.readAsDataURL(newShopImage);
-    } else {
-      setIsActiveShopImage(null);
-    }
-  };
-  const handleImageBtnClick = () => {
-    if (fileInputRef && fileInputRef.current) {
-      fileInputRef.current.click();
-    }
-  };
+  const submitt = (b) => {
+    console.log("submitted",shopInfo);
 
-  const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
+    b.preventDefault();
 
-  const [validated, setValidated] = useState(false);
+    // setErrors(Validation(userInfo))
 
-  const sendDataToServer = (shopInfo) => {
+
     axiosInstance
-      .post("shop/shopRegistration", shopInfo, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
-      .then((res) => {
-        console.log("response", res);
-        if (res.status === 200) {
-          alert("Registration successful");
-          setTimeout(() => {
-            navigate("/petshop/login");
-          }, 500);
-        }
-      })
-      .catch((err) => {
-        console.log("error", err);
-        if (err.response.status === 409) {
-          alert("Email already exists");
-        } else if (err.response.status === 400) {
-          alert("Please fill all fields");
-        } else if (err.response.status === 500) {
-          alert("Server Error Please Try Again");
+      .post(`/shop/shopEditById/${id._id}`, shopInfo
+
+      )
+      .then((result) => {
+        console.log("data entered", result);
+
+        if (result.data.status == 200) {
+          alert("Updation Sucessfully");
+          //  navigate("/user/login");
         } else {
-          alert("Registration Failed");
+          alert("Registration Failed...");
+
         }
+      })
+      .catch((error) => {
+        console.log("err", error);
       });
+
   };
 
-  const registerShop = (e) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    if (form.checkValidity() === false) {
-      e.stopPropagation();
-    }
-    setValidated(true);
-    const {
-      ownerFirstName,
-      ownerLastName,
-      shopname,
-      street,
-      city,
-      district,
-      mobile,
-      email,
-      password,
-      licenceno,
-      regno,
-      ownershipId,
-      description,
-      openingtime,
-      closingtime,
-    } = shopInfo;
-    if (
-      !ownerFirstName ||
-      !ownerLastName ||
-      !shopname ||
-      !street ||
-      !city ||
-      !district ||
-      !mobile ||
-      !email ||
-      !password ||
-      !licenceno ||
-      !regno ||
-      !ownershipId ||
-      !description ||
-      !openingtime ||
-      !closingtime
-    ) {
-      console.log("All fields are required.");
-      return;
-    }
 
-    if (!validateEmail(email)) {
-      alert("Please enter a valid email");
-      return;
-    }
+  useEffect(() => {
+    console.log(id._id);
 
-    if (password.length < 6) {
-      console.log("Password must be at least 6 characters long");
-      return;
-    }
+    axiosInstance.get(`/shop/getShopDataById/${id._id}`).then((res) => {                   //profile api is added
+      setShopInfo(res.data.data);
+      console.log(res);
+      // console.log(shopInfo.img.filename);
+      // shopInfo.ownerFirstName=shopInfo.own
+    });
+  }, []);
 
-    sendDataToServer(shopInfo);
-  };
+ useEffect(()=>{
+  console.log(shopInfo);
+
+ },[shopInfo])
+ const handleImageBtnClick = () => {
+  if (fileInputRef && fileInputRef.current) {
+    fileInputRef.current.click();
+  }
+};
+
 
   return (
     <>
-      {/* <PetShopNavbar /> */}
         {/* <NavbarUpdated/> */}
-        <CommonNavbar/>
-      <div className="add-pet-header-img">
+      {/* <div className="petshop-profile-header-img">
         <img
-          className="add-pet-placeholder-img"
-          src={activeShopImage ? activeShopImage : imgUploadPlaceholder}
+          className="petshop-profile-placeholder-img"
+          // src={activeShopImage ? activeShopImage : imgUploadPlaceholder}
+          src={shopInfo.img?(`${imgUrl}/${shopInfo.img.filename}`):null}
           alt="upload-img"
         />
-        <img
+      <img
           className="add-pet-upload-img-icon"
           src={uploadImageIcon}
           alt="upload-img-icon"
@@ -190,20 +137,21 @@ const PetShopRegistration = () => {
           type="file"
           accept="image/*"
           ref={fileInputRef}
-          onChange={handleImageChange}
-        />
-      </div>
+          
+          onChange={changehandleSubmit}
+          />
+      </div> */}
 
-      <div className="add-pet-form-container">
-        <h2>Add a shop</h2>
+      <div className="petshop-profile-form-container">
+        <h2>{shopInfo.shopname}</h2>
         <Form
-          id="add-pet-form"
+          id="petshop-profile-form"
           noValidate
-          validated={validated}
-          onSubmit={registerShop}
+          // validated={validated}
+          onSubmit={submitt}
         >
-          <div className="add-pet-name-container">
-            <InputGroup className="mb-3 add-pet-user-input">
+          <div className="petshop-profile-name-container">
+            {/* <InputGroup className="mb-3 petshop-profile-user-input">
               <Form.Label>Owner First Name</Form.Label>
 
               <Form.Control
@@ -211,25 +159,27 @@ const PetShopRegistration = () => {
                 type="text"
                 name="ownerFirstName"
                 value={shopInfo.ownerFirstName}
-                onChange={handleChange}
-                required
+                onChange={changehandleSubmit}
+                                required
               />
               <Form.Control.Feedback type="invalid">
-                Owner First Name is required
+                Owner Name is required
               </Form.Control.Feedback>
-            </InputGroup>
+            </InputGroup> */}
 
-            <InputGroup className="mb-3 add-pet-user-input">
-              <Form.Label> Owner Last Name</Form.Label>
+            <InputGroup className="mb-3 petshop-profile-user-input">
+              <Form.Label> Owner Name</Form.Label>
 
               <Form.Control
                 placeholder="Last Name"
                 aria-label="lastname"
                 type="text"
-                name="ownerLastName"
-                value={shopInfo.ownerLastName}
-                onChange={handleChange}
+                name="ownername"
+                value={shopInfo.ownername}
+                onChange={changehandleSubmit}
                 required
+                disabled={(isDisabled)? "disabled" : ""}
+
               />
               <Form.Control.Feedback type="invalid">
                 Owner Last Name is required
@@ -237,7 +187,7 @@ const PetShopRegistration = () => {
             </InputGroup>
           </div>
 
-          <InputGroup className="mb-3 add-pet-user-input">
+          <InputGroup className="mb-3 petshop-profile-user-input">
             <Form.Label> Shop Name</Form.Label>
 
             <Form.Control
@@ -246,14 +196,16 @@ const PetShopRegistration = () => {
               type="text"
               name="shopname"
               value={shopInfo.shopname}
-              onChange={handleChange}
+              onChange={changehandleSubmit}
               required
+              disabled={(isDisabled)? "disabled" : ""}
+
             />
             <Form.Control.Feedback type="invalid">
               Shop Name is required
             </Form.Control.Feedback>
           </InputGroup>
-          <InputGroup className="mb-3 add-pet-user-input">
+          <InputGroup className="mb-3 petshop-profile-user-input">
             <Form.Label> E Mail</Form.Label>
 
             <Form.Control
@@ -262,14 +214,16 @@ const PetShopRegistration = () => {
               type="email"
               name="email"
               value={shopInfo.email}
-              onChange={handleChange}
+              onChange={changehandleSubmit}
               required
+              disabled={(isDisabled)? "disabled" : ""}
+
             />
             <Form.Control.Feedback type="invalid">
               Email is required
             </Form.Control.Feedback>
           </InputGroup>
-          <InputGroup className="mb-3 add-pet-user-input">
+          <InputGroup className="mb-3 petshop-profile-user-input">
             <Form.Label> Password</Form.Label>
 
             <Form.Control
@@ -279,14 +233,16 @@ const PetShopRegistration = () => {
               type="password"
               name="password"
               value={shopInfo.password}
-              onChange={handleChange}
+              onChange={changehandleSubmit}
               required
+              disabled={(isDisabled)? "disabled" : ""}
+
             />
             <Form.Control.Feedback type="invalid">
               Minimum 6 characters password required
             </Form.Control.Feedback>
           </InputGroup>
-          <InputGroup className="mb-3 add-pet-user-input">
+          <InputGroup className="mb-3 petshop-profile-user-input">
             <Form.Label> City</Form.Label>
 
             <Form.Control
@@ -296,13 +252,15 @@ const PetShopRegistration = () => {
               name="city"
               value={shopInfo.city}
               required
-              onChange={handleChange}
-            />
+              disabled={(isDisabled)? "disabled" : ""}
+
+              onChange={changehandleSubmit}
+              />
             <Form.Control.Feedback type="invalid">
               City is required.
             </Form.Control.Feedback>
           </InputGroup>
-          <InputGroup className="mb-3 add-pet-user-input">
+          <InputGroup className="mb-3 petshop-profile-user-input">
             <Form.Label> Street</Form.Label>
 
             <Form.Control
@@ -311,14 +269,16 @@ const PetShopRegistration = () => {
               type="text"
               name="street"
               value={shopInfo.street}
-              onChange={handleChange}
+              onChange={changehandleSubmit}
               required
+              disabled={(isDisabled)? "disabled" : ""}
+
             />
             <Form.Control.Feedback type="invalid">
               Street is required.
             </Form.Control.Feedback>
           </InputGroup>
-          <InputGroup className="mb-3 add-pet-user-input">
+          <InputGroup className="mb-3 petshop-profile-user-input">
             <Form.Label> District</Form.Label>
 
             <Form.Control
@@ -327,14 +287,16 @@ const PetShopRegistration = () => {
               type="text"
               name="district"
               value={shopInfo.district}
-              onChange={handleChange}
+              onChange={changehandleSubmit}
               required
+              disabled={(isDisabled)? "disabled" : ""}
+
             />
             <Form.Control.Feedback type="invalid">
               District is required.
             </Form.Control.Feedback>
           </InputGroup>
-          <InputGroup className="mb-3 add-pet-user-input">
+          <InputGroup className="mb-3 petshop-profile-user-input">
             <Form.Label> Contact</Form.Label>
 
             <Form.Control
@@ -344,14 +306,16 @@ const PetShopRegistration = () => {
               aria-label="contact"
               name="mobile"
               value={shopInfo.mobile}
-              onChange={handleChange}
+              onChange={changehandleSubmit}
               required
+              disabled={(isDisabled)? "disabled" : ""}
+
             />
             <Form.Control.Feedback type="invalid">
               10 Digit Phone Number is required.
             </Form.Control.Feedback>
           </InputGroup>
-          <InputGroup className="mb-3 add-pet-user-input">
+          <InputGroup className="mb-3 petshop-profile-user-input">
             <Form.Label> License Number</Form.Label>
 
             <Form.Control
@@ -359,14 +323,16 @@ const PetShopRegistration = () => {
               aria-label="License Number"
               name="licenceno"
               value={shopInfo.licenceno}
-              onChange={handleChange}
+              onChange={changehandleSubmit}
               required
+              disabled={(isDisabled)? "disabled" : ""}
+
             />
             <Form.Control.Feedback type="invalid">
               License Number is required.
             </Form.Control.Feedback>
           </InputGroup>
-          <InputGroup className="mb-3 add-pet-user-input">
+          <InputGroup className="mb-3 petshop-profile-user-input">
             <Form.Label> Description</Form.Label>
 
             <Form.Control
@@ -374,14 +340,16 @@ const PetShopRegistration = () => {
               aria-label="description"
               name="description"
               value={shopInfo.description}
-              onChange={handleChange}
+              onChange={changehandleSubmit}
               required
+              disabled={(isDisabled)? "disabled" : ""}
+
             />
             <Form.Control.Feedback type="invalid">
               Description is required.
             </Form.Control.Feedback>
           </InputGroup>
-          <InputGroup className="mb-3 add-pet-user-input">
+          <InputGroup className="mb-3 petshop-profile-user-input">
             <Form.Label> Registration Number</Form.Label>
 
             <Form.Control
@@ -389,14 +357,16 @@ const PetShopRegistration = () => {
               aria-label="Registration Number"
               name="regno"
               value={shopInfo.regno}
-              onChange={handleChange}
+              disabled={(isDisabled)? "disabled" : ""}
+
+              onChange={changehandleSubmit}
               required
             />
             <Form.Control.Feedback type="invalid">
               Registration is required.
             </Form.Control.Feedback>
           </InputGroup>
-          <InputGroup className="mb-3 add-pet-user-input">
+          {/* <InputGroup className="mb-3 petshop-profile-user-input">
             <Form.Label> Ownership ID</Form.Label>
 
             <Form.Control
@@ -406,15 +376,15 @@ const PetShopRegistration = () => {
               type="text"
               name="ownershipId"
               value={shopInfo.ownershipId}
-              onChange={handleChange}
+              onChange={changehandleSubmit}
               required
             />
 
             <Form.Control.Feedback type="invalid">
               Ownership ID is required.
             </Form.Control.Feedback>
-          </InputGroup>
-          <InputGroup className="mb-3 add-pet-user-input">
+          </InputGroup> */}
+          <InputGroup className="mb-3 petshop-profile-user-input">
             <Form.Label> Shop Opening Time</Form.Label>
 
             <Form.Control
@@ -422,9 +392,11 @@ const PetShopRegistration = () => {
               aria-label="Opening Time"
               aria-describedby="basic-addon1"
               type="text"
-              name="openingtime"
-              value={shopInfo.openingtime}
-              onChange={handleChange}
+              name="opentime"
+              disabled={(isDisabled)? "disabled" : ""}
+
+              value={shopInfo.opentime}
+              onChange={changehandleSubmit}
               required
             />
 
@@ -432,7 +404,7 @@ const PetShopRegistration = () => {
               Opening Time is required.
             </Form.Control.Feedback>
           </InputGroup>
-          <InputGroup className="mb-3 add-pet-user-input">
+          <InputGroup className="mb-3 petshop-profile-user-input">
             <Form.Label> Shop Closing Time </Form.Label>
 
             <Form.Control
@@ -442,8 +414,10 @@ const PetShopRegistration = () => {
               type="text"
               name="closingtime"
               value={shopInfo.closingtime}
-              onChange={handleChange}
+              onChange={changehandleSubmit}
               required
+              disabled={(isDisabled)? "disabled" : ""}
+
             />
 
             <Form.Control.Feedback type="invalid">
@@ -451,13 +425,20 @@ const PetShopRegistration = () => {
             </Form.Control.Feedback>
           </InputGroup>
 
-          <div className="add-pet-btn-box">
-            <input type="submit" value="Add Shop" />
-          </div>
+          <div className="profile-view-btn-container">
+                  {
+                    isDisabled ? <button>Back</button> : <button
+                      onClick={submitt}>update</button>
+                  }
+
+                  <button type="button" onClick={editData}>Edit</button>
+
+                </div>
         </Form>
       </div>
       <Footer />
     </>
   );
 };
-export default PetShopRegistration;
+
+export default PetShopProfile;

@@ -115,3 +115,7 @@
   .navbar-options-dropdown span {
     font-size: 14px;
   }
+  .petshop-profile-text a{
+    text-decoration: none;
+    color:black
+  }

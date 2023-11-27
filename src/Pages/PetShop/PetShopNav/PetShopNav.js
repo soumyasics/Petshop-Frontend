@@ -1,7 +1,7 @@
 import zookeeper from "../../../Assets/zookeper-logo.png";
 import { FaSearch } from "react-icons/fa";
 import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { LuListOrdered } from "react-icons/lu";
 import { RiLoginBoxLine } from "react-icons/ri";
 import { useUserData } from "../../../Context/UserContext";
@@ -53,7 +53,7 @@ const PetShoNav = ({ imgUrl }) => {
     } else {
       setIsLoggin(false);
     }
-    const shopInfo = JSON.parse(localStorage.getItem("petshop-info"));
+    const shopInfo = JSON.parse(localStorage.getItem("shop-info"));
 
     const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:4000/";
     if (shopInfo?.img?.filename) {
@@ -71,8 +71,8 @@ const PetShoNav = ({ imgUrl }) => {
   };
 
   const handleLogout = () => {
-    if (localStorage.getItem("petshop-token")) {
-      localStorage.removeItem("petshop-token");
+    if (localStorage.getItem("shop-info")) {
+      localStorage.removeItem("shop-info");
     }
     setIsLoggin(false);
     navigate("/petshop/login");
@@ -145,11 +145,11 @@ const PetShoNav = ({ imgUrl }) => {
                 ref={selectRef}
                 style={{ display: openDropdown ? "block" : "none" }}
               >
-                <div>
+                <div className="petshop-profile-text">
                   <span>
                     <LuListOrdered />
                   </span>
-                  <p> Profile </p>
+                 <Link to="/petshop/view-profile"> <p  > Profile </p></Link>
                 </div>
 
                 <div onClick={handleLogout}>

@@ -67,6 +67,8 @@ import UserAddPet from "./Pages/Users/UserAddPet/UserAddPet.jsx";
 import AdminShopMoreInfo from "./Pages/Admin/AdminShopMoreInfo/ShopMoreInfo.jsx";
 import AdminPetMoreInfo from "./Pages/Admin/AdminPetMoreInfo/PetMoreInfo.jsx";
 
+import PetShopProfile from './Pages/PetShop/PetShopProfile/PetShopProfile.jsx'
+
 function App() {
   let imgUrl = "http://localhost:4000";
 
@@ -113,6 +115,8 @@ function App() {
           />
           <Route path="/petshop/signup" element={<PetShopRegistration />} />
           <Route path="/petshop/login" element={<PetShopLogin />} />
+          <Route path="/petshop/view-profile" element={[<PetShopNav imgUrl={imgUrl} />,<PetShopProfile imgUrl={imgUrl}/>]} />
+
           <Route
             path="/petshop/add-pet"
             element={[<PetShoNav imgUrl={imgUrl} />, <PetShopAddPet />]}

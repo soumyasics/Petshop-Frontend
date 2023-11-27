@@ -14,7 +14,7 @@ function ShopViewFood({ imgUrl }) {
   const [data, setData] = useState([])
   const [activeImage, setActiveImage] = useState(null);
 
-  const id = JSON.parse(localStorage.getItem("petshop-info"))
+  const id = JSON.parse(localStorage.getItem("shop-info"))
 
 
   useEffect(() => {

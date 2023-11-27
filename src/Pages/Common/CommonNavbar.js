@@ -39,9 +39,9 @@ function CommonNavbar() {
                      <li className="nav-item">
                         <Link className="nav-link" to="#">Contact</Link>
                      </li>
-                     <li className="nav-item">
+                     {/* <li className="nav-item">
                         <Link className="nav-link" to="/user-reg">Register</Link>
-                     </li>
+                     </li> */}
                      <li className="nav-item">
                      <Link to="/user-login"> <a className="nav-link" to="#">Login</a></Link>
                      </li>
