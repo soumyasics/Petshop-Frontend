@@ -36,7 +36,9 @@
   display: flex;
   justify-content: center;
 }
-
+.pet-adoption-card-container-left > img {
+  max-width: 323px;
+}
 .pet-adoption-card-container-right > h2 {
   font-weight: 700;
   font-size: 28px;

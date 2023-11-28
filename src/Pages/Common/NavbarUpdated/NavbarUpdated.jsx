@@ -17,41 +17,10 @@ const NavbarUpdated = () => {
 
   const navigate = useNavigate();
   const { activeUserData } = useUserData();
-
-  useEffect(() => {
-    if (activePage === "home") {
-      navigate("/");
-    } else if (activePage === "explore") {
-      navigate("/explore");
-    }
-  }, [activePage, navigate]);
-
-  const redirectHome = () => {
-    setActivePage("home");
-  };
-  const redirectExplore = () => {
-    setActivePage("explore");
-  };
-  const redirectAbout = () => {
-    setActivePage("about");
-    navigate("/about");
-  };
-  const redirectPetshop = () => {
-    navigate("/petshop/signup");
-    setActivePage("petshop");
-  };
-
-  const redirectLogin = () => {
-    navigate("/user/login");
-    setActivePage("login");
-  };
-  const [navbarProifleImg, setNavbarProfileImg] = useState(
-    "https://w7.pngwing.com/pngs/81/570/png-transparent-profile-logo-computer-icons-user-user-blue-heroes-logo-thumbnail.png"
-  );
-
   useEffect(() => {
     const token = localStorage?.getItem("petshop-token") || null;
-    if (token) {
+    const userData = localStorage.getItem("petshop-user") || null;
+    if (token && userData) {
       setIsLoggin(true);
     } else {
       setIsLoggin(false);
@@ -71,6 +40,35 @@ const NavbarUpdated = () => {
     }
   };
 
+  const redirectHome = () => {
+    setActivePage("home");
+    navigate("/");
+  };
+  const redirectExplore = () => {
+    if (!isLoggin) {
+      navigate("/user/login");
+      return;
+    }
+    setActivePage("explore");
+    navigate("/explore");
+  };
+  const redirectAbout = () => {
+    if (!isLoggin) {
+      navigate("/user/login");
+      return;
+    }
+    setActivePage("about");
+    navigate("/about");
+  };
+
+  const redirectLogin = () => {
+    navigate("/user/login");
+    setActivePage("login");
+  };
+  const [navbarProifleImg, setNavbarProfileImg] = useState(
+    "https://w7.pngwing.com/pngs/81/570/png-transparent-profile-logo-computer-icons-user-user-blue-heroes-logo-thumbnail.png"
+  );
+
   const redirectOrderRequest = () => {
     navigate("/user/received-order-requests");
   };
@@ -79,20 +77,36 @@ const NavbarUpdated = () => {
     if (localStorage.getItem("petshop-token")) {
       localStorage.removeItem("petshop-token");
     }
+    if (localStorage.getItem("petshop-user")) {
+      localStorage.removeItem("petshop-user");
+    }
+
     setIsLoggin(false);
     navigate("/user/login");
   };
 
   const redirectUserWishlist = () => {
+    if (!isLoggin) {
+      navigate("/user/login");
+      return;
+    }
     navigate("/user/wishlist");
     setActivePage("wishlist");
   };
   const redirectUserOrder = () => {
+    if (!isLoggin) {
+      navigate("/user/login");
+      return;
+    }
     navigate("/user/order");
     setActivePage("order");
   };
 
   const redirectUserAddPet = () => {
+    if (!isLoggin) {
+      navigate("/user/login");
+      return;
+    }
     navigate("/user/add-pet");
     setActivePage("user-add-pet");
   };

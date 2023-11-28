@@ -7,6 +7,13 @@ import axiosInstance from "../../../BaseURL";
 import "./UserProfileEdit.css";
 const UserProfile = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const isUserLogin = localStorage.getItem("petshop-user") || null;
+    if (!isUserLogin) {
+      navigate("/user/login");
+    }
+  }, []);
   const [userInfo, setUserInfo] = useState({
     firstname: "",
     lastname: "",
@@ -110,8 +117,8 @@ const UserProfile = () => {
   };
 
   const redirectHome = () => {
-    navigate('/');
-  }
+    navigate("/");
+  };
 
   const handleInputChanges = (e) => {
     const { name, value } = e.target;

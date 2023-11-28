@@ -6,11 +6,20 @@ import { useState, useRef, useEffect } from "react";
 import NavbarUpdated from "../../Common/NavbarUpdated/NavbarUpdated";
 import "./UserAddPet.css";
 import axiosInstance from "../../../BaseURL";
+import { useNavigate } from "react-router-dom";
 
 const UserAddPet = () => {
   const [activeImage, setActiveImage] = useState(null);
   const [validated, setValidated] = useState(false);
 
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const isUserLogin = localStorage.getItem("petshop-user") || null;
+    if (!isUserLogin) {
+      navigate("/user/login");
+    }
+  }, []);
   const fileInputRef = useRef(null);
   const [petInfo, setPetInfo] = useState({
     ownerid: "",

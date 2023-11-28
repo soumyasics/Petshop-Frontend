@@ -6,8 +6,15 @@ import NewsLetter from "../Common/NewsLetter/NewsLetter";
 import Footer from "../Common/Footer/Footer";
 import "./UserWishlist.css";
 import WishlistCard from "./WishlistCard";
-
+import { useNavigate } from "react-router-dom";
 function UserWishlist() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const isUserLogin = localStorage.getItem("petshop-user") || null;
+    if (!isUserLogin) {
+      navigate("/user/login");
+    }
+  }, []);
   const [allWishlists, setAllWishlists] = useState([]);
   const [userAction, setUserAction] = useState(false);
   const getUserDataFromLs = () => {

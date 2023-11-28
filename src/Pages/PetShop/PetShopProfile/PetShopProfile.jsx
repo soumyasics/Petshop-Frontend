@@ -11,14 +11,21 @@ import PetShopNavbar from "../Common/PetShopNavbar";
 import axiosInstance from "../../../BaseURL";
 import NavbarUpdated from "../../Common/NavbarUpdated/NavbarUpdated";
 import CommonNavbar from "../../Common/CommonNavbar";
-const PetShopProfile = ({imgUrl}) =>{
-  
+const PetShopProfile = ({ imgUrl }) => {
   const [activeShopImage, setIsActiveShopImage] = useState(null);
   const fileInputRef = useRef(null);
 
-  const id = JSON.parse(localStorage.getItem("shop-info"))
-  console.log("loc", id._id);
-  const [isDisabled, setDisabled] = useState(true)
+  const navigate = useNavigate();
+  useEffect(() => {
+    const userInfo = JSON.parse(localStorage.getItem("shop-info")) || null;
+    if (!userInfo) {
+      navigate("/petshop/login");
+      return;
+    }
+  }, []);
+
+  const id = JSON.parse(localStorage.getItem("shop-info"));
+  const [isDisabled, setDisabled] = useState(true);
 
   const [shopInfo, setShopInfo] = useState({
     // ownerFirstName: "",
@@ -39,43 +46,38 @@ const PetShopProfile = ({imgUrl}) =>{
     // closingtime: "",
     // img: null,
   });
-  const navigate = useNavigate();
 
   const [userInfo2, setprofile2] = useState({
-    shopInfo
-
+    shopInfo,
   });
 
   const editData = () => {
     console.log("call");
-    setDisabled(false)
-  }
+    setDisabled(false);
+  };
 
   const changehandleSubmit = (a) => {
-    if (a.target.name=="img") {
-      console.log("file",a.target.files[0]);
+    if (a.target.name == "img") {
+      console.log("file", a.target.files[0]);
       setShopInfo({
-        ...shopInfo,img: a.target.files[0]
-      })
+        ...shopInfo,
+        img: a.target.files[0],
+      });
+    } else {
+      console.log("onchange", a.target.value);
+      setShopInfo({ ...shopInfo, [a.target.name]: a.target.value });
     }
-    else{
-    console.log("onchange", a.target.value);
-    setShopInfo({ ...shopInfo, [a.target.name]: a.target.value });
-     }
   };
 
   const submitt = (b) => {
-    console.log("submitted",shopInfo);
+    console.log("submitted", shopInfo);
 
     b.preventDefault();
 
     // setErrors(Validation(userInfo))
 
-
     axiosInstance
-      .post(`/shop/shopEditById/${id._id}`, shopInfo
-
-      )
+      .post(`/shop/shopEditById/${id?._id}`, shopInfo)
       .then((result) => {
         console.log("data entered", result);
 
@@ -84,41 +86,37 @@ const PetShopProfile = ({imgUrl}) =>{
           //  navigate("/user/login");
         } else {
           alert("Registration Failed...");
-
         }
       })
       .catch((error) => {
         console.log("err", error);
       });
-
   };
 
-
   useEffect(() => {
-    console.log(id._id);
-
-    axiosInstance.get(`/shop/getShopDataById/${id._id}`).then((res) => {                   //profile api is added
-      setShopInfo(res.data.data);
-      console.log(res);
-      // console.log(shopInfo.img.filename);
-      // shopInfo.ownerFirstName=shopInfo.own
-    });
+    if (id) {
+      axiosInstance.get(`/shop/getShopDataById/${id?._id}`).then((res) => {
+        //profile api is added
+        setShopInfo(res.data.data);
+        console.log(res);
+        // console.log(shopInfo.img.filename);
+        // shopInfo.ownerFirstName=shopInfo.own
+      });
+    }
   }, []);
 
- useEffect(()=>{
-  console.log(shopInfo);
-
- },[shopInfo])
- const handleImageBtnClick = () => {
-  if (fileInputRef && fileInputRef.current) {
-    fileInputRef.current.click();
-  }
-};
-
+  useEffect(() => {
+    console.log(shopInfo);
+  }, [shopInfo]);
+  const handleImageBtnClick = () => {
+    if (fileInputRef && fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
 
   return (
     <>
-        {/* <NavbarUpdated/> */}
+      {/* <NavbarUpdated/> */}
       {/* <div className="petshop-profile-header-img">
         <img
           className="petshop-profile-placeholder-img"
@@ -178,8 +176,7 @@ const PetShopProfile = ({imgUrl}) =>{
                 value={shopInfo.ownername}
                 onChange={changehandleSubmit}
                 required
-                disabled={(isDisabled)? "disabled" : ""}
-
+                disabled={isDisabled ? "disabled" : ""}
               />
               <Form.Control.Feedback type="invalid">
                 Owner Last Name is required
@@ -198,8 +195,7 @@ const PetShopProfile = ({imgUrl}) =>{
               value={shopInfo.shopname}
               onChange={changehandleSubmit}
               required
-              disabled={(isDisabled)? "disabled" : ""}
-
+              disabled={isDisabled ? "disabled" : ""}
             />
             <Form.Control.Feedback type="invalid">
               Shop Name is required
@@ -216,8 +212,7 @@ const PetShopProfile = ({imgUrl}) =>{
               value={shopInfo.email}
               onChange={changehandleSubmit}
               required
-              disabled={(isDisabled)? "disabled" : ""}
-
+              disabled={isDisabled ? "disabled" : ""}
             />
             <Form.Control.Feedback type="invalid">
               Email is required
@@ -235,8 +230,7 @@ const PetShopProfile = ({imgUrl}) =>{
               value={shopInfo.password}
               onChange={changehandleSubmit}
               required
-              disabled={(isDisabled)? "disabled" : ""}
-
+              disabled={isDisabled ? "disabled" : ""}
             />
             <Form.Control.Feedback type="invalid">
               Minimum 6 characters password required
@@ -252,10 +246,9 @@ const PetShopProfile = ({imgUrl}) =>{
               name="city"
               value={shopInfo.city}
               required
-              disabled={(isDisabled)? "disabled" : ""}
-
+              disabled={isDisabled ? "disabled" : ""}
               onChange={changehandleSubmit}
-              />
+            />
             <Form.Control.Feedback type="invalid">
               City is required.
             </Form.Control.Feedback>
@@ -271,8 +264,7 @@ const PetShopProfile = ({imgUrl}) =>{
               value={shopInfo.street}
               onChange={changehandleSubmit}
               required
-              disabled={(isDisabled)? "disabled" : ""}
-
+              disabled={isDisabled ? "disabled" : ""}
             />
             <Form.Control.Feedback type="invalid">
               Street is required.
@@ -289,8 +281,7 @@ const PetShopProfile = ({imgUrl}) =>{
               value={shopInfo.district}
               onChange={changehandleSubmit}
               required
-              disabled={(isDisabled)? "disabled" : ""}
-
+              disabled={isDisabled ? "disabled" : ""}
             />
             <Form.Control.Feedback type="invalid">
               District is required.
@@ -308,8 +299,7 @@ const PetShopProfile = ({imgUrl}) =>{
               value={shopInfo.mobile}
               onChange={changehandleSubmit}
               required
-              disabled={(isDisabled)? "disabled" : ""}
-
+              disabled={isDisabled ? "disabled" : ""}
             />
             <Form.Control.Feedback type="invalid">
               10 Digit Phone Number is required.
@@ -325,8 +315,7 @@ const PetShopProfile = ({imgUrl}) =>{
               value={shopInfo.licenceno}
               onChange={changehandleSubmit}
               required
-              disabled={(isDisabled)? "disabled" : ""}
-
+              disabled={isDisabled ? "disabled" : ""}
             />
             <Form.Control.Feedback type="invalid">
               License Number is required.
@@ -342,8 +331,7 @@ const PetShopProfile = ({imgUrl}) =>{
               value={shopInfo.description}
               onChange={changehandleSubmit}
               required
-              disabled={(isDisabled)? "disabled" : ""}
-
+              disabled={isDisabled ? "disabled" : ""}
             />
             <Form.Control.Feedback type="invalid">
               Description is required.
@@ -357,8 +345,7 @@ const PetShopProfile = ({imgUrl}) =>{
               aria-label="Registration Number"
               name="regno"
               value={shopInfo.regno}
-              disabled={(isDisabled)? "disabled" : ""}
-
+              disabled={isDisabled ? "disabled" : ""}
               onChange={changehandleSubmit}
               required
             />
@@ -393,8 +380,7 @@ const PetShopProfile = ({imgUrl}) =>{
               aria-describedby="basic-addon1"
               type="text"
               name="opentime"
-              disabled={(isDisabled)? "disabled" : ""}
-
+              disabled={isDisabled ? "disabled" : ""}
               value={shopInfo.opentime}
               onChange={changehandleSubmit}
               required
@@ -416,8 +402,7 @@ const PetShopProfile = ({imgUrl}) =>{
               value={shopInfo.closingtime}
               onChange={changehandleSubmit}
               required
-              disabled={(isDisabled)? "disabled" : ""}
-
+              disabled={isDisabled ? "disabled" : ""}
             />
 
             <Form.Control.Feedback type="invalid">
@@ -426,14 +411,16 @@ const PetShopProfile = ({imgUrl}) =>{
           </InputGroup>
 
           <div className="profile-view-btn-container">
-                  {
-                    isDisabled ? <button>Back</button> : <button
-                      onClick={submitt}>update</button>
-                  }
+            {isDisabled ? (
+              <button>Back</button>
+            ) : (
+              <button onClick={submitt}>update</button>
+            )}
 
-                  <button type="button" onClick={editData}>Edit</button>
-
-                </div>
+            <button type="button" onClick={editData}>
+              Edit
+            </button>
+          </div>
         </Form>
       </div>
       <Footer />
