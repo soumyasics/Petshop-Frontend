@@ -133,7 +133,12 @@ const NavbarUpdated = () => {
         >
           Wishlist
         </li>
-      
+        <li
+          className={`${activePage === "add-pet" ? "active" : ""}`}
+          onClick={redirectUserAddPet}
+        >
+          Add Pet
+        </li>
       </ul>
       <div className="navbar-updated-search-container">
         <>
@@ -151,12 +156,6 @@ const NavbarUpdated = () => {
                 ref={selectRef}
                 style={{ display: openDropdown ? "block" : "none" }}
               >
-                <div>
-                  <span onClick={redirectUserOrder}>
-                    <LuListOrdered />
-                  </span>
-                  <p> Orders</p>
-                </div>
                 <div onClick={redirectUserWishlist}>
                   <span>
                     <FaHeart />
