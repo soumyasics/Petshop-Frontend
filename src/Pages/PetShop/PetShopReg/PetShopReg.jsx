@@ -2,15 +2,11 @@ import imgUploadPlaceholder from "../../../Assets/PlaceholderImage.png";
 import uploadImageIcon from "../../../Assets/upload-img-icon.png";
 import { InputGroup } from "react-bootstrap";
 import { Form } from "react-bootstrap";
-import axios from "axios";
 import Footer from "../../Common/Footer/Footer";
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "./PetShopReg.css";
-import PetShopNavbar from "../Common/PetShopNavbar";
 import axiosInstance from "../../../BaseURL";
-import NavbarUpdated from "../../Common/NavbarUpdated/NavbarUpdated";
-import CommonNavbar from "../../Common/CommonNavbar";
 const PetShopRegistration = () => {
   const [activeShopImage, setIsActiveShopImage] = useState(null);
   const fileInputRef = useRef(null);
@@ -38,8 +34,6 @@ const PetShopRegistration = () => {
 
   const handleChange = (e) => {
     if (e.target.name === "ownerFirstName") {
-      console.log("workedd", e.target.value);
-      console.log("won", shopInfo.ownername);
       setShopInfo({
         ...shopInfo,
         ownername: e.target.value,
@@ -170,9 +164,22 @@ const PetShopRegistration = () => {
 
   return (
     <>
-      {/* <PetShopNavbar /> */}
-        {/* <NavbarUpdated/> */}
-        <CommonNavbar/>
+      <h1 className="register-petshop-heading">
+        {" "}
+        Register Your Pet Shop With Us{" "}
+      </h1>
+      <p className="register-petshop-title">
+        {" "}
+        Already have an account?{" "}
+        <span
+          onClick={() => {
+            navigate("/petshop/login");
+          }}
+        >
+          {" "}
+          Login{" "}
+        </span>
+      </p>
       <div className="add-pet-header-img">
         <img
           className="add-pet-placeholder-img"

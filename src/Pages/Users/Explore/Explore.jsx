@@ -11,6 +11,8 @@ import NavbarUpdated from "../../Common/NavbarUpdated/NavbarUpdated.jsx";
 import AccessoiresContainer from "../../../Components/AccessoriesContainer/AccessoriesContainer.jsx";
 import FoodContainer from "../../../Components/UserPetFood/UserFood.jsx";
 import HomeContainer from "../../../Components/HomesContainer/HomeContainer.jsx";
+import { useNavigate } from "react-router-dom";
+
 const ExplorePage = () => {
   const [activeSection, setActiveSection] = useState("shops");
   const [shopsData, setShopsData] = useState([]);
@@ -22,7 +24,14 @@ const ExplorePage = () => {
   const [allCats, setAllCats] = useState([]);
   const [petSectionActive, setPetSectionActive] = useState(false);
   const [foodData, setFoodData] = useState([]);
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    const isUserLogin = localStorage.getItem("petshop-user") || null;
+    if (!isUserLogin) {
+      navigate("/user/login");
+    }
+  }, []);
   const getShopsData = () => {
     axiosInstance
       .post("shop/shopViewAll")
@@ -45,7 +54,7 @@ const ExplorePage = () => {
       .then((res) => {
         if (res.status === 200) {
           if (res?.data?.data) {
-            console.log("got accessa",accessoriesData);
+            console.log("got accessa", accessoriesData);
             setAccessoriesData(res.data.data);
           } else {
             console.log("no data, check getShopsData in explore page");
@@ -99,7 +108,7 @@ const ExplorePage = () => {
           console.log(res);
           if (res?.data?.data) {
             setHomesData(res.data.data);
-            console.log("home",homesData);
+            console.log("home", homesData);
           } else {
             console.log("no data, check getShopsData in explore page");
           }
@@ -255,7 +264,7 @@ const ExplorePage = () => {
               ) : (
                 <h1> No Accessoires found</h1>
               ))}
-              {activeSection === "home" &&
+            {activeSection === "home" &&
               (homesData.length > 0 ? (
                 <HomeContainer accData={homesData} />
               ) : (

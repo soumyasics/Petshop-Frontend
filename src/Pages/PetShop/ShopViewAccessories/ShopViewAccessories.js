@@ -13,12 +13,19 @@ function ShopViewAccessories({ imgUrl }) {
   const [data, setData] = useState([]);
   const [activeImage, setActiveImage] = useState(null);
 
-  const id = JSON.parse(localStorage.getItem("shop-info"));
+  const navigate = useNavigate();
+  useEffect(() => {
+    const shopInfo = JSON.parse(localStorage.getItem("shop-info")) || null;
+    if (!shopInfo) {
+      navigate("/petshop/login");
+      return;
+    }
+  }, []);
+  const id = JSON.parse(localStorage.getItem("shop-info")) || null;
 
   useEffect(() => {
-    console.log("id", id._id);
     axiosInstance
-      .post(`/shop/viewAccessoryByShopId/${id._id}`)
+      .post(`/shop/viewAccessoryByShopId/${id?._id}`)
       .then((res) => {
         if (res.status === 200) {
           console.log("data", res.data.data);

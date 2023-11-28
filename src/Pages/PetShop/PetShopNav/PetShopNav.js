@@ -74,6 +74,9 @@ const PetShoNav = ({ imgUrl }) => {
     if (localStorage.getItem("shop-info")) {
       localStorage.removeItem("shop-info");
     }
+    if (localStorage.getItem("petshop-token")) {
+      localStorage.removeItem("petshop-token");
+    }
     setIsLoggin(false);
     navigate("/petshop/login");
   };
@@ -149,7 +152,10 @@ const PetShoNav = ({ imgUrl }) => {
                   <span>
                     <LuListOrdered />
                   </span>
-                 <Link to="/petshop/view-profile"> <p  > Profile </p></Link>
+                  <Link to="/petshop/view-profile">
+                    {" "}
+                    <p> Profile </p>
+                  </Link>
                 </div>
 
                 <div onClick={handleLogout}>

@@ -4,6 +4,7 @@ import Footer from "../../Common/Footer/Footer";
 import PendingOrders from "./PendingRequets";
 import ConfirmedOrders from "./ConfirmdRequest";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../../BaseURL";
 import AllPetOrders from "./UserAllOrders";
 import "./PetShopRequest.css";
@@ -16,6 +17,15 @@ const UserPetRequest = () => {
   const [allPetOrdersList, setAllPetOrdersList] = useState([]);
   const [confimedOrdersList, setConfirmedOrdersList] = useState([]);
   const [pendingOrdersList, setPendingOrdersList] = useState([]);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const isUserLogin = localStorage.getItem("petshop-user") || null;
+    if (!isUserLogin) {
+      navigate("/user/login");
+    }
+  }, []);
 
   const getDataFromLs = () => {
     const petshopInfo =

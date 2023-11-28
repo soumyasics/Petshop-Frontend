@@ -56,6 +56,7 @@
   align-items: center;
   width: 82px;
   justify-content: space-between;
+  z-index: 10;
 }
 .navbar-updated-search-container svg {
   color: #d61c62;
