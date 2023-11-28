@@ -11,7 +11,17 @@ import "./About.css";
 import CommonNavbar from "../Common/CommonNavbar";
 import Footer from "../Common/Footer/Footer";
 import NavbarUpdated from "../Common/NavbarUpdated/NavbarUpdated";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 function About() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const isUserLogin = localStorage.getItem("petshop-user") || null;
+    if (!isUserLogin) {
+      navigate("/user/login");
+    }
+  }, []);
   return (
     <div>
       {/* <CommonNavbar /> */}

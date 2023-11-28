@@ -5,11 +5,20 @@ import NavbarUpdated from "../Common/NavbarUpdated/NavbarUpdated";
 import NewsLetter from "../Common/NewsLetter/NewsLetter";
 import Footer from "../Common/Footer/Footer";
 import UserOrderCard from "./UserOrderCard";
+import { useNavigate } from "react-router-dom";
 import "./UserOrder.css";
 
 function UserOrder() {
   const [userAction, setUserAction] = useState(false);
   const [petData, setPetData] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const isUserLogin = localStorage.getItem("petshop-user") || null;
+    if (!isUserLogin) {
+      navigate("/user/login");
+    }
+  }, []);
 
   const getUserDataFromLs = () => {
     const userData = JSON.parse(localStorage.getItem("petshop-user")) || null;

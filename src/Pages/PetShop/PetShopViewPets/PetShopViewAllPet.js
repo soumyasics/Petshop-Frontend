@@ -9,13 +9,20 @@ import axiosInstance from "../../../BaseURL";
 import { CgAdd } from "react-icons/cg";
 
 function PetShopViewAllPet({ imgUrl }) {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const shopInfo = JSON.parse(localStorage.getItem("shop-info")) || null;
+    if (!shopInfo) {
+      navigate("/petshop/login");
+      return;
+    }
+  }, []);
   const [data, setData] = useState([]);
-  const id = JSON.parse(localStorage.getItem("shop-info"));
+  const id = JSON.parse(localStorage.getItem("shop-info")) || null;
 
   useEffect(() => {
-    console.log("id", id._id);
     axiosInstance
-      .post(`/pet/viewPetByShopId/${id._id}`)
+      .post(`/pet/viewPetByShopId/${id?._id}`)
       .then((res) => {
         if (res.status === 200) {
           console.log("data", res.data.data);
@@ -61,34 +68,34 @@ function PetShopViewAllPet({ imgUrl }) {
             </Link>
           </div>
           {data.length ? (
-            data.map(function (user) {
+            data?.map(function (user) {
               return (
                 <div className="col-6 box">
                   <div className="card admin-view-pets-card1 bg-secondary-subtle">
                     <div className="row align-items-center">
                       <div className="col-6">
                         <img
-                          src={`${imgUrl}/${user.img.filename}`}
+                          src={`${imgUrl}/${user?.img?.filename}`}
                           className="card-img-left user-img admin-view-pets-name"
                         ></img>
                       </div>
                       <div className="col-6">
                         <h3 className="card-title name">
-                          <b>Name : {user.petname}</b>
+                          <b>Name : {user?.petname}</b>
                         </h3>
                         <h6 className="card-title name">
-                          <b>Breed : {user.breed} </b>
+                          <b>Breed : {user?.breed} </b>
                         </h6>
                         <h6 className="card-title name">
-                          <b>Age : {user.age} </b>
+                          <b>Age : {user?.age} </b>
                         </h6>
                         <h6 className="card-title name">
-                          <b>Cost : {user.price} </b>
+                          <b>Cost : {user?.price} </b>
                         </h6>
                       </div>
                     </div>
                     <div className="d-flex view_my_pet_button">
-                      <Link to={`/petshop/editpet/${user._id}`}>
+                      <Link to={`/petshop/editpet/${user?._id}`}>
                         {" "}
                         <button className="btn btn-primary btn-sm rounded-start-pill rounded-end-pill  align-items-center ">
                           Edit
@@ -99,7 +106,7 @@ function PetShopViewAllPet({ imgUrl }) {
                       <button
                         type="button"
                         className="btn btn-primary btn-sm rounded-start-pill rounded-end-pill  align-items-center "
-                        onClick={() => removePet(user._id)}
+                        onClick={() => removePet(user?._id)}
                       >
                         Remove
                       </button>

@@ -1,19 +1,25 @@
-import React, { useEffect, useState } from 'react'
-import DogPic from '../../../Assets/black-man-and-dog.jpg'
+import React, { useEffect, useState } from "react";
+import DogPic from "../../../Assets/black-man-and-dog.jpg";
 // import ReCAPTCHA from "react-google-recaptcha";
-import './UserProfileView.css'
-import axios from 'axios';
-import axiosInstance from '../../../BaseURL';
-import { useNavigate } from 'react-router-dom';
+import "./UserProfileView.css";
+import axios from "axios";
+import axiosInstance from "../../../BaseURL";
+import { useNavigate } from "react-router-dom";
 
 import Validation from "../UserRegistration/Validation";
 
 function UserProfileView() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  useEffect(() => {
+    const isUserLogin = localStorage.getItem("petshop-user") || null;
+    if (!isUserLogin) {
+      navigate("/user/login");
+    }
+  }, []);
 
-  const id = JSON.parse(localStorage.getItem("petshop-user"))
+  const id = JSON.parse(localStorage.getItem("petshop-user"));
   console.log("loc", id._id);
-  const [isDisabled, setDisabled] = useState(true)
+  const [isDisabled, setDisabled] = useState(true);
   const [errors, setErrors] = useState({});
   const [isSubmit, setisSubmit] = useState(false);
   const [userInfo, setprofile] = useState({
@@ -21,19 +27,17 @@ function UserProfileView() {
     lastname: "",
     email: "",
     mobile: "",
-    city: '',
-    street: '',
-    district: ''
-
+    city: "",
+    street: "",
+    district: "",
   });
   const [userInfo2, setprofile2] = useState({
-    userInfo
-
+    userInfo,
   });
   const editData = () => {
     console.log("call");
-    setDisabled(false)
-  }
+    setDisabled(false);
+  };
 
   const changehandleSubmit = (a) => {
     // if (a.target.name=="img") {
@@ -55,11 +59,8 @@ function UserProfileView() {
 
     // setErrors(Validation(userInfo))
 
-
     axiosInstance
-      .post(`user/userProfileEdit/${id._id}`, userInfo2
-
-      )
+      .post(`user/userProfileEdit/${id._id}`, userInfo2)
       .then((result) => {
         console.log("data entered", result);
 
@@ -68,19 +69,16 @@ function UserProfileView() {
           //  navigate("/user/login");
         } else {
           alert("Registration Failed...");
-
         }
       })
       .catch((error) => {
         console.log("err", error);
       });
-
   };
 
-
   useEffect(() => {
-
-    axiosInstance.post(`/user/userViewProfile/${id._id}`).then((res) => {                   //profile api is added
+    axiosInstance.post(`/user/userViewProfile/${id._id}`).then((res) => {
+      //profile api is added
       setprofile(res.data.data);
     });
   }, []);
@@ -105,7 +103,7 @@ function UserProfileView() {
                     name="firstname"
                     //   value={userInfo.fname}
                     onChange={changehandleSubmit}
-                    disabled={(isDisabled) ? "disabled" : ""}
+                    disabled={isDisabled ? "disabled" : ""}
                     placeholder={userInfo.firstname}
                   />
                 </div>
@@ -115,8 +113,7 @@ function UserProfileView() {
                   <input
                     type="text"
                     name="lastname"
-                    disabled={(isDisabled) ? "disabled" : ""}
-
+                    disabled={isDisabled ? "disabled" : ""}
                     onChange={changehandleSubmit}
                     placeholder={userInfo.lastname}
                   />
@@ -129,46 +126,52 @@ function UserProfileView() {
                   type="text"
                   placeholder={userInfo.email}
                   name="email"
-                  disabled={(isDisabled) ? "disabled" : ""}
-
+                  disabled={isDisabled ? "disabled" : ""}
                   onChange={changehandleSubmit}
                 />
-
 
                 <label> Street</label>
                 <input
                   type="text"
                   placeholder={userInfo.street}
                   name="street"
-                  disabled={(isDisabled) ? "disabled" : ""}
-
+                  disabled={isDisabled ? "disabled" : ""}
                   onChange={changehandleSubmit}
                 />
 
                 <label>city</label>
-                <input type="text"
-                  disabled={(isDisabled) ? "disabled" : ""}
-                  name="city" placeholder={userInfo.city} />
+                <input
+                  type="text"
+                  disabled={isDisabled ? "disabled" : ""}
+                  name="city"
+                  placeholder={userInfo.city}
+                />
                 <label> mobile </label>
-                <input type="text"
+                <input
+                  type="text"
                   onChange={changehandleSubmit}
-                  disabled={(isDisabled) ? "disabled" : ""}
-
-                  name="mobile" placeholder={userInfo.mobile} />
+                  disabled={isDisabled ? "disabled" : ""}
+                  name="mobile"
+                  placeholder={userInfo.mobile}
+                />
 
                 <label> District </label>
-                <input type="text"
+                <input
+                  type="text"
                   name="district"
-                  disabled={(isDisabled)? "disabled" : ""}
-                  placeholder={userInfo.district} />
+                  disabled={isDisabled ? "disabled" : ""}
+                  placeholder={userInfo.district}
+                />
                 <div className="profile-view-btn-container">
-                  {
-                    isDisabled ? <button>Back</button> : <button
-                      onClick={submitt}>update</button>
-                  }
+                  {isDisabled ? (
+                    <button>Back</button>
+                  ) : (
+                    <button onClick={submitt}>update</button>
+                  )}
 
-                  <button type="button" onClick={editData}>Edit</button>
-
+                  <button type="button" onClick={editData}>
+                    Edit
+                  </button>
                 </div>
               </div>
             </form>
@@ -179,9 +182,8 @@ function UserProfileView() {
           </div>
         </div>
       </div>
-
     </div>
-  )
+  );
 }
 
-export default UserProfileView
+export default UserProfileView;

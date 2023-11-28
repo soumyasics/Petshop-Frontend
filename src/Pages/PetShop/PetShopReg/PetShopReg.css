@@ -1,4 +1,24 @@
-
+.register-petshop-heading {
+  font-size: 2rem;
+  font-weight: 800;
+  width: fit-content;
+  margin: auto;
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+.register-petshop-title {
+  font-size: 1rem;
+  font-weight: 700;
+  width: fit-content;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.register-petshop-title span {
+  color: blue;
+  font-weight: 800;
+  cursor: pointer;
+}
 .add-pet-navbar {
   display: flex;
   height: 50px;
@@ -10,7 +30,7 @@
   padding-right: 50px;
   margin: auto;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
-  rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
   padding-bottom: 20px;
   margin-top: 20px;
 }
@@ -90,7 +110,7 @@
   font-weight: 800;
 }
 
-.add-pet-form-container >form {
+.add-pet-form-container > form {
   margin-bottom: 20px;
   width: 100%;
   background-color: #ddd;
@@ -98,15 +118,15 @@
   box-sizing: border-box;
 }
 
-.add-pet-user-input >input {
+.add-pet-user-input > input {
   margin-left: 20px;
 }
 
 .add-pet-name-container {
   display: flex;
 }
-.add-pet-name-container>input{
-  width: 50%!important; 
+.add-pet-name-container > input {
+  width: 50% !important;
 }
 .add-pet-user-input {
   display: flex;
@@ -118,17 +138,16 @@
   border-radius: 20px;
 }
 
-
 #add-pet-form .add-pet-name-container input {
   width: 90%;
   max-height: 40px;
 }
 
-#add-pet-form>input {
+#add-pet-form > input {
   width: 100%;
 }
 
-#add-pet-form >.add-pet-user-input input{
+#add-pet-form > .add-pet-user-input input {
   width: 95%;
 }
 
@@ -138,7 +157,7 @@
   align-items: center;
 }
 
-#add-pet-form >div> input[type='submit'] {
+#add-pet-form > div > input[type="submit"] {
   background-color: #018ae0;
   color: white;
   width: 100px;
@@ -147,4 +166,3 @@
   border: none;
   border-radius: 5px;
 }
-
