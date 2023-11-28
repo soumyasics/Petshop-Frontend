@@ -86,7 +86,7 @@
   margin: 10px;
 }
 
-#shop-add-button{
+#shop-add-button {
   float: right;
   height: 50px;
   width: 50px;
@@ -98,21 +98,24 @@
   color: white;
 }
 
-.view_my_pet_button{
+.view_my_pet_button {
   margin: 20px 30px;
   justify-content: space-between;
 }
 
-.view_my_pet_addbutton a{
+.view_my_pet_addbutton a {
   text-decoration: none;
 }
 
-.view_my_pet_button button{
+.view_my_pet_button button {
   width: 100px;
 }
 
-.view_my_pet_button button:hover{
+.view_my_pet_button button:hover {
   background-color: rgb(211, 3, 3);
   border: none;
 }
-
+#shop-add-button {
+  position: relative;
+  right: 170px;
+}

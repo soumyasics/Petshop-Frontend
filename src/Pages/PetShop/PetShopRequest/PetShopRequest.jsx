@@ -18,8 +18,7 @@ const PetShopRequest = () => {
   const [pendingOrdersList, setPendingOrdersList] = useState([]);
 
   const getDataFromLs = () => {
-    const petshopInfo =
-      JSON.parse(localStorage.getItem("petshop-info")) || null;
+    const petshopInfo = JSON.parse(localStorage.getItem("shop-info")) || null;
     if (!petshopInfo?._id) {
       return null;
     }
