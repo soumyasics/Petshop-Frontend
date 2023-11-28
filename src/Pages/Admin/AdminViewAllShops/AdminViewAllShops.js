@@ -9,6 +9,27 @@ function AdminViewAllShops({ imgUrl }) {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
 
+  useEffect(()=>{
+    if(localStorage.getItem('adminlog')==null){
+        navigate('/admin-login')
+    }
+})
+const handleRemove=(id)=>{
+  axiosInstance.post(`/user/userRemoveAccountById/${id}`)
+  .then((res)=>{
+      console.log(res);
+    if(res.data.status==200){
+      alert('Data Removed Successfully')
+      setData(prevArray => prevArray.filter(item => item._id !== id));
+    }
+    else
+    alert('Data not  Removed')
+})
+  .catch((err)=>{
+    alert('Data not  Removed')
+      })
+}
+
   useEffect(() => {
     axiosInstance
       .post(`/shop/shopViewAll`)
@@ -68,12 +89,10 @@ function AdminViewAllShops({ imgUrl }) {
                       </div>
                     </div>
                     <button
-                      onClick={() => {
-                        redirectShopMoreInfo(user._id);
-                      }}
+                      onClick={()=>handleRemove(user._id)}
                       className="btn btn-primary btn-sm rounded-start-pill rounded-end-pill admin-view-shops-btn1 align-items-center "
                     >
-                      MORE INFO
+                   Remove
                     </button>
                   </div>
                 </div>

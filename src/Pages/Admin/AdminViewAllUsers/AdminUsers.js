@@ -4,9 +4,18 @@ import demo from "../../../Assets/full-shot-woman-working-floor.jpg";
 import axiosInstance from "../../../BaseURL";
 import AdminNavbar from "../AdminNavbar/AdminNavbar";
 import Footer from "../../Common/Footer/Footer";
+import { useNavigate } from "react-router-dom";
+
 function AdminUsers({ imgUrl }) {
   const [data, setData] = useState([]);
+  const navigate = useNavigate();
 
+  useEffect(()=>{
+    if(localStorage.getItem('adminlog')==null){
+        navigate('/admin-login')
+    }
+})
+  
   useEffect(() => {
     axiosInstance
       .post(`/user/viewAllUsers`)
@@ -29,6 +38,23 @@ function AdminUsers({ imgUrl }) {
         }
       });
   }, []);
+
+
+  const handleRemove=(id)=>{
+    axiosInstance.post(`/user/userRemoveAccountById/${id}`)
+    .then((res)=>{
+        console.log(res);
+      if(res.data.status==200){
+        alert('Data Removed Successfully')
+        setData(prevArray => prevArray.filter(item => item._id !== id));
+      }
+      else
+      alert('Data not  Removed')
+  })
+    .catch((err)=>{
+      alert('Data not  Removed')
+        })
+  }
 
   return (
     <>
@@ -58,10 +84,22 @@ function AdminUsers({ imgUrl }) {
                           {" "}
                           {user.firstname} {user.lastname}
                         </h5>
+                        <h5 className="card-title name">
+                          {" "}
+                          {user.email}
+                        </h5>
+                        <h5 className="card-title name">
+                          {" "}
+                          {user.mobile}
+                        </h5>
+                        <h5 className="card-title name">
+                          {" "}
+                          {user.city}
+                        </h5>
                       </div>
                     </div>
-                    <button className="btn btn-primary btn-sm rounded-start-pill rounded-end-pill btn1 align-items-center ">
-                      MORE INFO
+                    <button className="btn btn-primary btn-sm rounded-start-pill rounded-end-pill btn1 align-items-center " onClick={()=>handleRemove(user._id)}>
+                     Remove {user.firstname} {user.lastname}
                     </button>
                   </div>
                 </div>

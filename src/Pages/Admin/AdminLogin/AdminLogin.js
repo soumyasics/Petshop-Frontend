@@ -26,7 +26,7 @@ function AdminLogin() {
             if (login.password == 'admin12345') {
                 localStorage.setItem('adminlog', 1)
                 alert('Login successfully')
-                navigate('/admin/admin-all-shops')
+                navigate('/admin')
             }
             else {
                 alert('Incorrect Password')
