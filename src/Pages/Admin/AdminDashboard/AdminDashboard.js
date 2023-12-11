@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './AdminDashboard.css';
 import AdminNavbar from '../AdminNavbar/AdminNavbar';
 import dashboard_logo from '../../../Assets/material-symbols_dashboard.png';
@@ -6,7 +6,62 @@ import delete_icon from '../../../Assets/material-symbols_delete.png';
 import NewsLetter from '../../Common/NewsLetter/NewsLetter';
 import Footer from '../../Common/Footer/Footer';
 import { Link } from "react-router-dom";
+import axiosInstance from '../../../BaseURL';
+import { useNavigate } from "react-router-dom";
+
 function AdminDashboard() {
+    const [count,setCount]=useState(0)
+    const [shopcount,setShopCount]=useState(0)
+
+    const [acccount,setAccCount]=useState(0)
+
+    useEffect(()=>{
+        if(localStorage.getItem('adminlog')==null){
+            navigate('/admin-login')
+        }
+    })
+    const navigate=useNavigate()
+
+    useEffect(()=>{
+        axiosInstance.post(`/user/findCountOfTotalUsers`).then((res) => {
+            if (res.status === 200) {
+           console.log("data",res.data.data);
+            setCount(res.data.data)
+            console.log("count",count);
+              }
+            
+            
+          }).catch((err) => {
+            console.log(err);
+           alert(" Server Issues")
+          })
+
+          axiosInstance.post(`/shop/findCountOfTotalShops`).then((res) => {
+            if (res.status === 200) {
+           console.log("data",res.data.data);
+            setShopCount(res.data.data)
+            console.log("count",count);
+              }
+            
+            
+          }).catch((err) => {
+            console.log(err);
+           alert(" Server Issues")
+          })
+
+          axiosInstance.post(`/shop/findCountOfTotalAccess`).then((res) => {
+            if (res.status === 200) {
+           console.log("data",res.data.data);
+            setAccCount(res.data.data)
+            console.log("count",count);
+              }
+            
+            
+          }).catch((err) => {
+            console.log(err);
+           alert(" Server Issues")
+          })
+    },[])
   return (
     <>
     <AdminNavbar/>
@@ -19,7 +74,7 @@ function AdminDashboard() {
         </div>
         <div  className='row'>
             <div className='col-lg text-center m-5'>
-                <h6 className='fw-light text-secondary'>USERS</h6>
+                <h6 className='fw-light text-secondary'></h6>
                 <h1 className='fw-bolder fs-1'>STATUS</h1>
             </div>
         </div>
@@ -27,20 +82,20 @@ function AdminDashboard() {
             <div className='col-lg admin-dashboard-status1 align-middle'>
                 <div className='bg-primary admin-dashboard-dot border m-1 d-inline-block'></div>
                 <h4 className='m-5 ms-1  p-1 d-inline-block'>USER STATUS</h4>
-                <h2 className='p-4'>200 USERS</h2>
+                <h2 className='p-4'>{count} USERS</h2>
             </div>
             <div className='col-lg admin-dashboard-status2 text-white'>
                 <div className='bg-primary admin-dashboard-dot border-0 m-1 d-inline-block'></div>
                 <h4 className='m-5 ms-1  p-1 d-inline-block'>SHOPS</h4>
-                <h2 className='p-4'>200 SHOPS</h2>
+                <h2 className='p-4'>{shopcount} SHOPS</h2>
             </div>
             <div className='col-lg admin-dashboard-status3 text-white'>
                 <div className='bg-primary admin-dashboard-dot border-0 m-1 d-inline-block'></div>
                 <h4 className='m-5 ms-1  p-1 d-inline-block'>ACCESSORIES</h4>
-                <h2 className='p-4'>200 NOS</h2>
+                <h2 className='p-4'>{acccount} NOS</h2>
             </div>
         </div>
-        <div className='row m-5'>
+        {/* <div className='row m-5'>
             <div className='col border rounded'>
                 <h1 className='m-5'>TRANSACTIONS</h1>
                 <ul className="nav nav-tabs m-5 mb-0">
@@ -75,7 +130,7 @@ function AdminDashboard() {
                 </table>
                 </div>
             </div>
-        </div>
+        </div> */}
         
     </div>
     <NewsLetter/>

@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import axiosInstance from '../../../BaseURL';
 import AdminNavbar from '../AdminNavbar/AdminNavbar'
+import { useNavigate } from "react-router-dom";
 
 function AdminViewEnquiries() {
 
     const[data,setData]=useState([])
+    const navigate = useNavigate();
 
+    useEffect(()=>{
+      if(localStorage.getItem('adminlog')==null){
+          navigate('/admin-login')
+      }
+  })
     useEffect(()=>{
         axiosInstance
         .post(`/viewAllEnquiries`)
@@ -28,6 +35,8 @@ function AdminViewEnquiries() {
           console.log(res);
         if(res.data.status==200){
           alert('Data Removed Successfully')
+          setData(prevArray => prevArray.filter(item => item._id !== id));
+
         }
         else
         alert('Data not  Removed')

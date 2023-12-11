@@ -4,8 +4,33 @@ import axiosInstance from "../../../BaseURL";
 import AdminNavbar from "../AdminNavbar/AdminNavbar";
 import { Link } from "react-router-dom";
 import Footer from "../../Common/Footer/Footer";
+import { useNavigate } from "react-router-dom";
+
 function AdminViewAllPet({ imgUrl }) {
+  const navigate = useNavigate();
+
   const [data, setData] = useState([]);
+  useEffect(()=>{
+    if(localStorage.getItem('adminlog')==null){
+        navigate('/admin-login')
+    }
+})
+
+const handleRemove=(id)=>{
+  axiosInstance.post(`/user/userRemoveAccountById/${id}`)
+  .then((res)=>{
+      console.log(res);
+    if(res.data.status==200){
+      alert('Data Removed Successfully')
+      setData(prevArray => prevArray.filter(item => item._id !== id));
+    }
+    else
+    alert('Data not  Removed')
+})
+  .catch((err)=>{
+    alert('Data not  Removed')
+      })
+}
 
   useEffect(() => {
     axiosInstance
@@ -60,12 +85,14 @@ function AdminViewAllPet({ imgUrl }) {
                         </h6>
                       </div>
                     </div>
-                    <Link to={`/admin/admin-pet-more-info/` + user._id}>
+                    
                       {" "}
-                      <button className="btn btn-primary btn-sm rounded-start-pill rounded-end-pill admin-view-pets-btn1 align-items-center ">
-                        MORE INFO
+                      <button 
+                      onClick={()=>handleRemove(user._id)}
+                      className="btn btn-primary btn-sm rounded-start-pill rounded-end-pill admin-view-pets-btn1 align-items-center ">
+                     Remove
                       </button>
-                    </Link>
+                    
                   </div>
                 </div>
               );

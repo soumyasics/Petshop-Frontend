@@ -6,12 +6,14 @@ import axiosInstance from "../../../BaseURL";
 import { useParams } from "react-router-dom";
 import ShopMoreInfocard from "./ShopMoreInfocard";
 import catDogImg from "../../../Assets/dog-cat-look.jpg";
+import { useNavigate } from "react-router-dom";
 
 const ShopMoreInfo = () => {
   const [shopData, setShopData] = useState(null);
   const [seeProducts, setSeeProducts] = useState(true);
   const [shopHaveProducts, setShopHaveProducts] = useState(false);
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const dogImages = {
     dog1: "https://t4.ftcdn.net/jpg/01/99/00/79/360_F_199007925_NolyRdRrdYqUAGdVZV38P4WX8pYfBaRP.jpg",
@@ -29,7 +31,11 @@ const ShopMoreInfo = () => {
     cat5: "https://wallpaperaccess.com/full/1209272.jpg",
     cat6: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTelD_aDc_VlHKsekYmFy9YxCOzSjIuK2BfmA&usqp=CAU",
   };
-
+  useEffect(()=>{
+    if(localStorage.getItem('adminlog')==null){
+        navigate('/admin-login')
+    }
+})
   const getShopDatabyId = () => {
     axiosInstance
       .get("/shop/getShopDataById/" + id)

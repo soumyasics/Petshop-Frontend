@@ -66,7 +66,7 @@ function CommonNavbar() {
                 </Link>
               </li>
               <li className="nav-item admin-nav-logout-btn">
-                <Link to="/admin-login">
+                <Link to="/admin-login" onClick={()=>{localStorage.removeItem('adminlog')}}>
                   {" "}
                   <a className="nav-link">Logout</a>
                 </Link>

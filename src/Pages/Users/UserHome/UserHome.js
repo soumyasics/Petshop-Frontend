@@ -1,7 +1,7 @@
 import img from "../../../Assets/medium-shot-woman-with-cute-chihuahua-dog.jpg";
 import img1 from "../../../Assets/pic2-removebg-preview.png";
 import img2 from "../../../Assets/karsten-winegeart-BVqQNu5J7qI-unsplash.jpg";
-import img3 from "../../../Assets/Composição de ração doméstica _ Foto Grátis.jpeg";
+import img3 from "../../../Assets/petfood123.jpeg";
 import img4 from "../../../Assets/Concept of pet care and training on green background_ Wide banner with pet toys.jpeg";
 import img5 from "../../../Assets/closeup-shot-one-ginger-cat-hugging-licking-other-isolated-white-wall.jpg";
 import img6 from "../../../Assets/Sprightly Surgeon_ Jack Russel's Medical Jaunt.jpeg";

@@ -25,7 +25,11 @@ export default function AdminPetProfile() {
 const {id}=useParams()
 console.log(id);
 
-
+useEffect(()=>{
+    if(localStorage.getItem('adminlog')==null){
+        navigate('/admin-login')
+    }
+})
     useEffect(() => {
 
         console.log("in use");
