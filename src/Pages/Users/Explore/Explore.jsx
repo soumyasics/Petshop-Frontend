@@ -73,6 +73,7 @@ const ExplorePage = () => {
         if (res.status === 200) {
           if (res?.data?.data) {
             setPetsData(res.data.data);
+            console.log("pet d", res.data.data);
           } else {
             console.log("no data");
           }

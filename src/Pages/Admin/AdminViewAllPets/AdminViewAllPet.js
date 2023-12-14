@@ -10,27 +10,35 @@ function AdminViewAllPet({ imgUrl }) {
   const navigate = useNavigate();
 
   const [data, setData] = useState([]);
-  useEffect(()=>{
-    if(localStorage.getItem('adminlog')==null){
-        navigate('/admin-login')
+  useEffect(() => {
+    if (localStorage.getItem("adminlog") == null) {
+      navigate("/admin-login");
     }
-})
+  });
 
-const handleRemove=(id)=>{
-  axiosInstance.post(`/user/userRemoveAccountById/${id}`)
-  .then((res)=>{
-      console.log(res);
-    if(res.data.status==200){
-      alert('Data Removed Successfully')
-      setData(prevArray => prevArray.filter(item => item._id !== id));
-    }
-    else
-    alert('Data not  Removed')
-})
-  .catch((err)=>{
-    alert('Data not  Removed')
+  const handleRemove = (id) => {
+    console.log("id use", id);
+
+    axiosInstance
+      .post(`/pet/removePetById/${id}`)
+      .then((res) => {
+        console.log(res);
+        if (res.data.status == 200) {
+          alert("Data Removed Successfully");
+          setData((prevArray) => prevArray.filter((item) => item._id !== id));
+        } else {
+          console.log("some issue, Data not  Removed", res);
+        }
       })
-}
+      .catch((err) => {
+        console.log("error", err);
+        if (err.response.status === 401) {
+          alert("Pet already adopted.");
+        } else {
+          alert("Pet not  Removed");
+        }
+      });
+  };
 
   useEffect(() => {
     axiosInstance
@@ -84,15 +92,13 @@ const handleRemove=(id)=>{
                           <b> {user.breed} </b>
                         </h6>
                       </div>
-                    </div>
-                    
-                      {" "}
-                      <button 
-                      onClick={()=>handleRemove(user._id)}
-                      className="btn btn-primary btn-sm rounded-start-pill rounded-end-pill admin-view-pets-btn1 align-items-center ">
-                     Remove
-                      </button>
-                    
+                    </div>{" "}
+                    <button
+                      onClick={() => handleRemove(user._id)}
+                      className="btn btn-primary btn-sm rounded-start-pill rounded-end-pill admin-view-pets-btn1 align-items-center "
+                    >
+                      Remove
+                    </button>
                   </div>
                 </div>
               );

@@ -4,17 +4,16 @@ import img1 from "../../../Assets/RegHead.jpg";
 import img2 from "../../../Assets/captcha.png";
 import img3 from "../../../Assets/regPro.jpg";
 import zookeper from "../../../Assets/zookeper-logo.png";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
+import NavbarUpdated from "../../Common/NavbarUpdated/NavbarUpdated";
 import UserNavbar from "../UserNavbar/UserNavbar";
 import Validation from "./Validation";
 
 import axiosInstance from "../../../BaseURL";
 
-
 function UserReg() {
-  const navigate=useNavigate()
+  const navigate = useNavigate();
 
   const [register, setRegister] = useState({
     firstname: "",
@@ -26,42 +25,39 @@ function UserReg() {
     street: "",
     district: "",
     gender: "",
-    img:null
+    img: null,
   });
   //
   const [captchaChecked, setCaptchaChecked] = useState(false);
   const [errors, setErrors] = useState({});
   const [isSubmit, setisSubmit] = useState(false);
-  
 
   const changeCaptchaChecked = (e) => {
     setCaptchaChecked(e.target.checked);
   };
 
   const changehandleSubmit = (a) => {
-    if (a.target.name=="img") {
-      console.log("file",a.target.files[0]);
+    if (a.target.name == "img") {
+      console.log("file", a.target.files[0]);
       setRegister({
-        ...register,img: a.target.files[0]
-      })
-    }
-    else{
-
-    setRegister({ ...register, [a.target.name]: a.target.value });
+        ...register,
+        img: a.target.files[0],
+      });
+    } else {
+      setRegister({ ...register, [a.target.name]: a.target.value });
     }
   };
   useEffect(() => {
     console.log(register);
   }, []);
-  
 
   const submitt = (b) => {
     console.log("submitted");
 
     b.preventDefault();
-    
-    setErrors(Validation(register))
-   
+
+    setErrors(Validation(register));
+
     if (!captchaChecked) {
       alert("Please check the CAPTCHA to verify");
       return; // Do not proceed if the CAPTCHA is not checked
@@ -75,24 +71,23 @@ function UserReg() {
       })
       .then((result) => {
         console.log("data entered", result);
-        
+
         if (result.data.status == 200) {
           alert("Register Sucessfully");
-           navigate("/user/login");
+          navigate("/user/login");
         } else {
           alert("Registration Failed...");
-         
         }
       })
       .catch((error) => {
         console.log("err", error);
       });
-      
   };
 
   return (
     <div>
-      <UserNavbar />
+      {/* <UserNavbar /> */}
+      {/* <NavbarUpdated /> */}
       <div className="user-reg-cover">
         <div class="user-reg-container">
           <form onSubmit={submitt} class="row g-3 user-reg-form-1">
@@ -129,16 +124,16 @@ function UserReg() {
                       // value="Mark"
                       name="firstname"
                       onChange={changehandleSubmit}
-                
                     />
-
-                      {errors.firstname && <p style={{color:'red'}}>{errors.firstname}</p>}
-{/* 
+                    {errors.firstname && (
+                      <p style={{ color: "red" }}>{errors.firstname}</p>
+                    )}
+                    {/* 
 {(errors.firstname && isSubmit) && <p style={{color:'red'}}>{errors.firstname}</p>} */}
-=======
-
-                    {errors.firstname && <p style={{color:'red'}}>{errors.firstname}</p>}
-
+                    =======
+                    {errors.firstname && (
+                      <p style={{ color: "red" }}>{errors.firstname}</p>
+                    )}
                   </div>
                   <div class="col-md-6">
                     <label
@@ -154,10 +149,11 @@ function UserReg() {
                       // value="Otto"
                       name="lastname"
                       onChange={changehandleSubmit}
-                     
                     />
-                    
-                    {errors.lastname && <p style={{color:'red'}}>{errors.lastname}</p>}
+
+                    {errors.lastname && (
+                      <p style={{ color: "red" }}>{errors.lastname}</p>
+                    )}
                   </div>
                 </div>
                 <div class="col-md-12">
@@ -170,10 +166,11 @@ function UserReg() {
                     id="user-reg-validationDefault03"
                     name="mobile"
                     onChange={changehandleSubmit}
-                  
                   />
-                  
-                  {errors.mobile && <p style={{color:'red'}}>{errors.mobile}</p>}
+
+                  {errors.mobile && (
+                    <p style={{ color: "red" }}>{errors.mobile}</p>
+                  )}
                 </div>
                 <div class="col-md-12">
                   <label for="user-reg-validationDefault03" class="form-label">
@@ -185,10 +182,11 @@ function UserReg() {
                     id="user-reg-validationDefault03"
                     name="password"
                     onChange={changehandleSubmit}
-                   
                   />
-                  
-                  {errors.password && <p style={{color:'red'}}>{errors.password}</p>}
+
+                  {errors.password && (
+                    <p style={{ color: "red" }}>{errors.password}</p>
+                  )}
                 </div>
                 <div class="col-md-12">
                   <label for="user-reg-validationDefault04" class="form-label">
@@ -200,10 +198,11 @@ function UserReg() {
                     class="form-control"
                     id="user-reg-validationDefault04"
                     onChange={changehandleSubmit}
-                   
                   />
-                  
-                  {errors.email && <p style={{color:'red'}}>{errors.email}</p>}
+
+                  {errors.email && (
+                    <p style={{ color: "red" }}>{errors.email}</p>
+                  )}
                 </div>{" "}
                 <div class="col-md-12">
                   <label for="user-reg-validationDefault03" class="form-label">
@@ -215,10 +214,9 @@ function UserReg() {
                     class="form-control"
                     id="user-reg-validationDefault03"
                     onChange={changehandleSubmit}
-                   
                   />
-                  
-                  {errors.city && <p style={{color:'red'}}>{errors.city}</p>}
+
+                  {errors.city && <p style={{ color: "red" }}>{errors.city}</p>}
                 </div>
                 <div class="col-md-12">
                   <label for="user-reg-validationDefault03" class="form-label">
@@ -230,10 +228,11 @@ function UserReg() {
                     class="form-control"
                     id="user-reg-validationDefault03"
                     onChange={changehandleSubmit}
-                
                   />
-                  
-                  {errors.street && <p style={{color:'red'}}>{errors.street}</p>}
+
+                  {errors.street && (
+                    <p style={{ color: "red" }}>{errors.street}</p>
+                  )}
                 </div>
                 <div class="col-md-12">
                   <label for="user-reg-validationDefault03" class="form-label">
@@ -245,9 +244,10 @@ function UserReg() {
                     class="form-control"
                     id="user-reg-validationDefault03"
                     onChange={changehandleSubmit}
-                   
                   />
-                    {errors.district && <p style={{color:'red'}}>{errors.district}</p>}
+                  {errors.district && (
+                    <p style={{ color: "red" }}>{errors.district}</p>
+                  )}
                 </div>
               </div>
               <div className="col-5">
@@ -275,7 +275,7 @@ function UserReg() {
                 checked={register.gender === "male"}
                 onChange={changehandleSubmit}
               />
-                {errors.gender && <p style={{color:'red'}}>{errors.gender}</p>}
+              {errors.gender && <p style={{ color: "red" }}>{errors.gender}</p>}
               <label class="form-check-label" for="flexRadioDefault1">
                 Male
               </label>
@@ -291,27 +291,25 @@ function UserReg() {
                 checked={register.gender === "female"}
                 onChange={changehandleSubmit}
               />
-                   {errors.gender && <p style={{color:'red'}}>{errors.gender}</p>}
+              {errors.gender && <p style={{ color: "red" }}>{errors.gender}</p>}
               <label class="form-check-label" for="flexRadioDefault2">
                 Female
               </label>
             </div>
 
-
             <div class="col-md-12">
-                  <label for="user-reg-validationDefault03" class="form-label">
-                    Image 
-                  </label>
-                  <input
-                    type="file"
-                    name="img"
-                    class="form-control"
-                    id="user-reg-validationDefault03"
-                    onChange={changehandleSubmit}
-                    required
-                  />
-                </div>
-
+              <label for="user-reg-validationDefault03" class="form-label">
+                Image
+              </label>
+              <input
+                type="file"
+                name="img"
+                class="form-control"
+                id="user-reg-validationDefault03"
+                onChange={changehandleSubmit}
+                required
+              />
+            </div>
 
             <div className="user-reg-container-captcha col-md-4">
               <div className="user-reg-Container-innerCheckbox">

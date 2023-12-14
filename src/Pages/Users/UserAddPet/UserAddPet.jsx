@@ -230,7 +230,7 @@ const UserAddPet = () => {
             </div>
           </div>
           <div className="mb-3 mt-3">
-            <Form.Label>Shop/Owner Name </Form.Label>
+            <Form.Label>Insurance Number </Form.Label>
 
             <Form.Control
               className="add-pet-user-input-2"

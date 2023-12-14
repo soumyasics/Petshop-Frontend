@@ -26,8 +26,7 @@ const PetShopAddPet = () => {
   });
 
   useEffect(() => {
-    const petshopInfo =
-      JSON.parse(localStorage.getItem("shop-info")) || null;
+    const petshopInfo = JSON.parse(localStorage.getItem("shop-info")) || null;
     if (!petshopInfo) {
       console.log("Login first");
       return;
@@ -219,7 +218,7 @@ const PetShopAddPet = () => {
             </div>
           </div>
           <div className="mb-3 mt-3">
-            <Form.Label>Shop/Owner Name </Form.Label>
+            <Form.Label>Insruance Number </Form.Label>
 
             <Form.Control
               className="add-pet-user-input-2"
